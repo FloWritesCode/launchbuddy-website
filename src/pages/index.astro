@@ -31,9 +31,22 @@ import Footer from '../components/Footer.astro';
     <div class="w-full xl:w-3/5 p-12 overflow-hidden">
       <img
         class="mx-auto w-full md:w-4/5 rounded transform -rotate-6 transition hover:scale-105 duration-700 ease-in-out hover:rotate-6"
-        src="/image 7.png"
-        alt="LaunchBuddy app screenshot"
+        src="/hero-dashboard.png"
+        alt="LaunchBuddy iOS app release manager dashboard on Mac"
       />
+    </div>
+
+    <div class="w-full py-12 px-4">
+      <div class="max-w-4xl mx-auto text-center md:text-left">
+        <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">
+          The App Release Manager Built for Indie iOS Developers
+        </h2>
+        <p class="text-lg text-white opacity-90 leading-relaxed">
+          LaunchBuddy is project management for indie developers who ship apps to the App Store — not enterprise
+          backlogs. Track Xcode projects, plan releases, and run App Store submission checklists from iPhone and Mac.
+          A simple side project tracker trusted by 20,000+ developers.
+        </p>
+      </div>
     </div>
 
     <div class="w-full py-16">
@@ -47,6 +60,18 @@ import Footer from '../components/Footer.astro';
             <img src="/App Store.svg" class="h-24" alt="Download on the App Store" />
           </a>
         </div>
+      </div>
+    </div>
+
+    <div class="w-full py-16">
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Built for Indie iOS Developers</h2>
+        <p class="text-xl text-white leading-relaxed opacity-90">
+          LaunchBuddy is built for solo developers, small indie studios, and freelancers managing App Store
+          submissions. Whether you need an Xcode project manager for your day job and side projects, or a lightweight
+          alternative to heavy tools like Linear or Jira, LaunchBuddy keeps indie dev productivity focused on
+          shipping — not admin.
+        </p>
       </div>
     </div>
 
@@ -167,23 +192,30 @@ import Footer from '../components/Footer.astro';
     </div>
 
     <div class="w-full pt-24 pb-16">
-      <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-12">
-        Powerful Features for Project Management
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-4">
+        iOS App Release Management Features
       </h2>
+      <p class="text-center text-white opacity-90 max-w-3xl mx-auto px-4 mb-12">
+        Everything you need to track tasks, ship releases, and stay on top of App Store submissions.
+      </p>
       <div class="max-w-6xl mx-auto space-y-16 px-4">
         <div class="bg-gray-900 bg-opacity-75 p-8 rounded-lg transform hover:scale-105 transition duration-300">
           <div class="flex flex-col md:flex-row items-center gap-12">
             <div class="w-full md:w-2/5">
-              <h3 class="text-2xl font-bold text-white mb-4">Tasks & Releases</h3>
-              <p class="text-white">
-                Easily manage your tasks and organize them into releases. Keep track of what needs to be done and when
-                it needs to be shipped.
+              <h3 class="text-2xl font-bold text-white mb-4">
+                Track Tasks and App Store Releases in One Place
+              </h3>
+              <p class="text-white leading-relaxed">
+                LaunchBuddy works as your iOS app release manager, keeping every task tied to a version you plan to
+                ship. Organize bug fixes, features, and polish into releases so you always know what ships next.
+                Whether you are preparing an App Store submission or a TestFlight build, your release plan stays
+                visible. Perfect as a side project tracker when you juggle multiple Xcode projects at once.
               </p>
             </div>
             <div class="w-full md:w-3/5 h-96 bg-gray-800 rounded-lg overflow-hidden">
               <img
-                src="/image 7.png"
-                alt="Tasks & Releases feature screenshot"
+                src="/hero-dashboard.png"
+                alt="LaunchBuddy tasks and App Store release tracking dashboard"
                 class="w-full h-full object-cover"
               />
             </div>
@@ -193,14 +225,20 @@ import Footer from '../components/Footer.astro';
         <div class="bg-gray-900 bg-opacity-75 p-8 rounded-lg transform hover:scale-105 transition duration-300">
           <div class="flex flex-col md:flex-row-reverse items-center gap-12">
             <div class="w-full md:w-2/5">
-              <h3 class="text-2xl font-bold text-white mb-4">Cross-Platform Sync</h3>
-              <p class="text-white">
-                Seamlessly sync your projects between iOS and macOS. Work on your projects wherever you are, and your
-                changes are always up to date.
+              <h3 class="text-2xl font-bold text-white mb-4">Cross-Platform Sync for iPhone and Mac</h3>
+              <p class="text-white leading-relaxed">
+                Seamlessly sync your Xcode projects between iOS and macOS via iCloud. Review tasks on your iPhone,
+                update progress at your Mac, and pick up exactly where you left off. LaunchBuddy is built for indie
+                developers who work across devices without losing context. Your iOS developer task manager stays
+                current whether you are at your desk or on the go.
               </p>
             </div>
             <div class="w-full md:w-3/5 h-96 bg-gray-800 rounded-lg overflow-hidden">
-              <img src="/images/iPhone and Mac.png" alt="Mac and iOS screenshot" class="w-full h-full object-cover" />
+              <img
+                src="/images/cross-platform-sync.png"
+                alt="LaunchBuddy Xcode project sync between iPhone and Mac"
+                class="w-full h-full object-cover"
+              />
             </div>
           </div>
         </div>
@@ -208,14 +246,20 @@ import Footer from '../components/Footer.astro';
         <div class="bg-gray-900 bg-opacity-75 p-8 rounded-lg transform hover:scale-105 transition duration-300">
           <div class="flex flex-col md:flex-row items-center gap-12">
             <div class="w-full md:w-2/5">
-              <h3 class="text-2xl font-bold text-white mb-4">Smart Checklists</h3>
-              <p class="text-white">
-                Create reusable checklists that automatically add tasks to your releases. Save time and ensure nothing
-                gets forgotten.
+              <h3 class="text-2xl font-bold text-white mb-4">Smart Checklists for App Store Submissions</h3>
+              <p class="text-white leading-relaxed">
+                Create reusable checklists that automatically add tasks to every release. Standardize screenshots,
+                metadata, TestFlight builds, and review notes so nothing gets forgotten before submission.
+                LaunchBuddy replaces scattered notes with a simple App Store submission tracker built into your
+                workflow. Spend less time remembering steps and more time shipping your next version.
               </p>
             </div>
             <div class="w-full md:w-3/5 h-96 bg-gray-800 rounded-lg overflow-hidden">
-              <img src="/images/checklists.png" alt="Checklists for repeating tasks" class="w-full h-full object-cover" />
+              <img
+                src="/images/checklists.png"
+                alt="LaunchBuddy App Store submission checklists for iOS releases"
+                class="w-full h-full object-cover"
+              />
             </div>
           </div>
         </div>

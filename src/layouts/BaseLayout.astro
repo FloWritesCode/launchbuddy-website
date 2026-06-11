@@ -4,14 +4,16 @@ import Nav from '../components/Nav.astro';
 interface Props {
   title?: string;
   description?: string;
+  keywords?: string;
   path?: string;
   ogType?: string;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const {
-  title = 'LaunchBuddy: Project Management for Indies',
-  description = 'Actually ship your side projects! LaunchBuddy makes sure you ship your sideprojects by making project management a breeze!',
+  title = 'LaunchBuddy — iOS App Release Manager for Indie Developers',
+  description = 'LaunchBuddy is a project management app for indie iOS developers. Track tasks, releases, and checklists across iPhone and Mac. Trusted by 20,000+ developers.',
+  keywords = 'iOS app release manager, App Store submission tracker, project management for indie developers, side project tracker, Xcode project manager, iOS developer task manager, indie dev productivity',
   path = '/',
   ogType = 'website',
   jsonLd,
@@ -25,8 +27,9 @@ const defaultJsonLd = [
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
     name: 'LaunchBuddy',
-    applicationCategory: 'BusinessApplication',
-    operatingSystem: 'macOS, iOS',
+    description,
+    applicationCategory: 'DeveloperApplication',
+    operatingSystem: 'iOS, macOS',
     offers: {
       '@type': 'Offer',
       price: '0',
@@ -35,6 +38,7 @@ const defaultJsonLd = [
     aggregateRating: {
       '@type': 'AggregateRating',
       ratingValue: '4.7',
+      bestRating: '5',
       ratingCount: '20000',
     },
     url: 'https://launchbuddy.app',
@@ -92,6 +96,7 @@ const jsonLdItems = Array.isArray(structuredData) ? structuredData : [structured
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
     <meta name="apple-itunes-app" content="app-id=1615169630" />
     <link rel="canonical" href={canonicalUrl.href} />
 
@@ -100,13 +105,13 @@ const jsonLdItems = Array.isArray(structuredData) ? structuredData : [structured
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
-    <meta name="twitter:image:alt" content="LaunchBuddy - Project Management App" />
+    <meta name="twitter:image:alt" content="LaunchBuddy iOS app release manager dashboard" />
 
     <meta property="og:type" content={ogType} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:image:alt" content="LaunchBuddy - Project Management App" />
+    <meta property="og:image:alt" content="LaunchBuddy iOS app release manager dashboard" />
     <meta property="og:url" content={canonicalUrl.href} />
 
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
