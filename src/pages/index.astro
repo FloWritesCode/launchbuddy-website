@@ -1,9 +1,13 @@
 ---
+import { Image, getImage } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Footer from '../components/Footer.astro';
+import heroDashboard from '../assets/hero-dashboard.png';
+
+const heroLcp = await getImage({ src: heroDashboard, width: 880, format: 'webp' });
 ---
 
-<BaseLayout path="/">
+<BaseLayout path="/" preloadImage={heroLcp.src}>
   <div class="container pt-24 md:pt-36 mx-auto flex flex-wrap flex-col md:flex-row items-center">
     <div class="flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden">
       <h1 class="my-4 text-3xl md:text-5xl text-white opacity-75 font-bold leading-tight text-center md:text-left">
@@ -29,10 +33,15 @@ import Footer from '../components/Footer.astro';
     </div>
 
     <div class="w-full xl:w-3/5 p-12 overflow-hidden">
-      <img
-        class="mx-auto w-full md:w-4/5 rounded transform -rotate-6 transition hover:scale-105 duration-700 ease-in-out hover:rotate-6"
-        src="/hero-dashboard.png"
+      <Image
+        src={heroDashboard}
         alt="LaunchBuddy iOS app release manager dashboard on Mac"
+        class="mx-auto w-full md:w-4/5 rounded transform -rotate-6 transition hover:scale-105 duration-700 ease-in-out hover:rotate-6"
+        widths={[440, 880, 1101]}
+        sizes="(max-width: 768px) 100vw, 80vw"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
       />
     </div>
 
@@ -78,7 +87,7 @@ import Footer from '../components/Footer.astro';
     <div class="w-full pt-16 pb-16">
       <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-12">What Our Users Say</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
-        <div class="bg-gray-900 bg-opacity-75 p-6 rounded-lg transform hover:scale-105 transition duration-300">
+        <div class="bg-gray-900/75 p-6 rounded-lg transform hover:scale-105 transition duration-300">
           <div class="flex items-center mb-4">
             {
               Array.from({ length: 5 }).map(() => (
@@ -104,7 +113,7 @@ import Footer from '../components/Footer.astro';
           </div>
         </div>
 
-        <div class="bg-gray-900 bg-opacity-75 p-6 rounded-lg transform hover:scale-105 transition duration-300">
+        <div class="bg-gray-900/75 p-6 rounded-lg transform hover:scale-105 transition duration-300">
           <div class="flex items-center mb-4">
             {
               Array.from({ length: 5 }).map(() => (
@@ -133,7 +142,7 @@ import Footer from '../components/Footer.astro';
           </div>
         </div>
 
-        <div class="bg-gray-900 bg-opacity-75 p-6 rounded-lg transform hover:scale-105 transition duration-300">
+        <div class="bg-gray-900/75 p-6 rounded-lg transform hover:scale-105 transition duration-300">
           <div class="flex items-center mb-4">
             {
               Array.from({ length: 5 }).map(() => (
@@ -199,7 +208,7 @@ import Footer from '../components/Footer.astro';
         Everything you need to track tasks, ship releases, and stay on top of App Store submissions.
       </p>
       <div class="max-w-6xl mx-auto space-y-16 px-4">
-        <div class="bg-gray-900 bg-opacity-75 p-8 rounded-lg transform hover:scale-105 transition duration-300">
+        <div class="bg-gray-900/75 p-8 rounded-lg transform hover:scale-105 transition duration-300">
           <div class="flex flex-col md:flex-row items-center gap-12">
             <div class="w-full md:w-2/5">
               <h3 class="text-2xl font-bold text-white mb-4">
@@ -213,16 +222,20 @@ import Footer from '../components/Footer.astro';
               </p>
             </div>
             <div class="w-full md:w-3/5 h-96 bg-gray-800 rounded-lg overflow-hidden">
-              <img
-                src="/hero-dashboard.png"
+              <Image
+                src={heroDashboard}
                 alt="LaunchBuddy tasks and App Store release tracking dashboard"
                 class="w-full h-full object-cover"
+                widths={[640, 880, 1101]}
+                sizes="(max-width: 768px) 100vw, 60vw"
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </div>
         </div>
 
-        <div class="bg-gray-900 bg-opacity-75 p-8 rounded-lg transform hover:scale-105 transition duration-300">
+        <div class="bg-gray-900/75 p-8 rounded-lg transform hover:scale-105 transition duration-300">
           <div class="flex flex-col md:flex-row-reverse items-center gap-12">
             <div class="w-full md:w-2/5">
               <h3 class="text-2xl font-bold text-white mb-4">Cross-Platform Sync for iPhone and Mac</h3>
@@ -238,12 +251,14 @@ import Footer from '../components/Footer.astro';
                 src="/images/cross-platform-sync.png"
                 alt="LaunchBuddy Xcode project sync between iPhone and Mac"
                 class="w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </div>
         </div>
 
-        <div class="bg-gray-900 bg-opacity-75 p-8 rounded-lg transform hover:scale-105 transition duration-300">
+        <div class="bg-gray-900/75 p-8 rounded-lg transform hover:scale-105 transition duration-300">
           <div class="flex flex-col md:flex-row items-center gap-12">
             <div class="w-full md:w-2/5">
               <h3 class="text-2xl font-bold text-white mb-4">Smart Checklists for App Store Submissions</h3>
@@ -259,6 +274,8 @@ import Footer from '../components/Footer.astro';
                 src="/images/checklists.png"
                 alt="LaunchBuddy App Store submission checklists for iOS releases"
                 class="w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </div>
@@ -270,7 +287,7 @@ import Footer from '../components/Footer.astro';
       <div class="max-w-4xl mx-auto px-4">
         <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-12">Frequently Asked Questions</h2>
         <div class="space-y-4">
-          <details class="group bg-gray-800 bg-opacity-50 rounded-lg">
+          <details class="group bg-gray-800/50 rounded-lg">
             <summary class="flex justify-between items-center cursor-pointer p-6 text-white font-semibold">
               <span>Is LaunchBuddy free?</span>
               <span class="transition group-open:rotate-180">
@@ -293,7 +310,7 @@ import Footer from '../components/Footer.astro';
             </div>
           </details>
 
-          <details class="group bg-gray-800 bg-opacity-50 rounded-lg">
+          <details class="group bg-gray-800/50 rounded-lg">
             <summary class="flex justify-between items-center cursor-pointer p-6 text-white font-semibold">
               <span>Is the iOS app included if I subscribe on the Mac?</span>
               <span class="transition group-open:rotate-180">
@@ -315,7 +332,7 @@ import Footer from '../components/Footer.astro';
             </div>
           </details>
 
-          <details class="group bg-gray-800 bg-opacity-50 rounded-lg">
+          <details class="group bg-gray-800/50 rounded-lg">
             <summary class="flex justify-between items-center cursor-pointer p-6 text-white font-semibold">
               <span>Can I suggest features?</span>
               <span class="transition group-open:rotate-180">
@@ -337,7 +354,7 @@ import Footer from '../components/Footer.astro';
             </div>
           </details>
 
-          <details class="group bg-gray-800 bg-opacity-50 rounded-lg">
+          <details class="group bg-gray-800/50 rounded-lg">
             <summary class="flex justify-between items-center cursor-pointer p-6 text-white font-semibold">
               <span>Does my data sync between iOS and macOS?</span>
               <span class="transition group-open:rotate-180">

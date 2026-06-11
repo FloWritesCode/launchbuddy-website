@@ -1,5 +1,6 @@
 ---
 import Nav from '../components/Nav.astro';
+import '../styles/global.css';
 
 interface Props {
   title?: string;
@@ -8,6 +9,7 @@ interface Props {
   path?: string;
   ogType?: string;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  preloadImage?: string;
 }
 
 const {
@@ -17,6 +19,7 @@ const {
   path = '/',
   ogType = 'website',
   jsonLd,
+  preloadImage,
 } = Astro.props;
 
 const canonicalUrl = new URL(path, Astro.site);
@@ -100,6 +103,14 @@ const jsonLdItems = Array.isArray(structuredData) ? structuredData : [structured
     <meta name="apple-itunes-app" content="app-id=1615169630" />
     <link rel="canonical" href={canonicalUrl.href} />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    {
+      preloadImage && (
+        <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />
+      )
+    }
+
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@LaunchBuddy_App" />
     <meta name="twitter:title" content={title} />
@@ -114,10 +125,9 @@ const jsonLdItems = Array.isArray(structuredData) ? structuredData : [structured
     <meta property="og:image:alt" content="LaunchBuddy iOS app release manager dashboard" />
     <meta property="og:url" content={canonicalUrl.href} />
 
-    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
     <link
-      href="https://unpkg.com/@tailwindcss/custom-forms/dist/custom-forms.min.css"
       rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
     />
     <link rel="icon" type="image/x-icon" href="/icon.ico" />
     <link rel="alternate" type="application/rss+xml" title="LaunchBuddy Blog" href="/rss.xml" />
@@ -129,8 +139,6 @@ const jsonLdItems = Array.isArray(structuredData) ? structuredData : [structured
     }
 
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
-
       html {
         font-family:
           'Poppins',
@@ -147,13 +155,17 @@ const jsonLdItems = Array.isArray(structuredData) ? structuredData : [structured
           'Segoe UI Symbol',
           'Noto Color Emoji';
       }
+
+      body {
+        background-image: url('/blue_mesh.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
     </style>
   </head>
 
-  <body
-    class="leading-normal tracking-normal text-indigo-400 m-6 bg-cover bg-fixed"
-    style="background-image: url('/blue_mesh.png');"
-  >
+  <body class="leading-normal tracking-normal text-indigo-400 m-6">
     <div class="h-full">
       <Nav currentPath={path} />
       <slot />
