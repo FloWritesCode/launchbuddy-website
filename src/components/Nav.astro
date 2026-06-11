@@ -1,0 +1,41 @@
+---
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = '/' } = Astro.props;
+---
+
+<div class="w-full container mx-auto">
+  <div class="w-full flex items-center justify-between">
+    <a
+      class="flex items-center text-indigo-400 no-underline hover:no-underline font-bold text-2xl lg:text-4xl"
+      href="/"
+    >
+      <img src="/appicon.png" class="h-8 lg:h-12 mr-2" alt="LaunchBuddy Icon" />
+      Launch<span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-200 via-blue-500 to-blue-300"
+        >Buddy</span
+      >
+    </a>
+
+    <div class="flex items-center gap-6">
+      <a
+        class={`text-blue-300 no-underline hover:text-pink-500 transition-colors duration-300 ${currentPath.startsWith('/blog') ? 'font-bold text-white' : ''}`}
+        href="/blog/"
+      >
+        Blog
+      </a>
+      <a
+        class="inline-block text-blue-300 no-underline hover:text-pink-500 hover:text-underline text-center h-10 p-2 md:h-auto md:p-4 transform hover:scale-125 duration-300 ease-in-out"
+        href="https://twitter.com/LaunchBuddy_App"
+        aria-label="LaunchBuddy on X"
+      >
+        <svg class="h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+          ></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,91 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Footer from '../../components/Footer.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const path = `/blog/${post.id}/`;
+const canonicalUrl = new URL(path, Astro.site).href;
+---
+
+<BaseLayout
+  title={`${post.data.title} | LaunchBuddy Blog`}
+  description={post.data.description}
+  path={path}
+  ogType="article"
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.data.title,
+    description: post.data.description,
+    datePublished: post.data.pubDate.toISOString(),
+    dateModified: (post.data.updatedDate ?? post.data.pubDate).toISOString(),
+    author: {
+      '@type': 'Person',
+      name: 'Florian Schweizer',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'LaunchBuddy',
+      url: 'https://launchbuddy.app',
+    },
+    mainEntityOfPage: canonicalUrl,
+  }}
+>
+  <article class="container pt-24 md:pt-36 mx-auto max-w-3xl px-4">
+    <a class="text-blue-300 hover:text-pink-500 no-underline" href="/blog/">← Back to blog</a>
+    <h1 class="text-4xl md:text-5xl font-bold text-white my-6">{post.data.title}</h1>
+    <p class="text-gray-400 text-sm mb-8">
+      {post.data.pubDate.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      })}
+    </p>
+
+    <div class="blog-content text-white space-y-4 leading-relaxed">
+      <Content />
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-gray-700">
+      <p class="text-white mb-4">Ready to ship your next project?</p>
+      <a href="https://apple.co/3iFcjjW">
+        <img
+          src="/App Store.svg"
+          class="h-16 transform hover:scale-110 duration-300 ease-in-out"
+          alt="Download LaunchBuddy on the App Store"
+        />
+      </a>
+    </div>
+
+    <Footer />
+  </article>
+</BaseLayout>
+
+<style>
+  .blog-content :global(a) {
+    color: #93c5fd;
+    text-decoration: underline;
+  }
+
+  .blog-content :global(a:hover) {
+    color: #ec4899;
+  }
+
+  .blog-content :global(h2) {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+</style>

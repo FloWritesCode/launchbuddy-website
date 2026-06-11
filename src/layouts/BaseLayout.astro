@@ -1,0 +1,157 @@
+---
+import Nav from '../components/Nav.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  path?: string;
+  ogType?: string;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const {
+  title = 'LaunchBuddy: Project Management for Indies',
+  description = 'Actually ship your side projects! LaunchBuddy makes sure you ship your sideprojects by making project management a breeze!',
+  path = '/',
+  ogType = 'website',
+  jsonLd,
+} = Astro.props;
+
+const canonicalUrl = new URL(path, Astro.site);
+const ogImage = new URL('/images/preview.png', Astro.site).href;
+
+const defaultJsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'LaunchBuddy',
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'macOS, iOS',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.7',
+      ratingCount: '20000',
+    },
+    url: 'https://launchbuddy.app',
+    downloadUrl: 'https://apple.co/3iFcjjW',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'Is LaunchBuddy free?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes, LaunchBuddy is free to download and use. There are additional pro features available via subscription.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Is the iOS app included if I subscribe on the Mac?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes, your subscription covers both the macOS and iOS versions of LaunchBuddy.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Can I suggest features?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes, you can suggest features via the roadmap directly in LaunchBuddy.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Does my data sync between iOS and macOS?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes, all your data syncs seamlessly between devices via iCloud.',
+        },
+      },
+    ],
+  },
+];
+
+const structuredData = jsonLd ?? defaultJsonLd;
+const jsonLdItems = Array.isArray(structuredData) ? structuredData : [structuredData];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="apple-itunes-app" content="app-id=1615169630" />
+    <link rel="canonical" href={canonicalUrl.href} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@LaunchBuddy_App" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content="LaunchBuddy - Project Management App" />
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content="LaunchBuddy - Project Management App" />
+    <meta property="og:url" content={canonicalUrl.href} />
+
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
+    <link
+      href="https://unpkg.com/@tailwindcss/custom-forms/dist/custom-forms.min.css"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="/icon.ico" />
+    <link rel="alternate" type="application/rss+xml" title="LaunchBuddy Blog" href="/rss.xml" />
+
+    {
+      jsonLdItems.map((item) => (
+        <script type="application/ld+json" set:html={JSON.stringify(item)} />
+      ))
+    }
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+      html {
+        font-family:
+          'Poppins',
+          -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          Roboto,
+          'Helvetica Neue',
+          Arial,
+          'Noto Sans',
+          sans-serif,
+          'Apple Color Emoji',
+          'Segoe UI Emoji',
+          'Segoe UI Symbol',
+          'Noto Color Emoji';
+      }
+    </style>
+  </head>
+
+  <body
+    class="leading-normal tracking-normal text-indigo-400 m-6 bg-cover bg-fixed"
+    style="background-image: url('/blue_mesh.png');"
+  >
+    <div class="h-full">
+      <Nav currentPath={path} />
+      <slot />
+    </div>
+  </body>
+</html>
