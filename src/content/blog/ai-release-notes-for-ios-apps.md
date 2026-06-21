@@ -1,5 +1,5 @@
 ---
-title: AI Release Notes for iOS Apps: A Practical App Store Workflow
+title: "AI Release Notes for iOS Apps: A Practical App Store Workflow"
 description: Learn how indie iOS developers can use AI release notes for iOS apps to turn completed tasks, App Store Connect status, and release context into clearer What's New copy.
 pubDate: 2026-06-21
 ---
