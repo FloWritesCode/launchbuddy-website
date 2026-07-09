@@ -1,0 +1,13 @@
+---
+import { PRO_MONTHLY_PRICE } from '../lib/site';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<p class={`text-sm md:text-base text-blue-200/90 ${className}`}>
+  Free to download · Pro from {PRO_MONTHLY_PRICE}/mo
+</p>

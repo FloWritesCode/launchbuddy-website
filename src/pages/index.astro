@@ -2,13 +2,29 @@
 import { Image, getImage } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Footer from '../components/Footer.astro';
+import AppStoreBadge from '../components/AppStoreBadge.astro';
+import PricingTeaser from '../components/PricingTeaser.astro';
+import StarRating from '../components/StarRating.astro';
 import heroDashboard from '../assets/hero-dashboard.png';
+import crossPlatformSync from '../assets/cross-platform-sync.png';
+import checklists from '../assets/checklists.png';
+import {
+  APP_STORE_REVIEWS_URL,
+  APP_STORE_RATING,
+  APP_STORE_REVIEW_COUNT,
+  DEMO_VIDEO_MP4,
+  DEMO_VIDEO_WEBM,
+  PRO_MONTHLY_PRICE,
+  PRO_YEARLY_PRICE,
+  USER_COUNT,
+} from '../lib/site';
 
 const heroLcp = await getImage({ src: heroDashboard, width: 880, format: 'webp' });
 ---
 
 <BaseLayout path="/" preloadImage={heroLcp.src}>
-  <div class="container pt-24 md:pt-36 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+  <div class="container pt-8 md:pt-12 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+    <!-- Hero -->
     <div class="flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden">
       <h1 class="my-4 text-3xl md:text-5xl text-white opacity-75 font-bold leading-tight text-center md:text-left">
         Stop losing track of your
@@ -17,34 +33,43 @@ const heroLcp = await getImage({ src: heroDashboard, width: 880, format: 'webp' 
         </span>
         projects!
       </h1>
-      <p class="leading-normal text-base md:text-2xl mb-8 text-center md:text-left">
-        Join 20,000+ developers who are already shipping faster with LaunchBuddy!
+      <p class="leading-normal text-base md:text-2xl mb-4 text-center md:text-left">
+        Join {USER_COUNT} developers who are already shipping faster with LaunchBuddy!
       </p>
 
-      <div class="w-full justify-center md:justify-start pb-8 fade-in">
-        <a href="https://apple.co/3iFcjjW">
-          <img
-            src="/App Store.svg"
-            class="h-16 transform hover:scale-110 duration-300 ease-in-out"
-            alt="Download LaunchBuddy on the App Store"
-          />
-        </a>
+      <div class="w-full flex flex-col items-center md:items-start gap-3 pb-8 fade-in">
+        <AppStoreBadge size="md" />
+        <PricingTeaser />
       </div>
     </div>
 
-    <div class="w-full xl:w-3/5 p-12 overflow-hidden">
-      <Image
-        src={heroDashboard}
-        alt="LaunchBuddy iOS app release manager dashboard on Mac"
-        class="mx-auto w-full md:w-4/5 rounded transform -rotate-6 transition hover:scale-105 duration-700 ease-in-out hover:rotate-6"
-        widths={[440, 880, 1101]}
-        sizes="(max-width: 768px) 100vw, 80vw"
-        loading="eager"
-        fetchpriority="high"
-        decoding="async"
-      />
+    <div class="w-full xl:w-3/5 p-6 md:p-12 overflow-hidden">
+      <div
+        class="mx-auto w-full md:w-4/5 rounded-xl overflow-hidden shadow-2xl transform -rotate-3 transition hover:scale-105 duration-700 ease-in-out hover:rotate-0 ring-1 ring-white/10"
+      >
+        <video
+          class="w-full aspect-video object-cover bg-gray-900"
+          autoplay
+          muted
+          loop
+          playsinline
+          poster={heroLcp.src}
+          aria-label="LaunchBuddy app demo showing release planning and App Store checklists"
+        >
+          <source src={DEMO_VIDEO_WEBM} type="video/webm" />
+          <source src={DEMO_VIDEO_MP4} type="video/mp4" />
+          <img
+            src={heroLcp.src}
+            alt="LaunchBuddy iOS app release manager dashboard on Mac"
+            class="w-full"
+            width="880"
+            height="495"
+          />
+        </video>
+      </div>
     </div>
 
+    <!-- SEO intro -->
     <div class="w-full py-12 px-4">
       <div class="max-w-4xl mx-auto text-center md:text-left">
         <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">
@@ -53,25 +78,12 @@ const heroLcp = await getImage({ src: heroDashboard, width: 880, format: 'webp' 
         <p class="text-lg text-white opacity-90 leading-relaxed">
           LaunchBuddy is project management for indie developers who ship apps to the App Store — not enterprise
           backlogs. Track Xcode projects, plan releases, and run App Store submission checklists from iPhone and Mac.
-          A simple side project tracker trusted by 20,000+ developers.
+          A simple side project tracker trusted by {USER_COUNT} developers.
         </p>
       </div>
     </div>
 
-    <div class="w-full py-16">
-      <div class="max-w-4xl mx-auto text-center px-4">
-        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Ship Your Next Project?</h2>
-        <p class="text-xl text-white mb-8">
-          Join thousands of developers who are already using LaunchBuddy to manage their projects
-        </p>
-        <div class="flex justify-center">
-          <a href="https://apple.co/3iFcjjW" class="transform hover:scale-105 duration-300 ease-in-out">
-            <img src="/App Store.svg" class="h-24" alt="Download on the App Store" />
-          </a>
-        </div>
-      </div>
-    </div>
-
+    <!-- Audience -->
     <div class="w-full py-16">
       <div class="max-w-4xl mx-auto px-4 text-center">
         <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Built for Indie iOS Developers</h2>
@@ -84,123 +96,8 @@ const heroLcp = await getImage({ src: heroDashboard, width: 880, format: 'webp' 
       </div>
     </div>
 
-    <div class="w-full pt-16 pb-16">
-      <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-12">What Our Users Say</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
-        <div class="bg-gray-900/75 p-6 rounded-lg transform hover:scale-105 transition duration-300">
-          <div class="flex items-center mb-4">
-            {
-              Array.from({ length: 5 }).map(() => (
-                <div class="text-yellow-400 ml-1 first:ml-0">
-                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                </div>
-              ))
-            }
-          </div>
-          <p class="text-white mb-4">"It's a great app. It's easy, quick and it keeps me organized."</p>
-          <div class="flex items-center">
-            <div
-              class="w-10 h-10 rounded-full bg-gradient-to-r from-green-400 via-pink-500 to-purple-500 flex items-center justify-center"
-            >
-              <span class="text-white font-bold">MB</span>
-            </div>
-            <div class="ml-3">
-              <p class="text-white font-semibold">Maarten B.</p>
-              <p class="text-gray-400 text-sm">iOS Developer</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-gray-900/75 p-6 rounded-lg transform hover:scale-105 transition duration-300">
-          <div class="flex items-center mb-4">
-            {
-              Array.from({ length: 5 }).map(() => (
-                <div class="text-yellow-400 ml-1 first:ml-0">
-                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                </div>
-              ))
-            }
-          </div>
-          <p class="text-white mb-4">
-            "LaunchBuddy is a great tool to have in your arsenal as a developer. Helps keep track of the various
-            stages, and the iOS app enables you to keep track of things when away from your Mac."
-          </p>
-          <div class="flex items-center">
-            <div
-              class="w-10 h-10 rounded-full bg-gradient-to-r from-green-400 via-pink-500 to-purple-500 flex items-center justify-center"
-            >
-              <span class="text-white font-bold">AN</span>
-            </div>
-            <div class="ml-3">
-              <p class="text-white font-semibold">Anonymous</p>
-              <p class="text-gray-400 text-sm">LaunchBuddy User</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-gray-900/75 p-6 rounded-lg transform hover:scale-105 transition duration-300">
-          <div class="flex items-center mb-4">
-            {
-              Array.from({ length: 5 }).map(() => (
-                <div class="text-yellow-400 ml-1 first:ml-0">
-                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                </div>
-              ))
-            }
-          </div>
-          <p class="text-white mb-4">"I love LaunchBuddy. I've been using it for several years at this point."</p>
-          <div class="flex items-center">
-            <div
-              class="w-10 h-10 rounded-full bg-gradient-to-r from-green-400 via-pink-500 to-purple-500 flex items-center justify-center"
-            >
-              <span class="text-white font-bold">MC</span>
-            </div>
-            <div class="ml-3">
-              <p class="text-white font-semibold">Mikaela C.</p>
-              <p class="text-gray-400 text-sm">iOS Developer & Podcast Host</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="w-full py-16">
-      <div class="max-w-2xl mx-auto text-center px-4">
-        <div class="text-8xl font-bold text-white mb-6">4.7</div>
-        <div class="flex justify-center items-center mb-4">
-          {
-            Array.from({ length: 4 }).map(() => (
-              <div class="text-yellow-400 ml-2 first:ml-0">
-                <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                </svg>
-              </div>
-            ))
-          }
-          <div class="text-yellow-400 ml-2 relative">
-            <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 20 20">
-              <path
-                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-              ></path>
-            </svg>
-            <div
-              class="absolute inset-0 bg-transparent"
-              style="clip-path: polygon(70% 0%, 100% 0%, 100% 100%, 70% 100%)"
-            >
-            </div>
-          </div>
-        </div>
-        <p class="text-xl text-white">from developers like you</p>
-      </div>
-    </div>
-
-    <div class="w-full pt-24 pb-16">
+    <!-- Features -->
+    <div class="w-full pt-8 pb-16">
       <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-4">
         iOS App Release Management Features
       </h2>
@@ -247,10 +144,12 @@ const heroLcp = await getImage({ src: heroDashboard, width: 880, format: 'webp' 
               </p>
             </div>
             <div class="w-full md:w-3/5 h-96 bg-gray-800 rounded-lg overflow-hidden">
-              <img
-                src="/images/cross-platform-sync.png"
+              <Image
+                src={crossPlatformSync}
                 alt="LaunchBuddy Xcode project sync between iPhone and Mac"
                 class="w-full h-full object-cover"
+                widths={[640, 1080, 2160]}
+                sizes="(max-width: 768px) 100vw, 60vw"
                 loading="lazy"
                 decoding="async"
               />
@@ -270,10 +169,12 @@ const heroLcp = await getImage({ src: heroDashboard, width: 880, format: 'webp' 
               </p>
             </div>
             <div class="w-full md:w-3/5 h-96 bg-gray-800 rounded-lg overflow-hidden">
-              <img
-                src="/images/checklists.png"
+              <Image
+                src={checklists}
                 alt="LaunchBuddy App Store submission checklists for iOS releases"
                 class="w-full h-full object-cover"
+                widths={[640, 1728, 3456]}
+                sizes="(max-width: 768px) 100vw, 60vw"
                 loading="lazy"
                 decoding="async"
               />
@@ -283,6 +184,140 @@ const heroLcp = await getImage({ src: heroDashboard, width: 880, format: 'webp' 
       </div>
     </div>
 
+    <!-- Testimonials -->
+    <div class="w-full pt-16 pb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-12">What Our Users Say</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
+        <div class="bg-gray-900/75 p-6 rounded-lg transform hover:scale-105 transition duration-300">
+          <StarRating rating={5} />
+          <p class="text-white mb-4 mt-4">
+            "This is a great app. I use it for my iOS/Mac development to keep track of version &amp; release
+            documentation, bug fixes and enhancements."
+          </p>
+          <div class="flex items-center">
+            <div
+              class="w-10 h-10 rounded-full bg-gradient-to-r from-green-400 via-pink-500 to-purple-500 flex items-center justify-center"
+            >
+              <span class="text-white font-bold">MB</span>
+            </div>
+            <div class="ml-3">
+              <p class="text-white font-semibold">
+                <a
+                  href={APP_STORE_REVIEWS_URL}
+                  class="text-white no-underline hover:text-blue-300"
+                  rel="noopener noreferrer"
+                >
+                  Maarten B.
+                </a>
+              </p>
+              <p class="text-gray-400 text-sm">iOS Developer · App Store review</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-gray-900/75 p-6 rounded-lg transform hover:scale-105 transition duration-300">
+          <StarRating rating={5} />
+          <p class="text-white mb-4 mt-4">
+            "LaunchBuddy is a great tool to help you organize your projects, keep on top of goals, and actually work
+            towards shipping something on the App Store. Hard recommend."
+          </p>
+          <div class="flex items-center">
+            <div
+              class="w-10 h-10 rounded-full bg-gradient-to-r from-green-400 via-pink-500 to-purple-500 flex items-center justify-center"
+            >
+              <span class="text-white font-bold">★</span>
+            </div>
+            <div class="ml-3">
+              <p class="text-white font-semibold">
+                <a
+                  href={APP_STORE_REVIEWS_URL}
+                  class="text-white no-underline hover:text-blue-300"
+                  rel="noopener noreferrer"
+                >
+                  Verified App Store Review
+                </a>
+              </p>
+              <p class="text-gray-400 text-sm">Indie iOS Developer</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-gray-900/75 p-6 rounded-lg transform hover:scale-105 transition duration-300">
+          <StarRating rating={5} />
+          <p class="text-white mb-4 mt-4">
+            "I love LaunchBuddy. I've been using it for several years at this point."
+          </p>
+          <div class="flex items-center">
+            <div
+              class="w-10 h-10 rounded-full bg-gradient-to-r from-green-400 via-pink-500 to-purple-500 flex items-center justify-center"
+            >
+              <span class="text-white font-bold">MC</span>
+            </div>
+            <div class="ml-3">
+              <p class="text-white font-semibold">
+                <a
+                  href="https://mikaelacaron.com/"
+                  class="text-white no-underline hover:text-blue-300"
+                  rel="noopener noreferrer"
+                >
+                  Mikaela Caron
+                </a>
+              </p>
+              <p class="text-gray-400 text-sm">
+                iOS Developer ·
+                <a
+                  href="https://podcasts.apple.com/us/podcast/swift-over-coffee/id1435076502"
+                  class="text-gray-400 no-underline hover:text-blue-300"
+                  rel="noopener noreferrer"
+                >
+                  Swift over Coffee
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rating -->
+    <div class="w-full py-16">
+      <div class="max-w-2xl mx-auto text-center px-4">
+        <a
+          href={APP_STORE_REVIEWS_URL}
+          class="group inline-block no-underline hover:scale-105 transition-transform duration-300"
+          rel="noopener noreferrer"
+        >
+          <div class="text-8xl font-bold text-white mb-6 group-hover:text-blue-200 transition-colors">
+            {APP_STORE_RATING}
+          </div>
+          <div class="flex justify-center items-center mb-4">
+            <StarRating rating={4.8} size="lg" />
+          </div>
+          <p class="text-xl text-white group-hover:text-blue-200 transition-colors">
+            from {APP_STORE_REVIEW_COUNT} App Store reviews
+          </p>
+          <p class="text-sm text-blue-300 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
+            Read all reviews →
+          </p>
+        </a>
+      </div>
+    </div>
+
+    <!-- Mid-page CTA (after social proof) -->
+    <div class="w-full py-16">
+      <div class="max-w-4xl mx-auto text-center px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Ship Your Next Project?</h2>
+        <p class="text-xl text-white mb-4">
+          Join thousands of developers who are already using LaunchBuddy to manage their projects
+        </p>
+        <PricingTeaser class="mb-8" />
+        <div class="flex justify-center">
+          <AppStoreBadge size="lg" />
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
     <div class="w-full py-16">
       <div class="max-w-4xl mx-auto px-4">
         <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-12">Frequently Asked Questions</h2>
@@ -305,8 +340,8 @@ const heroLcp = await getImage({ src: heroDashboard, width: 880, format: 'webp' 
               </span>
             </summary>
             <div class="px-6 pb-6 text-white">
-              Yes, LaunchBuddy is free to download and use. There are additional pro features available via
-              subscription.
+              Yes, LaunchBuddy is free to download and use for up to 2 apps. Pro features — unlimited apps, custom
+              checklists, and more — start at {PRO_MONTHLY_PRICE}/month or {PRO_YEARLY_PRICE}/year.
             </div>
           </details>
 
@@ -379,16 +414,12 @@ const heroLcp = await getImage({ src: heroDashboard, width: 880, format: 'webp' 
       </div>
     </div>
 
+    <!-- Final CTA -->
     <div class="mx-auto md:pt-16">
-      <p class="text-blue-400 font-bold pb-8 lg:pb-6 text-center">Download LaunchBuddy:</p>
-      <div class="w-full justify-center md:justify-center pb-24 lg:pb-0 fade-in">
-        <a href="https://apple.co/3iFcjjW">
-          <img
-            src="/App Store.svg"
-            class="h-24 transform hover:scale-110 duration-300 ease-in-out"
-            alt="Download on the App Store"
-          />
-        </a>
+      <p class="text-blue-400 font-bold pb-4 text-center">Download LaunchBuddy:</p>
+      <PricingTeaser class="text-center pb-6" />
+      <div class="w-full flex justify-center pb-24 lg:pb-0 fade-in">
+        <AppStoreBadge size="lg" />
       </div>
     </div>
 

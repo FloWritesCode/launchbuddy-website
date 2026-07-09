@@ -1,0 +1,24 @@
+---
+import { APP_STORE_URL } from '../lib/site';
+
+interface Props {
+  size?: 'sm' | 'md' | 'lg';
+  class?: string;
+}
+
+const { size = 'md', class: className = '' } = Astro.props;
+
+const heights = {
+  sm: 'h-12',
+  md: 'h-16',
+  lg: 'h-24',
+};
+---
+
+<a href={APP_STORE_URL} class={`inline-block transform hover:scale-110 duration-300 ease-in-out ${className}`}>
+  <img
+    src="/App Store.svg"
+    class={heights[size]}
+    alt="Download LaunchBuddy on the App Store"
+  />
+</a>

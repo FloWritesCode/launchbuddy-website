@@ -1,6 +1,15 @@
 ---
 import Nav from '../components/Nav.astro';
+import '@fontsource/poppins/400.css';
+import '@fontsource/poppins/700.css';
 import '../styles/global.css';
+import {
+  APP_STORE_RATING,
+  APP_STORE_REVIEW_COUNT,
+  APP_STORE_URL,
+  PRO_MONTHLY_PRICE,
+  PRO_YEARLY_PRICE,
+} from '../lib/site';
 
 interface Props {
   title?: string;
@@ -40,12 +49,12 @@ const defaultJsonLd = [
     },
     aggregateRating: {
       '@type': 'AggregateRating',
-      ratingValue: '4.7',
+      ratingValue: APP_STORE_RATING,
       bestRating: '5',
-      ratingCount: '20000',
+      ratingCount: String(APP_STORE_REVIEW_COUNT),
     },
     url: 'https://launchbuddy.app',
-    downloadUrl: 'https://apple.co/3iFcjjW',
+    downloadUrl: APP_STORE_URL,
   },
   {
     '@context': 'https://schema.org',
@@ -56,7 +65,7 @@ const defaultJsonLd = [
         name: 'Is LaunchBuddy free?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Yes, LaunchBuddy is free to download and use. There are additional pro features available via subscription.',
+          text: `Yes, LaunchBuddy is free to download and use. Pro features are available from ${PRO_MONTHLY_PRICE}/month or ${PRO_YEARLY_PRICE}/year.`,
         },
       },
       {
@@ -103,8 +112,6 @@ const jsonLdItems = Array.isArray(structuredData) ? structuredData : [structured
     <meta name="apple-itunes-app" content="app-id=1615169630" />
     <link rel="canonical" href={canonicalUrl.href} />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     {
       preloadImage && (
         <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />
@@ -125,10 +132,6 @@ const jsonLdItems = Array.isArray(structuredData) ? structuredData : [structured
     <meta property="og:image:alt" content="LaunchBuddy iOS app release manager dashboard" />
     <meta property="og:url" content={canonicalUrl.href} />
 
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
-    />
     <link rel="icon" type="image/x-icon" href="/icon.ico" />
     <link rel="alternate" type="application/rss+xml" title="LaunchBuddy Blog" href="/rss.xml" />
 

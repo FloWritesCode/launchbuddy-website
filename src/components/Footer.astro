@@ -1,7 +1,16 @@
-<div class="w-full pt-16 pb-6 text-sm text-center md:text-left fade-in">
-  <a class="text-gray-500 no-underline hover:no-underline" href="/">&copy; Florian Schweizer 2022-2025</a>
-  - Template by
-  <a class="text-gray-500 no-underline hover:no-underline" href="https://www.tailwindtoolbox.com"
-    >TailwindToolbox.com</a
-  >
-</div>
+---
+import { PRIVACY_POLICY_URL, SUPPORT_URL, TERMS_URL } from '../lib/site';
+---
+
+<footer class="w-full pt-16 pb-6 text-sm text-center md:text-left fade-in">
+  <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+    <p>
+      <a class="text-gray-500 no-underline hover:text-gray-300" href="/">&copy; Florian Schweizer 2022-2026</a>
+    </p>
+    <nav class="flex flex-wrap justify-center md:justify-end gap-x-6 gap-y-2">
+      <a class="text-gray-500 no-underline hover:text-gray-300" href={PRIVACY_POLICY_URL}>Privacy</a>
+      <a class="text-gray-500 no-underline hover:text-gray-300" href={TERMS_URL}>Terms</a>
+      <a class="text-gray-500 no-underline hover:text-gray-300" href={SUPPORT_URL}>Support</a>
+    </nav>
+  </div>
+</footer>
