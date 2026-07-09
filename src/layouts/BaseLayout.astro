@@ -1,12 +1,18 @@
 ---
 import Nav from '../components/Nav.astro';
-import '@fontsource/poppins/400.css';
-import '@fontsource/poppins/700.css';
+import '@fontsource/space-grotesk/500.css';
+import '@fontsource/space-grotesk/600.css';
+import '@fontsource/space-grotesk/700.css';
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/jetbrains-mono/500.css';
 import '../styles/global.css';
 import {
   APP_STORE_RATING,
   APP_STORE_REVIEW_COUNT,
   APP_STORE_URL,
+  DEFAULT_DESCRIPTION,
+  DEFAULT_KEYWORDS,
   PRO_MONTHLY_PRICE,
   PRO_YEARLY_PRICE,
 } from '../lib/site';
@@ -22,9 +28,9 @@ interface Props {
 }
 
 const {
-  title = 'LaunchBuddy — iOS App Release Manager for Indie Developers',
-  description = 'LaunchBuddy is a project management app for indie iOS developers. Track tasks, releases, and checklists across iPhone and Mac. Trusted by 20,000+ developers.',
-  keywords = 'iOS app release manager, App Store submission tracker, project management for indie developers, side project tracker, Xcode project manager, iOS developer task manager, indie dev productivity',
+  title = 'LaunchBuddy — App Store Connect & AI Release Manager for Indie Devs',
+  description = DEFAULT_DESCRIPTION,
+  keywords = DEFAULT_KEYWORDS,
   path = '/',
   ogType = 'website',
   jsonLd,
@@ -140,38 +146,23 @@ const jsonLdItems = Array.isArray(structuredData) ? structuredData : [structured
         <script type="application/ld+json" set:html={JSON.stringify(item)} />
       ))
     }
-
-    <style>
-      html {
-        font-family:
-          'Poppins',
-          -apple-system,
-          BlinkMacSystemFont,
-          'Segoe UI',
-          Roboto,
-          'Helvetica Neue',
-          Arial,
-          'Noto Sans',
-          sans-serif,
-          'Apple Color Emoji',
-          'Segoe UI Emoji',
-          'Segoe UI Symbol',
-          'Noto Color Emoji';
-      }
-
-      body {
-        background-image: url('/blue_mesh.jpg');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-      }
-    </style>
   </head>
 
-  <body class="leading-normal tracking-normal text-indigo-400 m-6">
-    <div class="h-full">
+  <body class="font-body leading-normal tracking-normal text-text-secondary min-h-screen antialiased">
+    <div class="bg-scene" aria-hidden="true">
+      <div class="bg-scene__mesh"></div>
+      <div class="bg-scene__orb bg-scene__orb--1"></div>
+      <div class="bg-scene__orb bg-scene__orb--2"></div>
+      <div class="bg-scene__orb bg-scene__orb--3"></div>
+      <div class="bg-scene__grid"></div>
+      <div class="bg-scene__noise"></div>
+    </div>
+
+    <div class="relative z-10">
       <Nav currentPath={path} />
-      <slot />
+      <main>
+        <slot />
+      </main>
     </div>
   </body>
 </html>

@@ -2,15 +2,24 @@
 import { PRIVACY_POLICY_URL, SUPPORT_URL, TERMS_URL } from '../lib/site';
 ---
 
-<footer class="w-full pt-16 pb-6 text-sm text-center md:text-left fade-in">
-  <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-    <p>
-      <a class="text-gray-500 no-underline hover:text-gray-300" href="/">&copy; Florian Schweizer 2022-2026</a>
-    </p>
-    <nav class="flex flex-wrap justify-center md:justify-end gap-x-6 gap-y-2">
-      <a class="text-gray-500 no-underline hover:text-gray-300" href={PRIVACY_POLICY_URL}>Privacy</a>
-      <a class="text-gray-500 no-underline hover:text-gray-300" href={TERMS_URL}>Terms</a>
-      <a class="text-gray-500 no-underline hover:text-gray-300" href={SUPPORT_URL}>Support</a>
-    </nav>
+<footer class="max-w-6xl mx-auto px-6 pt-20 pb-10 fade-in">
+  <div class="glass-card glass-card--static p-8 md:p-10">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+      <div>
+        <p class="font-display font-semibold text-text-primary text-lg mb-1">LaunchBuddy</p>
+        <p class="text-sm text-text-muted">
+          Ship your iOS apps faster.
+        </p>
+      </div>
+      <nav class="flex flex-wrap gap-x-6 gap-y-2">
+        <a class="text-sm text-text-muted no-underline hover:text-accent-blue transition-colors" href={PRIVACY_POLICY_URL}>Privacy</a>
+        <a class="text-sm text-text-muted no-underline hover:text-accent-blue transition-colors" href={TERMS_URL}>Terms</a>
+        <a class="text-sm text-text-muted no-underline hover:text-accent-blue transition-colors" href={SUPPORT_URL}>Support</a>
+        <a class="text-sm text-text-muted no-underline hover:text-accent-blue transition-colors" href="/blog/">Blog</a>
+      </nav>
+    </div>
+    <div class="mt-8 pt-6 border-t border-white/5">
+      <p class="text-xs text-text-muted">&copy; Florian Schweizer 2022–2026</p>
+    </div>
   </div>
 </footer>

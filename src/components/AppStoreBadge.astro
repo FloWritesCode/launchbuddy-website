@@ -9,16 +9,19 @@ interface Props {
 const { size = 'md', class: className = '' } = Astro.props;
 
 const heights = {
-  sm: 'h-12',
-  md: 'h-16',
-  lg: 'h-24',
+  sm: 'h-10',
+  md: 'h-14',
+  lg: 'h-[4.5rem]',
 };
 ---
 
-<a href={APP_STORE_URL} class={`inline-block transform hover:scale-110 duration-300 ease-in-out ${className}`}>
+<a
+  href={APP_STORE_URL}
+  class={`inline-flex shrink-0 transition-transform duration-300 hover:scale-105 hover:drop-shadow-[0_0_20px_rgba(56,189,248,0.3)] ${className}`}
+>
   <img
     src="/App Store.svg"
-    class={heights[size]}
+    class={`${heights[size]} w-auto block`}
     alt="Download LaunchBuddy on the App Store"
   />
 </a>

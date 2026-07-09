@@ -10,6 +10,98 @@ export const PRO_YEARLY_PRICE = '$19.99';
 export const APP_STORE_RATING = '4.8';
 export const APP_STORE_REVIEW_COUNT = 106;
 export const USER_COUNT = '20,000+';
+export const FREE_TIER_APPS = 2;
+export const FREE_TIER_RELEASES = 2;
 
 export const DEMO_VIDEO_MP4 = '/videos/launchbuddy-demo.mp4';
 export const DEMO_VIDEO_WEBM = '/videos/launchbuddy-demo.webm';
+
+export const DEFAULT_DESCRIPTION =
+  'LaunchBuddy helps indie iOS developers plan releases, manage App Store submissions, reply to reviews, and use AI — on iPhone and Mac. Free for 2 apps.';
+
+export const DEFAULT_KEYWORDS =
+  'App Store Connect, iOS app release manager, App Store submission tracker, LaunchBuddy AI, ASO experiments, indie iOS developer, Xcode project manager, TestFlight release management';
+
+export const PRO_PILLARS = [
+  {
+    title: 'App Store Connect inbox',
+    description:
+      'See reviews, draft replies, turn 1-star feedback into backlog tasks — without opening ASC in a browser.',
+  },
+  {
+    title: 'LaunchBuddy AI',
+    description:
+      'Chat with your app data. Draft release notes, brainstorm features, and get AI review replies — included with Pro.',
+  },
+  {
+    title: 'ASO experiments',
+    description:
+      'Track icon, screenshot, and copy tests with baseline vs. experiment metrics for every app you ship.',
+  },
+  {
+    title: 'Unlimited portfolio',
+    description:
+      'Manage every app and release you ship — not just two apps and two releases on the free tier.',
+  },
+  {
+    title: 'Widgets & Shortcuts',
+    description:
+      'Glance at your taskboard from the Home Screen. Control LaunchBuddy from Shortcuts and MCP.',
+  },
+] as const;
+
+export const HOMEPAGE_BLOG_POSTS = [
+  {
+    slug: 'app-store-connect-release-checklist',
+    title: 'App Store submission checklist',
+    description: 'The release checklist indie devs use before every App Store submission.',
+  },
+  {
+    slug: 'app-store-connect-ai-agent',
+    title: 'App Store Connect AI workflow',
+    description: 'How to use AI with your ASC data without leaving your release workflow.',
+  },
+  {
+    slug: 'testflight-release-management',
+    title: 'TestFlight release management',
+    description: 'Keep beta builds, feedback, and release tasks organized in one place.',
+  },
+] as const;
+
+export const FAQ_ITEMS = [
+  {
+    question: "What's included in the free version?",
+    answer: `Up to ${FREE_TIER_APPS} apps and ${FREE_TIER_RELEASES} releases, default submission checklists, taskboards, and iCloud sync. Enough to try LaunchBuddy on a side project.`,
+  },
+  {
+    question: 'What does Pro unlock?',
+    answer:
+      'Unlimited apps and releases, custom checklists, unlimited project notes, ASO experiments, the App Store Connect dashboard (reviews, analytics, release notes), and LaunchBuddy AI (App Chat, Idea Chat, review-to-task). AI features are included with Pro and subject to usage limits.',
+  },
+  {
+    question: 'Is LaunchBuddy free?',
+    answer: `Yes — free for up to ${FREE_TIER_APPS} apps and ${FREE_TIER_RELEASES} releases, forever. Pro starts at ${PRO_MONTHLY_PRICE}/month or ${PRO_YEARLY_PRICE}/year.`,
+  },
+  {
+    question: 'Do I need App Store Connect API access for Pro features?',
+    answer:
+      'ASC integration requires an API key (free from Apple). Tasks, AI chat, and checklists work without it — connect ASC when you want reviews, analytics, and release note uploads in-app.',
+  },
+  {
+    question: 'Is the iOS app included if I subscribe on the Mac?',
+    answer: 'Yes. One subscription covers iPhone, iPad, and Mac — all Pro features on every device.',
+  },
+  {
+    question: 'Is my data private?',
+    answer:
+      'Your project data is stored in your private iCloud account. LaunchBuddy does not host your tasks, releases, or notes on its own servers.',
+  },
+  {
+    question: 'Does my data sync between iOS and macOS?',
+    answer: 'Yes. iCloud keeps your apps, releases, and tasks current across iPhone, iPad, and Mac.',
+  },
+  {
+    question: 'Can I suggest features?',
+    answer: 'Yes — use the in-app roadmap to vote on and suggest features.',
+  },
+] as const;
