@@ -25,6 +25,145 @@ export const DEFAULT_DESCRIPTION =
 export const DEFAULT_KEYWORDS =
   'App Store Connect, iOS app release manager, App Store submission tracker, LaunchBuddy AI, ASO experiments, indie iOS developer, Xcode project manager, TestFlight release management';
 
+export type FeatureTierValue = boolean | string;
+
+export type FeatureComparisonRow = {
+  name: string;
+  hint?: string;
+  free: FeatureTierValue;
+  pro: FeatureTierValue;
+};
+
+export type FeatureComparisonCategory = {
+  title: string;
+  features: FeatureComparisonRow[];
+};
+
+export const FEATURE_COMPARISON: FeatureComparisonCategory[] = [
+  {
+    title: 'Core workflow',
+    features: [
+      {
+        name: 'Release planning & taskboards',
+        hint: 'Organize tasks by version and track what ships next.',
+        free: true,
+        pro: true,
+      },
+      {
+        name: 'App Store submission checklists',
+        hint: 'Reusable checklists that auto-add tasks to every release.',
+        free: 'Default',
+        pro: 'Custom',
+      },
+      {
+        name: 'iCloud sync',
+        hint: 'Projects stay current across iPhone, iPad, and Mac.',
+        free: true,
+        pro: true,
+      },
+      {
+        name: 'iPhone, iPad & Mac',
+        free: true,
+        pro: true,
+      },
+    ],
+  },
+  {
+    title: 'Portfolio',
+    features: [
+      {
+        name: 'Apps',
+        free: String(FREE_TIER_APPS),
+        pro: 'Unlimited',
+      },
+      {
+        name: 'Releases',
+        free: String(FREE_TIER_RELEASES),
+        pro: 'Unlimited',
+      },
+      {
+        name: 'Project notes',
+        free: 'Limited',
+        pro: 'Unlimited',
+      },
+    ],
+  },
+  {
+    title: 'App Store Connect',
+    features: [
+      {
+        name: 'Reviews inbox',
+        hint: 'Read and reply to App Store reviews without opening a browser.',
+        free: false,
+        pro: true,
+      },
+      {
+        name: 'Analytics dashboard',
+        hint: 'Downloads, revenue, and subscription metrics from ASC.',
+        free: false,
+        pro: true,
+      },
+      {
+        name: 'Release notes upload',
+        hint: 'Push release notes to App Store Connect from LaunchBuddy.',
+        free: false,
+        pro: true,
+      },
+      {
+        name: 'Review-to-task',
+        hint: 'Turn 1-star feedback into backlog tasks in one tap.',
+        free: false,
+        pro: true,
+      },
+    ],
+  },
+  {
+    title: 'LaunchBuddy AI',
+    features: [
+      {
+        name: 'App Chat',
+        hint: 'Chat with AI that knows your tasks, releases, and review data.',
+        free: false,
+        pro: true,
+      },
+      {
+        name: 'Idea Chat',
+        hint: 'Brainstorm features and turn ideas into backlog items.',
+        free: false,
+        pro: true,
+      },
+      {
+        name: 'AI review replies',
+        hint: 'Draft App Store review responses from your app context.',
+        free: false,
+        pro: true,
+      },
+    ],
+  },
+  {
+    title: 'Power tools',
+    features: [
+      {
+        name: 'ASO experiments',
+        hint: 'Track icon, screenshot, and copy A/B tests with metrics.',
+        free: false,
+        pro: true,
+      },
+      {
+        name: 'Widgets & Home Screen',
+        free: false,
+        pro: true,
+      },
+      {
+        name: 'Shortcuts & MCP',
+        hint: 'Control LaunchBuddy from Shortcuts and MCP-compatible agents.',
+        free: false,
+        pro: true,
+      },
+    ],
+  },
+];
+
 export const PRO_PILLARS = [
   {
     title: 'App Store Connect inbox',

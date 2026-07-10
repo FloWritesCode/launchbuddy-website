@@ -3,6 +3,7 @@ import { Image, getImage } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Footer from '../components/Footer.astro';
 import CTAStack from '../components/CTAStack.astro';
+import FeatureComparisonTable from '../components/FeatureComparisonTable.astro';
 import ProBadge from '../components/ProBadge.astro';
 import StarRating from '../components/StarRating.astro';
 import heroDashboard from '../assets/hero-dashboard.png';
@@ -24,7 +25,6 @@ import {
   FREE_TIER_RELEASES,
   HOMEPAGE_BLOG_POSTS,
   PRO_MONTHLY_PRICE,
-  PRO_PILLARS,
   PRO_YEARLY_PRICE,
   USER_COUNT,
 } from '../lib/site';
@@ -322,19 +322,10 @@ const homepageJsonLd = [
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {
-        PRO_PILLARS.map((feature) => (
-          <div class="pro-feature-card">
-            <h3 class="font-display font-semibold text-text-primary mb-2">{feature.title}</h3>
-            <p class="text-sm text-text-secondary leading-relaxed">{feature.description}</p>
-          </div>
-        ))
-      }
-    </div>
+    <FeatureComparisonTable />
 
-    <p class="text-sm text-text-muted mt-10">
-      All Pro features included on iPhone and Mac — one subscription.
+    <p class="text-sm text-text-muted mt-8">
+      All Pro features on iPhone, iPad, and Mac — one subscription at {PRO_MONTHLY_PRICE}/mo or {PRO_YEARLY_PRICE}/yr.
     </p>
   </section>
 
