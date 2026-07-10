@@ -2,8 +2,7 @@
 import { Image, getImage } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Footer from '../components/Footer.astro';
-import AppStoreBadge from '../components/AppStoreBadge.astro';
-import PricingTeaser from '../components/PricingTeaser.astro';
+import CTAStack from '../components/CTAStack.astro';
 import ProBadge from '../components/ProBadge.astro';
 import StarRating from '../components/StarRating.astro';
 import heroDashboard from '../assets/hero-dashboard.png';
@@ -68,286 +67,258 @@ const homepageJsonLd = [
 
 <BaseLayout path="/" preloadImage={heroLcp.src} jsonLd={homepageJsonLd}>
   <!-- Hero -->
-  <section class="max-w-6xl mx-auto px-6 pt-12 md:pt-20 pb-16 md:pb-24">
-    <div class="text-center max-w-4xl mx-auto mb-12 md:mb-16">
-      <div class="section-label fade-in">App Store Connect + AI for indie devs</div>
-      <h1 class="font-display font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-text-primary leading-[1.08] tracking-tight mb-6 fade-in fade-in-delay-1">
-        Stop losing track of your
-        <span class="text-gradient"> Xcode </span>
-        projects
-      </h1>
-      <p class="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto mb-8 fade-in fade-in-delay-2">
-        Plan releases, reply to App Store reviews, and track what ships next — from iPhone and Mac.
-        Built for indie devs who live in Xcode and App Store Connect.
-      </p>
+  <section class="max-w-6xl mx-auto px-6 pt-10 md:pt-16 pb-20 md:pb-28">
+    <div class="hero-split">
+      <div class="text-left max-w-xl lg:max-w-none">
+        <div class="section-label fade-in">App Store Connect + AI</div>
+        <h1 class="font-display font-bold text-4xl sm:text-5xl lg:text-[3.25rem] text-text-primary leading-[1.08] tracking-tight mb-5 fade-in fade-in-delay-1">
+          Ship your next
+          <span class="text-gradient"> App Store </span>
+          release without the chaos
+        </h1>
+        <p class="text-lg text-text-secondary mb-8 leading-relaxed fade-in fade-in-delay-2">
+          Plan releases, run submission checklists, reply to reviews, and talk to AI that knows your
+          apps — on iPhone and Mac. Built for indie devs who'd rather ship than admin.
+        </p>
 
-      <div class="flex flex-col items-center gap-3 mb-2 fade-in fade-in-delay-3">
-        <AppStoreBadge size="lg" />
-        <p class="text-xs text-text-muted">Download for iPhone and Mac — one app, one subscription.</p>
-      </div>
-      <PricingTeaser showProTeaser class="fade-in fade-in-delay-3" />
+        <div class="fade-in fade-in-delay-3">
+          <CTAStack size="lg" align="start" showBadge={false} showPricing showProTeaser />
+        </div>
 
-      <div class="grid grid-cols-3 gap-3 md:gap-4 max-w-lg mx-auto mt-10 fade-in fade-in-delay-4">
-        <div class="stat-pill">
-          <span class="stat-pill__value text-gradient">{USER_COUNT}</span>
-          <span class="stat-pill__label">Developers</span>
-        </div>
-        <div class="stat-pill">
-          <span class="stat-pill__value">{APP_STORE_RATING}</span>
-          <span class="stat-pill__label">Rating</span>
-        </div>
-        <div class="stat-pill">
-          <span class="stat-pill__value">{APP_STORE_REVIEW_COUNT}</span>
-          <span class="stat-pill__label">Reviews</span>
+        <div class="trust-strip mt-8 fade-in fade-in-delay-4">
+          <span class="trust-strip__highlight">{USER_COUNT} developers</span>
+          <span class="trust-strip__dot" aria-hidden="true"></span>
+          <span>{APP_STORE_RATING} App Store rating</span>
+          <span class="trust-strip__dot" aria-hidden="true"></span>
+          <span>Free for {FREE_TIER_APPS} apps</span>
         </div>
       </div>
-    </div>
 
-    <div class="relative max-w-4xl mx-auto fade-in-up fade-in-delay-4">
-      <div class="hero-frame__glow"></div>
-      <div class="hero-frame">
-        <div class="hero-frame__inner">
-          <video
-            class="w-full aspect-video object-cover"
-            autoplay
-            muted
-            loop
-            playsinline
-            poster={heroLcp.src}
-            aria-label="LaunchBuddy demo showing release planning, App Store Connect reviews, and AI-assisted workflows"
-          >
-            <source src={DEMO_VIDEO_WEBM} type="video/webm" />
-            <source src={DEMO_VIDEO_MP4} type="video/mp4" />
-            <img
-              src={heroLcp.src}
-              alt="LaunchBuddy release manager with App Store Connect and AI features on Mac"
-              class="w-full"
-              width="880"
-              height="495"
-            />
-          </video>
+      <div class="hero-frame-wrap fade-in-up fade-in-delay-2">
+        <div class="hero-frame__glow"></div>
+        <div class="hero-frame">
+          <div class="hero-frame__inner">
+            <video
+              class="w-full aspect-video object-cover"
+              autoplay
+              muted
+              loop
+              playsinline
+              poster={heroLcp.src}
+              aria-label="LaunchBuddy demo showing release planning, App Store Connect reviews, and AI-assisted workflows"
+            >
+              <source src={DEMO_VIDEO_WEBM} type="video/webm" />
+              <source src={DEMO_VIDEO_MP4} type="video/mp4" />
+              <img
+                src={heroLcp.src}
+                alt="LaunchBuddy release manager with App Store Connect and AI features on Mac"
+                class="w-full"
+                width="880"
+                height="495"
+              />
+            </video>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Why LaunchBuddy -->
-  <section class="max-w-6xl mx-auto px-6 py-16 md:py-20">
-    <div class="glass-card p-8 md:p-12 max-w-4xl mx-auto text-center">
-      <span class="section-label">Why LaunchBuddy</span>
-      <h2 class="font-display font-bold text-2xl md:text-4xl text-text-primary mb-4">
-        Not Jira. Not a kanban clone. A release command center.
-      </h2>
-      <p class="text-lg text-text-secondary leading-relaxed max-w-3xl mx-auto">
-        LaunchBuddy is built for solo developers and small studios shipping to the App Store — not
-        enterprise backlogs. Track Xcode projects, run submission checklists, connect App Store
-        Connect, and use AI that actually knows your apps — without the admin overhead.
+  <!-- Value prop -->
+  <section class="max-w-6xl mx-auto px-6 section-block--tight border-y border-white/[0.04]">
+    <div class="max-w-3xl mx-auto text-center">
+      <p class="section-subheading mx-auto">
+        Not Jira. Not a kanban clone. A release command center for solo developers and small studios
+        shipping to the App Store — without enterprise overhead.
       </p>
     </div>
   </section>
 
   <!-- Features (6) -->
-  <section class="max-w-6xl mx-auto px-6 py-16 md:py-20">
-    <div class="text-center mb-14">
+  <section class="max-w-6xl mx-auto px-6 section-block">
+    <div class="mb-16 max-w-2xl">
       <span class="section-label">Features</span>
-      <h2 class="font-display font-bold text-3xl md:text-4xl text-text-primary mb-4">
-        From first commit to App Store review
-      </h2>
-      <p class="text-text-secondary max-w-2xl mx-auto">
-        Free-tier hooks to get started — plus Pro tools that turn LaunchBuddy into your ASC + AI hub.
+      <h2 class="section-heading mb-4">From first commit to App Store review</h2>
+      <p class="section-subheading">
+        Free-tier essentials to get started — Pro tools that turn LaunchBuddy into your ASC + AI hub.
       </p>
     </div>
 
-    <div class="space-y-8">
+    <div class="space-y-20 md:space-y-28">
       <!-- 1. Release planning -->
-      <div class="glass-card p-6 md:p-10">
-        <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
-          <div class="w-full lg:w-2/5">
-            <div class="inline-flex items-center gap-2 text-accent-cyan font-mono text-xs uppercase tracking-wider mb-4">
-              Release Planning
-            </div>
-            <h3 class="font-display font-bold text-xl md:text-2xl text-text-primary mb-3">
-              Track tasks and releases in one place
-            </h3>
-            <p class="text-text-secondary leading-relaxed">
-              Every task tied to a version you plan to ship. Organize bug fixes, features, and polish
-              into releases so you always know what ships next — TestFlight or App Store submission.
-            </p>
+      <div class="feature-row">
+        <div class="feature-row__copy">
+          <div class="inline-flex items-center gap-2 text-accent-cyan font-mono text-xs uppercase tracking-wider mb-4">
+            Release Planning
           </div>
-          <div class="w-full lg:w-3/5 feature-image">
-            <Image
-              src={heroDashboard}
-              alt="LaunchBuddy tasks and App Store release tracking dashboard"
-              class="w-full aspect-video object-cover"
-              widths={[640, 880, 1101]}
-              sizes="(max-width: 768px) 100vw, 60vw"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
+          <h3 class="font-display font-bold text-xl md:text-2xl text-text-primary mb-3">
+            Track tasks and releases in one place
+          </h3>
+          <p class="text-text-secondary leading-relaxed">
+            Every task tied to a version you plan to ship. Organize bug fixes, features, and polish
+            into releases so you always know what ships next — TestFlight or App Store submission.
+          </p>
+        </div>
+        <div class="feature-row__media feature-image">
+          <Image
+            src={heroDashboard}
+            alt="LaunchBuddy tasks and App Store release tracking dashboard"
+            class="w-full aspect-video object-cover"
+            widths={[640, 880, 1101]}
+            sizes="(max-width: 768px) 100vw, 60vw"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
       </div>
 
       <!-- 2. iCloud sync -->
-      <div class="glass-card p-6 md:p-10">
-        <div class="flex flex-col lg:flex-row-reverse items-center gap-8 lg:gap-12">
-          <div class="w-full lg:w-2/5">
-            <div class="inline-flex items-center gap-2 text-accent-violet font-mono text-xs uppercase tracking-wider mb-4">
-              iCloud Sync
-            </div>
-            <h3 class="font-display font-bold text-xl md:text-2xl text-text-primary mb-3">
-              iPhone and Mac, always in sync
-            </h3>
-            <p class="text-text-secondary leading-relaxed">
-              Review tasks on your iPhone, reply to reviews at your Mac, pick up exactly where you
-              left off. Your private iCloud keeps projects current across every device.
-            </p>
+      <div class="feature-row feature-row--reverse">
+        <div class="feature-row__copy">
+          <div class="inline-flex items-center gap-2 text-accent-violet font-mono text-xs uppercase tracking-wider mb-4">
+            iCloud Sync
           </div>
-          <div class="w-full lg:w-3/5 feature-image">
-            <Image
-              src={crossPlatformSync}
-              alt="LaunchBuddy sync between iPhone and Mac"
-              class="w-full aspect-video object-cover"
-              widths={[640, 1080, 2160]}
-              sizes="(max-width: 768px) 100vw, 60vw"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
+          <h3 class="font-display font-bold text-xl md:text-2xl text-text-primary mb-3">
+            iPhone and Mac, always in sync
+          </h3>
+          <p class="text-text-secondary leading-relaxed">
+            Review tasks on your iPhone, reply to reviews at your Mac, pick up exactly where you
+            left off. Your private iCloud keeps projects current across every device.
+          </p>
+        </div>
+        <div class="feature-row__media feature-image">
+          <Image
+            src={crossPlatformSync}
+            alt="LaunchBuddy sync between iPhone and Mac"
+            class="w-full aspect-video object-cover"
+            widths={[640, 1080, 2160]}
+            sizes="(max-width: 768px) 100vw, 60vw"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
       </div>
 
       <!-- 3. Checklists -->
-      <div class="glass-card p-6 md:p-10">
-        <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
-          <div class="w-full lg:w-2/5">
-            <div class="inline-flex items-center gap-2 text-accent-blue font-mono text-xs uppercase tracking-wider mb-4">
-              Checklists
-            </div>
-            <h3 class="font-display font-bold text-xl md:text-2xl text-text-primary mb-3">
-              Smart App Store submission checklists
-            </h3>
-            <p class="text-text-secondary leading-relaxed">
-              Reusable checklists that auto-add tasks to every release. Screenshots, metadata,
-              TestFlight, review notes — nothing gets forgotten before you hit submit.
-            </p>
+      <div class="feature-row">
+        <div class="feature-row__copy">
+          <div class="inline-flex items-center gap-2 text-accent-blue font-mono text-xs uppercase tracking-wider mb-4">
+            Checklists
           </div>
-          <div class="w-full lg:w-3/5 feature-image">
-            <Image
-              src={checklists}
-              alt="LaunchBuddy App Store submission checklists"
-              class="w-full aspect-video object-cover"
-              widths={[640, 1728, 3456]}
-              sizes="(max-width: 768px) 100vw, 60vw"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
+          <h3 class="font-display font-bold text-xl md:text-2xl text-text-primary mb-3">
+            Smart App Store submission checklists
+          </h3>
+          <p class="text-text-secondary leading-relaxed">
+            Reusable checklists that auto-add tasks to every release. Screenshots, metadata,
+            TestFlight, review notes — nothing gets forgotten before you hit submit.
+          </p>
+        </div>
+        <div class="feature-row__media feature-image">
+          <Image
+            src={checklists}
+            alt="LaunchBuddy App Store submission checklists"
+            class="w-full aspect-video object-cover"
+            widths={[640, 1728, 3456]}
+            sizes="(max-width: 768px) 100vw, 60vw"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
       </div>
 
       <!-- 4. App Store Connect -->
-      <div class="glass-card p-6 md:p-10">
-        <div class="flex flex-col lg:flex-row-reverse items-center gap-8 lg:gap-12">
-          <div class="w-full lg:w-3/5 feature-image">
-            <Image
-              src={reviews}
-              alt="LaunchBuddy App Store Connect reviews inbox and reply workflow"
-              class="w-full aspect-video object-cover"
-              widths={[640, 1200, 2400]}
-              sizes="(max-width: 768px) 100vw, 60vw"
-              loading="lazy"
-              decoding="async"
-            />
+      <div class="feature-row feature-row--reverse">
+        <div class="feature-row__copy">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-accent-cyan font-mono text-xs uppercase tracking-wider">App Store Connect</span>
+            <ProBadge />
           </div>
-          <div class="w-full lg:w-2/5">
-            <div class="flex items-center gap-2 mb-4">
-              <span class="text-accent-cyan font-mono text-xs uppercase tracking-wider">App Store Connect</span>
-              <ProBadge />
-            </div>
-            <h3 class="font-display font-bold text-xl md:text-2xl text-text-primary mb-3">
-              App Store Connect, built in
-            </h3>
-            <p class="text-text-secondary leading-relaxed">
-              Connect your ASC API key once. Pull reviews and analytics, push release notes, and reply
-              from your phone — without living in a browser tab.
-            </p>
-          </div>
+          <h3 class="font-display font-bold text-xl md:text-2xl text-text-primary mb-3">
+            App Store Connect, built in
+          </h3>
+          <p class="text-text-secondary leading-relaxed">
+            Connect your ASC API key once. Pull reviews and analytics, push release notes, and reply
+            from your phone — without living in a browser tab.
+          </p>
+        </div>
+        <div class="feature-row__media feature-image">
+          <Image
+            src={reviews}
+            alt="LaunchBuddy App Store Connect reviews inbox and reply workflow"
+            class="w-full aspect-video object-cover"
+            widths={[640, 1200, 2400]}
+            sizes="(max-width: 768px) 100vw, 60vw"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
       </div>
 
       <!-- 5. AI -->
-      <div class="glass-card p-6 md:p-10">
-        <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
-          <div class="w-full lg:w-3/5 feature-image">
-            <Image
-              src={aiChat}
-              alt="LaunchBuddy AI app chat and idea chat for iOS developers"
-              class="w-full aspect-video object-cover"
-              widths={[640, 1200, 2400]}
-              sizes="(max-width: 768px) 100vw, 60vw"
-              loading="lazy"
-              decoding="async"
-            />
+      <div class="feature-row">
+        <div class="feature-row__copy">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-accent-violet font-mono text-xs uppercase tracking-wider">LaunchBuddy AI</span>
+            <ProBadge />
           </div>
-          <div class="w-full lg:w-2/5">
-            <div class="flex items-center gap-2 mb-4">
-              <span class="text-accent-violet font-mono text-xs uppercase tracking-wider">LaunchBuddy AI</span>
-              <ProBadge />
-            </div>
-            <h3 class="font-display font-bold text-xl md:text-2xl text-text-primary mb-3">
-              AI that knows your apps
-            </h3>
-            <p class="text-text-secondary leading-relaxed">
-              App Chat reads your tasks, releases, and cached review data. Idea Chat turns brainstorms
-              into backlog items. Draft release notes and review replies — not a generic ChatGPT wrapper.
-            </p>
-          </div>
+          <h3 class="font-display font-bold text-xl md:text-2xl text-text-primary mb-3">
+            AI that knows your apps
+          </h3>
+          <p class="text-text-secondary leading-relaxed">
+            App Chat reads your tasks, releases, and cached review data. Idea Chat turns brainstorms
+            into backlog items. Draft release notes and review replies — not a generic ChatGPT wrapper.
+          </p>
+        </div>
+        <div class="feature-row__media feature-image">
+          <Image
+            src={aiChat}
+            alt="LaunchBuddy AI app chat and idea chat for iOS developers"
+            class="w-full aspect-video object-cover"
+            widths={[640, 1200, 2400]}
+            sizes="(max-width: 768px) 100vw, 60vw"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
       </div>
 
       <!-- 6. ASO & notes -->
-      <div class="glass-card p-6 md:p-10">
-        <div class="flex flex-col lg:flex-row-reverse items-center gap-8 lg:gap-12">
-          <div class="w-full lg:w-3/5 feature-image">
-            <Image
-              src={experiments}
-              alt="LaunchBuddy ASO experiments tracking for App Store optimization"
-              class="w-full aspect-video object-cover"
-              widths={[640, 1200, 2400]}
-              sizes="(max-width: 768px) 100vw, 60vw"
-              loading="lazy"
-              decoding="async"
-            />
+      <div class="feature-row feature-row--reverse">
+        <div class="feature-row__copy">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-accent-blue font-mono text-xs uppercase tracking-wider">ASO & Notes</span>
+            <ProBadge />
           </div>
-          <div class="w-full lg:w-2/5">
-            <div class="flex items-center gap-2 mb-4">
-              <span class="text-accent-blue font-mono text-xs uppercase tracking-wider">ASO & Notes</span>
-              <ProBadge />
-            </div>
-            <h3 class="font-display font-bold text-xl md:text-2xl text-text-primary mb-3">
-              Ship smarter with experiments &amp; notes
-            </h3>
-            <p class="text-text-secondary leading-relaxed">
-              Track ASO A/B tests per app — icons, screenshots, copy — with baseline vs. experiment
-              metrics. Keep product and marketing notes attached to each project.
-            </p>
-          </div>
+          <h3 class="font-display font-bold text-xl md:text-2xl text-text-primary mb-3">
+            Ship smarter with experiments &amp; notes
+          </h3>
+          <p class="text-text-secondary leading-relaxed">
+            Track ASO A/B tests per app — icons, screenshots, copy — with baseline vs. experiment
+            metrics. Keep product and marketing notes attached to each project.
+          </p>
+        </div>
+        <div class="feature-row__media feature-image">
+          <Image
+            src={experiments}
+            alt="LaunchBuddy ASO experiments tracking for App Store optimization"
+            class="w-full aspect-video object-cover"
+            widths={[640, 1200, 2400]}
+            sizes="(max-width: 768px) 100vw, 60vw"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
       </div>
     </div>
   </section>
 
   <!-- Pro section -->
-  <section id="pro-features" class="max-w-6xl mx-auto px-6 py-16 md:py-20 scroll-mt-24">
-    <div class="text-center mb-14">
+  <section id="pro-features" class="max-w-6xl mx-auto px-6 section-block scroll-mt-24 border-t border-white/[0.04]">
+    <div class="mb-14 max-w-2xl">
       <span class="section-label">LaunchBuddy Pro</span>
-      <h2 class="font-display font-bold text-3xl md:text-4xl text-text-primary mb-4">
-        Why developers upgrade to Pro
-      </h2>
-      <p class="text-text-secondary max-w-2xl mx-auto">
-        Free gets you started on a side project. Pro unlocks the App Store Connect + AI workflow
-        that makes {PRO_MONTHLY_PRICE}/mo feel like a steal — not a surprise.
+      <h2 class="section-heading mb-4">Upgrade when you're ready to ship more</h2>
+      <p class="section-subheading">
+        Free gets you started on a side project. Pro unlocks ASC, AI, and unlimited apps for
+        {PRO_MONTHLY_PRICE}/mo — less than a coffee.
       </p>
     </div>
 
@@ -362,22 +333,20 @@ const homepageJsonLd = [
       }
     </div>
 
-    <p class="text-center text-sm text-text-muted mt-10 font-medium">
+    <p class="text-sm text-text-muted mt-10">
       All Pro features included on iPhone and Mac — one subscription.
     </p>
   </section>
 
   <!-- Testimonials -->
-  <section class="max-w-6xl mx-auto px-6 py-16 md:py-20">
-    <div class="text-center mb-14">
+  <section class="max-w-6xl mx-auto px-6 section-block">
+    <div class="mb-14">
       <span class="section-label">Testimonials</span>
-      <h2 class="font-display font-bold text-3xl md:text-4xl text-text-primary">
-        Built for developers who ship
-      </h2>
+      <h2 class="section-heading">Developers who ship use LaunchBuddy</h2>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="glass-card p-6">
+      <div class="glass-card glass-card--static p-6">
         <StarRating rating={5} />
         <p class="text-text-secondary mt-4 mb-6 leading-relaxed">
           "This is a great app. I use it for my iOS/Mac development to keep track of version &amp;
@@ -394,7 +363,7 @@ const homepageJsonLd = [
         </div>
       </div>
 
-      <div class="glass-card p-6">
+      <div class="glass-card glass-card--static p-6">
         <StarRating rating={5} />
         <p class="text-text-secondary mt-4 mb-6 leading-relaxed">
           "LaunchBuddy is a great tool to help you organize your projects, keep on top of goals,
@@ -411,7 +380,7 @@ const homepageJsonLd = [
         </div>
       </div>
 
-      <div class="glass-card p-6">
+      <div class="glass-card glass-card--static p-6">
         <StarRating rating={5} />
         <p class="text-text-secondary mt-4 mb-6 leading-relaxed">
           "This tool makes it super easy to track and plan what you're developing, and syncs
@@ -431,64 +400,53 @@ const homepageJsonLd = [
   </section>
 
   <!-- Rating -->
-  <section class="max-w-6xl mx-auto px-6 py-16">
+  <section class="max-w-6xl mx-auto px-6 section-block--tight">
     <a
       href={APP_STORE_REVIEWS_URL}
-      class="rating-block glass-card glass-card--static block p-10 md:p-14 text-center no-underline group"
+      class="rating-inline no-underline group mx-auto max-w-xl w-full"
       rel="noopener noreferrer"
     >
-      <div class="rating-block__number group-hover:scale-105 transition-transform duration-300 inline-block">
-        {APP_STORE_RATING}
-      </div>
-      <div class="flex justify-center my-4">
-        <StarRating rating={4.8} size="lg" />
-      </div>
-      <p class="text-text-secondary text-lg group-hover:text-accent-blue transition-colors">
-        from {APP_STORE_REVIEW_COUNT} App Store reviews
-      </p>
-      <p class="text-sm text-accent-cyan mt-3 opacity-0 group-hover:opacity-100 transition-opacity font-mono">
-        Read all reviews →
-      </p>
+      <span class="rating-inline__score">{APP_STORE_RATING}</span>
+      <StarRating rating={4.8} size="lg" />
+      <span class="text-text-secondary group-hover:text-accent-blue transition-colors">
+        {APP_STORE_REVIEW_COUNT} App Store reviews →
+      </span>
     </a>
   </section>
 
   <!-- Mid CTA -->
-  <section class="max-w-6xl mx-auto px-6 py-16 md:py-20">
+  <section class="max-w-6xl mx-auto px-6 section-block">
     <div class="cta-banner relative z-10">
       <div class="flex flex-col items-center text-center">
-        <h2 class="font-display font-bold text-3xl md:text-4xl text-text-primary mb-4">
-          Start free — upgrade when you ship more
+        <h2 class="cta-banner__headline mb-5">
+          Your next release deserves better than a spreadsheet
         </h2>
-        <p class="text-text-secondary text-lg mb-4 max-w-xl">
-          Try LaunchBuddy on your next side project. Upgrade to Pro when you need ASC, AI, and
-          unlimited apps.
+        <p class="text-text-secondary text-lg mb-8 max-w-lg">
+          Start free on your side project. Upgrade to Pro when ASC, AI, and unlimited apps become
+          part of your shipping rhythm.
         </p>
-        <a href="#pro-features" class="text-sm text-accent-blue hover:text-accent-cyan no-underline font-medium mb-6 transition-colors">
-          See what's in Pro →
+        <CTAStack size="lg" showBadge showPricing />
+        <a href="#pro-features" class="text-sm text-text-muted hover:text-accent-blue no-underline mt-6 transition-colors">
+          Compare free vs. Pro →
         </a>
-        <PricingTeaser class="mb-6" />
-        <AppStoreBadge size="lg" />
-        <p class="text-xs text-text-muted mt-3">Download for iPhone and Mac — one app, one subscription.</p>
       </div>
     </div>
   </section>
 
   <!-- Blog strip -->
-  <section class="max-w-6xl mx-auto px-6 py-16 md:py-20">
-    <div class="text-center mb-12">
+  <section class="max-w-6xl mx-auto px-6 section-block border-t border-white/[0.04]">
+    <div class="mb-12 max-w-2xl">
       <span class="section-label">Learn how to ship</span>
-      <h2 class="font-display font-bold text-3xl md:text-4xl text-text-primary mb-4">
-        Guides for indie iOS developers
-      </h2>
-      <p class="text-text-secondary max-w-2xl mx-auto">
-        Deep dives on App Store Connect, AI workflows, and release management — from the LaunchBuddy blog.
+      <h2 class="section-heading mb-4">Guides for indie iOS developers</h2>
+      <p class="section-subheading">
+        Deep dives on App Store Connect, AI workflows, and release management.
       </p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       {
         HOMEPAGE_BLOG_POSTS.map((post) => (
-          <a href={`/blog/${post.slug}/`} class="glass-card p-6 no-underline block group">
+          <a href={`/blog/${post.slug}/`} class="glass-card glass-card--interactive p-6 no-underline block group">
             <h3 class="font-display font-semibold text-text-primary mb-2 group-hover:text-accent-blue transition-colors">
               {post.title}
             </h3>
@@ -507,12 +465,10 @@ const homepageJsonLd = [
   </section>
 
   <!-- FAQ -->
-  <section class="max-w-6xl mx-auto px-6 py-16 md:py-20">
-    <div class="text-center mb-12">
+  <section class="max-w-6xl mx-auto px-6 section-block">
+    <div class="mb-12">
       <span class="section-label">FAQ</span>
-      <h2 class="font-display font-bold text-3xl md:text-4xl text-text-primary">
-        Common questions
-      </h2>
+      <h2 class="section-heading">Common questions</h2>
     </div>
 
     <div class="max-w-3xl mx-auto space-y-3">
@@ -533,11 +489,11 @@ const homepageJsonLd = [
   </section>
 
   <!-- Final CTA -->
-  <section class="max-w-6xl mx-auto px-6 pb-8">
-    <div class="flex flex-col items-center">
-      <AppStoreBadge size="lg" />
-      <PricingTeaser showProTeaser class="mt-4" />
-      <p class="text-xs text-text-muted mt-2">
+  <section class="max-w-6xl mx-auto px-6 pb-16 md:pb-24">
+    <div class="text-center">
+      <h2 class="cta-banner__headline mb-6">Ready to start shipping?</h2>
+      <CTAStack size="lg" showBadge showProTeaser />
+      <p class="text-xs text-text-muted mt-4">
         Free for {FREE_TIER_APPS} apps &amp; {FREE_TIER_RELEASES} releases · Pro from {PRO_MONTHLY_PRICE}/mo or {PRO_YEARLY_PRICE}/yr
       </p>
     </div>

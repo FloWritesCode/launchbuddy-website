@@ -1,0 +1,33 @@
+---
+import { APP_STORE_URL, PRIMARY_CTA_LABEL } from '../lib/site';
+
+interface Props {
+  size?: 'sm' | 'md' | 'lg';
+  compact?: boolean;
+  class?: string;
+}
+
+const { size = 'md', compact = false, class: className = '' } = Astro.props;
+
+const sizes = {
+  sm: 'btn-ship btn-ship--sm',
+  md: 'btn-ship',
+  lg: 'btn-ship btn-ship--lg',
+};
+---
+
+<a href={APP_STORE_URL} class={`${sizes[size]} shrink-0 ${className}`}>
+  {
+    compact ? (
+      <>
+        <span class="sm:hidden">Ship</span>
+        <span class="hidden sm:inline">{PRIMARY_CTA_LABEL}</span>
+      </>
+    ) : (
+      PRIMARY_CTA_LABEL
+    )
+  }
+  <svg class="btn-ship__arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+  </svg>
+</a>

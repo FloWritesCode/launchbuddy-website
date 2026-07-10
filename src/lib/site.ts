@@ -16,6 +16,9 @@ export const FREE_TIER_RELEASES = 2;
 export const DEMO_VIDEO_MP4 = '/videos/launchbuddy-demo.mp4';
 export const DEMO_VIDEO_WEBM = '/videos/launchbuddy-demo.webm';
 
+export const PRIMARY_CTA_LABEL = 'Start shipping';
+export const SECONDARY_CTA_LABEL = 'Download on the App Store';
+
 export const DEFAULT_DESCRIPTION =
   'LaunchBuddy helps indie iOS developers plan releases, manage App Store submissions, reply to reviews, and use AI — on iPhone and Mac. Free for 2 apps.';
 

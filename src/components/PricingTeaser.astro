@@ -4,19 +4,21 @@ import { PRO_MONTHLY_PRICE } from '../lib/site';
 interface Props {
   class?: string;
   showProTeaser?: boolean;
+  align?: 'center' | 'start';
 }
 
-const { class: className = '', showProTeaser = false } = Astro.props;
+const { class: className = '', showProTeaser = false, align = 'center' } = Astro.props;
+const alignClass = align === 'start' ? 'items-start text-left' : 'items-center text-center';
 ---
 
-<div class={`flex flex-col items-center gap-1.5 ${className}`}>
+<div class={`flex flex-col gap-1.5 ${alignClass} ${className}`}>
   <p class="flex items-center gap-2 text-sm text-text-muted w-fit">
     <span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)]"></span>
     Free to download · Pro from {PRO_MONTHLY_PRICE}/mo
   </p>
   {
     showProTeaser && (
-      <p class="text-xs text-text-muted max-w-md text-center">
+      <p class="text-xs text-text-muted max-w-md">
         Free for 2 apps · Pro unlocks App Store Connect, AI, and unlimited projects
       </p>
     )

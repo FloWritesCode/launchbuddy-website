@@ -1,6 +1,5 @@
 ---
-import AppStoreBadge from './AppStoreBadge.astro';
-import { APP_STORE_URL } from '../lib/site';
+import ShipCTA from './ShipCTA.astro';
 
 interface Props {
   currentPath?: string;
@@ -9,24 +8,25 @@ interface Props {
 const { currentPath = '/' } = Astro.props;
 ---
 
-<header class="sticky top-0 z-50 nav-glass">
-  <div class="max-w-6xl mx-auto px-6 py-4">
-    <div class="flex items-center justify-between gap-4">
+<header class="sticky top-0 z-50 nav-glass overflow-x-clip">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
+    <div class="flex items-center justify-between gap-2 sm:gap-4 min-w-0">
       <a
-        class="flex items-center gap-2.5 no-underline hover:no-underline shrink-0 group"
+        class="flex items-center gap-2 sm:gap-2.5 no-underline hover:no-underline min-w-0 group"
         href="/"
+        aria-label="LaunchBuddy home"
       >
         <img
           src="/appicon.png"
-          class="h-9 w-9 lg:h-10 lg:w-10 rounded-xl shadow-lg shadow-sky-500/20 group-hover:scale-105 transition-transform duration-300"
-          alt="LaunchBuddy Icon"
+          class="h-9 w-9 lg:h-10 lg:w-10 rounded-xl shadow-lg shadow-sky-500/20 group-hover:scale-105 transition-transform duration-300 shrink-0"
+          alt=""
         />
-        <span class="font-display font-bold text-xl lg:text-2xl text-text-primary">
+        <span class="font-display font-bold text-lg sm:text-xl lg:text-2xl text-text-primary truncate hidden sm:inline">
           Launch<span class="text-gradient">Buddy</span>
         </span>
       </a>
 
-      <div class="flex items-center gap-3 md:gap-5">
+      <div class="flex items-center gap-1.5 sm:gap-3 md:gap-5 shrink-0">
         <a
           class={`hidden sm:inline text-sm font-medium no-underline transition-colors duration-200 ${currentPath.startsWith('/blog') ? 'text-text-primary' : 'text-text-secondary hover:text-accent-blue'}`}
           href="/blog/"
@@ -44,10 +44,7 @@ const { currentPath = '/' } = Astro.props;
             ></path>
           </svg>
         </a>
-        <AppStoreBadge size="sm" class="hidden md:inline-block" />
-        <a href={APP_STORE_URL} class="md:hidden btn-primary text-sm py-2 px-4">
-          Download
-        </a>
+        <ShipCTA size="sm" compact />
       </div>
     </div>
   </div>

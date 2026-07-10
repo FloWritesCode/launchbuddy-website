@@ -1,0 +1,46 @@
+---
+import ShipCTA from './ShipCTA.astro';
+import AppStoreBadge from './AppStoreBadge.astro';
+import PricingTeaser from './PricingTeaser.astro';
+
+interface Props {
+  size?: 'sm' | 'md' | 'lg';
+  showBadge?: boolean;
+  showPricing?: boolean;
+  showProTeaser?: boolean;
+  align?: 'center' | 'start';
+  class?: string;
+}
+
+const {
+  size = 'lg',
+  showBadge = true,
+  showPricing = false,
+  showProTeaser = false,
+  align = 'center',
+  class: className = '',
+} = Astro.props;
+
+const alignClass = align === 'start' ? 'items-start text-left' : 'items-center text-center';
+---
+
+<div class={`flex flex-col gap-4 ${alignClass} ${className}`}>
+  <ShipCTA size={size} />
+  {
+    showBadge && (
+      <div class="flex flex-col gap-2 items-inherit">
+        <AppStoreBadge size={size === 'lg' ? 'md' : 'sm'} />
+        <p class="text-xs text-text-muted">iPhone &amp; Mac · one subscription</p>
+      </div>
+    )
+  }
+  {
+    (showPricing || showProTeaser) && (
+      <PricingTeaser
+        showProTeaser={showProTeaser}
+        align={align}
+        class={align === 'start' ? '' : 'mx-auto'}
+      />
+    )
+  }
+</div>
