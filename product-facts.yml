@@ -1,0 +1,348 @@
+version: 1
+verified_at: "2026-07-13"
+
+claim_policy:
+  - "Only describe a capability as available when it appears under supported_features."
+  - "Apply every documented platform, plan, credential, access, and approval requirement."
+  - "Treat anything under unsupported_features as a prohibited claim."
+  - "Treat anything under unverified_claims as unavailable unless the product owner updates this file."
+  - "Do not infer broader functionality from a related feature name."
+  - "Do not promise outcomes such as higher rankings, ratings, downloads, revenue, approval, or faster App Review."
+
+sources:
+  - "Product details supplied by the LaunchBuddy owner on 2026-07-13."
+  - "src/lib/site.ts"
+  - "src/pages/index.astro"
+  - "src/content/blog/app-store-connect-alternatives.md"
+
+product:
+  name: "LaunchBuddy"
+  category: "Project and release management app for indie iOS developers"
+  positioning: "An App Store Connect companion and release command center, not a replacement for Apple's development and distribution systems."
+  audience:
+    - "Solo iOS developers"
+    - "Indie iOS developers"
+    - "Small studios shipping apps through the App Store"
+  platforms: ["macOS", "iPhone", "iPad"]
+
+plans:
+  free:
+    price: "$0"
+    limits:
+      apps: 2
+      releases: 2
+      project_notes: "Limited"
+    includes:
+      - "Release planning and taskboards"
+      - "Default App Store submission checklists"
+      - "iCloud sync"
+      - "Viewing automation approval status"
+      - "Shortcuts and Siri read actions"
+      - "MCP read tools on macOS"
+  pro:
+    monthly_price: "$2.99"
+    yearly_price: "$19.99"
+    limits:
+      apps: "Unlimited"
+      releases: "Unlimited"
+      project_notes: "Unlimited"
+    notes:
+      - "One subscription covers iPhone, iPad, and Mac."
+      - "AI features are subject to usage limits."
+
+data_and_privacy:
+  project_storage:
+    description: "Tasks, releases, notes, and other project data are stored in the user's private iCloud account."
+    launchbuddy_hosts_project_data: false
+  sync:
+    service: "iCloud"
+    platforms: ["macOS", "iPhone", "iPad"]
+  ai_disclosure_controls:
+    description: "Users choose whether private app notes, local project metadata, and project-note content may be included when relevant."
+    requires_pro: true
+
+supported_features:
+  core_workflow:
+    name: "Project and release management"
+    features:
+      - id: "release-planning-taskboards"
+        name: "Release planning and taskboards"
+        description: "Organize tasks by app version, track release status, and see what ships next."
+        platforms: ["macOS", "iPhone", "iPad"]
+        requires_pro: false
+      - id: "submission-checklists"
+        name: "App Store submission checklists"
+        description: "Reusable checklists add submission tasks to releases."
+        platforms: ["macOS", "iPhone", "iPad"]
+        requires_pro: false
+        access: "Default checklists are free; custom checklists require Pro."
+      - id: "icloud-sync"
+        name: "iCloud sync"
+        description: "Keep apps, releases, tasks, and notes current across supported devices."
+        platforms: ["macOS", "iPhone", "iPad"]
+        requires_pro: false
+      - id: "portfolio"
+        name: "App portfolio"
+        description: "Manage apps, releases, and project notes."
+        platforms: ["macOS", "iPhone", "iPad"]
+        requires_pro: false
+        access: "Free is limited to 2 apps, 2 releases, and limited project notes; Pro is unlimited."
+
+  app_store_connect:
+    name: "App Store Connect integration"
+    requirements: ["App Store Connect API credentials", "LaunchBuddy Pro"]
+    features:
+      - id: "reviews-inbox"
+        name: "App Store reviews inbox"
+        description: "Read and reply to App Store reviews without opening App Store Connect in a browser."
+        platforms: ["macOS", "iPhone", "iPad"]
+        requires_pro: true
+      - id: "analytics-dashboard"
+        name: "App Store Connect analytics dashboard"
+        description: "View downloads, revenue, and subscription metrics from App Store Connect."
+        platforms: ["macOS", "iPhone", "iPad"]
+        requires_pro: true
+      - id: "release-notes-upload"
+        name: "Release notes upload"
+        description: "Push approved release notes to App Store Connect from LaunchBuddy."
+        platforms: ["macOS", "iPhone", "iPad"]
+        requires_pro: true
+      - id: "review-to-task"
+        name: "Review-to-task"
+        description: "Turn App Store review feedback into a structured backlog task."
+        platforms: ["macOS", "iPhone", "iPad"]
+        requires_pro: true
+
+  ai:
+    name: "LaunchBuddy AI"
+    features:
+      - id: "app-aware-chat"
+        name: "App-aware chat"
+        description: "Ask questions using context from the selected app, releases, tasks, feedback, experiments, reviews, analytics, and other relevant LaunchBuddy data."
+        platforms: ["macOS", "iPhone", "iPad"]
+        requires_pro: true
+      - id: "agent-playbooks"
+        name: "Agent plans and playbooks"
+        description: "Delegate goals such as preparing a release, triaging feedback and reviews, or analyzing performance."
+        platforms: ["macOS", "iPhone", "iPad"]
+        requires_pro: true
+      - id: "ai-artifacts"
+        name: "Editable AI artifacts"
+        description: "Review generated changelogs, readiness audits, screenshot recommendations, review replies, backlog proposals, and analyses."
+        platforms: ["macOS", "iPhone", "iPad"]
+        requires_pro: true
+      - id: "approval-gated-actions"
+        name: "Approval-gated AI actions"
+        description: "LaunchBuddy AI pauses before changing local data or writing to App Store Connect so the user can approve or reject each action."
+        platforms: ["macOS", "iPhone", "iPad"]
+        requires_pro: true
+        supported_actions:
+          - "Create a release"
+          - "Create or update tasks"
+          - "Update a release status"
+          - "Draft or update a changelog"
+          - "Push approved release notes to App Store Connect"
+          - "Draft and send an approved review reply"
+          - "Create app ideas, experiments, and feedback"
+      - id: "automation-approvals"
+        name: "Automation approvals"
+        description: "Review pending AI, Shortcut, and MCP changes in a shared approval queue."
+        platforms: ["macOS", "iPhone", "iPad"]
+        requires_pro: false
+        access: "Viewing approval status is free; creating write-action proposals requires Pro."
+      - id: "ai-data-controls"
+        name: "AI data disclosure controls"
+        description: "Choose whether private app notes, local project metadata, and project-note content may be included when relevant."
+        platforms: ["macOS", "iPhone", "iPad"]
+        requires_pro: true
+      - id: "app-idea-chat"
+        name: "App idea chat"
+        description: "Brainstorm an idea's audience, positioning, features, validation, launch strategy, and monetization."
+        platforms: ["macOS", "iPhone", "iPad"]
+        requires_pro: true
+      - id: "idea-task-extraction"
+        name: "App idea task extraction"
+        description: "Extract concrete backlog tasks from an app idea chat when converting the idea into an app."
+        platforms: ["macOS", "iPhone", "iPad"]
+        requires_pro: true
+      - id: "ai-review-reply"
+        name: "AI review reply drafts"
+        description: "Generate an editable reply draft for an App Store review."
+        platforms: ["macOS", "iPhone", "iPad"]
+        requires_pro: true
+        requirements: ["App Store Connect API credentials"]
+      - id: "ai-review-to-backlog"
+        name: "AI review-to-backlog conversion"
+        description: "Turn an App Store review into a structured backlog task with details, type, estimate, and priority."
+        platforms: ["macOS", "iPhone", "iPad"]
+        requires_pro: true
+        requirements: ["App Store Connect API credentials"]
+
+  automation:
+    name: "Shortcuts, Siri, and MCP"
+    features:
+      - id: "shortcuts-read-actions"
+        name: "Shortcuts and Siri read actions"
+        description: "List apps, app ideas, releases, release tasks, experiments, and feedback."
+        platforms: ["macOS", "iPhone", "iPad"]
+        requires_pro: false
+      - id: "shortcuts-write-actions"
+        name: "Shortcuts and Siri write actions"
+        description: "Create app ideas, experiments, feedback, backlog tasks, and release tasks; complete tasks; update releases through an approval flow."
+        platforms: ["macOS", "iPhone", "iPad"]
+        requires_pro: true
+      - id: "mcp-server"
+        name: "Local MCP server"
+        description: "Connect Cursor, Claude Code, Codex, or another MCP client to local LaunchBuddy data over a localhost-only server with optional bearer-token authentication."
+        platforms: ["macOS"]
+        requires_pro: false
+        notes:
+          - "Read tools are available without Pro."
+          - "Write tools require Pro and create approval proposals before applying changes."
+      - id: "mcp-read-tools"
+        name: "MCP read tools"
+        description: "Read next-release status, task and checklist progress, backlog tasks, cached App Store reviews, and approval status."
+        platforms: ["macOS"]
+        requires_pro: false
+      - id: "mcp-write-tools"
+        name: "MCP write tools"
+        description: "Propose task updates, task completion, release creation, release-status changes, and changelog updates from an MCP client."
+        platforms: ["macOS"]
+        requires_pro: true
+
+  aso:
+    name: "App Store Optimization experiments"
+    features:
+      - id: "aso-experiments"
+        name: "ASO experiments"
+        description: "Track icon, screenshot, and copy tests with baseline and experiment metrics for each app."
+        platforms: ["macOS", "iPhone", "iPad"]
+        requires_pro: true
+
+  widgets_and_menus:
+    name: "Widgets and quick access"
+    features:
+      - id: "app-overview-widget"
+        name: "App Overview widget"
+        description: "See a grid of apps and open one directly."
+        platforms: ["iPhone", "iPad", "macOS"]
+        requires_pro: false
+      - id: "taskboard-widget"
+        name: "App Taskboard widget"
+        description: "See current release tasks from the Home Screen."
+        platforms: ["iPhone", "iPad", "macOS"]
+        requires_pro: false
+        notes:
+          - "Viewing tasks is free."
+          - "Completing a task from the widget is a Pro write action."
+      - id: "release-status-widget"
+        name: "Release Status widget"
+        description: "See release progress, due date, task counts, and checklist completion, including Lock Screen widget sizes."
+        platforms: ["iPhone", "iPad", "macOS"]
+        requires_pro: false
+      - id: "create-idea-widget"
+        name: "Create App Idea widget"
+        description: "Open LaunchBuddy directly to capture a new app idea."
+        platforms: ["iPhone", "iPad", "macOS"]
+        requires_pro: false
+      - id: "menu-bar-apps"
+        name: "Menu bar app launcher"
+        description: "Open managed apps quickly from the macOS menu bar."
+        platforms: ["macOS"]
+        requires_pro: false
+      - id: "menu-bar-release-status"
+        name: "Menu bar release status"
+        description: "See open-task counts, release progress, due dates, and tasks without opening the main window."
+        platforms: ["macOS"]
+        requires_pro: false
+      - id: "menu-bar-swiftui-font-list"
+        name: "SwiftUI font list in the menu bar"
+        description: "Browse SwiftUI font styles from a dedicated macOS menu bar item."
+        platforms: ["macOS"]
+        requires_pro: true
+
+  convenience:
+    name: "Convenience and guidance"
+    features:
+      - id: "deep-links"
+        name: "Deep links"
+        description: "Open apps, app ideas, settings, and pending automation approvals from widgets, notifications, or other apps."
+        platforms: ["macOS", "iPhone", "iPad"]
+        requires_pro: false
+      - id: "keyboard-shortcuts"
+        name: "Keyboard shortcuts"
+        description: "Navigate major sections and create common items quickly from the keyboard."
+        platforms: ["macOS"]
+        requires_pro: false
+      - id: "roadmap"
+        name: "Public roadmap"
+        description: "Suggest features and vote on what LaunchBuddy should add next."
+        platforms: ["macOS", "iPhone", "iPad"]
+        requires_pro: false
+      - id: "feature-discovery"
+        name: "Feature discovery"
+        description: "Get contextual prompts for useful features that have not been tried yet."
+        platforms: ["macOS", "iPhone", "iPad"]
+        requires_pro: false
+      - id: "whats-new"
+        name: "What's New"
+        description: "See a summary of newly added LaunchBuddy features after an update."
+        platforms: ["macOS", "iPhone", "iPad"]
+        requires_pro: false
+      - id: "pro-status-sidebar-preference"
+        name: "Pro status sidebar preference"
+        description: "Choose whether the LaunchBuddy Pro status box appears in the macOS sidebar."
+        platforms: ["macOS"]
+        requires_pro: true
+
+unsupported_features:
+  - id: "autonomous-ai-writes"
+    claim: "AI autonomously changes LaunchBuddy or App Store Connect data."
+    fact: "AI write actions pause for explicit approval."
+  - id: "automatic-review-reply-publication"
+    claim: "AI review replies are published automatically without review."
+    fact: "AI creates editable drafts; sending a reply is an approval-gated action."
+  - id: "direct-mcp-writes"
+    claim: "MCP clients directly mutate LaunchBuddy data."
+    fact: "MCP write tools require Pro and create approval proposals before changes are applied."
+  - id: "mobile-mcp-hosting"
+    claim: "The LaunchBuddy MCP server runs on iPhone or iPad."
+    fact: "The local MCP server is available on macOS only."
+  - id: "remote-cloud-mcp"
+    claim: "The LaunchBuddy MCP server is a remotely hosted cloud service."
+    fact: "It is a localhost-only server with optional bearer-token authentication."
+  - id: "asc-without-credentials"
+    claim: "Reviews, ASC analytics, release-note uploads, or AI review replies work without App Store Connect credentials."
+    fact: "App Store Connect integration requires an API key. Core tasks, AI chat, and checklists work without it."
+  - id: "unlimited-free-tier"
+    claim: "The free tier includes unlimited apps, releases, or project notes."
+    fact: "Free supports 2 apps, 2 releases, and limited project notes."
+  - id: "custom-checklists-free"
+    claim: "Custom submission checklists are included in the free tier."
+    fact: "Free includes default checklists; custom checklists require Pro."
+  - id: "launchbuddy-hosted-project-data"
+    claim: "LaunchBuddy hosts project tasks, releases, and notes on its own servers."
+    fact: "Project data is stored in the user's private iCloud account."
+  - id: "app-store-connect-replacement"
+    claim: "LaunchBuddy replaces App Store Connect, Xcode, or TestFlight."
+    fact: "LaunchBuddy is a companion that organizes release work and selected ASC workflows around Apple's systems."
+  - id: "code-signing-binary-upload"
+    claim: "LaunchBuddy provides fully automated code signing or binary build upload."
+    fact: "Use Xcode, Transporter, Fastlane, or CI for signing and binary upload."
+  - id: "guaranteed-results"
+    claim: "LaunchBuddy guarantees App Review approval, higher ratings, rankings, downloads, revenue, or a specific release speed."
+    fact: "LaunchBuddy supports workflows and decisions; it does not guarantee marketplace outcomes."
+
+unverified_claims:
+  policy: "Do not claim these capabilities unless the product owner adds them to supported_features."
+  items:
+    - "Android or Google Play support"
+    - "A browser-based web app"
+    - "Windows or Linux apps"
+    - "Direct GitHub, GitLab, Jira, Linear, or Slack integrations"
+    - "Autonomous App Store submission"
+    - "App binary building, signing, notarization, or upload"
+    - "Automatic screenshot generation or upload"
+    - "Automatic App Store metadata localization"
+    - "Team roles, real-time multi-user collaboration, or enterprise administration"
+    - "Cloud-hosted MCP access"
