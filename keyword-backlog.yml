@@ -144,7 +144,8 @@ backlog:
     cluster: "reviews"
     intent: "how-to"
     priority: "P0"
-    status: "approved"
+    status: "rejected"
+    rejection_reason: "Substantially the same search intent is already satisfied by src/content/blog/app-store-review-management.md, which covers review classification, risk and evidence prioritization, queue statuses, and action routing."
     confidence: "medium"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/app-store-review-reply-generator.md"]
