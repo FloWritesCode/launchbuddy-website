@@ -185,7 +185,8 @@ backlog:
     cluster: "ideas"
     intent: "how-to"
     priority: "P0"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/turn-app-idea-into-mvp-plan/"
     confidence: "high"
     overlap: "low"
     product_features: ["App idea chat", "App idea task extraction", "Editable AI artifacts"]
