@@ -150,13 +150,26 @@ export const FEATURE_COMPARISON: FeatureComparisonCategory[] = [
         pro: true,
       },
       {
-        name: 'Widgets & Home Screen',
+        name: 'Widgets & Home Screen reads',
+        hint: 'View apps, release tasks, and release status at a glance.',
+        free: true,
+        pro: true,
+      },
+      {
+        name: 'Widget task completion',
+        hint: 'Complete a task from a widget.',
         free: false,
         pro: true,
       },
       {
-        name: 'Shortcuts & MCP',
-        hint: 'Control LaunchBuddy from Shortcuts and MCP-compatible agents.',
+        name: 'Shortcuts & MCP reads',
+        hint: 'Inspect LaunchBuddy data from Shortcuts, Siri, and MCP-compatible agents.',
+        free: true,
+        pro: true,
+      },
+      {
+        name: 'Shortcuts & MCP writes',
+        hint: 'Propose LaunchBuddy changes through the automation approval flow.',
         free: false,
         pro: true,
       },
@@ -186,9 +199,9 @@ export const PRO_PILLARS = [
       'Manage every app and release you ship — not just two apps and two releases on the free tier.',
   },
   {
-    title: 'Widgets & Shortcuts',
+    title: 'Automation writes',
     description:
-      'Glance at your taskboard from the Home Screen. Control LaunchBuddy from Shortcuts and MCP.',
+      'Propose LaunchBuddy changes from Shortcuts and MCP, then approve or reject them before they apply.',
   },
 ] as const;
 
@@ -231,7 +244,8 @@ export const FAQ_ITEMS = [
   },
   {
     question: 'Is the iOS app included if I subscribe on the Mac?',
-    answer: 'Yes. One subscription covers iPhone, iPad, and Mac — all Pro features on every device.',
+    answer:
+      'Yes. One subscription covers iPhone, iPad, and Mac, with feature availability depending on the platform.',
   },
   {
     question: 'Is my data private?',

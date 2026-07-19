@@ -246,7 +246,8 @@ backlog:
     cluster: "mcp"
     intent: "product-guide"
     priority: "P0"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/launchbuddy-mcp-server/"
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/app-store-connect-mcp-workflow.md"]
