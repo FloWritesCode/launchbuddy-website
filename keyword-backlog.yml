@@ -265,8 +265,8 @@ backlog:
     cluster: "ideas"
     intent: "how-to"
     priority: "P1"
-    status: "rejected"
-    rejection_reason: "Substantially the same intent is now satisfied by src/content/blog/turn-app-idea-into-mvp-plan.md, which converts accepted scope into testable vertical-slice tasks, orders them by risk and dependency, and shows the LaunchBuddy idea-to-backlog workflow."
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/app-idea-to-task-backlog/"
     confidence: "medium"
     overlap: "low"
     product_features: ["App idea task extraction", "Approval-gated AI actions"]
