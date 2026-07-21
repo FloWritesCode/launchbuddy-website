@@ -2,7 +2,6 @@
 title: "App Store Product Page Optimization: A Practical Test Workflow"
 description: "Learn how to plan, run, and interpret an Apple Product Page Optimization test without confusing traffic shifts, relative lift, or inconclusive results."
 pubDate: 2026-07-21
-draft: true
 ---
 
 **App Store product page optimization** means improving how effectively your listing turns eligible App Store impressions into downloads or pre-orders. For iOS and iPadOS apps, Apple's Product Page Optimization feature lets you compare the original page with up to three treatments that change the app icon, screenshots, or app previews.
