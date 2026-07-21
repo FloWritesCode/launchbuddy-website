@@ -141,6 +141,9 @@ existing_primary_targets:
   - keyword: "LaunchBuddy MCP server"
     file: "src/content/blog/launchbuddy-mcp-server.md"
     intent: "product-guide"
+  - keyword: "App Store product page optimization"
+    file: "src/content/blog/app-store-product-page-optimization.md"
+    intent: "how-to"
 
 excluded_due_to_overlap:
   - keyword: "iOS app project management"
@@ -544,9 +547,10 @@ backlog:
     keyword: "App Store product page optimization"
     proposed_slug: "app-store-product-page-optimization"
     cluster: "aso-experiments"
-    intent: "guide"
+    intent: "how-to"
     priority: "P0"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/app-store-product-page-optimization/"
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/app-store-connect-analytics.md", "src/content/blog/app-store-metadata-management.md"]
