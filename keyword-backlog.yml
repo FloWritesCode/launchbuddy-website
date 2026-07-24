@@ -307,7 +307,8 @@ backlog:
     cluster: "ideas"
     intent: "guide"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/ai-app-idea-validation/"
     confidence: "medium"
     overlap: "low"
     product_features: ["App idea chat", "Editable AI artifacts"]
