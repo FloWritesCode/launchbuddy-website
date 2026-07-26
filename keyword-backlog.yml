@@ -362,7 +362,8 @@ backlog:
     cluster: "mcp"
     intent: "guide"
     priority: "P1"
-    status: "approved"
+    status: "rejected"
+    rejection_reason: "Substantially the same search intent is already satisfied by src/content/blog/launchbuddy-mcp-server.md, which covers the read-first path, scoped write proposals, the shared human approval queue, approve-or-reject checks, and post-approval verification."
     confidence: "medium"
     overlap: "low"
     product_features: ["Automation approvals", "Approval-gated AI actions", "MCP write tools"]
