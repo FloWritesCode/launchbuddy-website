@@ -362,9 +362,11 @@ backlog:
     cluster: "mcp"
     intent: "guide"
     priority: "P1"
-    status: "approved"
+    status: "rejected"
+    rejection_reason: "Substantially the same search intent is already satisfied by src/content/blog/launchbuddy-mcp-server.md, which covers the read-first workflow, approval proposals, a human review checklist, approve-or-reject handling, and post-approval verification for MCP writes."
     confidence: "medium"
-    overlap: "low"
+    overlap: "high"
+    related_existing_posts: ["src/content/blog/launchbuddy-mcp-server.md"]
     product_features: ["Automation approvals", "Approval-gated AI actions", "MCP write tools"]
     angle: "Design a human-in-the-loop workflow for agent writes without making read-only automation cumbersome."
 
