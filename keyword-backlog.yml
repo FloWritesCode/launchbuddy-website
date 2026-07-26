@@ -363,7 +363,7 @@ backlog:
     intent: "guide"
     priority: "P1"
     status: "rejected"
-    rejection_reason: "Substantially the same search intent is already satisfied by src/content/blog/launchbuddy-mcp-server.md, which covers the read-first workflow, approval proposals, a human review checklist, approve-or-reject handling, and post-approval verification for MCP writes."
+    rejection_reason: "Substantially the same search intent is already satisfied by src/content/blog/launchbuddy-mcp-server.md, which covers the read-first path, scoped write proposals, the shared human approval queue, approve-or-reject checks, and post-approval verification."
     confidence: "medium"
     overlap: "high"
     related_existing_posts: ["src/content/blog/launchbuddy-mcp-server.md"]
