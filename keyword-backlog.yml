@@ -463,7 +463,8 @@ backlog:
     cluster: "shortcuts"
     intent: "guide"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/ios-shortcuts-for-app-developers/"
     confidence: "medium"
     overlap: "none"
     product_features: ["Shortcuts and Siri read actions", "Shortcuts and Siri write actions", "Automation approvals"]
