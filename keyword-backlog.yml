@@ -1,10 +1,10 @@
 version: 1
-researched_at: "2026-07-20"
+researched_at: "2026-07-27"
 market: "English-language web search"
 status: "healthy"
 
 methodology:
-  - "Compared candidate topics against all 31 existing posts in src/content/blog."
+  - "Compared candidate topics against all 43 existing posts in src/content/blog."
   - "Used current Google result language, Apple documentation terminology, competitor positioning, and LaunchBuddy product fit."
   - "Priorities are qualitative. They do not claim exact search volume or keyword difficulty."
   - "Before drafting, recheck the live search results and reject topics whose intent is already satisfied by an existing LaunchBuddy article."
@@ -46,6 +46,22 @@ research_sources:
     url: "https://developer.apple.com/help/app-store-connect/manage-app-information/manage-app-privacy/"
   - name: "Apple: View TestFlight tester feedback"
     url: "https://developer.apple.com/help/app-store-connect/test-a-beta-version/view-tester-feedback/"
+  - name: "Apple: Configure multiple custom product page versions"
+    url: "https://developer.apple.com/help/app-store-connect/create-custom-product-pages/configure-multiple-product-page-versions"
+  - name: "Apple: Custom Product Pages analytics"
+    url: "https://developer.apple.com/help/app-store-connect-analytics/acquisition/custom-product-pages/"
+  - name: "Apple: App Store Connect for iPhone and iPad"
+    url: "https://developer.apple.com/help/app-store-connect/get-started/app-store-connect-for-iphone-and-ipad/"
+  - name: "Apple: Manage App Store availability"
+    url: "https://developer.apple.com/help/app-store-connect/manage-your-apps-availability/manage-availability-for-your-app-on-the-app-store/"
+  - name: "Apple: Remove an app"
+    url: "https://developer.apple.com/help/app-store-connect/create-an-app-record/remove-an-app"
+  - name: "Apple: Typography"
+    url: "https://developer.apple.com/design/human-interface-guidelines/typography"
+  - name: "Apple: App Shortcuts"
+    url: "https://developer.apple.com/documentation/appintents/app-shortcuts"
+  - name: "Atlassian: Product backlog vs. sprint backlog"
+    url: "https://www.atlassian.com/agile/project-management/sprint-backlog-product-backlog"
 
 existing_primary_targets:
   - keyword: "AI release notes for iOS apps"
@@ -144,6 +160,39 @@ existing_primary_targets:
   - keyword: "App Store product page optimization"
     file: "src/content/blog/app-store-product-page-optimization.md"
     intent: "how-to"
+  - keyword: "AI app idea validation"
+    file: "src/content/blog/ai-app-idea-validation.md"
+    intent: "guide"
+  - keyword: "app idea to task backlog"
+    file: "src/content/blog/app-idea-to-task-backlog.md"
+    intent: "how-to"
+  - keyword: "app feature prioritization for indie developers"
+    file: "src/content/blog/app-feature-prioritization-for-indie-developers.md"
+    intent: "guide"
+  - keyword: "iOS app idea backlog"
+    file: "src/content/blog/ios-app-idea-backlog.md"
+    intent: "guide"
+  - keyword: "LaunchBuddy vs App Store Connect"
+    file: "src/content/blog/launchbuddy-vs-app-store-connect.md"
+    intent: "comparison"
+  - keyword: "LaunchBuddy vs Appfigures"
+    file: "src/content/blog/launchbuddy-vs-appfigures.md"
+    intent: "comparison"
+  - keyword: "LaunchBuddy vs Fastlane vs asc CLI"
+    file: "src/content/blog/launchbuddy-vs-fastlane-asc-cli.md"
+    intent: "comparison"
+  - keyword: "LaunchBuddy vs Forge"
+    file: "src/content/blog/launchbuddy-vs-forgeasc.md"
+    intent: "comparison"
+  - keyword: "LaunchBuddy vs Itsyconnect"
+    file: "src/content/blog/launchbuddy-vs-itsyconnect.md"
+    intent: "comparison"
+  - keyword: "LaunchBuddy vs Linear"
+    file: "src/content/blog/launchbuddy-vs-linear.md"
+    intent: "comparison"
+  - keyword: "LaunchBuddy vs Notion"
+    file: "src/content/blog/launchbuddy-vs-notion.md"
+    intent: "comparison"
 
 excluded_due_to_overlap:
   - keyword: "iOS app project management"
@@ -192,6 +241,16 @@ excluded_due_to_overlap:
     reason: "Substantially the same intent is already reserved by the approved iOS post-launch checklist entry, which covers reviews, analytics, crashes, support, and follow-up tasks."
   - keyword: "custom app release checklist"
     reason: "The existing App Store Connect release checklist already provides an adaptable template and explains reusable LaunchBuddy checklists; live results did not establish a separate customization intent."
+  - keyword: "Siri Shortcuts for developers"
+    reason: "This is a minor phrasing variation of the approved iOS Shortcuts for app developers entry. Apple's App Intents documentation treats Siri and the Shortcuts app as surfaces for the same App Shortcuts."
+  - keyword: "Mac menu bar project manager"
+    reason: "Current results and the proposed angle substantially match the approved Mac menu bar task tracker for developers entry; the broader wording does not establish a separate project-management intent."
+  - keyword: "app idea capture workflow"
+    reason: "The published iOS app idea backlog guide already covers low-friction capture, a compact decision card, intake review, the Create App Idea widget, deep links, and the boundary between capture and commitment."
+  - keyword: "iOS release planning template"
+    reason: "The published iOS app release management guide already includes a version-scoped planning template covering goal, scope, TestFlight, App Store Connect, submission, and follow-up."
+  - keyword: "app portfolio prioritization"
+    reason: "The approved indie app portfolio management entry can own grow, maintain, park, and sunset allocation decisions; a separate prioritization article would target substantially the same portfolio operating intent."
 
 backlog:
   - id: "kw-005"
@@ -416,7 +475,8 @@ backlog:
     cluster: "shortcuts"
     intent: "guide"
     priority: "P2"
-    status: "approved"
+    status: "rejected"
+    rejection_reason: "Minor keyword variation of kw-025. Apple's App Shortcuts surface the same intents through Siri and the Shortcuts app, and the proposed release-status, feedback, and task workflows fit the broader iOS Shortcuts guide."
     confidence: "medium"
     overlap: "none"
     product_features: ["Shortcuts and Siri read actions", "Shortcuts and Siri write actions"]
@@ -444,6 +504,7 @@ backlog:
     status: "approved"
     confidence: "medium"
     overlap: "low"
+    related_existing_posts: ["src/content/blog/ios-developer-task-manager.md"]
     product_features: ["Shortcuts and Siri read actions", "Shortcuts and Siri write actions", "Deep links"]
     angle: "Useful automations for idea capture, backlog creation, release checks, and task completion."
 
@@ -456,6 +517,7 @@ backlog:
     status: "approved"
     confidence: "high"
     overlap: "low"
+    related_existing_posts: ["src/content/blog/ios-developer-task-manager.md"]
     product_features: ["Menu bar release status", "Menu bar app launcher"]
     angle: "A developer-focused workflow for seeing release tasks and due dates without opening a full project manager."
 
@@ -465,7 +527,8 @@ backlog:
     cluster: "widgets"
     intent: "solution"
     priority: "P2"
-    status: "approved"
+    status: "rejected"
+    rejection_reason: "Substantially the same intent as kw-029. Current results for menu-bar developer task tracking emphasize glanceable project and task state, and the proposed quick-access boundary belongs in that article."
     confidence: "medium"
     overlap: "low"
     product_features: ["Menu bar release status", "Menu bar app launcher", "Keyboard shortcuts"]
@@ -480,6 +543,7 @@ backlog:
     status: "approved"
     confidence: "medium"
     overlap: "low"
+    related_existing_posts: ["src/content/blog/ios-app-release-management.md"]
     product_features: ["Release Status widget", "Deep links"]
     angle: "Track release progress, due dates, task counts, and checklist completion from Home and Lock Screens."
 
@@ -492,6 +556,7 @@ backlog:
     status: "approved"
     confidence: "medium"
     overlap: "low"
+    related_existing_posts: ["src/content/blog/ios-developer-task-manager.md"]
     product_features: ["App Taskboard widget", "Release Status widget", "Deep links"]
     angle: "Use widgets for glanceable release work while preserving approval requirements for task completion."
 
@@ -505,7 +570,7 @@ backlog:
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/ios-app-release-management.md", "src/content/blog/app-store-connect-release-checklist.md"]
-    product_features: ["Release planning", "App Store Connect integration"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists"]
     angle: "Explain Apple's seven-day rollout, when to use it, what it does not protect against, and how to monitor the release."
 
   - id: "kw-034"
@@ -518,7 +583,7 @@ backlog:
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/ios-app-release-management.md"]
-    product_features: ["Release planning", "Release Status widget"]
+    product_features: ["Release planning and taskboards", "Release Status widget"]
     angle: "Compare manual, automatic, automatic-no-earlier-than, and phased release choices using indie-app scenarios."
 
   - id: "kw-035"
@@ -531,7 +596,7 @@ backlog:
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/ios-app-launch-checklist.md", "src/content/blog/app-store-connect-release-checklist.md"]
-    product_features: ["App Store Connect reviews inbox", "App Store Connect analytics dashboard", "Release planning"]
+    product_features: ["App Store Connect reviews inbox", "App Store Connect analytics dashboard", "Release planning and taskboards"]
     angle: "Own the after-launch intent: monitor review feedback, crashes, downloads, conversion, support, and follow-up tasks."
 
   - id: "kw-036"
@@ -633,7 +698,8 @@ backlog:
     cluster: "ideas"
     intent: "how-to"
     priority: "P2"
-    status: "approved"
+    status: "rejected"
+    rejection_reason: "Substantially satisfied by src/content/blog/ios-app-idea-backlog.md, which covers compact capture cards, duplicate handling, intake review, promotion boundaries, the Create App Idea widget, and deep links."
     confidence: "medium"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/app-idea-validation-for-indie-developers.md", "src/content/blog/turn-app-idea-into-mvp-plan.md"]
@@ -675,5 +741,109 @@ backlog:
     status: "approved"
     confidence: "medium"
     overlap: "low"
+    related_existing_posts: ["src/content/blog/ai-app-store-connect-workflow.md"]
     product_features: ["AI data disclosure controls", "App-aware chat", "Approval-gated AI actions", "iCloud sync"]
     angle: "Distinguish private iCloud project storage from data disclosed to an AI request, then provide a decision checklist for app notes, local project metadata, and project-note content using only LaunchBuddy's verified opt-in controls and no unverified model-training or retention claims."
+
+  - id: "kw-047"
+    keyword: "custom product pages vs product page optimization"
+    proposed_slug: "custom-product-pages-vs-product-page-optimization"
+    cluster: "aso-experiments"
+    intent: "comparison"
+    priority: "P0"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-product-page-optimization.md", "src/content/blog/app-store-connect-analytics.md"]
+    product_features: ["ASO experiments", "App Store Connect analytics dashboard"]
+    angle: "Use Apple's current audience, unique URL, keyword assignment, treatment, traffic allocation, and analytics terminology to show when a persistent custom product page or a randomized default-page test answers the question, then provide one neutral experiment record without claiming LaunchBuddy creates either Apple feature."
+
+  - id: "kw-048"
+    keyword: "manage App Store Connect from iPhone"
+    proposed_slug: "manage-app-store-connect-from-iphone"
+    cluster: "mobile-workflow"
+    intent: "product-guide"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/launchbuddy-vs-app-store-connect.md", "src/content/blog/app-store-connect-alternatives.md"]
+    product_features: ["App Store reviews inbox", "App Store Connect analytics dashboard", "Release notes upload", "Release planning and taskboards", "iCloud sync"]
+    angle: "Map Apple's documented iPhone and iPad capabilities against the selected release-planning, review, analytics, and approved release-note actions LaunchBuddy supports on mobile, with a concrete handoff to App Store Connect for submissions, builds, pricing, and other authoritative records."
+
+  - id: "kw-049"
+    keyword: "TestFlight feedback vs App Store reviews"
+    proposed_slug: "testflight-feedback-vs-app-store-reviews"
+    cluster: "feedback"
+    intent: "comparison"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/testflight-feedback-management.md", "src/content/blog/app-store-review-management.md"]
+    product_features: ["App Store reviews inbox", "Review-to-task", "App-aware chat", "Release planning and taskboards"]
+    angle: "Compare private, build-specific beta evidence with public, version-linked customer reviews, then give one routing matrix for current-release blockers, later backlog evidence, replies, and no-action decisions instead of merging both sources into an undifferentiated feedback queue."
+
+  - id: "kw-050"
+    keyword: "product backlog vs release backlog"
+    proposed_slug: "product-backlog-vs-release-backlog"
+    cluster: "project-management"
+    intent: "comparison"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/ios-app-idea-backlog.md", "src/content/blog/ios-app-release-management.md"]
+    product_features: ["App portfolio", "Release planning and taskboards", "Review-to-task"]
+    angle: "Adapt the standard scope distinction for a solo iOS developer: preserve candidate bugs and features at app level, move only accepted work into a named version, and show how review evidence can strengthen a backlog item without silently expanding committed release scope."
+
+  - id: "kw-051"
+    keyword: "iOS app sunset checklist"
+    proposed_slug: "ios-app-sunset-checklist"
+    cluster: "portfolio"
+    intent: "checklist"
+    priority: "P1"
+    status: "approved"
+    confidence: "medium"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/ios-app-release-management.md", "src/content/blog/app-store-connect-analytics.md"]
+    product_features: ["App portfolio", "App Store Connect analytics dashboard", "App Store reviews inbox", "Release planning and taskboards"]
+    angle: "Provide a decision-and-exit checklist for a solo developer that separates evidence review, user communication, subscriptions and data obligations, final support work, and Apple's remove-from-sale controls, while using LaunchBuddy only to organize the portfolio decision and tasks rather than claiming it removes an app."
+
+  - id: "kw-052"
+    keyword: "SwiftUI font styles list"
+    proposed_slug: "swiftui-font-styles-list"
+    cluster: "developer-reference"
+    intent: "list"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "none"
+    product_features: ["SwiftUI font list in the menu bar"]
+    angle: "Build a compact, current reference to SwiftUI's semantic text styles, explain why Apple's built-in styles support hierarchy and Dynamic Type, and show the verified LaunchBuddy Pro menu-bar list as a quick lookup rather than inventing a design or code-generation capability."
+
+  - id: "kw-053"
+    keyword: "Apple Shortcuts vs MCP"
+    proposed_slug: "apple-shortcuts-vs-mcp"
+    cluster: "automation"
+    intent: "comparison"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/launchbuddy-mcp-server.md", "src/content/blog/app-store-connect-mcp-workflow.md"]
+    product_features: ["Shortcuts and Siri read actions", "Shortcuts and Siri write actions", "Local MCP server", "MCP read tools", "MCP write tools", "Automation approvals"]
+    angle: "Give a product-grounded decision matrix for personal Apple-device automations, conversational local-agent access, and combined workflows, including platform, Pro, localhost, bearer-token, and shared approval-queue boundaries; recheck live search intent before drafting."
+
+  - id: "kw-054"
+    keyword: "iOS hotfix release process"
+    proposed_slug: "ios-hotfix-release-process"
+    cluster: "release-strategy"
+    intent: "troubleshooting"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/ios-app-release-management.md", "src/content/blog/app-store-connect-release-checklist.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists", "Release Status widget", "App-aware chat"]
+    angle: "Create a fix-forward incident workflow that starts with confirmed user impact, pauses a phased release when applicable, isolates the smallest replacement build, verifies App Review notes and release copy, and tracks the hotfix as its own release without claiming LaunchBuddy can roll back, build, upload, or expedite an app."
