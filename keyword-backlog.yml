@@ -489,10 +489,11 @@ backlog:
     cluster: "shortcuts"
     intent: "how-to"
     priority: "P1"
-    status: "approved"
+    status: "rejected"
+    rejection_reason: "Substantially the same search intent is already satisfied by src/content/blog/ios-shortcuts-for-app-developers.md, which covers release-status reads, explicit no-result handling, scheduled read-only automations, approval-gated release-task proposals, post-approval verification, and the boundary between Shortcuts, CI, and App Store Connect."
     confidence: "medium"
     overlap: "medium"
-    related_existing_posts: ["src/content/blog/app-store-connect-automation.md"]
+    related_existing_posts: ["src/content/blog/ios-shortcuts-for-app-developers.md", "src/content/blog/app-store-connect-automation.md"]
     product_features: ["Shortcuts and Siri read actions", "Shortcuts and Siri write actions", "Automation approvals"]
     angle: "Show safe status checks and proposed release updates while distinguishing Shortcuts from CI and direct ASC automation."
 
