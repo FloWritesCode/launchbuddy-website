@@ -516,7 +516,8 @@ backlog:
     cluster: "widgets"
     intent: "solution"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/mac-menu-bar-task-tracker-for-developers/"
     confidence: "high"
     overlap: "low"
     related_existing_posts: ["src/content/blog/ios-developer-task-manager.md"]
