@@ -541,9 +541,10 @@ backlog:
     keyword: "iOS release status widget"
     proposed_slug: "ios-release-status-widget"
     cluster: "widgets"
-    intent: "solution"
+    intent: "how-to"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/ios-release-status-widget/"
     confidence: "medium"
     overlap: "low"
     related_existing_posts: ["src/content/blog/ios-app-release-management.md"]
