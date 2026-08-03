@@ -1,10 +1,10 @@
 version: 1
-researched_at: "2026-07-27"
+researched_at: "2026-08-03"
 market: "English-language web search"
 status: "healthy"
 
 methodology:
-  - "Compared candidate topics against all 43 existing posts in src/content/blog."
+  - "Compared candidate topics against all 47 existing posts in src/content/blog."
   - "Used current Google result language, Apple documentation terminology, competitor positioning, and LaunchBuddy product fit."
   - "Priorities are qualitative. They do not claim exact search volume or keyword difficulty."
   - "Before drafting, recheck the live search results and reject topics whose intent is already satisfied by an existing LaunchBuddy article."
@@ -62,6 +62,38 @@ research_sources:
     url: "https://developer.apple.com/documentation/appintents/app-shortcuts"
   - name: "Atlassian: Product backlog vs. sprint backlog"
     url: "https://www.atlassian.com/agile/project-management/sprint-backlog-product-backlog"
+  - name: "Apple: Overview of maintaining an app"
+    url: "https://developer.apple.com/help/app-store-connect/update-your-app/overview-of-maintaining-an-app/"
+  - name: "Apple: Overview of app transfer"
+    url: "https://developer.apple.com/help/app-store-connect/transfer-an-app/overview-of-app-transfer"
+  - name: "Apple: App transfer criteria"
+    url: "https://developer.apple.com/help/app-store-connect/transfer-an-app/app-transfer-criteria"
+  - name: "Apple: Publish for pre-order"
+    url: "https://developer.apple.com/help/app-store-connect/manage-your-apps-availability/publish-for-pre-order/"
+  - name: "Apple: Nominate your app for featuring"
+    url: "https://developer.apple.com/help/app-store-connect/manage-featuring-nominations/nominate-your-app-for-featuring/"
+  - name: "Apple: Nominations template"
+    url: "https://developer.apple.com/help/app-store-connect/reference/nominations-template"
+  - name: "Apple: Getting featured on the App Store"
+    url: "https://developer.apple.com/app-store/getting-featured/"
+  - name: "Apple: TestFlight overview"
+    url: "https://developer.apple.com/help/app-store-connect/test-a-beta-version/testflight-overview/"
+  - name: "Apple: App build statuses"
+    url: "https://developer.apple.com/help/app-store-connect/reference/app-build-statuses/"
+  - name: "Apple: Upload builds"
+    url: "https://developer.apple.com/help/app-store-connect/manage-builds/upload-builds/"
+  - name: "Apple: Create a new version"
+    url: "https://developer.apple.com/help/app-store-connect/update-your-app/create-a-new-version"
+  - name: "Trello: Create and manage automations"
+    url: "https://support.atlassian.com/trello/docs/create-and-manage-automations/"
+  - name: "GitHub: About Projects"
+    url: "https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects"
+  - name: "Atlassian: Enable the Jira backlog"
+    url: "https://support.atlassian.com/jira-software-cloud/docs/enable-the-backlog/"
+  - name: "Docket: Indie iOS release tracker"
+    url: "https://drobinin.com/apps/docket/"
+  - name: "Keelport: App Store listing"
+    url: "https://apps.apple.com/us/app/keelport/id6765549273"
 
 existing_primary_targets:
   - keyword: "AI release notes for iOS apps"
@@ -193,6 +225,18 @@ existing_primary_targets:
   - keyword: "LaunchBuddy vs Notion"
     file: "src/content/blog/launchbuddy-vs-notion.md"
     intent: "comparison"
+  - keyword: "custom product pages vs product page optimization"
+    file: "src/content/blog/custom-product-pages-vs-product-page-optimization.md"
+    intent: "comparison"
+  - keyword: "iOS release status widget"
+    file: "src/content/blog/ios-release-status-widget.md"
+    intent: "how-to"
+  - keyword: "iOS Shortcuts for app developers"
+    file: "src/content/blog/ios-shortcuts-for-app-developers.md"
+    intent: "guide"
+  - keyword: "Mac menu bar task tracker for developers"
+    file: "src/content/blog/mac-menu-bar-task-tracker-for-developers.md"
+    intent: "solution"
 
 excluded_due_to_overlap:
   - keyword: "iOS app project management"
@@ -251,6 +295,18 @@ excluded_due_to_overlap:
     reason: "The published iOS app release management guide already includes a version-scoped planning template covering goal, scope, TestFlight, App Store Connect, submission, and follow-up."
   - keyword: "app portfolio prioritization"
     reason: "The approved indie app portfolio management entry can own grow, maintain, park, and sunset allocation decisions; a separate prioritization article would target substantially the same portfolio operating intent."
+  - keyword: "App Store Connect status meanings"
+    reason: "The published App Store submission tracker already maps Apple submission states to next actions, while the App Store Connect help article covers status-led troubleshooting. A separate glossary would substantially repeat both."
+  - keyword: "TestFlight internal vs external testing"
+    reason: "The published TestFlight release management guide already compares internal and external testing, tester access, Beta App Review, feedback routing, and the release handoff."
+  - keyword: "iOS app versioning strategy"
+    reason: "The accepted iOS version number vs build number candidate owns Apple's version/build distinction. A broader strategy article would also overlap the approved release-cadence topic and invite unsupported universal Semantic Versioning advice."
+  - keyword: "LaunchBuddy vs Todoist"
+    reason: "Current results show generic personal-task-manager intent with little App Store release specificity. The Trello, Jira, and GitHub Projects comparisons provide clearer workflow boundaries and stronger original value."
+  - keyword: "iOS app maintenance checklist"
+    reason: "Substantially overlaps the approved post-launch, cadence, retrospective, hotfix, portfolio, and sunset topics, while current results expect crash, dependency, security, compatibility, and policy checks that LaunchBuddy cannot perform."
+  - keyword: "LaunchBuddy vs Jira"
+    reason: "The published LaunchBuddy vs Linear and LaunchBuddy vs Notion articles already own the team issue-tracker and configurable-workspace comparison intent. Jira-specific sprint and timeline details do not create enough distinct LaunchBuddy value for another article."
 
 backlog:
   - id: "kw-005"
@@ -503,10 +559,11 @@ backlog:
     cluster: "shortcuts"
     intent: "list"
     priority: "P2"
-    status: "approved"
+    status: "rejected"
+    rejection_reason: "Substantially satisfied by src/content/blog/ios-shortcuts-for-app-developers.md, which covers iPhone and iPad release checks, idea and feedback capture, backlog and release-task proposals, task completion, personal automations, and approval-gated writes."
     confidence: "medium"
-    overlap: "low"
-    related_existing_posts: ["src/content/blog/ios-developer-task-manager.md"]
+    overlap: "high"
+    related_existing_posts: ["src/content/blog/ios-shortcuts-for-app-developers.md", "src/content/blog/ios-developer-task-manager.md"]
     product_features: ["Shortcuts and Siri read actions", "Shortcuts and Siri write actions", "Deep links"]
     angle: "Useful automations for idea capture, backlog creation, release checks, and task completion."
 
@@ -557,7 +614,8 @@ backlog:
     cluster: "widgets"
     intent: "solution"
     priority: "P2"
-    status: "approved"
+    status: "rejected"
+    rejection_reason: "Current results overwhelmingly expect WidgetKit and SwiftUI implementation guidance. A LaunchBuddy usage article would not satisfy that intent, while src/content/blog/ios-release-status-widget.md already covers the closest non-coding widget workflow."
     confidence: "medium"
     overlap: "low"
     related_existing_posts: ["src/content/blog/ios-developer-task-manager.md"]
@@ -649,7 +707,7 @@ backlog:
     proposed_slug: "ios-app-release-retrospective"
     cluster: "release-strategy"
     intent: "guide"
-    priority: "P1"
+    priority: "P2"
     status: "approved"
     confidence: "medium"
     overlap: "medium"
@@ -742,7 +800,8 @@ backlog:
     cluster: "ai-safety"
     intent: "guide"
     priority: "P2"
-    status: "approved"
+    status: "rejected"
+    rejection_reason: "Current results expect model-training opt-outs, retention, memory, and chat-deletion controls. LaunchBuddy only verifies user choices about disclosing selected project context, so the broad keyword would require unsupported claims and is better handled in product documentation."
     confidence: "medium"
     overlap: "low"
     related_existing_posts: ["src/content/blog/ai-app-store-connect-workflow.md"]
@@ -852,3 +911,120 @@ backlog:
     related_existing_posts: ["src/content/blog/ios-app-release-management.md", "src/content/blog/app-store-connect-release-checklist.md"]
     product_features: ["Release planning and taskboards", "App Store submission checklists", "Release Status widget", "App-aware chat"]
     angle: "Create a fix-forward incident workflow that starts with confirmed user impact, pauses a phased release when applicable, isolates the smallest replacement build, verifies App Review notes and release copy, and tracks the hotfix as its own release without claiming LaunchBuddy can roll back, build, upload, or expedite an app."
+
+  - id: "kw-055"
+    keyword: "App Store pre-order"
+    proposed_slug: "app-store-pre-order"
+    cluster: "release-strategy"
+    intent: "how-to"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/ios-app-launch-checklist.md", "src/content/blog/launchbuddy-vs-app-store-connect.md", "src/content/blog/app-store-connect-release-checklist.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists", "iCloud sync"]
+    angle: "Use Apple's current Publish as Pre-Order terminology to map eligibility, App Review, release dates, countries or regions, version updates, immediate release, and removal into a version-scoped launch plan, while stating clearly that App Store Connect—not LaunchBuddy—configures or publishes the pre-order."
+
+  - id: "kw-056"
+    keyword: "App Store featuring nomination"
+    proposed_slug: "app-store-featuring-nomination"
+    cluster: "launch-marketing"
+    intent: "how-to"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "low"
+    related_existing_posts: ["src/content/blog/ios-app-launch-checklist.md", "src/content/blog/app-store-metadata-management.md", "src/content/blog/app-review-notes.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists", "App portfolio"]
+    angle: "Build an evidence-first nomination brief and deadline checklist around Apple's current nomination types, dates, platforms, regions, localizations, URLs, TestFlight links, and supporting details, without claiming LaunchBuddy submits nominations or guarantees editorial selection."
+
+  - id: "kw-057"
+    keyword: "App Store app transfer checklist"
+    proposed_slug: "app-store-app-transfer-checklist"
+    cluster: "portfolio"
+    intent: "checklist"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/launchbuddy-vs-app-store-connect.md", "src/content/blog/app-store-connect-release-checklist.md"]
+    product_features: ["App portfolio", "Release planning and taskboards", "App Store submission checklists"]
+    angle: "Turn Apple's transfer criteria and transferor-recipient handoff into an evidence-based task sequence for code, configuration, subscriptions, privacy, support, and post-transfer verification, while making clear that LaunchBuddy organizes the work and does not execute the transfer."
+
+  - id: "kw-058"
+    keyword: "TestFlight build expired"
+    proposed_slug: "testflight-build-expired"
+    cluster: "testflight"
+    intent: "troubleshooting"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/testflight-release-management.md", "src/content/blog/app-store-connect-help.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists"]
+    angle: "Explain Apple's 90-day availability window, distinguish age-based expiry from manually stopping a test, and provide a replacement-build and tester-communication workflow that LaunchBuddy can track without claiming it can reactivate, build, or upload a binary."
+
+  - id: "kw-059"
+    keyword: "iOS version number vs build number"
+    proposed_slug: "ios-version-number-vs-build-number"
+    cluster: "release-strategy"
+    intent: "definition"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/ios-app-release-management.md", "src/content/blog/testflight-release-management.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists"]
+    angle: "Use Apple's current version-number and build-string terminology to show how one user-facing release can contain multiple candidate builds, then give a naming and verification record without claiming LaunchBuddy reads Xcode settings or App Store build metadata."
+
+  - id: "kw-060"
+    keyword: "LaunchBuddy vs Trello"
+    proposed_slug: "launchbuddy-vs-trello"
+    cluster: "comparisons"
+    intent: "comparison"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/launchbuddy-vs-notion.md", "src/content/blog/ios-developer-task-manager.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists", "App portfolio", "iCloud sync"]
+    angle: "Compare Trello's configurable boards, cards, and automation with LaunchBuddy's app, version, and submission-checklist structure using one indie release, including when a flexible shared board is preferable and when an App Store-specific model removes setup."
+
+  - id: "kw-061"
+    keyword: "LaunchBuddy vs GitHub Projects"
+    proposed_slug: "launchbuddy-vs-github-projects"
+    cluster: "comparisons"
+    intent: "comparison"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/launchbuddy-vs-linear.md", "src/content/blog/ios-developer-task-manager.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists", "App portfolio", "App Store reviews inbox"]
+    angle: "Compare GitHub Projects' issue and pull-request source of truth with LaunchBuddy's app-version, App Store checklist, and customer-review context, then define a two-system boundary without inventing a direct GitHub integration."
+
+  - id: "kw-062"
+    keyword: "LaunchBuddy vs Docket"
+    proposed_slug: "launchbuddy-vs-docket"
+    cluster: "comparisons"
+    intent: "comparison"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/launchbuddy-vs-itsyconnect.md", "src/content/blog/launchbuddy-mcp-server.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists", "Local MCP server", "MCP write tools", "Automation approvals"]
+    angle: "Compare the products from current first-party documentation across release structure, App Store Connect scope, MCP and CLI surfaces, write behavior, platforms, and pricing, with a mandatory live-source recheck before drafting because both products are evolving."
+
+  - id: "kw-063"
+    keyword: "LaunchBuddy vs Keelport"
+    proposed_slug: "launchbuddy-vs-keelport"
+    cluster: "comparisons"
+    intent: "comparison"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/launchbuddy-vs-appfigures.md", "src/content/blog/launchbuddy-mcp-server.md"]
+    product_features: ["Release planning and taskboards", "App Store reviews inbox", "App Store Connect analytics dashboard", "Local MCP server", "Automation approvals"]
+    angle: "Build a source-linked decision matrix for two Apple-platform release managers across planning, App Store data, feedback, analytics, MCP safety, devices, storage, and plan boundaries, revalidating every Keelport claim against its current App Store listing before publication."
