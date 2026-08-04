@@ -642,7 +642,8 @@ backlog:
     cluster: "release-strategy"
     intent: "comparison"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/manual-vs-automatic-app-store-release/"
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/ios-app-release-management.md"]
