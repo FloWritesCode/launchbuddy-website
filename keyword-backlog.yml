@@ -698,7 +698,8 @@ backlog:
     cluster: "aso-experiments"
     intent: "product-guide"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/aso-experiment-tracker/"
     confidence: "medium"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/app-store-connect-analytics.md", "src/content/blog/app-store-keyword-field.md"]
