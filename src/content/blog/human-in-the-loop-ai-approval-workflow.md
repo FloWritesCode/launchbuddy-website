@@ -2,7 +2,6 @@
 title: "How to Build a Human-in-the-Loop AI Approval Workflow"
 description: "Build a human-in-the-loop AI approval workflow that separates observation, proposals, decisions, execution, and verification without creating approval fatigue."
 pubDate: 2026-08-07
-draft: true
 ---
 
 A **human-in-the-loop AI approval workflow** lets AI prepare useful work while a person keeps authority over consequential actions. The practical pattern is:
