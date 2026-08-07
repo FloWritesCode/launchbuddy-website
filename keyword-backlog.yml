@@ -723,9 +723,10 @@ backlog:
     keyword: "human-in-the-loop AI approval workflow"
     proposed_slug: "human-in-the-loop-ai-approval-workflow"
     cluster: "ai-safety"
-    intent: "guide"
+    intent: "how-to"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/human-in-the-loop-ai-approval-workflow/"
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/launchbuddy-mcp-server.md", "src/content/blog/app-store-connect-automation.md"]
