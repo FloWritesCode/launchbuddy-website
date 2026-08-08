@@ -739,7 +739,8 @@ backlog:
     cluster: "project-management"
     intent: "guide"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/indie-app-portfolio-management/"
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/ios-developer-task-manager.md", "src/content/blog/app-store-connect-project-management.md"]
