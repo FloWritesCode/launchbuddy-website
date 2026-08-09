@@ -753,7 +753,8 @@ backlog:
     cluster: "project-management"
     intent: "solution"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/icloud-project-management-for-indie-developers/"
     confidence: "medium"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/ios-developer-task-manager.md"]
