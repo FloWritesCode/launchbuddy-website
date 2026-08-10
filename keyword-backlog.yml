@@ -1138,7 +1138,8 @@ backlog:
     cluster: "release-notes"
     intent: "comparison"
     priority: "P1"
-    status: "approved"
+    status: "rejected"
+    rejection_reason: "Substantially satisfied by src/content/blog/ai-release-notes-for-ios-apps.md, src/content/blog/app-store-release-notes-generator.md, and src/content/blog/app-review-notes.md, which already separate internal changelog material, customer-facing What's New copy, reviewer instructions, and build-grounded draft and review workflows."
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/ai-release-notes-for-ios-apps.md", "src/content/blog/app-store-release-notes-generator.md", "src/content/blog/app-review-notes.md"]
