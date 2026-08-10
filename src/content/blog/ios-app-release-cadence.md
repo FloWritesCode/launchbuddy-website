@@ -35,7 +35,7 @@ The basic distinction is whether time or scope is the stronger constraint. The [
 | Event-based | An external event requires a version | Aligns compatibility, campaigns, or obligations | Event pressure overrides testing and contingency planning |
 | Hybrid | A recurring window opens, but only ready scope ships | Predictability with a real quality gate | The “hybrid” label hides an undefined cutoff or endless exceptions |
 
-For an actively maintained indie app, a hybrid policy is often the most practical starting hypothesis:
+For an actively maintained indie app, a hybrid policy is one practical starting hypothesis:
 
 ```text
 Review candidates on a regular date.
@@ -119,7 +119,7 @@ An update isn't finished when you click Submit for Review. Someone still needs t
 - Decide whether a signal needs investigation
 - Prepare a replacement version if customer harm is confirmed
 
-If you can't monitor after a planned release, move the window or choose a release option that matches your availability. Apple's [release-option documentation](https://developer.apple.com/help/app-store-connect/manage-your-apps-availability/select-an-app-store-version-release-option) supports manual, automatic, and automatic-no-earlier-than availability. Those controls change what happens after approval; they don't repair an unrealistic cadence or guarantee App Review timing.
+If you can't monitor after a planned release, move the window or choose a release option that matches your availability. Apple's [release-option documentation](https://developer.apple.com/help/app-store-connect/manage-your-apps-availability/select-an-app-store-version-release-option) lists three version-release settings: manual, automatic, and automatic no earlier than a specified date and time. Those controls change what happens after approval; they don't repair an unrealistic cadence or guarantee App Review timing.
 
 ## Build the cadence as an operating policy
 
@@ -229,7 +229,7 @@ A hold is a cadence outcome, not a failure of discipline. Repeated holds are evi
 
 ## Measure whether the cadence works
 
-Review at least three completed cycles before changing the interval, unless the cadence creates immediate quality or customer risk. Track a small set of operational signals:
+Before changing the interval, compare enough completed cycles to distinguish a recurring pattern from a one-off release, unless the cadence creates immediate quality or customer risk. Track a small set of operational signals:
 
 | Signal | What it reveals |
 | --- | --- |
@@ -261,7 +261,7 @@ Ready work arrives irregularly, the app has no backend, and most changes are com
 
 ### An actively developed subscription app
 
-Improvements arrive steadily, but login, purchase, and backend paths need careful regression testing. Trial a recurring two- or three-week release window, set scope several days before submission, and keep a separate hotfix lane. Treat the interval as a hypothesis until three cycles show sustainable testing and response capacity.
+Improvements arrive steadily, but login, purchase, and backend paths need careful regression testing. Trial a recurring two- or three-week release window, set scope several days before submission, and keep a separate hotfix lane. Treat the interval as a hypothesis until repeated cycles show sustainable testing and response capacity.
 
 ### A major onboarding experiment
 
