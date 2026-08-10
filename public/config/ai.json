@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "updatedAt": "2026-08-02T00:00:00Z",
+  "model": "gpt-5.4-mini",
+  "usageLimits": {
+    "appChat": 75,
+    "agentSteps": 150,
+    "appIdeaChat": 150,
+    "reviewReplies": 200,
+    "reviewBacklogItems": 100,
+    "appIdeaTaskExtraction": 75
+  },
+  "systemPrompts": {
+    "appChat": null,
+    "planCommand": null,
+    "conversationTitle": null,
+    "reviewReply": null,
+    "reviewBacklog": null,
+    "appIdeaChat": null,
+    "appIdeaTaskExtraction": null
+  }
+}
