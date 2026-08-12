@@ -893,7 +893,8 @@ backlog:
     cluster: "mobile-workflow"
     intent: "product-guide"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/manage-app-store-connect-from-iphone/"
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/launchbuddy-vs-app-store-connect.md", "src/content/blog/app-store-connect-alternatives.md"]
