@@ -201,6 +201,9 @@ This example also keeps email separate. Approval to update the page does not aut
 
 ## How LaunchBuddy uses approval-gated actions
 
+
+![LaunchBuddy AI home with approval-gated playbooks for releases, reviews, and analytics](/screenshots/launchbuddy/ai.jpg)
+
 LaunchBuddy separates read access from write proposals across its supported automation surfaces:
 
 - LaunchBuddy AI works on iPhone, iPad, and Mac. It requires Pro, is subject to usage limits, and pauses before supported actions change local data or write to App Store Connect.

@@ -57,6 +57,9 @@ LaunchBuddy should complement, not mirror, every App Store Connect field. Its us
 
 ## What LaunchBuddy improves around App Store Connect
 
+
+![LaunchBuddy overview showing app status, App Store URL, bundle ID, and ASC app ID](/screenshots/launchbuddy/overview.jpg)
+
 ### Ideas become app-specific work
 
 LaunchBuddy's Idea Chat can explore a feature or product direction and turn useful outcomes into backlog items within an app-centric project.
@@ -92,6 +95,9 @@ LaunchBuddy's App Chat uses task, release, and available cached review context t
 Drafts are not facts. Verify claims against the selected build and review customer-facing replies before publishing.
 
 ## How LaunchBuddy and App Store Connect fit together
+
+
+![App Store Connect version page showing App Previews and Screenshots plus promotional text](/screenshots/app-store-connect/release-information.jpg)
 
 A practical indie workflow gives each tool one clear job.
 

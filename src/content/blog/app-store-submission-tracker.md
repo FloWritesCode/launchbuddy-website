@@ -69,6 +69,9 @@ In LaunchBuddy, the release can act as the home for this context. App Store Conn
 
 ## Track App Store Connect status beside the work
 
+
+![App Store Connect App Review submissions history with completed and unresolved statuses](/screenshots/app-store-connect/app-review-history.jpg)
+
 The most useful App Store submission tracker does not need to copy every App Store Connect field. It needs to surface the statuses that affect the release plan.
 
 For each version, track the key submission states:

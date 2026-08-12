@@ -24,6 +24,9 @@ For the definitions behind impressions, downloads, conversion, and downstream me
 
 ## Know what Apple's test can and can't do
 
+
+![App Store Connect Product Page Optimization list of past treatments](/screenshots/app-store-connect/product-page-optimization.jpg)
+
 Apple's current [Product Page Optimization overview](https://developer.apple.com/help/app-store-connect/create-product-page-optimization-tests/overview-of-product-page-optimization/) documents these boundaries:
 
 - The app must be live on the App Store with Pre-Order Ready for Distribution or Ready for Distribution status.

@@ -226,6 +226,9 @@ This keeps a portfolio current without turning its review into a weekly performa
 
 ## Where LaunchBuddy fits
 
+
+![LaunchBuddy overview showing app status, App Store URL, bundle ID, and ASC app ID](/screenshots/launchbuddy/overview.jpg)
+
 LaunchBuddy can hold apps, releases, taskboards, default submission checklists, and project notes across iPhone, iPad, and Mac. Project data is stored in the user’s private iCloud account and syncs across those devices. Private iCloud sync is a personal data and cross-device model; it should not be treated as a shared team workspace.
 
 The Free plan supports up to two apps and two releases, with limited project notes. LaunchBuddy Pro supports unlimited apps and releases, unlimited project notes, and custom checklists. Current website pricing is $2.99 per month or $19.99 per year, and one subscription covers iPhone, iPad, and Mac; feature availability varies by platform.

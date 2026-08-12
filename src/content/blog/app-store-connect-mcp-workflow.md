@@ -285,6 +285,9 @@ This checklist gives the agent clear boundaries. It can reduce context switching
 
 ## What this looks like in LaunchBuddy
 
+
+![LaunchBuddy AI home with approval-gated playbooks for releases, reviews, and analytics](/screenshots/launchbuddy/ai.jpg)
+
 Imagine you are preparing version 1.8 of an iOS app.
 
 An MCP-connected agent can query App Store Connect and find:

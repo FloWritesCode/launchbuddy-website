@@ -10,6 +10,9 @@ For a complete mobile release workflow, give each tool one job. App Store Connec
 
 ## What you can manage from an iPhone
 
+
+![LaunchBuddy overview showing app status, App Store URL, bundle ID, and ASC app ID](/screenshots/launchbuddy/overview.jpg)
+
 Apple's current [App Store Connect for iPhone and iPad guide](https://developer.apple.com/help/app-store-connect/get-started/app-store-connect-for-iphone-and-ipad/) lists these mobile capabilities:
 
 - Check app status and handle App Store submissions

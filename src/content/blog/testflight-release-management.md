@@ -12,6 +12,9 @@ LaunchBuddy is built for this exact gap. It helps iOS developers manage projects
 
 ## Why TestFlight needs release management
 
+
+![App Store Connect TestFlight iOS builds list with a build ready to submit](/screenshots/app-store-connect/testflight.jpg)
+
 TestFlight is excellent at distributing beta builds. It gives you a way to upload builds, invite testers, organize testing groups, collect feedback, and prepare confidence before a version reaches the App Store.
 
 But TestFlight is not a complete release management system. It does not know:

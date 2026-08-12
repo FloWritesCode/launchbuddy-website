@@ -89,6 +89,9 @@ Appfigures' [reviews and ratings tools](https://appfigures.com/products/app-revi
 
 ## Where LaunchBuddy is stronger
 
+
+![LaunchBuddy App Store Analytics dashboard with impressions, page views, conversion, and installs](/screenshots/launchbuddy/analytics.jpg)
+
 ### From idea to shipped scope
 
 Appfigures can reveal demand signals and competitive movement, but LaunchBuddy is designed to hold the product decision that follows. An app idea can become a project, proposed backlog tasks can be reviewed, and only accepted work needs to enter the next release.

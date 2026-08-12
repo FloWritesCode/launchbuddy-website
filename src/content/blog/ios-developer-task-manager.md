@@ -260,6 +260,9 @@ You may still use GitHub for code, Xcode for builds, App Store Connect for submi
 
 ## Why LaunchBuddy is built for this keyword
 
+
+![LaunchBuddy Releases board with backlog tasks, version metadata, and changelog draft](/screenshots/launchbuddy/releases.jpg)
+
 LaunchBuddy sits at the intersection of several high-intent searches: iOS developer task manager, Xcode project manager, side project tracker, iOS app release manager, App Store submission tracker, and AI release notes workflow.
 
 That is valuable because the problem is connected. Developers do not only need a place to type tasks. They need a place where tasks can become releases, releases can connect to App Store Connect, and AI can help turn completed work into launch-ready writing.

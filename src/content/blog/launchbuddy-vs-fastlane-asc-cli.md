@@ -41,6 +41,9 @@ LaunchBuddy does **not** build your Xcode project, manage code signing, upload a
 
 ## What LaunchBuddy is strongest at
 
+
+![LaunchBuddy overview showing app status, App Store URL, bundle ID, and ASC app ID](/screenshots/launchbuddy/overview.jpg)
+
 LaunchBuddy treats the **app** as the long-lived project and the **release** as the unit of shipping. That model fits indie development, where product thinking, coding, App Store work, customer feedback, and marketing often belong to the same person.
 
 ### Ideas become planned work

@@ -35,6 +35,9 @@ That makes it a strong fit for LaunchBuddy because localization is not only a co
 
 ## App Store localization is not the same as app localization
 
+
+![App Store Connect App Information page with name and subtitle fields](/screenshots/app-store-connect/app-information.jpg)
+
 Before building the workflow, separate two related ideas:
 
 ```text

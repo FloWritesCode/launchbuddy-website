@@ -89,6 +89,9 @@ Do not rewrite everything for every release. Instead, make metadata review a che
 
 ## 5. Check screenshots against the current build
 
+
+![App Store Connect version page showing App Previews and Screenshots plus promotional text](/screenshots/app-store-connect/release-information.jpg)
+
 Screenshots are part of the release, not just part of the launch. If your UI changed, your screenshots should not show old navigation, outdated copy, missing features, or screens that no longer exist.
 
 For each supported device size and locale, verify:

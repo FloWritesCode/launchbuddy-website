@@ -248,6 +248,9 @@ The exact fields can change by app, but the structure should stay consistent: sc
 
 ## How LaunchBuddy helps manage iOS releases
 
+
+![LaunchBuddy Releases board with backlog tasks, version metadata, and changelog draft](/screenshots/launchbuddy/releases.jpg)
+
 LaunchBuddy brings project management closer to the actual way indie iOS developers ship. A release is not just a date on a calendar. It is a bundle of tasks, checklists, App Store Connect state, notes, and decisions.
 
 With LaunchBuddy, you can:

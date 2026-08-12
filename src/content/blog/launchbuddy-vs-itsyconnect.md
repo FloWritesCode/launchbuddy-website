@@ -58,6 +58,9 @@ It is also attractive if you value inspectability and local control. The reposit
 
 ## Where LaunchBuddy is stronger
 
+
+![LaunchBuddy overview showing app status, App Store URL, bundle ID, and ASC app ID](/screenshots/launchbuddy/overview.jpg)
+
 LaunchBuddy is stronger when the missing system is **product and release planning**, not App Store form editing.
 
 Its app-centric projects connect ideas, notes, backlog tasks, release-scoped tasks, and reusable checklists. That answers questions an ASC client is not designed around:

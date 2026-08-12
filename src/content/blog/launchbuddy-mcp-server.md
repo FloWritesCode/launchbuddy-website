@@ -37,6 +37,9 @@ These tools can participate in one release workflow, but they aren't interchange
 
 ## The read and write paths are deliberately different
 
+
+![LaunchBuddy AI home with approval-gated playbooks for releases, reviews, and analytics](/screenshots/launchbuddy/ai.jpg)
+
 The server has two paths:
 
 ```text

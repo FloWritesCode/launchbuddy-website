@@ -135,6 +135,9 @@ Choose **automatic, no earlier than** if the only hard rule is “not before thi
 
 ## How to select the release option in App Store Connect
 
+
+![App Store Connect version page showing App Previews and Screenshots plus promotional text](/screenshots/app-store-connect/release-information.jpg)
+
 Apple's current [release-option instructions](https://developer.apple.com/help/app-store-connect/manage-your-apps-availability/select-an-app-store-version-release-option) require an Account Holder, Admin, or App Manager:
 
 1. In **Apps**, select the app.

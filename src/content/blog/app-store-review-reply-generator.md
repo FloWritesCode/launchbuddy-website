@@ -338,6 +338,9 @@ For a pre-release feedback process, use the [TestFlight feedback management guid
 
 ## How LaunchBuddy helps with App Store review replies
 
+
+![LaunchBuddy Customer Reviews inbox with ratings, locales, and replied status](/screenshots/launchbuddy/customer-reviews.jpg)
+
 LaunchBuddy combines project and release management for iOS developers with an App Store Connect reviews inbox.
 
 With LaunchBuddy Pro, you can:

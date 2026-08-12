@@ -69,6 +69,9 @@ Use the launch release as the home for both code tasks and App Store tasks.
 
 ## 2. Set up App Store Connect early
 
+
+![App Store Connect version page showing App Previews and Screenshots plus promotional text](/screenshots/app-store-connect/release-information.jpg)
+
 Do not wait until the final day to create or complete the App Store Connect record. Some fields are quick, but others force decisions about positioning, privacy, pricing, availability, and reviewer access.
 
 Early App Store Connect tasks include:
@@ -90,6 +93,9 @@ That is good information to discover early. Add those findings back to the Launc
 For a field-by-field submission pass, read the [App Store Connect release checklist](/blog/app-store-connect-release-checklist/).
 
 ## 3. Build a TestFlight launch loop
+
+
+![App Store Connect TestFlight iOS builds list with a build ready to submit](/screenshots/app-store-connect/testflight.jpg)
 
 TestFlight is where a launch gets more honest. The app may work in the simulator and still fail in the hands of real testers.
 

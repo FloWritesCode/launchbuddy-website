@@ -14,6 +14,9 @@ Create a project in LaunchBuddy for each app you are building. Keep tasks, relea
 
 ## 2. Organize work into releases
 
+
+![LaunchBuddy Releases board with backlog tasks, version metadata, and changelog draft](/screenshots/launchbuddy/releases.jpg)
+
 Group tasks into releases so you always know what "done" means for the next version. A release is your shipping boundary — everything inside it should be shippable.
 
 ## 3. Reuse checklists for every launch

@@ -35,6 +35,9 @@ The [current App Store listing](https://apps.apple.com/us/app/launchbuddy/id1615
 
 ## Prepare the release before relying on its summary
 
+
+![LaunchBuddy Releases board with backlog tasks, version metadata, and changelog draft](/screenshots/launchbuddy/releases.jpg)
+
 A clean widget starts with a clean release plan:
 
 1. Create the app version you are actually preparing.

@@ -232,6 +232,9 @@ Connect the findings to the next version through an [iOS app release management 
 
 ## How LaunchBuddy fits the post-launch checklist
 
+
+![LaunchBuddy App Store Analytics dashboard with impressions, page views, conversion, and installs](/screenshots/launchbuddy/analytics.jpg)
+
 LaunchBuddy is the planning layer around Apple's systems, not a crash reporter, binary uploader, or replacement for App Store Connect and Xcode.
 
 Use App Store Connect for availability, detailed analytics, and financial reports, and Xcode for crash investigation. In LaunchBuddy, you can keep release tasks and follow-up tasks tied to the relevant app and version. LaunchBuddy Pro, with App Store Connect API credentials, adds a reviews inbox plus downloads, revenue, and subscription metrics. Review-to-task can turn selected customer feedback into structured backlog work.

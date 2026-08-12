@@ -60,6 +60,9 @@ For developers with localized apps, subscriptions, frequent TestFlight cohorts, 
 
 ## Where LaunchBuddy is stronger
 
+
+![LaunchBuddy Releases board with backlog tasks, version metadata, and changelog draft](/screenshots/launchbuddy/releases.jpg)
+
 ### From idea to app to release
 
 LaunchBuddy treats each app as a durable project. Ideas can be explored with Idea Chat, converted into reviewable backlog tasks, assigned to a specific release when accepted, and deliberately left for later when they are out of scope. Release notes can then start from the work that actually shipped.

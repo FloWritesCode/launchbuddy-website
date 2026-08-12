@@ -12,6 +12,9 @@ This guide covers operating the review queue and converting feedback into produc
 
 ## How to manage App Store reviews: a seven-step workflow
 
+
+![App Store Connect Ratings and Reviews page with rating summary and recent reviews](/screenshots/app-store-connect/ratings-and-reviews.jpg)
+
 First, set a sustainable inbox cadence. Then use the same six stages for every review:
 
 ```text
@@ -224,6 +227,9 @@ Publish only verified replies. Note which responses should be revisited after a 
 The time box is a constraint, not a service-level promise. Expand it during an incident; shorten it when there are no actionable reviews.
 
 ## Optional: connect the queues with LaunchBuddy
+
+
+![LaunchBuddy Customer Reviews inbox with ratings, locales, and replied status](/screenshots/launchbuddy/customer-reviews.jpg)
 
 LaunchBuddy is an App Store Connect companion for project and release management, not a replacement for Apple's systems. With LaunchBuddy Pro and App Store Connect API credentials, its reviews inbox lets you read and reply to reviews on iPhone, iPad, and Mac. Its review-to-task workflow can turn a review into a structured backlog task with details, type, estimate, and priority.
 

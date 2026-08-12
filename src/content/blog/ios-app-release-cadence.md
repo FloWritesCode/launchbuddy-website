@@ -321,6 +321,9 @@ Next adjustment:
 
 ## How LaunchBuddy supports the cadence
 
+
+![LaunchBuddy Releases board with backlog tasks, version metadata, and changelog draft](/screenshots/launchbuddy/releases.jpg)
+
 LaunchBuddy can keep each app's backlog separate from version-scoped release tasks, then apply a submission checklist to the work that reaches the release window. Release planning, taskboards, default checklists, and iCloud sync are available in the free tier, which is limited to two apps and two releases. Custom checklists require Pro.
 
 With LaunchBuddy Pro and App Store Connect API credentials, the reviews inbox plus downloads, revenue, and subscription metrics can sit near the release plan. Apple's systems remain the source of truth for builds, TestFlight, App Review, release settings, full analytics, and public availability. LaunchBuddy doesn't build or upload the binary, choose the right cadence, or prove that a release caused a metric to change.

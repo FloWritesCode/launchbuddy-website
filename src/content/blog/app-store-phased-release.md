@@ -109,6 +109,9 @@ Add the decision card to the version's release plan and include the release opti
 
 ## How to enable an App Store phased release
 
+
+![App Store Connect App Review submissions history with completed and unresolved statuses](/screenshots/app-store-connect/app-review-history.jpg)
+
 Apple's current App Store Connect steps are:
 
 1. In **Apps**, select the app.

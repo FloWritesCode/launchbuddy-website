@@ -33,6 +33,9 @@ Inconclusive and contaminated aren't softer versions of “adopt.” They mean t
 
 ## Step 1: label the evidence design
 
+
+![App Store Connect Product Page Optimization list of past treatments](/screenshots/app-store-connect/product-page-optimization.jpg)
+
 Use a separate record for each question, then mark it as randomized or observational.
 
 | Evidence design | Appropriate use | What the result can support | Main limitation |

@@ -285,6 +285,9 @@ Add Fastlane or CI when repeated build and upload work justifies it. Add a speci
 
 ## Where LaunchBuddy fits
 
+
+![LaunchBuddy overview showing app status, App Store URL, bundle ID, and ASC app ID](/screenshots/launchbuddy/overview.jpg)
+
 LaunchBuddy is an App Store Connect companion for indie iOS developers who need project and release management around Apple's submission system.
 
 The free tier supports up to two apps and two releases, with taskboards, default submission checklists, and iCloud sync across iPhone, iPad, and Mac. That is enough to build a repeatable workflow for a side project without connecting App Store Connect.

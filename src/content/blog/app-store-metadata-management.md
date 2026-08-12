@@ -33,6 +33,9 @@ The search intent is practical. Developers want a repeatable way to manage the f
 
 ## What counts as App Store metadata?
 
+
+![App Store Connect App Information page with name and subtitle fields](/screenshots/app-store-connect/app-information.jpg)
+
 App Store metadata is the information that describes, positions, and supports your app in App Store Connect.
 
 Some fields affect how users discover and evaluate the app:
@@ -333,6 +336,9 @@ With App Store metadata management, the release is clearer:
 The release did not become more complicated. The metadata simply became connected to the work that changed it.
 
 ## How LaunchBuddy helps manage App Store metadata
+
+
+![App Store Connect version page showing App Previews and Screenshots plus promotional text](/screenshots/app-store-connect/release-information.jpg)
 
 LaunchBuddy is not trying to replace App Store Connect, App Analytics, Xcode, or specialized ASO tools. Those tools still matter.
 

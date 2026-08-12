@@ -48,6 +48,9 @@ The boundaries matter. Free supports two apps, two releases, and limited project
 
 ## What Pro adds—and what each feature requires
 
+
+![LaunchBuddy App Store Analytics dashboard with impressions, page views, conversion, and installs](/screenshots/launchbuddy/analytics.jpg)
+
 Pro removes the portfolio limits and adds workflows with different prerequisites.
 
 ### Unlimited planning and custom checklists
@@ -90,6 +93,9 @@ Shortcut and Siri write actions also require Pro. Through approval, they can cre
 The local MCP server runs on macOS only. Reads are available without Pro; its Pro write tools create approval proposals before changes apply. An MCP client never mutates LaunchBuddy data directly. The server is not a cloud-hosted endpoint and does not run on iPhone or iPad. See the [LaunchBuddy MCP server guide](/blog/launchbuddy-mcp-server/) for the localhost, optional bearer-token, and approval boundaries.
 
 ## Three workflows that make the plan choice concrete
+
+
+![App Store Connect Subscriptions page showing the LaunchBuddy Pro subscription group](/screenshots/app-store-connect/subscriptions.jpg)
 
 ### Workflow 1: A first side project
 

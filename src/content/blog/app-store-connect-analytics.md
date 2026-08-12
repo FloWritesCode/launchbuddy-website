@@ -12,6 +12,9 @@ This guide explains the App Store Connect metrics that matter most to indie iOS 
 
 ## What does App Store Connect analytics show?
 
+
+![App Store Connect Analytics overview with acquisition, sales, and subscription cards](/screenshots/app-store-connect/analytics-overview.jpg)
+
 Apple's current [Analytics dashboard](https://developer.apple.com/help/app-store-connect-analytics/overview/analytics-dashboard/) brings several parts of the app journey together:
 
 - **Acquisition:** impressions, product page views, downloads, conversion, and acquisition sources
@@ -410,6 +413,9 @@ If conversion moves from 25% to 50% because downloads increased from one to two,
 Customer reviews can add context, but they are not a representative survey. Use them to find specific problems and language, then compare those themes with product and release evidence. The [App Store review reply generator guide](/blog/app-store-review-reply-generator/) explains how to turn actionable reviews into tasks without letting AI invent the diagnosis.
 
 ## How LaunchBuddy helps with App Store Connect analytics
+
+
+![LaunchBuddy App Store Analytics dashboard with impressions, page views, conversion, and installs](/screenshots/launchbuddy/analytics.jpg)
 
 LaunchBuddy is a project and release manager for indie iOS developers. LaunchBuddy Pro includes an App Store Connect dashboard for downloads, revenue, and subscription metrics, alongside the apps and releases you are already managing.
 

@@ -222,6 +222,9 @@ That does not make the release bigger. It makes it clearer.
 
 ## Why LaunchBuddy fits this workflow
 
+
+![LaunchBuddy Releases board with backlog tasks, version metadata, and changelog draft](/screenshots/launchbuddy/releases.jpg)
+
 LaunchBuddy is not trying to replace App Store Connect. App Store Connect remains the source of truth for Apple's submission process. LaunchBuddy helps with the project management around that process.
 
 For indie iOS developers, that means:

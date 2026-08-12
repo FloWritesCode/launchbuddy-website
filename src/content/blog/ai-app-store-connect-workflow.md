@@ -284,6 +284,9 @@ A good workflow makes verification part of the process. If a sentence cannot be 
 
 ## Why LaunchBuddy fits AI App Store Connect workflows
 
+
+![LaunchBuddy AI home with approval-gated playbooks for releases, reviews, and analytics](/screenshots/launchbuddy/ai.jpg)
+
 LaunchBuddy is not trying to replace App Store Connect, Xcode, CI, Fastlane, command-line tools, or specialized API automation. Those tools still matter.
 
 LaunchBuddy fits the release-management layer:

@@ -241,6 +241,9 @@ For a field-by-field process, use the [App Store Connect release checklist](/blo
 
 ## What this looks like in LaunchBuddy
 
+
+![LaunchBuddy AI home with approval-gated playbooks for releases, reviews, and analytics](/screenshots/launchbuddy/ai.jpg)
+
 Imagine you are preparing version 3.1 of an indie iOS app.
 
 Without a connected workflow, your AI agent might see App Store Connect state but miss the release story:

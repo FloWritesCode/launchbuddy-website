@@ -35,6 +35,9 @@ That makes App Review notes a natural topic for LaunchBuddy. The field itself li
 
 ## What App Review notes are for
 
+
+![App Store Connect App Review submissions history with completed and unresolved statuses](/screenshots/app-store-connect/app-review-history.jpg)
+
 App Review notes live inside App Store Connect's App Review Information section. They are intended for Apple reviewers, not customers. The goal is to help the reviewer test the app, understand non-obvious behavior, and verify the submission without guessing.
 
 Use App Review notes when the reviewer may need:

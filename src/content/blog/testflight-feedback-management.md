@@ -33,6 +33,9 @@ That is where LaunchBuddy fits naturally: not as a replacement for TestFlight or
 
 ## Why TestFlight feedback needs a workflow
 
+
+![App Store Connect TestFlight iOS builds list with a build ready to submit](/screenshots/app-store-connect/testflight.jpg)
+
 TestFlight is great at collecting beta feedback. Testers can send screenshots, write comments, and provide crash context. App Store Connect can show feedback by app, platform, build, and version, and newer App Store Connect API and webhook capabilities make it easier to receive feedback-related events programmatically.
 
 But collecting feedback is not the same thing as managing it.

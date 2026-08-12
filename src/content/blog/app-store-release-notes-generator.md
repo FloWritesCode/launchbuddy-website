@@ -262,6 +262,9 @@ The workflow is lightweight, but it prevents the common failure modes: notes for
 
 ## How LaunchBuddy helps generate better App Store release notes
 
+
+![LaunchBuddy Releases board with backlog tasks, version metadata, and changelog draft](/screenshots/launchbuddy/releases.jpg)
+
 LaunchBuddy is not trying to replace App Store Connect, TestFlight, Xcode, or your CI system. Those tools remain essential.
 
 LaunchBuddy helps with the release-management layer around them:

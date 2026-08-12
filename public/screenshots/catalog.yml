@@ -1,0 +1,149 @@
+# Screenshot catalog for LaunchBuddy blog posts and the daily blog automation.
+# Prefer these existing assets over inventing or generating new images.
+# Use 0–2 screenshots per article, only when they clarify a concrete UI or workflow.
+# Markdown form:
+#   ![Descriptive alt text](/screenshots/<path>)
+# Never claim a screenshot shows data, metrics, or capabilities it does not show.
+# ASC screenshots are redacted; do not invent the obscured values in prose.
+
+screenshots:
+  - path: /screenshots/launchbuddy/ai.jpg
+    product: launchbuddy
+    subjects: [ai, playbooks, approval-gated actions, sessions]
+    best_for:
+      - AI App Store Connect workflows
+      - human-in-the-loop approval
+      - LaunchBuddy MCP / agent playbooks
+    alt_hint: LaunchBuddy AI home with approval-gated playbooks for releases, reviews, and analytics
+
+  - path: /screenshots/launchbuddy/overview.jpg
+    product: launchbuddy
+    subjects: [app overview, metadata, App Store URL, bundle id, ASC app id]
+    best_for:
+      - portfolio / project management
+      - LaunchBuddy vs App Store Connect comparisons
+      - app overview and metadata context
+    alt_hint: LaunchBuddy overview showing app status, App Store URL, bundle ID, and ASC app ID
+
+  - path: /screenshots/launchbuddy/releases.jpg
+    product: launchbuddy
+    subjects: [releases, kanban, version, changelog, push to ASC]
+    best_for:
+      - iOS release management
+      - release cadence and task boards
+      - release notes workflows
+    alt_hint: LaunchBuddy Releases board with backlog tasks, version metadata, and changelog draft
+
+  - path: /screenshots/launchbuddy/analytics.jpg
+    product: launchbuddy
+    subjects: [analytics dashboard, impressions, page views, conversion, installs]
+    best_for:
+      - LaunchBuddy analytics sections
+      - Free vs Pro feature explanations
+      - post-launch monitoring in LaunchBuddy
+    alt_hint: LaunchBuddy App Store Analytics dashboard with impressions, page views, conversion, and installs
+    caveats:
+      - Shows a focused LaunchBuddy snapshot, not Apple's full Analytics suite
+
+  - path: /screenshots/launchbuddy/customer-reviews.jpg
+    product: launchbuddy
+    subjects: [reviews inbox, ratings, replied status, multilingual reviews]
+    best_for:
+      - App Store review management
+      - review reply workflows
+      - turning reviews into product work
+    alt_hint: LaunchBuddy Customer Reviews inbox with ratings, locales, and replied status
+
+  - path: /screenshots/app-store-connect/analytics-overview.jpg
+    product: app-store-connect
+    subjects: [ASC analytics overview, acquisition, sales, subscriptions]
+    best_for:
+      - App Store Connect analytics guides
+      - acquisition and monetization metric explanations
+    alt_hint: App Store Connect Analytics overview with acquisition, sales, and subscription cards
+    caveats:
+      - Sensitive values are redacted
+
+  - path: /screenshots/app-store-connect/ratings-and-reviews.jpg
+    product: app-store-connect
+    subjects: [ratings summary, recent reviews, developer response]
+    best_for:
+      - App Store review management
+      - reply / ratings workflows in ASC
+    alt_hint: App Store Connect Ratings and Reviews page with rating summary and recent reviews
+    caveats:
+      - Sensitive values are redacted
+
+  - path: /screenshots/app-store-connect/subscriptions.jpg
+    product: app-store-connect
+    subjects: [subscription groups, monetization]
+    best_for:
+      - Free vs Pro / subscription setup context
+      - monetization sections that name ASC subscription groups
+    alt_hint: App Store Connect Subscriptions page showing the LaunchBuddy Pro subscription group
+    caveats:
+      - Sensitive values are redacted
+
+  - path: /screenshots/app-store-connect/product-page-optimization.jpg
+    product: app-store-connect
+    subjects: [product page optimization, A/B tests, stopped treatments]
+    best_for:
+      - Product Page Optimization
+      - ASO experiment tracking
+      - Custom Product Pages vs PPO comparisons
+    alt_hint: App Store Connect Product Page Optimization list of past treatments
+    caveats:
+      - Sensitive values are redacted
+
+  - path: /screenshots/app-store-connect/in-app-purchases.jpg
+    product: app-store-connect
+    subjects: [in-app purchases, non-consumables, review status]
+    best_for:
+      - Free vs Pro / IAP context
+      - monetization checklists that mention IAP setup
+    alt_hint: App Store Connect In-App Purchases list with LaunchBuddy Pro products
+    caveats:
+      - Product IDs are redacted
+
+  - path: /screenshots/app-store-connect/app-information.jpg
+    product: app-store-connect
+    subjects: [app name, subtitle, app information]
+    best_for:
+      - metadata management
+      - localization / naming workflows
+    alt_hint: App Store Connect App Information page with name and subtitle fields
+    caveats:
+      - Sensitive values are redacted
+
+  - path: /screenshots/app-store-connect/release-information.jpg
+    product: app-store-connect
+    subjects: [version page, screenshots carousel, promotional text]
+    best_for:
+      - release checklists
+      - metadata and screenshot preparation
+      - manual vs automatic release context
+    alt_hint: App Store Connect version page showing App Previews and Screenshots plus promotional text
+    caveats:
+      - Sensitive values are redacted
+
+  - path: /screenshots/app-store-connect/app-review-history.jpg
+    product: app-store-connect
+    subjects: [app review submissions, review completed, unresolved issues]
+    best_for:
+      - submission tracking
+      - App Review notes / history
+      - multi-platform release status
+    alt_hint: App Store Connect App Review submissions history with completed and unresolved statuses
+    caveats:
+      - Sensitive values are redacted
+
+  - path: /screenshots/app-store-connect/testflight.jpg
+    product: app-store-connect
+    subjects: [TestFlight builds, ready to submit, build history]
+    best_for:
+      - TestFlight release management
+      - TestFlight feedback workflows
+      - launch checklists covering beta builds
+    alt_hint: App Store Connect TestFlight iOS builds list with a build ready to submit
+    caveats:
+      - Sensitive values are redacted

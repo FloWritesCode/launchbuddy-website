@@ -225,6 +225,9 @@ If the answer is yes, AI did its job: it helped you communicate the release with
 
 ## Ship clearer updates with LaunchBuddy
 
+
+![LaunchBuddy Releases board with backlog tasks, version metadata, and changelog draft](/screenshots/launchbuddy/releases.jpg)
+
 AI release notes for iOS apps are most useful when they are connected to the work you already planned. A generic AI text box can draft sentences. A release workflow can give those sentences context.
 
 LaunchBuddy helps indie iOS developers organize projects, tasks, releases, checklists, and App Store Connect work in one place. With AI features, it can help turn completed release work into clearer App Store release notes, so every update feels easier to explain and easier to ship.

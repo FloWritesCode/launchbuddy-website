@@ -45,6 +45,9 @@ Keyword assignments use terms from the latest approved app version. They can mak
 
 ## What is Product Page Optimization?
 
+
+![App Store Connect Product Page Optimization list of past treatments](/screenshots/app-store-connect/product-page-optimization.jpg)
+
 Product Page Optimization is Apple's randomized test for the default product page. Apple's [Product Page Optimization overview](https://developer.apple.com/help/app-store-connect/create-product-page-optimization-tests/overview-of-product-page-optimization/) says a test can compare the original with up to three treatments containing different icons, screenshots, or app previews. You choose the treatment traffic proportion, and Apple divides it equally among the treatments during the test.
 
 The app must be live on the App Store with Pre-Order Ready for Distribution or Ready for Distribution status. Tests run for no more than 90 days and aren't available for custom product pages, Apple Watch pages, or iMessage pages. Alternate test icons must already be in the live binary. Apple also warns that a new app version may affect a running test if it changes assets or metadata under test.
