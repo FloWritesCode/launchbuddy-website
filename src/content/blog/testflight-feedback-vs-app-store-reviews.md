@@ -17,12 +17,12 @@ The practical split is:
 | Question | TestFlight feedback | App Store reviews |
 | --- | --- | --- |
 | When does it arrive? | During beta testing | After a version is available on the App Store |
-| Who sends it? | Testers using an assigned beta build | Customers using the public app |
+| Who sends it? | Testers using an assigned beta build | Customers reviewing the public app |
 | Where is it handled? | TestFlight feedback in App Store Connect | Ratings and Reviews in App Store Connect and on the App Store |
 | Is it public on the product page? | No | Written reviews and developer responses are public |
 | What context can you inspect? | Version and build, tester group, device, OS, screenshot or crash details, and other diagnostic context when available | Rating, review text, country or region, app version, edit state, and response state |
 | What is the main decision? | Block this release, fix in this release, defer, or take no action | Investigate, add product evidence, reply, report a concern, or take no action |
-| Can the developer post a public response? | Not through the TestFlight feedback view | Yes, for supported platforms and roles |
+| Can the developer post a public response? | No public-response action exists in the TestFlight feedback view | Yes, for supported platforms and roles |
 | Best organizing key | Exact beta build and release candidate | Public app version and customer-facing follow-up |
 
 Apple's [tester feedback guide](https://developer.apple.com/help/app-store-connect/test-a-beta-version/view-tester-feedback/) says TestFlight feedback can include screenshots, crash-related comments, and general comments. Developers can filter it by platform, app version, build group, build, OS version, or device. The detailed view can also include tester, app, and device information.
@@ -61,7 +61,7 @@ Then make two decisions separately:
 - **Customer-queue decision:** Reply now, investigate before replying, report a concern, or close without a public action.
 - **Product decision:** Add evidence to an existing task, create an investigation, create a future candidate, or create nothing.
 
-A reply is not a fix, and a task is not a response. If a customer reports a sync failure, a public reply may acknowledge the report and request a safe support contact. The product task should instead describe the observed failure, affected version, evidence, reproduction step, and completion condition.
+A reply is not a fix, and a task is not a response. If a customer reports a sync failure, a public reply may acknowledge the report and direct them to a support channel where private details won't be exposed. The product task should instead describe the observed failure, affected version, evidence, reproduction step, and completion condition.
 
 Star rating should not set engineering severity by itself. A one-star feature request may be low risk; a positive review can still mention data loss or a broken flow. For the full risk-and-evidence workflow, see [App Store review management](/blog/app-store-review-management/).
 
@@ -95,7 +95,7 @@ Source: TestFlight | App Store review
 Source reference:
 Version:
 Build, if TestFlight:
-Visibility: Team-side beta feedback | Public review
+Visibility: App Store Connect beta feedback | Public review
 Observation:
 Evidence strength: Confirmed | Partial | Unclear
 Current-release impact: Block | Include | Later | None
@@ -152,11 +152,9 @@ The two reports are not interchangeable. The TestFlight item evaluated build 83 
 
 ## Where LaunchBuddy fits—and where it does not
 
-![LaunchBuddy Customer Reviews inbox with ratings, locales, and replied status](/screenshots/launchbuddy/customer-reviews.jpg)
-
 LaunchBuddy can hold the shared product layer: app tasks, version-scoped release work, and submission checklists. Its published feature set does **not** claim a TestFlight feedback inbox, so inspect TestFlight screenshots, comments, crashes, builds, and tester details in App Store Connect. When a beta finding changes the plan, record the decision as a release task or backlog item in LaunchBuddy.
 
-For App Store reviews, **LaunchBuddy Pro plus App Store Connect API credentials** provides a reviews inbox, reply workflow, and review-to-task conversion on supported Apple devices. The review-to-task path is useful after you decide that a review deserves product work; it should not turn every low rating into a scheduled fix.
+For App Store reviews, **LaunchBuddy Pro and App Store Connect API credentials** give you a reviews inbox, reply workflow, and review-to-task conversion on iPhone, iPad, and Mac. The review-to-task path is useful after you decide that a review deserves product work; it should not turn every low rating into a scheduled fix.
 
 Core release planning, taskboards, default submission checklists, and iCloud sync are available without connecting App Store Connect, within the Free plan's app and release limits. Custom checklists, the reviews inbox, review-to-task, and LaunchBuddy AI require Pro. App Store Connect remains authoritative for TestFlight and Apple's customer-review records.
 
