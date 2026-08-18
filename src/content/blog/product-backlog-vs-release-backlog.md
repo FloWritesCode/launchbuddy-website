@@ -224,8 +224,6 @@ Never mark a cut item “done” to make the release look complete. Never leave 
 
 ## Where LaunchBuddy fits
 
-![LaunchBuddy Releases board with backlog tasks, version metadata, and a changelog draft](/screenshots/launchbuddy/releases.jpg)
-
 LaunchBuddy can keep possible work in an app backlog and accepted tasks in a named release on iPhone, iPad, and Mac. Release planning, taskboards, default App Store submission checklists, and iCloud sync are available without Pro. The free plan is limited to two apps, two releases, and limited project notes; custom checklists require Pro.
 
 For customer evidence, LaunchBuddy Pro with App Store Connect API credentials provides an App Store reviews inbox and review-to-task conversion. Review-to-task can create a structured backlog proposal, but task creation and updates pause for explicit approval. Review the evidence and destination before accepting it. A review shouldn't enter the current release merely because conversion is convenient.
