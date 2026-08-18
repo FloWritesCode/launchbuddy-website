@@ -921,7 +921,8 @@ backlog:
     cluster: "project-management"
     intent: "comparison"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/product-backlog-vs-release-backlog/"
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/ios-app-idea-backlog.md", "src/content/blog/ios-app-release-management.md"]
