@@ -935,7 +935,8 @@ backlog:
     cluster: "portfolio"
     intent: "checklist"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/ios-app-sunset-checklist/"
     confidence: "medium"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/ios-app-release-management.md", "src/content/blog/app-store-connect-analytics.md"]
