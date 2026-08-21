@@ -974,7 +974,8 @@ backlog:
     cluster: "release-strategy"
     intent: "troubleshooting"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/ios-hotfix-release-process/"
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/ios-app-release-management.md", "src/content/blog/app-store-connect-release-checklist.md"]
