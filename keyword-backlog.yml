@@ -988,7 +988,8 @@ backlog:
     cluster: "release-strategy"
     intent: "how-to"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/app-store-pre-order/"
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/ios-app-launch-checklist.md", "src/content/blog/launchbuddy-vs-app-store-connect.md", "src/content/blog/app-store-connect-release-checklist.md"]
