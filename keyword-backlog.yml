@@ -1002,7 +1002,8 @@ backlog:
     cluster: "launch-marketing"
     intent: "how-to"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/app-store-featuring-nomination/"
     confidence: "high"
     overlap: "low"
     related_existing_posts: ["src/content/blog/ios-app-launch-checklist.md", "src/content/blog/app-store-metadata-management.md", "src/content/blog/app-review-notes.md"]
