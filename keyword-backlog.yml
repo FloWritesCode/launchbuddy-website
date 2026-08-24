@@ -443,7 +443,7 @@ backlog:
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/app-store-review-reply-generator.md"]
-    product_features: ["App Store Connect reviews inbox", "AI review reply drafts", "AI review-to-backlog conversion"]
+    product_features: ["App Store reviews inbox", "AI review reply drafts", "AI review-to-backlog conversion"]
     angle: "Build a repeatable inbox, triage, reply, and product-feedback loop for solo developers and small studios."
 
   - id: "kw-007"
@@ -457,7 +457,7 @@ backlog:
     confidence: "medium"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/app-store-review-reply-generator.md"]
-    product_features: ["App Store Connect reviews inbox", "AI review-to-backlog conversion", "Agent plans and playbooks"]
+    product_features: ["App Store reviews inbox", "AI review-to-backlog conversion", "Agent plans and playbooks"]
     angle: "Classify reviews into reply-now, bug, feature request, support, praise, and report categories."
 
   - id: "kw-008"
@@ -784,7 +784,7 @@ backlog:
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/ios-app-launch-checklist.md", "src/content/blog/app-store-connect-release-checklist.md"]
-    product_features: ["App Store Connect reviews inbox", "App Store Connect analytics dashboard", "Release planning and taskboards"]
+    product_features: ["App Store reviews inbox", "App Store Connect analytics dashboard", "Release planning and taskboards"]
     angle: "Own the after-launch intent: monitor review feedback, crashes, downloads, conversion, support, and follow-up tasks."
 
   - id: "kw-036"
@@ -798,7 +798,7 @@ backlog:
     confidence: "medium"
     overlap: "high"
     related_existing_posts: ["src/content/blog/app-store-connect-release-checklist.md", "src/content/blog/ios-app-launch-checklist.md"]
-    product_features: ["Custom submission checklists", "Release planning"]
+    product_features: ["App Store submission checklists", "Release planning and taskboards"]
     angle: "Only publish if the live SERP shows distinct customization intent; otherwise expand the existing release-checklist article."
 
   - id: "kw-037"
