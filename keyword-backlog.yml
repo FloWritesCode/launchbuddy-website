@@ -1,10 +1,10 @@
 version: 1
-researched_at: "2026-08-10"
+researched_at: "2026-08-24"
 market: "English-language web search"
 status: "healthy"
 
 methodology:
-  - "Compared candidate topics against all 54 existing posts in src/content/blog."
+  - "Compared candidate topics against all 62 existing posts in src/content/blog."
   - "Used current Google result language, Apple documentation terminology, competitor positioning, and LaunchBuddy product fit."
   - "Priorities are qualitative. They do not claim exact search volume or keyword difficulty."
   - "Before drafting, recheck the live search results and reject topics whose intent is already satisfied by an existing LaunchBuddy article."
@@ -114,6 +114,32 @@ research_sources:
     url: "https://www.runway.team/"
   - name: "Asomium"
     url: "https://asomium.com/"
+  - name: "Apple: Age rating questionnaire now includes social media questions"
+    url: "https://developer.apple.com/news/?id=tlur8uvi"
+  - name: "Apple: Set an app age rating"
+    url: "https://developer.apple.com/help/app-store-connect/manage-app-information/set-an-app-age-rating/"
+  - name: "Apple: Provide TestFlight test information"
+    url: "https://developer.apple.com/help/app-store-connect/test-a-beta-version/provide-test-information/"
+  - name: "Apple: Overview of Accessibility Nutrition Labels"
+    url: "https://developer.apple.com/help/app-store-connect/manage-app-accessibility/overview-of-accessibility-nutrition-labels/"
+  - name: "Apple: Manage app tags"
+    url: "https://developer.apple.com/help/app-store-connect/manage-app-information/manage-app-tags/"
+  - name: "Apple: Reset an app overview rating"
+    url: "https://developer.apple.com/help/app-store-connect/monitor-ratings-and-reviews/reset-an-app-overview-rating/"
+  - name: "Apple: Remove a submission from review"
+    url: "https://developer.apple.com/help/app-store-connect/manage-submissions-to-app-review/remove-a-submission-from-review/"
+  - name: "Apple: Schedule price changes for apps"
+    url: "https://developer.apple.com/help/app-store-connect/manage-app-pricing/schedule-price-changes-for-apps/"
+  - name: "Apple: Add internal TestFlight testers"
+    url: "https://developer.apple.com/help/app-store-connect/test-a-beta-version/add-internal-testers"
+  - name: "Apple: Request and manage promo codes"
+    url: "https://developer.apple.com/help/app-store-connect/offer-promo-codes/request-and-manage-promo-codes"
+  - name: "Apple: Offer In-App Events"
+    url: "https://developer.apple.com/help/app-store-connect/offer-in-app-events/offer-in-app-events/"
+  - name: "Apple: WWDC26 App Store guide"
+    url: "https://developer.apple.com/wwdc26/guides/app-store/"
+  - name: "Apple: Enhance your presence on the App Store"
+    url: "https://developer.apple.com/videos/play/wwdc2026/205/"
 
 existing_primary_targets:
   - keyword: "AI release notes for iOS apps"
@@ -278,6 +304,30 @@ existing_primary_targets:
   - keyword: "iCloud project management for indie developers"
     file: "src/content/blog/icloud-project-management-for-indie-developers.md"
     intent: "solution"
+  - keyword: "App Store pre-order"
+    file: "src/content/blog/app-store-pre-order.md"
+    intent: "how-to"
+  - keyword: "iOS app release cadence"
+    file: "src/content/blog/ios-app-release-cadence.md"
+    intent: "guide"
+  - keyword: "iOS app sunset checklist"
+    file: "src/content/blog/ios-app-sunset-checklist.md"
+    intent: "checklist"
+  - keyword: "iOS hotfix release process"
+    file: "src/content/blog/ios-hotfix-release-process.md"
+    intent: "troubleshooting"
+  - keyword: "LaunchBuddy Free vs Pro"
+    file: "src/content/blog/launchbuddy-free-vs-pro.md"
+    intent: "comparison"
+  - keyword: "manage App Store Connect from iPhone"
+    file: "src/content/blog/manage-app-store-connect-from-iphone.md"
+    intent: "product-guide"
+  - keyword: "product backlog vs release backlog"
+    file: "src/content/blog/product-backlog-vs-release-backlog.md"
+    intent: "comparison"
+  - keyword: "TestFlight feedback vs App Store reviews"
+    file: "src/content/blog/testflight-feedback-vs-app-store-reviews.md"
+    intent: "comparison"
 
 excluded_due_to_overlap:
   - keyword: "iOS app project management"
@@ -364,6 +414,22 @@ excluded_due_to_overlap:
     reason: "The published App Store review management article already separates sentiment from urgency, evaluates evidence strength, routes reviews into replies or tasks, and compares review text with release signals. A sentiment-only article would narrow the same intent without adding enough product value."
   - keyword: "TestFlight beta testing checklist"
     reason: "The published TestFlight release management guide already contains a reusable checklist spanning release setup, builds, internal and external testing, feedback, App Store Connect, and submission."
+  - keyword: "TestFlight tester engagement metrics"
+    reason: "The approved TestFlight public link criteria entry already owns 30-day enrollment metrics and recruitment decisions, while the published TestFlight release-management and feedback-management guides cover sessions, crashes, feedback, and release routing."
+  - keyword: "TestFlight tester groups best practices"
+    reason: "The published TestFlight release-management guide already separates internal and external groups, and the approved public-link criteria and automatic-distribution entries own the two distinct group-configuration decisions."
+  - keyword: "App Store rejection appeal process"
+    reason: "The published App Store Connect help guide already classifies metadata, information-request, and binary issues; gives an evidence-based App Review reply workflow; and explains when a factual misunderstanding may need escalation."
+  - keyword: "App Store export compliance checklist"
+    reason: "The published App Store Connect help and TestFlight release-management guides already cover the Missing Compliance decision point. Search results expect encryption and Info.plist advice that LaunchBuddy cannot verify, so a separate product-led article would add weak original value."
+  - keyword: "App Store availability checklist"
+    reason: "Availability setup is already part of the published launch, release-management, pre-order, manual-versus-automatic-release, and sunset workflows. A separate checklist would fragment the same release intent."
+  - keyword: "Xcode 26 App Store submission requirements"
+    reason: "Current results center on SDK, compiler, signing, and binary-upload requirements. LaunchBuddy does not build, sign, inspect, or upload binaries, so it cannot add a defensible product-led workflow beyond a generic reminder."
+  - keyword: "visionOS app motion information"
+    reason: "Apple's declaration is specific to visionOS apps, while LaunchBuddy's verified audience and positioning are indie iOS release management. No supported LaunchBuddy capability can assess virtual-camera motion."
+  - keyword: "App Store metadata new languages"
+    reason: "The published App Store localization workflow already owns locale selection, per-locale copy and asset review, fallback checks, and release handoff; Apple's additional supported languages do not create a separate intent."
 
 backlog:
   - id: "kw-005"
@@ -852,7 +918,8 @@ backlog:
     cluster: "release-notes"
     intent: "product-guide"
     priority: "P2"
-    status: "approved"
+    status: "rejected"
+    rejection_reason: "Substantially satisfied by src/content/blog/manage-app-store-connect-from-iphone.md, whose mobile release-note workflow already covers build-grounded drafting, final verification, Pro and App Store Connect credential requirements, approved upload, and the boundary between release notes, binaries, and submissions."
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/app-store-release-notes-generator.md", "src/content/blog/ai-release-notes-for-ios-apps.md"]
@@ -1218,3 +1285,146 @@ backlog:
     related_existing_posts: ["src/content/blog/launchbuddy-vs-forgeasc.md", "src/content/blog/launchbuddy-vs-appfigures.md", "src/content/blog/launchbuddy-vs-fastlane-asc-cli.md"]
     product_features: ["Release planning and taskboards", "App Store submission checklists", "ASO experiments", "App Store Connect analytics dashboard", "Release notes upload", "Local MCP server", "Automation approvals"]
     angle: "Compare LaunchBuddy's release planning, reusable checklists, experiment records, selected App Store data, and approval-gated localhost MCP proposals with Asomium's first-party-documented metadata, translation, screenshot, ASO, build-upload, submission, analytics, and MCP scope; require a fresh source check because both products are evolving."
+
+  - id: "kw-073"
+    keyword: "App Store age rating questionnaire"
+    proposed_slug: "app-store-age-rating-questionnaire"
+    cluster: "app-review"
+    intent: "how-to"
+    priority: "P0"
+    status: "approved"
+    confidence: "high"
+    overlap: "low"
+    related_existing_posts: ["src/content/blog/app-store-connect-release-checklist.md", "src/content/blog/ios-app-launch-checklist.md", "src/content/blog/app-store-metadata-management.md"]
+    product_features: ["App Store submission checklists", "Release planning and taskboards"]
+    angle: "Turn Apple's current content-descriptor, in-app-control, capability, global-rating, and region-specific questions—including the social-media questions required for submissions beginning in September 2026—into a change-triggered evidence checklist tied to one release, while stating that LaunchBuddy cannot inspect the binary or answer the questionnaire."
+
+  - id: "kw-074"
+    keyword: "TestFlight test information"
+    proposed_slug: "testflight-test-information"
+    cluster: "testflight"
+    intent: "checklist"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/testflight-release-management.md", "src/content/blog/app-review-notes.md", "src/content/blog/testflight-feedback-management.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists"]
+    angle: "Map Beta App Description, feedback email, and Beta App Review information to their different audiences and derive each field from one build's release scope and verification tasks, while explicitly leaving build-specific What to Test examples to kw-068 and not claiming LaunchBuddy writes to TestFlight."
+
+  - id: "kw-075"
+    keyword: "App Store Accessibility Nutrition Labels checklist"
+    proposed_slug: "app-store-accessibility-nutrition-labels-checklist"
+    cluster: "app-review"
+    intent: "checklist"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "low"
+    related_existing_posts: ["src/content/blog/app-store-connect-release-checklist.md", "src/content/blog/app-idea-to-task-backlog.md"]
+    product_features: ["App Store submission checklists", "Release planning and taskboards"]
+    angle: "Convert Apple's common-task standard into a per-device, per-feature evidence matrix and recurring release review, while making clear that LaunchBuddy organizes the audit work but does not test accessibility or certify a label."
+
+  - id: "kw-076"
+    keyword: "App Store app tags"
+    proposed_slug: "app-store-app-tags"
+    cluster: "aso"
+    intent: "guide"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-keyword-field.md", "src/content/blog/app-store-metadata-management.md", "src/content/blog/aso-experiment-tracker.md"]
+    product_features: ["App Store Connect analytics dashboard", "Release planning and taskboards", "App Store submission checklists"]
+    angle: "Explain Apple's assigned, US-only tag model and provide a keep-or-hide review record that links each tag to accurate product evidence, metadata changes, and later analytics without claiming LaunchBuddy generates or edits tags."
+
+  - id: "kw-077"
+    keyword: "reset App Store rating"
+    proposed_slug: "reset-app-store-rating"
+    cluster: "reviews"
+    intent: "how-to"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-review-management.md", "src/content/blog/app-store-connect-analytics.md", "src/content/blog/ios-app-release-management.md"]
+    product_features: ["App Store reviews inbox", "App Store Connect analytics dashboard", "Release planning and taskboards"]
+    angle: "Build a before-release decision record from review themes and verified fixes, explaining that Apple's overview-rating reset is irreversible after release, applies across countries or regions, and leaves written reviews visible rather than presenting reset as a ratings-growth tactic."
+
+  - id: "kw-078"
+    keyword: "remove App Store submission from review"
+    proposed_slug: "remove-app-store-submission-from-review"
+    cluster: "app-review"
+    intent: "troubleshooting"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-connect-help.md", "src/content/blog/app-store-submission-tracker.md", "src/content/blog/ios-hotfix-release-process.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists"]
+    angle: "Give a state-based cancel-or-continue decision tree that records the defect, affected submission items, accepted-item consequences, Developer Rejected transition, and clean resubmission tasks without claiming LaunchBuddy cancels Apple's submission."
+
+  - id: "kw-079"
+    keyword: "App Store price change schedule"
+    proposed_slug: "app-store-price-change-schedule"
+    cluster: "monetization"
+    intent: "how-to"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "low"
+    related_existing_posts: ["src/content/blog/app-store-connect-analytics.md", "src/content/blog/ios-app-release-management.md"]
+    product_features: ["Release planning and taskboards", "App Store Connect analytics dashboard"]
+    angle: "Turn Apple's global, temporary, and custom app-price options into a dated change record with base-country assumptions, affected storefronts, pre-change evidence, verification tasks, and a later analytics review, while leaving pricing changes in App Store Connect."
+
+  - id: "kw-080"
+    keyword: "TestFlight automatic distribution"
+    proposed_slug: "testflight-automatic-distribution"
+    cluster: "testflight"
+    intent: "how-to"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/testflight-release-management.md", "src/content/blog/testflight-feedback-management.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists"]
+    angle: "Separate automatic internal-group delivery, manual Xcode Cloud assignment, external Beta App Review, and optional tester notification, then provide a release-candidate guardrail checklist so an unverified build is not distributed merely because it finished processing."
+
+  - id: "kw-081"
+    keyword: "App Store promo codes"
+    proposed_slug: "app-store-promo-codes"
+    cluster: "launch-marketing"
+    intent: "guide"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "low"
+    related_existing_posts: ["src/content/blog/ios-app-launch-checklist.md", "src/content/blog/app-store-pre-order.md", "src/content/blog/ios-post-launch-checklist.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists", "App portfolio"]
+    angle: "Build a launch and press allocation workflow around Apple's current per-version, per-platform limit, four-week validity, storefront availability, unreleased-version use, and no-rating boundary, tracking recipients and follow-up tasks without storing or generating codes in LaunchBuddy."
+
+  - id: "kw-082"
+    keyword: "App Store In-App Events"
+    proposed_slug: "app-store-in-app-events"
+    cluster: "launch-marketing"
+    intent: "guide"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-connect-analytics.md", "src/content/blog/aso-experiment-tracker.md", "src/content/blog/app-store-connect-release-checklist.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists", "App Store Connect analytics dashboard", "ASO experiments"]
+    angle: "Work backward from an event date through Apple's metadata, media, deep-link, localization, availability, review, 14-day discovery, and 31-day duration boundaries, then attach a neutral post-event analytics record without claiming LaunchBuddy creates or submits the event."
+
+  - id: "kw-083"
+    keyword: "App Store Connect Asset Library"
+    proposed_slug: "app-store-connect-asset-library"
+    cluster: "aso"
+    intent: "guide"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-product-page-optimization.md", "src/content/blog/aso-experiment-tracker.md", "src/content/blog/app-store-metadata-management.md"]
+    product_features: ["ASO experiments", "App Store Connect analytics dashboard", "Release planning and taskboards", "App Store submission checklists"]
+    angle: "Prepare an asset inventory and approval workflow for Apple's announced fall-2026 Asset Library, creative assets, product-page preview, and reuse across placements, clearly separating announced behavior from live controls and requiring a fresh documentation and search check before drafting."
