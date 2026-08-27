@@ -1099,7 +1099,8 @@ backlog:
     cluster: "testflight"
     intent: "troubleshooting"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/testflight-build-expired/"
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/testflight-release-management.md", "src/content/blog/app-store-connect-help.md"]
