@@ -1113,7 +1113,8 @@ backlog:
     cluster: "release-strategy"
     intent: "definition"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/ios-version-number-vs-build-number/"
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/ios-app-release-management.md", "src/content/blog/testflight-release-management.md"]
