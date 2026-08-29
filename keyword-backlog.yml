@@ -1127,7 +1127,8 @@ backlog:
     cluster: "comparisons"
     intent: "comparison"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/launchbuddy-vs-trello/"
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/launchbuddy-vs-notion.md", "src/content/blog/ios-developer-task-manager.md"]
