@@ -1244,7 +1244,8 @@ backlog:
     cluster: "testflight"
     intent: "how-to"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/testflight-public-link-criteria/"
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/testflight-release-management.md", "src/content/blog/testflight-feedback-management.md"]
