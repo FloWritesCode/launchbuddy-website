@@ -1,10 +1,10 @@
 version: 1
-researched_at: "2026-08-24"
+researched_at: "2026-08-31"
 market: "English-language web search"
 status: "healthy"
 
 methodology:
-  - "Compared candidate topics against all 62 existing posts in src/content/blog."
+  - "Compared candidate topics against all 69 existing posts in src/content/blog."
   - "Used current Google result language, Apple documentation terminology, competitor positioning, and LaunchBuddy product fit."
   - "Priorities are qualitative. They do not claim exact search volume or keyword difficulty."
   - "Before drafting, recheck the live search results and reject topics whose intent is already satisfied by an existing LaunchBuddy article."
@@ -140,6 +140,24 @@ research_sources:
     url: "https://developer.apple.com/wwdc26/guides/app-store/"
   - name: "Apple: Enhance your presence on the App Store"
     url: "https://developer.apple.com/videos/play/wwdc2026/205/"
+  - name: "Apple: Campaign links"
+    url: "https://developer.apple.com/help/app-store-connect-analytics/acquisition/campaign-links/"
+  - name: "Apple: Set up subscription offer codes"
+    url: "https://developer.apple.com/help/app-store-connect/manage-subscriptions/set-up-subscription-offer-codes/"
+  - name: "Apple: Set up win-back offers"
+    url: "https://developer.apple.com/help/app-store-connect/manage-subscriptions/set-up-win-back-offers/"
+  - name: "Apple: Create and submit app bundles"
+    url: "https://developer.apple.com/help/app-store-connect/create-an-app-record/create-and-submit-app-bundles"
+  - name: "Apple: Add platforms for universal purchase"
+    url: "https://developer.apple.com/help/app-store-connect/create-an-app-record/add-platforms/"
+  - name: "Apple: Set distribution methods"
+    url: "https://developer.apple.com/help/app-store-connect/manage-your-apps-availability/set-distribution-methods"
+  - name: "Apple: Manage pricing for auto-renewable subscriptions"
+    url: "https://developer.apple.com/help/app-store-connect/manage-subscriptions/manage-pricing-for-auto-renewable-subscriptions"
+  - name: "Apple: Promote In-App Purchases"
+    url: "https://developer.apple.com/help/app-store-connect/configure-in-app-purchase-settings/promote-in-app-purchases/"
+  - name: "Apple: Add a new app"
+    url: "https://developer.apple.com/help/app-store-connect/create-an-app-record/add-a-new-app"
 
 existing_primary_targets:
   - keyword: "AI release notes for iOS apps"
@@ -328,6 +346,27 @@ existing_primary_targets:
   - keyword: "TestFlight feedback vs App Store reviews"
     file: "src/content/blog/testflight-feedback-vs-app-store-reviews.md"
     intent: "comparison"
+  - keyword: "App Store featuring nomination"
+    file: "src/content/blog/app-store-featuring-nomination.md"
+    intent: "how-to"
+  - keyword: "App Store app transfer checklist"
+    file: "src/content/blog/app-store-app-transfer-checklist.md"
+    intent: "checklist"
+  - keyword: "TestFlight build expired"
+    file: "src/content/blog/testflight-build-expired.md"
+    intent: "troubleshooting"
+  - keyword: "iOS version number vs build number"
+    file: "src/content/blog/ios-version-number-vs-build-number.md"
+    intent: "definition"
+  - keyword: "LaunchBuddy vs Trello"
+    file: "src/content/blog/launchbuddy-vs-trello.md"
+    intent: "comparison"
+  - keyword: "LaunchBuddy vs GitHub Projects"
+    file: "src/content/blog/launchbuddy-vs-github-projects.md"
+    intent: "comparison"
+  - keyword: "App Store age rating questionnaire"
+    file: "src/content/blog/app-store-age-rating-questionnaire.md"
+    intent: "how-to"
 
 excluded_due_to_overlap:
   - keyword: "iOS app project management"
@@ -430,6 +469,16 @@ excluded_due_to_overlap:
     reason: "Apple's declaration is specific to visionOS apps, while LaunchBuddy's verified audience and positioning are indie iOS release management. No supported LaunchBuddy capability can assess virtual-camera motion."
   - keyword: "App Store metadata new languages"
     reason: "The published App Store localization workflow already owns locale selection, per-locale copy and asset review, fallback checks, and release handoff; Apple's additional supported languages do not create a separate intent."
+  - keyword: "App Store subscription offers"
+    reason: "The broad phrase combines distinct setup and decision intents already reserved by kw-085 for subscription offer codes and kw-086 for win-back offers, while kw-081 owns Apple's separate app promo-code workflow."
+  - keyword: "In-App Purchase offer codes"
+    reason: "Apple's newer non-subscription offer-code controls are relevant, but a separate article would substantially repeat the eligibility, one-time-versus-custom-code, distribution, expiry, and measurement workflow reserved by kw-085 and the allocation workflow in kw-081. Recheck only if search results establish a distinct non-subscription intent."
+  - keyword: "App Store custom app distribution"
+    reason: "The private custom-app decision cannot be separated usefully from public and unlisted distribution because Apple's choice is difficult or impossible to reverse after approval. The accepted kw-089 comparison owns that decision and its new-app-record consequence."
+  - keyword: "unlisted vs custom app distribution"
+    reason: "The unqualified wording is dominated by non-Apple commerce-platform results and does not establish a clear App Store intent. Retargeted as kw-089 using Apple's explicit unlisted-versus-private distribution terminology."
+  - keyword: "App Store app SKU"
+    reason: "SKU is one immutable field in the broader app-record setup intent reserved by kw-092. A separate definition article would be a minor variation with little original value beyond Apple's field reference."
 
 backlog:
   - id: "kw-005"
@@ -1432,9 +1481,127 @@ backlog:
     cluster: "aso"
     intent: "guide"
     priority: "P2"
-    status: "approved"
+    status: "rejected"
+    rejection_reason: "Apple still labels Asset Library as coming in fall 2026 and says more detailed resources and guidance are forthcoming. Announcement language does not yet establish a stable live-control how-to intent, so reconsider only after Apple publishes complete documentation and the feature is available."
     confidence: "medium"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/app-store-product-page-optimization.md", "src/content/blog/aso-experiment-tracker.md", "src/content/blog/app-store-metadata-management.md"]
     product_features: ["ASO experiments", "App Store Connect analytics dashboard", "Release planning and taskboards", "App Store submission checklists"]
     angle: "Prepare an asset inventory and approval workflow for Apple's announced fall-2026 Asset Library, creative assets, product-page preview, and reuse across placements, clearly separating announced behavior from live controls and requiring a fresh documentation and search check before drafting."
+
+  - id: "kw-084"
+    keyword: "App Store campaign links"
+    proposed_slug: "app-store-campaign-links"
+    cluster: "app-analytics"
+    intent: "how-to"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-connect-analytics.md", "src/content/blog/app-store-pre-order.md", "src/content/blog/ios-post-launch-checklist.md"]
+    product_features: ["App Store Connect analytics dashboard", "Release planning and taskboards"]
+    angle: "Create a naming, placement, and review record for Apple's provider-token and campaign-token links, including the attribution window and privacy thresholds that can hide small campaigns, then compare campaign results with the release timeline without claiming LaunchBuddy generates links or provides attribution."
+
+  - id: "kw-085"
+    keyword: "App Store subscription offer codes"
+    proposed_slug: "app-store-subscription-offer-codes"
+    cluster: "monetization"
+    intent: "how-to"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-connect-analytics.md", "src/content/blog/ios-post-launch-checklist.md"]
+    product_features: ["Release planning and taskboards", "App Store Connect analytics dashboard"]
+    angle: "Turn Apple's customer-eligibility, one-time-versus-custom-code, renewal, territory, duration, distribution, and redemption-report choices into a bounded campaign brief and later evidence review, while keeping code generation and subscription configuration in App Store Connect."
+
+  - id: "kw-086"
+    keyword: "App Store win-back offers"
+    proposed_slug: "app-store-win-back-offers"
+    cluster: "monetization"
+    intent: "how-to"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-connect-analytics.md", "src/content/blog/ios-post-launch-checklist.md"]
+    product_features: ["Release planning and taskboards", "App Store Connect analytics dashboard"]
+    angle: "Plan one lapsed-subscriber hypothesis around Apple's product-level eligibility, storefront schedule, promotion requirements, and Offers analytics, with an explicit stop-or-iterate review that avoids claiming LaunchBuddy creates offers or guarantees reactivation."
+
+  - id: "kw-087"
+    keyword: "App Store app bundles"
+    proposed_slug: "app-store-app-bundles"
+    cluster: "portfolio"
+    intent: "guide"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/indie-app-portfolio-management.md", "src/content/blog/app-store-app-transfer-checklist.md", "src/content/blog/app-store-pre-order.md"]
+    product_features: ["App portfolio", "Release planning and taskboards", "App Store submission checklists"]
+    angle: "Build a portfolio-level eligibility and launch checklist around Apple's primary-app, paid-versus-free, pricing, common-availability, App Review, and post-approval edit boundaries, including the 2026 mixed-platform rule without confusing current app bundles with announced cross-developer subscription bundles."
+
+  - id: "kw-088"
+    keyword: "App Store universal purchase"
+    proposed_slug: "app-store-universal-purchase"
+    cluster: "distribution"
+    intent: "how-to"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/indie-app-portfolio-management.md", "src/content/blog/ios-app-release-management.md", "src/content/blog/ios-version-number-vs-build-number.md"]
+    product_features: ["App portfolio", "Release planning and taskboards", "App Store submission checklists"]
+    angle: "Coordinate one-app-record, shared-bundle-ID, platform-specific metadata, build, review, and release tasks before Apple's irreversible universal-purchase transition, while stating that LaunchBuddy cannot merge app records, configure Xcode targets, or add platforms in App Store Connect."
+
+  - id: "kw-089"
+    keyword: "App Store unlisted vs private distribution"
+    proposed_slug: "app-store-unlisted-vs-private-distribution"
+    cluster: "distribution"
+    intent: "comparison"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/launchbuddy-vs-app-store-connect.md", "src/content/blog/ios-app-launch-checklist.md", "src/content/blog/app-store-connect-release-checklist.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists", "App portfolio"]
+    angle: "Use Apple's current public, unlisted-direct-link, and private Apple Business or School Manager rules to make the distribution decision before approval, documenting the irreversible boundaries and when switching requires a new app record and binary without claiming LaunchBuddy controls availability."
+
+  - id: "kw-090"
+    keyword: "App Store subscription price increase"
+    proposed_slug: "app-store-subscription-price-increase"
+    cluster: "monetization"
+    intent: "how-to"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-connect-analytics.md", "src/content/blog/ios-post-launch-checklist.md"]
+    product_features: ["Release planning and taskboards", "App Store Connect analytics dashboard"]
+    angle: "Create a country-by-country decision and communication record for preserving existing prices, Apple's notice-versus-consent rules, overlapping scheduled changes, and post-change cancellation evidence, while treating live thresholds and App Store Connect as authoritative."
+
+  - id: "kw-091"
+    keyword: "promoted In-App Purchases"
+    proposed_slug: "promoted-in-app-purchases"
+    cluster: "monetization"
+    intent: "guide"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-metadata-management.md", "src/content/blog/app-store-product-page-optimization.md", "src/content/blog/app-store-connect-analytics.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists", "App Store Connect analytics dashboard"]
+    angle: "Turn Apple's image, metadata, App Review, PurchaseIntent, audience-visibility, ordering, and storefront verification requirements into a launch checklist for one promoted purchase, followed by a neutral analytics review without claiming LaunchBuddy configures StoreKit or promotion placement."
+
+  - id: "kw-092"
+    keyword: "App Store Connect app record"
+    proposed_slug: "app-store-connect-app-record"
+    cluster: "app-setup"
+    intent: "how-to"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-metadata-management.md", "src/content/blog/ios-app-launch-checklist.md", "src/content/blog/ios-version-number-vs-build-number.md"]
+    product_features: ["App portfolio", "Release planning and taskboards", "App Store submission checklists"]
+    angle: "Provide a pre-creation decision record for name, platforms, bundle ID, SKU, user access, and universal-purchase intent, highlighting which identifiers become immutable and how to mirror the resulting app and first release in LaunchBuddy without claiming it creates the Apple record."
