@@ -1381,7 +1381,8 @@ backlog:
     cluster: "app-review"
     intent: "checklist"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/app-store-accessibility-nutrition-labels-checklist/"
     confidence: "high"
     overlap: "low"
     related_existing_posts: ["src/content/blog/app-store-connect-release-checklist.md", "src/content/blog/app-idea-to-task-backlog.md"]
