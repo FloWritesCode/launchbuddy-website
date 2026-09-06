@@ -1409,7 +1409,8 @@ backlog:
     cluster: "reviews"
     intent: "how-to"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/reset-app-store-rating/"
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/app-store-review-management.md", "src/content/blog/app-store-connect-analytics.md", "src/content/blog/ios-app-release-management.md"]
