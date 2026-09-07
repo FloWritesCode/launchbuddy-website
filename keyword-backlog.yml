@@ -1474,7 +1474,8 @@ backlog:
     cluster: "app-review"
     intent: "troubleshooting"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/remove-app-store-submission-from-review/"
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/app-store-connect-help.md", "src/content/blog/app-store-submission-tracker.md", "src/content/blog/ios-hotfix-release-process.md"]
