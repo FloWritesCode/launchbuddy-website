@@ -1,10 +1,10 @@
 version: 1
-researched_at: "2026-08-31"
+researched_at: "2026-09-07"
 market: "English-language web search"
 status: "healthy"
 
 methodology:
-  - "Compared candidate topics against all 69 existing posts in src/content/blog."
+  - "Compared candidate topics against all 76 existing posts in src/content/blog."
   - "Used current Google result language, Apple documentation terminology, competitor positioning, and LaunchBuddy product fit."
   - "Priorities are qualitative. They do not claim exact search volume or keyword difficulty."
   - "Before drafting, recheck the live search results and reject topics whose intent is already satisfied by an existing LaunchBuddy article."
@@ -158,6 +158,24 @@ research_sources:
     url: "https://developer.apple.com/help/app-store-connect/configure-in-app-purchase-settings/promote-in-app-purchases/"
   - name: "Apple: Add a new app"
     url: "https://developer.apple.com/help/app-store-connect/create-an-app-record/add-a-new-app"
+  - name: "Apple: Submit an In-App Purchase"
+    url: "https://developer.apple.com/help/app-store-connect/manage-submissions-to-app-review/submit-an-in-app-purchase/"
+  - name: "Apple: Set up introductory offers"
+    url: "https://developer.apple.com/help/app-store-connect/manage-subscriptions/set-up-introductory-offers-for-auto-renewable-subscriptions/"
+  - name: "Apple: Set up promotional offers"
+    url: "https://developer.apple.com/help/app-store-connect/manage-subscriptions/set-up-promotional-offers-for-auto-renewable-subscriptions"
+  - name: "Apple: Enable Billing Grace Period"
+    url: "https://developer.apple.com/help/app-store-connect/manage-subscriptions/enable-billing-grace-period-for-auto-renewable-subscriptions/"
+  - name: "Apple: Offer auto-renewable subscriptions"
+    url: "https://developer.apple.com/help/app-store-connect/manage-subscriptions/offer-auto-renewable-subscriptions"
+  - name: "Apple: Schedule price changes for In-App Purchases"
+    url: "https://developer.apple.com/help/app-store-connect/manage-in-app-purchases/schedule-price-changes-for-in-app-purchases/"
+  - name: "Apple: Set availability for In-App Purchases"
+    url: "https://developer.apple.com/help/app-store-connect/manage-in-app-purchases/set-availability-for-in-app-purchases"
+  - name: "Apple: Categories and discoverability"
+    url: "https://developer.apple.com/app-store/categories/"
+  - name: "Apple: Manage Sandbox Apple Account settings"
+    url: "https://developer.apple.com/help/app-store-connect/test-in-app-purchases/manage-sandbox-apple-account-settings/"
 
 existing_primary_targets:
   - keyword: "AI release notes for iOS apps"
@@ -367,6 +385,27 @@ existing_primary_targets:
   - keyword: "App Store age rating questionnaire"
     file: "src/content/blog/app-store-age-rating-questionnaire.md"
     intent: "how-to"
+  - keyword: "TestFlight public link criteria"
+    file: "src/content/blog/testflight-public-link-criteria.md"
+    intent: "how-to"
+  - keyword: "App Store Connect draft submissions"
+    file: "src/content/blog/app-store-connect-draft-submissions.md"
+    intent: "how-to"
+  - keyword: "TestFlight What to Test examples"
+    file: "src/content/blog/testflight-what-to-test-examples.md"
+    intent: "list"
+  - keyword: "TestFlight test information"
+    file: "src/content/blog/testflight-test-information.md"
+    intent: "checklist"
+  - keyword: "App Store Accessibility Nutrition Labels checklist"
+    file: "src/content/blog/app-store-accessibility-nutrition-labels-checklist.md"
+    intent: "checklist"
+  - keyword: "App Store app tags"
+    file: "src/content/blog/app-store-app-tags.md"
+    intent: "guide"
+  - keyword: "reset App Store rating"
+    file: "src/content/blog/reset-app-store-rating.md"
+    intent: "how-to"
 
 excluded_due_to_overlap:
   - keyword: "iOS app project management"
@@ -470,7 +509,7 @@ excluded_due_to_overlap:
   - keyword: "App Store metadata new languages"
     reason: "The published App Store localization workflow already owns locale selection, per-locale copy and asset review, fallback checks, and release handoff; Apple's additional supported languages do not create a separate intent."
   - keyword: "App Store subscription offers"
-    reason: "The broad phrase combines distinct setup and decision intents already reserved by kw-085 for subscription offer codes and kw-086 for win-back offers, while kw-081 owns Apple's separate app promo-code workflow."
+    reason: "The broad phrase combines distinct setup and decision intents reserved by kw-094 for introductory offers, kw-095 for promotional offers, kw-085 for subscription offer codes, and kw-086 for win-back offers, while kw-081 owns Apple's separate app promo-code workflow."
   - keyword: "In-App Purchase offer codes"
     reason: "Apple's newer non-subscription offer-code controls are relevant, but a separate article would substantially repeat the eligibility, one-time-versus-custom-code, distribution, expiry, and measurement workflow reserved by kw-085 and the allocation workflow in kw-081. Recheck only if search results establish a distinct non-subscription intent."
   - keyword: "App Store custom app distribution"
@@ -479,6 +518,18 @@ excluded_due_to_overlap:
     reason: "The unqualified wording is dominated by non-Apple commerce-platform results and does not establish a clear App Store intent. Retargeted as kw-089 using Apple's explicit unlisted-versus-private distribution terminology."
   - keyword: "App Store app SKU"
     reason: "SKU is one immutable field in the broader app-record setup intent reserved by kw-092. A separate definition article would be a minor variation with little original value beyond Apple's field reference."
+  - keyword: "TestFlight expire build"
+    reason: "The published TestFlight release-management guide already covers intentionally expiring or replacing a build, while the TestFlight build-expired troubleshooting article owns the resulting 90-day expiration intent. A separate page would split one build-lifecycle decision."
+  - keyword: "TestFlight delete testers"
+    reason: "The published TestFlight release-management and public-link-criteria guides already own tester cohort setup, recruitment boundaries, stopping rules, and release handoff. The delete control alone does not support a distinct product-led article."
+  - keyword: "App Store unresolved issues"
+    reason: "The published App Store Connect help and draft-submissions guides already cover rejection diagnosis, replies, item-level submissions, and resubmission state, while kw-078 owns the distinct cancel-or-continue decision."
+  - keyword: "In-App Purchase review screenshot"
+    reason: "This is one required field inside the In-App Purchase review packet reserved by kw-093. A field-only article would be a minor variation and would overlap the published App Review notes guide."
+  - keyword: "App Store tax category"
+    reason: "Current intent is a legal and tax-classification decision. LaunchBuddy has no verified tax, proceeds, agreement, or compliance capability and cannot add defensible original value beyond Apple's instructions."
+  - keyword: "remove In-App Purchase from sale"
+    reason: "The published iOS app sunset checklist already owns the inventory, customer-notice, removal-from-sale, entitlement-verification, and post-removal-support workflow for subscriptions and consumable purchases. The proposed product-retirement angle would substantially repeat that Gate 5 intent."
 
 backlog:
   - id: "kw-005"
@@ -1435,13 +1486,13 @@ backlog:
     proposed_slug: "app-store-price-change-schedule"
     cluster: "monetization"
     intent: "how-to"
-    priority: "P2"
+    priority: "P1"
     status: "approved"
     confidence: "medium"
-    overlap: "low"
+    overlap: "medium"
     related_existing_posts: ["src/content/blog/app-store-connect-analytics.md", "src/content/blog/ios-app-release-management.md"]
     product_features: ["Release planning and taskboards", "App Store Connect analytics dashboard"]
-    angle: "Turn Apple's global, temporary, and custom app-price options into a dated change record with base-country assumptions, affected storefronts, pre-change evidence, verification tasks, and a later analytics review, while leaving pricing changes in App Store Connect."
+    angle: "Turn Apple's global, temporary, and custom app-price options into a dated change record with base-country assumptions, affected storefronts, pre-change evidence, verification tasks, and a later analytics review, while leaving pricing changes in App Store Connect and reserving product-level IAP pricing for kw-098."
 
   - id: "kw-080"
     keyword: "TestFlight automatic distribution"
@@ -1612,3 +1663,121 @@ backlog:
     related_existing_posts: ["src/content/blog/app-store-metadata-management.md", "src/content/blog/ios-app-launch-checklist.md", "src/content/blog/ios-version-number-vs-build-number.md"]
     product_features: ["App portfolio", "Release planning and taskboards", "App Store submission checklists"]
     angle: "Provide a pre-creation decision record for name, platforms, bundle ID, SKU, user access, and universal-purchase intent, highlighting which identifiers become immutable and how to mirror the resulting app and first release in LaunchBuddy without claiming it creates the Apple record."
+
+  - id: "kw-093"
+    keyword: "submit In-App Purchase for review"
+    proposed_slug: "submit-in-app-purchase-for-review"
+    cluster: "monetization"
+    intent: "how-to"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-connect-draft-submissions.md", "src/content/blog/app-review-notes.md", "src/content/blog/app-store-connect-release-checklist.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists"]
+    angle: "Start after the general draft-submission state machine covered by the published draft guide, then build an item-level review packet around first-of-type purchases, app-version and subscription-group dependencies, metadata and review evidence, and final item verification, while stating that LaunchBuddy neither configures purchases nor submits them."
+
+  - id: "kw-094"
+    keyword: "App Store introductory offers"
+    proposed_slug: "app-store-introductory-offers"
+    cluster: "monetization"
+    intent: "how-to"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-connect-analytics.md", "src/content/blog/ios-post-launch-checklist.md"]
+    product_features: ["Release planning and taskboards", "App Store Connect analytics dashboard"]
+    angle: "Turn free-trial, pay-as-you-go, and pay-up-front choices into one new-subscriber hypothesis with subscription-group eligibility, storefront dates, build verification, and a neutral trial-to-paid review, without claiming LaunchBuddy configures or guarantees offer performance."
+
+  - id: "kw-095"
+    keyword: "App Store promotional offers"
+    proposed_slug: "app-store-promotional-offers"
+    cluster: "monetization"
+    intent: "how-to"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-connect-analytics.md", "src/content/blog/ios-post-launch-checklist.md", "src/content/blog/app-store-connect-api-key.md"]
+    product_features: ["Release planning and taskboards", "App Store Connect analytics dashboard", "App Store submission checklists"]
+    angle: "Cover developer-targeted promotional offers for existing or previously subscribed customers while leaving Apple's separate automated win-back workflow to kw-086 and introductory or code-based offers to their own entries, then provide a configuration, signing-key, StoreKit-verification, and measurement checklist that keeps implementation outside LaunchBuddy and requires a live documentation check before drafting."
+
+  - id: "kw-096"
+    keyword: "App Store Billing Grace Period"
+    proposed_slug: "app-store-billing-grace-period"
+    cluster: "monetization"
+    intent: "how-to"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-connect-analytics.md", "src/content/blog/ios-post-launch-checklist.md", "src/content/blog/ios-app-release-management.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists", "App Store Connect analytics dashboard"]
+    angle: "Coordinate the app-wide duration, renewal-type, sandbox, StoreKit entitlement, production rollout, and recovery-review decisions so access is verified before enablement, while making clear that LaunchBuddy cannot configure billing or inspect subscription state."
+
+  - id: "kw-097"
+    keyword: "App Store subscription groups"
+    proposed_slug: "app-store-subscription-groups"
+    cluster: "monetization"
+    intent: "guide"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-connect-draft-submissions.md", "src/content/blog/ios-app-launch-checklist.md", "src/content/blog/app-store-connect-analytics.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists", "App Store Connect analytics dashboard"]
+    angle: "Provide a pre-configuration matrix for grouping products, assigning level 1 as the highest service, stacking equivalent durations, and predicting upgrade, downgrade, and crossgrade timing, then tie the chosen structure to implementation, review, and analytics tasks without claiming LaunchBuddy manages subscriptions."
+
+  - id: "kw-098"
+    keyword: "schedule In-App Purchase price changes"
+    proposed_slug: "schedule-in-app-purchase-price-changes"
+    cluster: "monetization"
+    intent: "how-to"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-connect-analytics.md", "src/content/blog/ios-app-release-management.md", "src/content/blog/ios-post-launch-checklist.md"]
+    product_features: ["Release planning and taskboards", "App Store Connect analytics dashboard"]
+    angle: "Turn global, temporary, and custom IAP pricing into a dated product-level change record with base-country assumptions, affected storefronts, overlapping release events, verification tasks, and a later evidence review, distinct from kw-079's app-price intent."
+
+  - id: "kw-099"
+    keyword: "remove In-App Purchase from sale"
+    proposed_slug: "remove-in-app-purchase-from-sale"
+    cluster: "monetization"
+    intent: "troubleshooting"
+    priority: "P1"
+    status: "rejected"
+    rejection_reason: "Substantially satisfied by src/content/blog/ios-app-sunset-checklist.md, whose In-App Purchase and subscription gate already covers inventory, customer notice, removal from sale, entitlement verification, app changes, and post-removal support."
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/ios-app-sunset-checklist.md", "src/content/blog/ios-app-release-management.md", "src/content/blog/app-store-connect-analytics.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists", "App Store Connect analytics dashboard"]
+    angle: "Give a product-retirement checklist for storefront availability, customer notice, restore access, merchandising shutdown, app-version changes, Apple status verification, and post-removal support, without equating removal from sale with deletion or claiming LaunchBuddy changes availability."
+
+  - id: "kw-100"
+    keyword: "App Store category selection"
+    proposed_slug: "app-store-category-selection"
+    cluster: "aso"
+    intent: "guide"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-app-tags.md", "src/content/blog/app-store-keyword-field.md", "src/content/blog/app-store-metadata-management.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists", "App Store Connect analytics dashboard"]
+    angle: "Use Apple's purpose, audience, peer-app, primary-versus-secondary, and platform rules to create an evidence-backed category decision record, then review browse-source data without promising rankings or treating a correlated change as causal."
+
+  - id: "kw-101"
+    keyword: "clear Sandbox purchase history"
+    proposed_slug: "clear-sandbox-purchase-history"
+    cluster: "monetization"
+    intent: "troubleshooting"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/testflight-what-to-test-examples.md", "src/content/blog/testflight-release-management.md", "src/content/blog/ios-app-release-management.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists"]
+    angle: "Provide a reproducible reset-and-retest record that separates App Store Connect and on-device controls, irreversible sandbox history clearing, cache sign-out, account state, expected entitlement, and escalation evidence, while stating that LaunchBuddy neither manages Sandbox accounts nor validates StoreKit."
