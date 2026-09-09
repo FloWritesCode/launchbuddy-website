@@ -1513,9 +1513,10 @@ backlog:
     keyword: "App Store promo codes"
     proposed_slug: "app-store-promo-codes"
     cluster: "launch-marketing"
-    intent: "guide"
+    intent: "how-to"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/app-store-promo-codes/"
     confidence: "high"
     overlap: "low"
     related_existing_posts: ["src/content/blog/ios-app-launch-checklist.md", "src/content/blog/app-store-pre-order.md", "src/content/blog/ios-post-launch-checklist.md"]
