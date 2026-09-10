@@ -4,7 +4,7 @@ description: "Plan, create, submit, and measure an App Store In-App Event with a
 pubDate: 2026-09-10
 ---
 
-An **App Store In-App Event** is a timely experience inside an iOS or iPadOS app—such as a challenge, competition, premiere, livestream, new season, major update, or other special event—that can appear as an event card on the App Store. To publish one, define a genuinely time-bound experience, prepare event-specific metadata and media, test a deep link to the experience, set storefront dates, submit the event to App Review, and verify it when it becomes discoverable.
+An **App Store In-App Event** is a timely experience inside an iOS or iPadOS app—such as a challenge, competition, premiere, livestream, new season, major update, or other special event—that can appear as an event card on the App Store and, for games, Apple Games. To publish one, define a genuinely time-bound experience, prepare event-specific metadata and media, test a deep link to the experience, set storefront dates, submit the event to App Review, and verify it when it becomes discoverable.
 
 Don't use an In-App Event as a generic ad for the app. Apple's [current guidance](https://developer.apple.com/app-store/in-app-events/) says repetitive activities, price promotions without new content, and general awareness campaigns aren't good candidates. The event must happen inside the app at the dates and times configured in App Store Connect.
 
@@ -37,7 +37,7 @@ If you can't complete that sentence without vague language, the event isn't read
 
 ## Work backward from the event date
 
-Apple allows an event to last from **15 minutes to 31 days**. Its publish date—the point when the event can become discoverable—can be no more than **14 days before the start**. Those are system limits, not a recommended production schedule.
+Apple's [event instructions](https://developer.apple.com/help/app-store-connect/offer-in-app-events/offer-in-app-events/) allow an event to last from **15 minutes to 31 days**. Its publish date—the point when the event can become discoverable—can be no more than **14 days before the start**. Those are system limits, not a recommended production schedule.
 
 Give App Review, localization, media, and deep-link testing their own buffer:
 
@@ -114,7 +114,7 @@ The three entry states catch a common product gap. A deep link may work while th
 
 ## Write metadata about the event, not the whole app
 
-App Store Connect currently accepts:
+Apple's event instructions currently accept:
 
 - a unique internal reference name up to 64 characters;
 - an event name up to 30 characters;
@@ -151,7 +151,14 @@ The stronger copy names an experience and outcome. It doesn't claim that the app
 
 ### Prepare both media crops deliberately
 
-Apple's specifications call for a landscape **16:9 event card** asset and a portrait **9:16 details-page** asset. Images and videos are supported; videos autoplay and repeat. Use App Store Connect's previews to check what its crops and overlays obscure.
+Apple's [media specifications](https://developer.apple.com/help/app-store-connect/reference/in-app-event-media-and-audio-specifications/) call for:
+
+| Placement | Image | Video | Resolution range |
+| --- | --- | --- | --- |
+| Event card, 16:9 | `.jpg`, `.jpeg`, `.png` | `.mov`, `.m4v`, `.mp4` at 30 or 60 fps | 1920×1080 to 3840×2160 px |
+| Details page, 9:16 | `.jpg`, `.jpeg`, `.png` | `.mov`, `.m4v`, `.mp4` at 30 or 60 fps | 1080×1920 to 2160×3840 px |
+
+Each file can be up to 500 MB. Videos autoplay and repeat, so use App Store Connect's previews to check what its crops and overlays obscure.
 
 An asset preflight should confirm:
 
@@ -206,7 +213,12 @@ Apple currently allows up to **15 approved events per app in App Store Connect**
 
 ## Submit the event and verify the receipt
 
-In-App Events require App Review approval before they can appear. Apple allows an event to be submitted independently of a new app version, but “independent” doesn't mean operationally unrelated. If the event depends on code in an unreleased build, reviewers still need the correct app version, access, and instructions.
+In-App Events require App Review approval before they can appear. Apple's [event-submission rules](https://developer.apple.com/help/app-store-connect/manage-submissions-to-app-review/submit-an-in-app-event/) depend on the app's approval state:
+
+- If the app has never been approved, include the event in the same submission as the first iOS app version.
+- If the app is already approved, submit the event either with or without an iOS app version.
+
+If the event depends on code in an unreleased build, reviewers still need the correct version, access, and instructions.
 
 Before submission, verify:
 
@@ -221,20 +233,14 @@ Before submission, verify:
 [ ] The event contract and App Store record match
 ```
 
-Add the event to the intended App Review draft, inspect the complete packet, submit it, and then verify the status in App Store Connect. The [draft submissions guide](/blog/app-store-connect-draft-submissions/) explains the difference between **Add for Review**, **Ready for Review**, **Submit for Review**, and **Waiting for Review**.
+Use the event-specific status sequence:
 
-Keep a short receipt:
+1. On the event, select **Add for Review** and choose an existing or new draft submission.
+2. Confirm the event changes to **Ready for Review** and inspect every item in the draft.
+3. Select **Submit for Review**.
+4. Confirm the event changes to **Waiting for Review**.
 
-```text
-Event:
-App version, if related:
-Draft contents:
-Submitted at:
-App Store Connect status:
-Owner and next check:
-```
-
-That receipt prevents a finished draft from being mistaken for an event Apple has received.
+If the event is submitted without an app version, select a platform in the draft; Apple reviews the event with the latest version of that platform. A Marketing-role user can submit events but can't add app versions to a submission. For the generic draft state machine and a reusable receipt, use the [draft submissions guide](/blog/app-store-connect-draft-submissions/).
 
 ## Run a live-event verification, not just a launch announcement
 
@@ -265,7 +271,7 @@ Choose the metric that matches the event's purpose:
 | Did existing users enter the experience? | App opens | Reminder and notification taps |
 | Did the event acquire users? | First-time downloads driven by the event | Storefront, source, later usage |
 | Did it bring people back? | Redownloads and app opens | Lapsed-user purpose and event timing |
-| Did a paid event convert? | Event-attributed sales or subscriptions | Purchase requirement and refunds outside this view |
+| Did a paid event convert? | Event-attributed sales or subscriptions | Purchase requirement and offering context |
 
 Write the question before opening the chart:
 
@@ -301,7 +307,7 @@ Create and submit the In-App Event in App Store Connect. LaunchBuddy's documente
 - keep implementation, deep-link QA, metadata, media, review, and live-verification tasks with the app release;
 - turn the event preflight into a reusable App Store submission checklist;
 - assign follow-up work to the correct version instead of leaving it in a launch note;
-- preserve the event question and post-event decision beside the release timeline.
+- preserve the event question and post-event decision in release tasks or project notes.
 
 Default App Store submission checklists are included in LaunchBuddy's free plan; custom reusable checklists require Pro. LaunchBuddy Pro's App Store Connect dashboard shows selected downloads, revenue, and subscription metrics, but Apple's In-App Events dashboard remains the source for event-specific impressions, page views, opens, reminders, and notification taps.
 
