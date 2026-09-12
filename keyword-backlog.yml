@@ -1557,8 +1557,7 @@ backlog:
     cluster: "app-analytics"
     intent: "how-to"
     priority: "P1"
-    status: "published"
-    published_url: "https://launchbuddy.app/blog/app-store-campaign-links/"
+    status: "approved"
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/app-store-connect-analytics.md", "src/content/blog/app-store-pre-order.md", "src/content/blog/ios-post-launch-checklist.md"]
