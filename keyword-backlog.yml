@@ -1,10 +1,10 @@
 version: 1
-researched_at: "2026-09-07"
+researched_at: "2026-09-14"
 market: "English-language web search"
 status: "healthy"
 
 methodology:
-  - "Compared candidate topics against all 76 existing posts in src/content/blog."
+  - "Compared candidate topics against all 81 existing posts in src/content/blog."
   - "Used current Google result language, Apple documentation terminology, competitor positioning, and LaunchBuddy product fit."
   - "Priorities are qualitative. They do not claim exact search volume or keyword difficulty."
   - "Before drafting, recheck the live search results and reject topics whose intent is already satisfied by an existing LaunchBuddy article."
@@ -176,6 +176,26 @@ research_sources:
     url: "https://developer.apple.com/app-store/categories/"
   - name: "Apple: Manage Sandbox Apple Account settings"
     url: "https://developer.apple.com/help/app-store-connect/test-in-app-purchases/manage-sandbox-apple-account-settings/"
+  - name: "Apple: In-App Purchase types"
+    url: "https://developer.apple.com/help/app-store-connect/reference/in-app-purchases-and-subscriptions/in-app-purchase-types/"
+  - name: "Apple: In-App Purchase statuses"
+    url: "https://developer.apple.com/help/app-store-connect/reference/in-app-purchases-and-subscriptions/in-app-purchase-statuses"
+  - name: "Apple: Turn on Family Sharing for In-App Purchases"
+    url: "https://developer.apple.com/help/app-store-connect/configure-in-app-purchase-settings/turn-on-family-sharing-for-in-app-purchases/"
+  - name: "Apple: Create non-renewing subscriptions"
+    url: "https://developer.apple.com/help/app-store-connect/manage-subscriptions/create-non-renewing-subscriptions"
+  - name: "Apple: Overview of testing in sandbox"
+    url: "https://developer.apple.com/help/app-store-connect/test-in-app-purchases/overview-of-testing-in-sandbox/"
+  - name: "Apple: Testing an interrupted purchase"
+    url: "https://developer.apple.com/documentation/storekit/testing-an-interrupted-purchase"
+  - name: "Apple: Set availability for an auto-renewable subscription"
+    url: "https://developer.apple.com/help/app-store-connect/manage-subscriptions/set-availability-for-an-auto-renewable-subscription"
+  - name: "Apple: Supporting monthly subscriptions with a 12-month commitment"
+    url: "https://developer.apple.com/documentation/storekit/supporting-monthly-subscriptions-with-a-12-month-commitment"
+  - name: "Apple: Generate keys for In-App Purchases"
+    url: "https://developer.apple.com/help/app-store-connect/configure-in-app-purchase-settings/generate-keys-for-in-app-purchases"
+  - name: "Apple: Enter server URLs for App Store Server Notifications"
+    url: "https://developer.apple.com/help/app-store-connect/configure-in-app-purchase-settings/enter-server-urls-for-app-store-server-notifications/"
 
 existing_primary_targets:
   - keyword: "AI release notes for iOS apps"
@@ -406,6 +426,21 @@ existing_primary_targets:
   - keyword: "reset App Store rating"
     file: "src/content/blog/reset-app-store-rating.md"
     intent: "how-to"
+  - keyword: "remove App Store submission from review"
+    file: "src/content/blog/remove-app-store-submission-from-review.md"
+    intent: "troubleshooting"
+  - keyword: "App Store price change schedule"
+    file: "src/content/blog/app-store-price-change-schedule.md"
+    intent: "how-to"
+  - keyword: "App Store promo codes"
+    file: "src/content/blog/app-store-promo-codes.md"
+    intent: "how-to"
+  - keyword: "App Store In-App Events"
+    file: "src/content/blog/app-store-in-app-events.md"
+    intent: "guide"
+  - keyword: "App Store campaign links"
+    file: "src/content/blog/app-store-campaign-links.md"
+    intent: "how-to"
 
 excluded_due_to_overlap:
   - keyword: "iOS app project management"
@@ -530,6 +565,16 @@ excluded_due_to_overlap:
     reason: "Current intent is a legal and tax-classification decision. LaunchBuddy has no verified tax, proceeds, agreement, or compliance capability and cannot add defensible original value beyond Apple's instructions."
   - keyword: "remove In-App Purchase from sale"
     reason: "The published iOS app sunset checklist already owns the inventory, customer-notice, removal-from-sale, entitlement-verification, and post-removal-support workflow for subscriptions and consumable purchases. The proposed product-retirement angle would substantially repeat that Gate 5 intent."
+  - keyword: "App Store subscription status meanings"
+    reason: "This is a product-type variation of kw-104. Apple uses the same In-App Purchase status model for subscriptions, while customer-level active, expired, billing-retry, and grace-period state belongs to StoreKit rather than App Store Connect."
+  - keyword: "App Store Server Notifications URL"
+    reason: "Current intent expects server endpoint implementation and signed-notification handling. LaunchBuddy has no verified server-notification integration, and the existing App Store Connect webhooks guide already owns the useful event-to-release-task workflow."
+  - keyword: "In-App Purchase localization"
+    reason: "The published App Store localization workflow already owns locale scope, copy review, App Store Connect entry, submission timing, and live-page verification, while kw-093 includes the distinct In-App Purchase review packet. A product-field variation would add little original value."
+  - keyword: "In-App Purchase key"
+    reason: "Current intent is credential generation for App Store Server APIs and promotional-offer signing. LaunchBuddy does not use or manage this key, and its safe one-time-download and rotation advice is substantially covered by the published App Store Connect API key guide."
+  - keyword: "Sandbox Family Sharing testing"
+    reason: "The accepted Family Sharing candidate kw-103 will include the required Sandbox Test Family and entitlement-verification plan. A second article would split one irreversible enablement-and-test decision into a minor variation."
 
 backlog:
   - id: "kw-005"
@@ -1786,3 +1831,94 @@ backlog:
     related_existing_posts: ["src/content/blog/testflight-what-to-test-examples.md", "src/content/blog/testflight-release-management.md", "src/content/blog/ios-app-release-management.md"]
     product_features: ["Release planning and taskboards", "App Store submission checklists"]
     angle: "Provide a reproducible reset-and-retest record that separates App Store Connect and on-device controls, irreversible sandbox history clearing, cache sign-out, account state, expected entitlement, and escalation evidence, while stating that LaunchBuddy neither manages Sandbox accounts nor validates StoreKit."
+
+  - id: "kw-102"
+    keyword: "In-App Purchase types"
+    proposed_slug: "in-app-purchase-types"
+    cluster: "monetization"
+    intent: "definition"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-connect-draft-submissions.md", "src/content/blog/ios-app-release-management.md", "src/content/blog/ios-app-launch-checklist.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists", "App portfolio"]
+    angle: "Turn Apple's consumable, non-consumable, auto-renewable, and non-renewing definitions into a decision record covering duration, repeat purchase, restore expectations, first-of-type review dependencies, and the immutable purchase-type choice, then create only the implementation and submission tasks the chosen model requires; leave non-renewing setup to kw-105 and review-packet detail to kw-093."
+
+  - id: "kw-103"
+    keyword: "Family Sharing for In-App Purchases"
+    proposed_slug: "family-sharing-for-in-app-purchases"
+    cluster: "monetization"
+    intent: "how-to"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/ios-app-release-management.md", "src/content/blog/app-store-connect-release-checklist.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists"]
+    angle: "Build an irreversible-enable checklist for eligible auto-renewable subscriptions and non-consumables, including existing-versus-new purchaser behavior, Sandbox Test Families, entitlement revocation, restore checks, customer communication, and release verification without claiming LaunchBuddy configures Family Sharing or validates StoreKit."
+
+  - id: "kw-104"
+    keyword: "In-App Purchase status meanings"
+    proposed_slug: "in-app-purchase-status-meanings"
+    cluster: "monetization"
+    intent: "troubleshooting"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-connect-draft-submissions.md", "src/content/blog/app-store-submission-tracker.md", "src/content/blog/app-store-connect-help.md", "src/content/blog/app-review-notes.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists"]
+    angle: "Map Apple's Missing Metadata, Ready to Submit, Waiting for Review, In Review, Rejected, and availability states to the next evidence or submission task, clearly separate App Store Connect product status from a customer's StoreKit entitlement state, and provide a diagnostic record without inventing a direct status sync."
+
+  - id: "kw-105"
+    keyword: "create non-renewing subscription in App Store Connect"
+    proposed_slug: "create-non-renewing-subscription-app-store-connect"
+    cluster: "monetization"
+    intent: "how-to"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-connect-draft-submissions.md", "src/content/blog/ios-app-release-management.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists"]
+    angle: "Show when a fixed-duration, manually renewed product fits, then coordinate product ID, price, localization, app-managed duration and entitlement logic, Sandbox testing, and the first-of-type app-version submission while keeping configuration and StoreKit implementation outside LaunchBuddy."
+
+  - id: "kw-106"
+    keyword: "Sandbox subscription renewal rate"
+    proposed_slug: "sandbox-subscription-renewal-rate"
+    cluster: "monetization-testing"
+    intent: "how-to"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/testflight-release-management.md", "src/content/blog/testflight-what-to-test-examples.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists"]
+    angle: "Create a time-bounded renewal test plan that records the tester-specific speed, product duration, expected renewal, billing-retry and grace-period checkpoints, and the automatic-renewal limit, explicitly separating Sandbox timing from TestFlight and production behavior and from kw-101's history reset."
+
+  - id: "kw-107"
+    keyword: "test interrupted purchases in Sandbox"
+    proposed_slug: "test-interrupted-purchases-in-sandbox"
+    cluster: "monetization-testing"
+    intent: "how-to"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/testflight-what-to-test-examples.md", "src/content/blog/ios-app-release-management.md", "src/content/blog/testflight-release-management.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists"]
+    angle: "Provide a reproducible scenario for enabling interruption on one Sandbox account, verifying the out-of-app action and resumed transaction, resetting the tester flag, and recording evidence across app relaunches without claiming LaunchBuddy can inspect transactions or validate StoreKit behavior."
+
+  - id: "kw-108"
+    keyword: "monthly subscription with 12-month commitment"
+    proposed_slug: "monthly-subscription-12-month-commitment"
+    cluster: "monetization"
+    intent: "how-to"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-connect-analytics.md", "src/content/blog/ios-app-release-management.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists", "App Store Connect analytics dashboard"]
+    angle: "Use Apple's exact new billing-plan terminology to coordinate eligibility, yearly-product configuration, storefront exclusions, total-price disclosure, upgrade and cancellation behavior, StoreKit and Sandbox verification, release rollout, and contingent-price analytics; treat it as a billing plan on an existing one-year product rather than a fifth purchase type, and require a live OS, SDK, and regional documentation check before drafting."
