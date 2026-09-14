@@ -34,6 +34,12 @@ const { currentPath = '/' } = Astro.props;
           Blog
         </a>
         <a
+          class={`hidden sm:inline text-sm font-medium no-underline transition-colors duration-200 ${currentPath.startsWith('/checklist') ? 'text-text-primary' : 'text-text-secondary hover:text-accent-blue'}`}
+          href="/checklist/"
+        >
+          Checklist
+        </a>
+        <a
           class="inline-flex items-center justify-center w-9 h-9 rounded-lg text-text-secondary hover:text-text-primary hover:bg-white/5 transition-all duration-200"
           href="https://twitter.com/LaunchBuddy_App"
           aria-label="LaunchBuddy on X"

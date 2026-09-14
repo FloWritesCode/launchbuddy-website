@@ -1,0 +1,42 @@
+---
+const previewItems = [
+  { done: true, label: '01 Demonstrate one complete workflow' },
+  { done: true, label: '02 Install the exact release on devices' },
+  { done: true, label: '03 Replace development configuration' },
+  { done: false, label: '07 Verify agreements and product setup' },
+  { done: false, label: '12 Delete a test account completely' },
+  { done: false, label: '15 Ask before sending personal data to AI' },
+  { done: false, label: '16 Compare listing with the installed app' },
+  { done: false, label: '25 Have a fresh person sign off' },
+];
+---
+
+<div class="checklist-preview" aria-hidden="true">
+  <div class="checklist-preview__glow"></div>
+  <div class="checklist-preview__sheet checklist-preview__sheet--back">
+    <div class="checklist-preview__rule"></div>
+    <div class="checklist-preview__rule"></div>
+    <div class="checklist-preview__rule"></div>
+    <div class="checklist-preview__rule"></div>
+  </div>
+  <div class="checklist-preview__sheet">
+    <div class="checklist-preview__meta">
+      <span class="checklist-preview__brand">LaunchBuddy</span>
+      <span class="checklist-preview__badge">PDF</span>
+    </div>
+    <p class="checklist-preview__kicker">First submission field guide</p>
+    <p class="checklist-preview__title">App Launch Checklist</p>
+    <p class="checklist-preview__lede">25 actions before your first App Store submission</p>
+    <ol class="checklist-preview__list">
+      {
+        previewItems.map((item) => (
+          <li class:list={['checklist-preview__item', item.done && 'is-done']}>
+            <span class="checklist-preview__box">{item.done ? '✓' : ''}</span>
+            <span>{item.label}</span>
+          </li>
+        ))
+      }
+    </ol>
+    <p class="checklist-preview__more">+ 17 more, each with a PASS WHEN</p>
+  </div>
+</div>

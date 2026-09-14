@@ -1,0 +1,460 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Footer from '../components/Footer.astro';
+import KitForm from '../components/KitForm.astro';
+import ChecklistPreview from '../components/ChecklistPreview.astro';
+import StarRating from '../components/StarRating.astro';
+import {
+  APP_STORE_RATING,
+  APP_STORE_REVIEW_COUNT,
+  APP_STORE_REVIEWS_URL,
+  APP_STORE_URL,
+  CHECKLIST_FAQ,
+  CHECKLIST_PATH,
+  USER_COUNT,
+} from '../lib/site';
+
+const title = 'App Launch Checklist (Free PDF) | LaunchBuddy';
+const description =
+  'Download the free App Launch Checklist: 25 actions before your first App Store submission. First run, purchases, privacy, listing, and a final rehearsal — PDF delivered to your inbox.';
+const keywords =
+  'App Launch Checklist, first App Store submission, iOS app launch checklist, App Store submission checklist, indie iOS developer, App Review checklist';
+
+const chapters = [
+  {
+    code: '01',
+    title: 'Make the first run work',
+    count: '05 checks',
+    line: 'A reviewer starts with a fresh install. Test that experience.',
+    items: [
+      'Demonstrate one complete useful workflow',
+      'Install the exact release on real devices',
+    ],
+  },
+  {
+    code: '02',
+    title: 'Make the money flow work',
+    count: '05 checks',
+    line: 'A beautiful paywall is not evidence of a working purchase.',
+    items: [
+      'Check the payment route for each offer',
+      'Verify agreements and product setup',
+    ],
+  },
+  {
+    code: '03',
+    title: 'Respect accounts and personal data',
+    count: '05 checks',
+    line: 'Inspect what actually happens after a tap, not just the UI.',
+    items: [
+      'Test login and remove unnecessary gates',
+      'Delete a test account completely',
+    ],
+  },
+  {
+    code: '04',
+    title: 'Make the listing match reality',
+    count: '05 checks',
+    line: 'Claims, content, and availability are part of the product.',
+    items: [
+      'Compare the listing with the installed app',
+      'Check rights and branding',
+    ],
+  },
+  {
+    code: '05',
+    title: 'Run the final submission rehearsal',
+    count: '05 checks',
+    line: 'The final five turn a finished build into a reviewable release.',
+    items: [
+      'Open support and legal pages signed out',
+      'Try crossing account boundaries',
+    ],
+  },
+];
+
+const misses = [
+  {
+    title: 'Development leftovers in the release',
+    body: 'Localhost URLs, mock responses, debug shortcuts, and Test Store keys still ship. The uploaded build has to work outside your laptop.',
+  },
+  {
+    title: 'A paywall that cannot take money',
+    body: 'Products missing from the version, a Paid Apps Agreement that is not complete, or restore that only works in a local StoreKit simulation.',
+  },
+  {
+    title: 'Deletion that only clears the device',
+    body: 'Apple expects account deletion to hit the backend — including guest accounts. Clearing local storage is not the check.',
+  },
+  {
+    title: 'A listing that does not match the app',
+    body: 'Template names, stale screenshots, and promised features that are not on a working screen. Reviewers install what you submitted, then open the store page.',
+  },
+];
+
+const steps = [
+  {
+    n: '1',
+    title: 'Drop your email',
+    body: 'One field. No account, no card, no “book a call.”',
+  },
+  {
+    n: '2',
+    title: 'Confirm the subscription',
+    body: 'Kit sends a confirmation so nobody can subscribe you by accident.',
+  },
+  {
+    n: '3',
+    title: 'Open the PDF and ship',
+    body: 'Print it, keep it next to App Store Connect, or tick it beside the release.',
+  },
+];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'App Launch Checklist',
+    description,
+    url: 'https://launchbuddy.app/checklist/',
+    isPartOf: {
+      '@type': 'WebSite',
+      name: 'LaunchBuddy',
+      url: 'https://launchbuddy.app',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'DigitalDocument',
+    name: 'App Launch Checklist',
+    description:
+      'A 25-action first-submission field guide for indie iOS developers: first run, purchases, accounts and personal data, listing accuracy, and a final rehearsal before App Review.',
+    encodingFormat: 'application/pdf',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: CHECKLIST_FAQ.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: { '@type': 'Answer', text: item.answer },
+    })),
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  keywords={keywords}
+  path={CHECKLIST_PATH}
+  jsonLd={jsonLd}
+>
+  <section class="max-w-6xl mx-auto px-6 pt-10 md:pt-16 pb-16 md:pb-24">
+    <div class="hero-split">
+      <div class="text-left max-w-xl lg:max-w-none">
+        <div class="section-label fade-in">Free PDF · First submission field guide</div>
+        <h1
+          class="font-display font-bold text-4xl sm:text-5xl lg:text-[3.15rem] text-text-primary leading-[1.08] tracking-tight mb-5 fade-in fade-in-delay-1"
+        >
+          25 actions before<br />
+          <span class="text-gradient">your first submit.</span>
+        </h1>
+        <p class="text-lg text-text-secondary mb-8 leading-relaxed fade-in fade-in-delay-2">
+          Finish an app, feel ready to ship, then get hit with a rejection. This field guide catches
+          the easy-to-miss issues before Apple does — first run, purchases, privacy, listing, and a
+          final rehearsal. Confirm your email and the PDF lands in your inbox.
+        </p>
+
+        <div id="get-the-pdf" class="checklist-capture fade-in fade-in-delay-3">
+          <p class="checklist-capture__label">Get the free PDF</p>
+          <KitForm />
+          <p class="checklist-capture__fineprint">
+            Free forever. Confirm your email to receive the PDF. Unsubscribe anytime.
+          </p>
+        </div>
+
+        <div class="trust-strip mt-8 fade-in fade-in-delay-4">
+          <span class="trust-strip__highlight">{USER_COUNT} developers</span>
+          <span class="trust-strip__dot" aria-hidden="true"></span>
+          <span>{APP_STORE_RATING} App Store rating</span>
+          <span class="trust-strip__dot" aria-hidden="true"></span>
+          <span>No account required</span>
+        </div>
+      </div>
+
+      <div class="fade-in-up fade-in-delay-2">
+        <ChecklistPreview />
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-6 section-block--tight border-y border-white/[0.04]">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-4xl mx-auto">
+      <div class="stat-pill">
+        <span class="stat-pill__value">25</span>
+        <span class="stat-pill__label">Actions</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-pill__value">5</span>
+        <span class="stat-pill__label">Field guides</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-pill__value">PDF</span>
+        <span class="stat-pill__label">Print or keep nearby</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-pill__value">$0</span>
+        <span class="stat-pill__label">No card, no app required</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-6 section-block">
+    <div class="mb-12 max-w-2xl">
+      <span class="section-label">Why a list beats memory</span>
+      <h2 class="section-heading mb-4">Catch it before Apple does</h2>
+      <p class="section-subheading">
+        First submissions stall on leftovers, broken purchases, and listings that do not match the
+        installed build. Each check in the PDF has a PASS WHEN so you know it is actually done.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      {
+        misses.map((miss) => (
+          <div class="glass-card glass-card--static p-6">
+            <p class="font-display font-semibold text-text-primary mb-2">{miss.title}</p>
+            <p class="text-text-secondary leading-relaxed text-sm md:text-base">{miss.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-6 section-block border-t border-white/[0.04]">
+    <div class="mb-12 max-w-2xl">
+      <span class="section-label">Inside the PDF</span>
+      <h2 class="section-heading mb-4">Five field guides, 25 actions</h2>
+      <p class="section-subheading">
+        Two checks from each field guide. The PDF has all 25, with a PASS WHEN so you know
+        each one is done.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {
+        chapters.map((chapter) => (
+          <article class="glass-card glass-card--static p-6 flex flex-col">
+            <div class="flex items-baseline justify-between gap-3 mb-3">
+              <span class="font-mono text-xs text-accent-cyan tracking-wider">{chapter.code}</span>
+              <span class="text-xs text-text-muted font-mono">{chapter.count}</span>
+            </div>
+            <h3 class="font-display font-semibold text-text-primary text-lg mb-2">{chapter.title}</h3>
+            <p class="text-xs text-text-muted leading-relaxed mb-4">{chapter.line}</p>
+            <ul class="space-y-2.5 text-sm text-text-secondary leading-relaxed flex-1">
+              {chapter.items.map((item) => (
+                <li class="flex gap-2.5">
+                  <span class="checklist-tick" aria-hidden="true"></span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <p class="text-xs text-text-muted mt-5 font-medium">+ 3 more in the PDF →</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-6 section-block">
+    <div class="mb-12 max-w-2xl mx-auto text-center">
+      <span class="section-label">Three steps</span>
+      <h2 class="section-heading mb-4">From inbox to Submit for Review</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+      {
+        steps.map((step) => (
+          <div class="text-center md:text-left">
+            <span class="checklist-step-n">{step.n}</span>
+            <h3 class="font-display font-semibold text-text-primary text-lg mt-4 mb-2">{step.title}</h3>
+            <p class="text-text-secondary leading-relaxed text-sm md:text-base">{step.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-6 section-block border-t border-white/[0.04]">
+    <div class="mb-12">
+      <span class="section-label">Social proof</span>
+      <h2 class="section-heading">Built by the same team as LaunchBuddy</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="glass-card glass-card--static p-6">
+        <StarRating rating={5} />
+        <p class="text-text-secondary mt-4 mb-6 leading-relaxed">
+          “This is a great app. I use it for my iOS/Mac development to keep track of version &amp;
+          release documentation, bug fixes and enhancements.”
+        </p>
+        <p class="font-display font-semibold text-sm text-text-primary">
+          <a
+            href={APP_STORE_REVIEWS_URL}
+            class="no-underline hover:text-accent-blue transition-colors"
+            rel="noopener noreferrer">Maarten B.</a
+          >
+        </p>
+        <p class="text-xs text-text-muted mt-1">Release tracking · App Store review</p>
+      </div>
+      <div class="glass-card glass-card--static p-6">
+        <StarRating rating={5} />
+        <p class="text-text-secondary mt-4 mb-6 leading-relaxed">
+          “LaunchBuddy is a great tool to help you organize your projects, keep on top of goals, and
+          actually work towards shipping something on the App Store. Hard recommend.”
+        </p>
+        <p class="font-display font-semibold text-sm text-text-primary">
+          <a
+            href={APP_STORE_REVIEWS_URL}
+            class="no-underline hover:text-accent-blue transition-colors"
+            rel="noopener noreferrer">App Store Review</a
+          >
+        </p>
+        <p class="text-xs text-text-muted mt-1">Shipping workflow · Verified purchase</p>
+      </div>
+      <div class="glass-card glass-card--static p-6">
+        <StarRating rating={5} />
+        <p class="text-text-secondary mt-4 mb-6 leading-relaxed">
+          “This tool makes it super easy to track and plan what you're developing, and syncs between
+          phone and Mac.”
+        </p>
+        <p class="font-display font-semibold text-sm text-text-primary">
+          <a
+            href={APP_STORE_REVIEWS_URL}
+            class="no-underline hover:text-accent-blue transition-colors"
+            rel="noopener noreferrer">App Store Review</a
+          >
+        </p>
+        <p class="text-xs text-text-muted mt-1">Cross-device sync · Verified purchase</p>
+      </div>
+    </div>
+    <p class="text-center text-sm text-text-muted mt-8">
+      {APP_STORE_RATING}/5 from {APP_STORE_REVIEW_COUNT} App Store reviews · the PDF is the first-submission
+      field guide from the same team.
+    </p>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-6 section-block">
+    <div class="cta-banner relative z-10">
+      <div class="flex flex-col items-center text-center max-w-xl mx-auto">
+        <h2 class="cta-banner__headline mb-4">Get the field guide before your first submit</h2>
+        <p class="text-text-secondary text-lg mb-8">
+          25 actions. One email. The PDF arrives after you confirm.
+        </p>
+        <div id="get-the-pdf-again" class="checklist-capture checklist-capture--on-dark w-full">
+          <KitForm />
+          <p class="checklist-capture__fineprint">
+            Free forever. Confirm your email to receive the PDF. Unsubscribe anytime.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-6 section-block--tight">
+    <div class="glass-card glass-card--static p-8 md:p-10 max-w-3xl mx-auto text-center">
+      <h2 class="font-display font-bold text-2xl text-text-primary mb-3">Want it inside the release?</h2>
+      <p class="text-text-secondary leading-relaxed mb-6">
+        LaunchBuddy turns checks like these into reusable App Store submission checklists on iPhone
+        and Mac — tied to the version you are actually shipping. The PDF is the first-submission
+        field guide and stands on its own. The app is there when you want the checks to follow every
+        release.
+      </p>
+      <a href={APP_STORE_URL} class="btn-ship btn-ship--sm">
+        Start shipping
+        <svg class="btn-ship__arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"
+          ></path>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-6 section-block">
+    <div class="mb-12">
+      <span class="section-label">FAQ</span>
+      <h2 class="section-heading">Before you subscribe</h2>
+    </div>
+    <div class="max-w-3xl mx-auto space-y-3">
+      {
+        CHECKLIST_FAQ.map((item) => (
+          <details class="faq-item group">
+            <summary class="flex justify-between items-center cursor-pointer p-5 md:p-6 text-text-primary font-display font-semibold">
+              <span>{item.question}</span>
+              <svg
+                class="w-5 h-5 text-text-muted transition-transform group-open:rotate-180 shrink-0 ml-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"></path></svg
+              >
+            </summary>
+            <div class="px-5 md:px-6 pb-5 md:pb-6 text-text-secondary leading-relaxed">{item.answer}</div>
+          </details>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-6 pb-16 md:pb-24">
+    <p class="text-center text-sm text-text-muted">
+      Want the long-form walkthrough?
+      <a href="/blog/ios-app-launch-checklist/" class="text-accent-blue hover:text-accent-cyan no-underline"
+        >iOS app launch checklist</a
+      > and the
+      <a
+        href="/blog/app-store-connect-release-checklist/"
+        class="text-accent-blue hover:text-accent-cyan no-underline">App Store Connect release checklist</a
+      >.
+    </p>
+  </section>
+
+  <a href="#get-the-pdf" class="checklist-sticky-cta is-hidden" data-checklist-sticky>
+    Get the free PDF
+  </a>
+
+  <div class="h-20 md:hidden" aria-hidden="true"></div>
+
+  <Footer />
+</BaseLayout>
+
+<script>
+  const sticky = document.querySelector('[data-checklist-sticky]');
+  const forms = ['get-the-pdf', 'get-the-pdf-again']
+    .map((id) => document.getElementById(id))
+    .filter((el): el is HTMLElement => Boolean(el));
+
+  if (sticky instanceof HTMLElement && forms.length && 'IntersectionObserver' in window) {
+    const visible = new Set<Element>();
+    const sync = () => {
+      sticky.classList.toggle('is-hidden', visible.size > 0);
+    };
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) visible.add(entry.target);
+          else visible.delete(entry.target);
+        }
+        sync();
+      },
+      { threshold: 0.25 },
+    );
+    forms.forEach((el) => io.observe(el));
+  }
+</script>

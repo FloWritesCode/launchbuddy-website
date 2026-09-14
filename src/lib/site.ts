@@ -25,6 +25,36 @@ export const DEFAULT_DESCRIPTION =
 export const DEFAULT_KEYWORDS =
   'App Store Connect, iOS app release manager, App Store submission tracker, LaunchBuddy AI, ASO experiments, indie iOS developer, Xcode project manager, TestFlight release management';
 
+export const CHECKLIST_PATH = '/checklist/';
+
+export const CHECKLIST_FAQ = [
+  {
+    question: 'Is the App Launch Checklist actually free?',
+    answer:
+      'Yes. Enter your email, confirm the subscription, and the PDF is sent to your inbox. No credit card and no LaunchBuddy account required.',
+  },
+  {
+    question: 'What do I get when I subscribe?',
+    answer:
+      'A five-page first-submission field guide: 25 actions across first run, purchases, accounts and personal data, listing accuracy, and a final rehearsal. Every check includes what to do and a PASS WHEN so you know it is done. You will also hear from LaunchBuddy occasionally with shipping tips. Unsubscribe anytime.',
+  },
+  {
+    question: 'Why do I have to confirm my email?',
+    answer:
+      'Kit (the email provider) uses double opt-in so nobody can subscribe you without permission. After you confirm, the checklist PDF is delivered automatically.',
+  },
+  {
+    question: 'Is this for a first launch or an update?',
+    answer:
+      'It is written for your first App Store submission — a fresh install, the first purchases of a type, reviewer access, and the listing that ships with the app. If you are shipping an update, the same checks still catch leftovers, but the field guide assumes a first review.',
+  },
+  {
+    question: 'How is this different from LaunchBuddy?',
+    answer:
+      'The PDF is a printable first-submission field guide you can keep next to App Store Connect. LaunchBuddy is the app that turns checks like these into reusable submission checklists on iPhone and Mac, tied to each release. Grab the PDF either way — you do not need the app to use it.',
+  },
+] as const;
+
 export type FeatureTierValue = boolean | string;
 
 export type FeatureComparisonRow = {

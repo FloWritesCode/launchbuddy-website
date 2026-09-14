@@ -363,4 +363,6 @@ Start with the launch goal. Create the release. Attach the tasks, checklist, App
 
 That is the workflow LaunchBuddy is designed to support.
 
+Want a printable copy of the first-submission checks? Get the free [App Launch Checklist PDF](/checklist/) — 25 actions before your first App Store submission, delivered to your inbox after you subscribe.
+
 <a href="https://apple.co/3iFcjjW">Download LaunchBuddy on the App Store</a>

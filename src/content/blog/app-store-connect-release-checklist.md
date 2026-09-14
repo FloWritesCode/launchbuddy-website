@@ -179,4 +179,6 @@ LaunchBuddy helps indie iOS developers plan releases, track Xcode tasks, manage 
 
 If your next release is scattered across Xcode, App Store Connect, Notes, and memory, bring it into one place before you submit.
 
+Want the printable first-submission version? Get the free [App Launch Checklist PDF](/checklist/) — 25 actions covering first run, purchases, privacy, listing accuracy, and a final rehearsal, delivered to your inbox.
+
 <a href="https://apple.co/3iFcjjW">Download LaunchBuddy on the App Store</a>
