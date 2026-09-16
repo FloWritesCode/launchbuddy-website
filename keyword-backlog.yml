@@ -1644,7 +1644,8 @@ backlog:
     cluster: "portfolio"
     intent: "guide"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/app-store-app-bundles/"
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/indie-app-portfolio-management.md", "src/content/blog/app-store-app-transfer-checklist.md", "src/content/blog/app-store-pre-order.md"]
