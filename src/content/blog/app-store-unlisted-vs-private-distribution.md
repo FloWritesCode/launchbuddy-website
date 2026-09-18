@@ -14,10 +14,10 @@ The decision matters before approval. Apple says switching between public and pr
 | --- | --- | --- |
 | Who can find the app? | Anyone who receives the direct App Store link | Only organizations specified in App Store Connect |
 | App Store visibility | Excluded from search, categories, recommendations, charts, and other listings | Visible to specified organizations in Apple Business or Apple School Manager |
-| Unmanaged or employee-owned devices | Suitable when users need a standard App Store link | Usually depends on the recipient organization's Apps and Books and device-management process |
+| Installation path | A direct link works on managed and unmanaged devices and can also be used in Apple Business or Apple School Manager | A specified organization distributes the app through Mobile Device Management or redemption codes |
 | Access boundary | The link controls discovery, not authorization | Organization assignment controls who can obtain the app through the private catalog |
-| Deployment owner | The developer shares the link; users or organizations install from it | The organization's IT team acquires and distributes the app, including through device management |
-| App Review | The app must be submitted and ready for final distribution; beta or prerelease apps don't qualify | The app and each updated version go through App Review |
+| Rollout owner | The developer shares the link, or an organization uses it in its managed rollout | The organization's IT team acquires and distributes the app |
+| App Review | Every version goes through App Review; the initial unlisted request also requires a submitted, final app rather than a beta or prerelease build | The app and each updated version go through App Review |
 | App Store Connect setup | Set distribution to Public, submit the app, note the unlisted intent, then request an unlisted link | Select Private and specify each recipient organization before approval |
 | Later conversion | A public app can be changed to unlisted by request | Changing between private and public requires a new app record and binary submission |
 
@@ -37,7 +37,7 @@ An unlisted app can fit audiences that don't map neatly to one managed organizat
 
 However, **anyone with the link can access the product page and download the app**. A forwarded URL doesn't stay inside the intended audience. If the app exposes restricted workflows or data, enforce authorization in the app or backend. Don't treat an obscure URL as a login system.
 
-Apple also says an unlisted request will be declined if the app hasn't been submitted to App Review or is still a beta or prerelease build. TestFlight remains the appropriate channel while you are testing rather than distributing a finished app.
+Apple also says an unlisted request will be declined if the app hasn't been submitted to App Review or is still a beta or prerelease build. [TestFlight](https://developer.apple.com/help/app-store-connect/test-a-beta-version/testflight-overview/) remains the appropriate channel while you are testing rather than distributing a finished app. After release, later unlisted versions still follow App Review like other App Store updates.
 
 ## What private App Store distribution means
 
@@ -180,9 +180,9 @@ Add these checks to your broader [iOS app launch checklist](/blog/ios-app-launch
 
 ## Where LaunchBuddy fits
 
-LaunchBuddy can keep the app, release, distribution decision, tasks, and submission checks together across iPhone, iPad, and Mac with iCloud sync. The Free plan includes release planning, taskboards, and default submission checklists within its two-app and two-release limits. Pro adds unlimited apps and releases plus custom checklists.
+LaunchBuddy can keep the app and release plan together across iPhone, iPad, and Mac with iCloud sync. Record the distribution decision in project notes, encode roles in task titles, and turn the applicable checks into release tasks. The Free plan includes release planning, taskboards, and default submission checklists within its two-app and two-release limits. Pro adds unlimited apps and releases plus custom checklists and unlimited project notes.
 
-For this workflow, create tasks with explicit owners and evidence:
+For this workflow, put the owner in each task title and keep supporting evidence in project notes:
 
 ```text
 [Developer] Verify recipient Organization ID
@@ -195,4 +195,4 @@ For this workflow, create tasks with explicit owners and evidence:
 
 LaunchBuddy doesn't select an App Store distribution method, request an unlisted link, create an Apple app record, upload a binary, verify an Organization ID, configure MDM, or control App Store availability. App Store Connect, Apple Business or Apple School Manager, and the recipient's device-management system remain authoritative. For the broader boundary, see [LaunchBuddy vs App Store Connect](/blog/launchbuddy-vs-app-store-connect/).
 
-Once the audience, access boundary, and switching cost are explicit, <a href="https://apple.co/3iFcjjW">download LaunchBuddy and attach the distribution checks to your release</a>.
+Once the audience, access boundary, and switching cost are explicit, <a href="https://apple.co/3iFcjjW">download LaunchBuddy and turn the distribution checks into release tasks</a>.
