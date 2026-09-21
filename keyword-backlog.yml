@@ -1713,7 +1713,8 @@ backlog:
     cluster: "app-setup"
     intent: "how-to"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/app-store-connect-app-record/"
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/app-store-metadata-management.md", "src/content/blog/ios-app-launch-checklist.md", "src/content/blog/ios-version-number-vs-build-number.md"]
