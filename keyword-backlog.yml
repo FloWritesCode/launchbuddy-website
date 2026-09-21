@@ -1,10 +1,10 @@
 version: 1
-researched_at: "2026-09-14"
+researched_at: "2026-09-21"
 market: "English-language web search"
 status: "healthy"
 
 methodology:
-  - "Compared candidate topics against all 81 existing posts in src/content/blog."
+  - "Compared candidate topics against all 87 existing posts in src/content/blog."
   - "Used current Google result language, Apple documentation terminology, competitor positioning, and LaunchBuddy product fit."
   - "Priorities are qualitative. They do not claim exact search volume or keyword difficulty."
   - "Before drafting, recheck the live search results and reject topics whose intent is already satisfied by an existing LaunchBuddy article."
@@ -196,6 +196,20 @@ research_sources:
     url: "https://developer.apple.com/help/app-store-connect/configure-in-app-purchase-settings/generate-keys-for-in-app-purchases"
   - name: "Apple: Enter server URLs for App Store Server Notifications"
     url: "https://developer.apple.com/help/app-store-connect/configure-in-app-purchase-settings/enter-server-urls-for-app-store-server-notifications/"
+  - name: "Apple: Peer group benchmarks"
+    url: "https://developer.apple.com/help/app-store-connect-analytics/benchmarks/peer-group-benchmarks/"
+  - name: "Apple: Upload app previews and screenshots"
+    url: "https://developer.apple.com/help/app-store-connect/manage-app-information/upload-app-previews-and-screenshots"
+  - name: "Apple: Screenshot specifications"
+    url: "https://developer.apple.com/help/app-store-connect/reference/app-information/screenshot-specifications/"
+  - name: "Apple: Testing subscriptions and In-App Purchases in TestFlight"
+    url: "https://developer.apple.com/help/app-store-connect/test-a-beta-version/testing-subscriptions-and-in-app-purchases-in-testflight/"
+  - name: "Apple: TN3186 troubleshooting In-App Purchase availability in Sandbox"
+    url: "https://developer.apple.com/documentation/technotes/tn3186-troubleshooting-in-app-purchases-availability-in-the-sandbox"
+  - name: "Apple: Ratings and reviews overview"
+    url: "https://developer.apple.com/help/app-store-connect/monitor-ratings-and-reviews/ratings-and-reviews-overview/"
+  - name: "Apple: View ratings and reviews"
+    url: "https://developer.apple.com/help/app-store-connect/monitor-ratings-and-reviews/view-ratings-and-reviews"
 
 existing_primary_targets:
   - keyword: "AI release notes for iOS apps"
@@ -441,6 +455,24 @@ existing_primary_targets:
   - keyword: "App Store campaign links"
     file: "src/content/blog/app-store-campaign-links.md"
     intent: "how-to"
+  - keyword: "App Store subscription offer codes"
+    file: "src/content/blog/app-store-subscription-offer-codes.md"
+    intent: "how-to"
+  - keyword: "App Store win-back offers"
+    file: "src/content/blog/app-store-win-back-offers.md"
+    intent: "how-to"
+  - keyword: "App Store app bundles"
+    file: "src/content/blog/app-store-app-bundles.md"
+    intent: "guide"
+  - keyword: "App Store universal purchase"
+    file: "src/content/blog/app-store-universal-purchase.md"
+    intent: "how-to"
+  - keyword: "App Store unlisted vs private distribution"
+    file: "src/content/blog/app-store-unlisted-vs-private-distribution.md"
+    intent: "comparison"
+  - keyword: "App Store subscription price increase"
+    file: "src/content/blog/app-store-subscription-price-increase.md"
+    intent: "how-to"
 
 excluded_due_to_overlap:
   - keyword: "iOS app project management"
@@ -575,6 +607,10 @@ excluded_due_to_overlap:
     reason: "Current intent is credential generation for App Store Server APIs and promotional-offer signing. LaunchBuddy does not use or manage this key, and its safe one-time-download and rotation advice is substantially covered by the published App Store Connect API key guide."
   - keyword: "Sandbox Family Sharing testing"
     reason: "The accepted Family Sharing candidate kw-103 will include the required Sandbox Test Family and entitlement-verification plan. A second article would split one irreversible enablement-and-test decision into a minor variation."
+  - keyword: "App Store Connect cohort analysis"
+    reason: "The published analytics guide already explains mature retention and release cohorts, complete-period comparisons, segmentation, privacy thresholds, and decision routing, while the published subscription pricing and offer guides own their specific cohort follow-ups."
+  - keyword: "App Store search vs browse"
+    reason: "The published App Store Connect analytics guide already defines acquisition sources, separates search from browse and external journeys, segments conversion by source, and turns source changes into bounded ASO follow-up."
 
 backlog:
   - id: "kw-005"
@@ -1928,3 +1964,81 @@ backlog:
     related_existing_posts: ["src/content/blog/app-store-connect-analytics.md", "src/content/blog/ios-app-release-management.md"]
     product_features: ["Release planning and taskboards", "App Store submission checklists", "App Store Connect analytics dashboard"]
     angle: "Use Apple's exact new billing-plan terminology to coordinate eligibility, yearly-product configuration, storefront exclusions, total-price disclosure, upgrade and cancellation behavior, StoreKit and Sandbox verification, release rollout, and contingent-price analytics; treat it as a billing plan on an existing one-year product rather than a fifth purchase type, and require a live OS, SDK, and regional documentation check before drafting."
+
+  - id: "kw-109"
+    keyword: "App Store Connect peer group benchmarks"
+    proposed_slug: "app-store-connect-peer-group-benchmarks"
+    cluster: "app-analytics"
+    intent: "guide"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-connect-analytics.md", "src/content/blog/aso-experiment-tracker.md", "src/content/blog/ios-post-launch-checklist.md"]
+    product_features: ["App Store Connect analytics dashboard", "ASO experiments", "Release planning and taskboards"]
+    angle: "Use Apple's category, business-model, and download-volume peer groups plus 25th, 50th, and 75th percentiles as directional context, record the selected group and period beside release history, and end with one bounded investigation or experiment without presenting privacy-protected benchmarks as competitor rankings or performance guarantees."
+
+  - id: "kw-110"
+    keyword: "App Store screenshot requirements"
+    proposed_slug: "app-store-screenshot-requirements"
+    cluster: "aso"
+    intent: "checklist"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-metadata-management.md", "src/content/blog/app-store-product-page-optimization.md", "src/content/blog/app-store-connect-release-checklist.md"]
+    product_features: ["App Store submission checklists", "Release planning and taskboards", "Editable AI artifacts", "ASO experiments"]
+    angle: "Turn Apple's live format, display-class, platform, localization, scaling, and metadata-accuracy rules into a build-specific preflight, then use editable screenshot recommendations and experiment records without claiming LaunchBuddy generates, validates, or uploads screenshots."
+
+  - id: "kw-111"
+    keyword: "test subscriptions and In-App Purchases in TestFlight"
+    proposed_slug: "test-subscriptions-in-app-purchases-testflight"
+    cluster: "monetization-testing"
+    intent: "how-to"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/testflight-release-management.md", "src/content/blog/testflight-what-to-test-examples.md", "src/content/blog/testflight-test-information.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists"]
+    angle: "Build a version-and-build-specific purchase test matrix that separates TestFlight's automatic Sandbox behavior from optional Sandbox Apple Account controls, records products, tester state, expected entitlements, and accelerated renewals, and routes failures into release tasks without claiming LaunchBuddy runs or inspects StoreKit."
+
+  - id: "kw-112"
+    keyword: "In-App Purchases not showing in Sandbox"
+    proposed_slug: "in-app-purchases-not-showing-in-sandbox"
+    cluster: "monetization-testing"
+    intent: "troubleshooting"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-connect-help.md", "src/content/blog/app-store-connect-draft-submissions.md", "src/content/blog/testflight-release-management.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists"]
+    angle: "Turn Apple's TN3186 checks into an evidence-first diagnostic sequence for environment, exact product identifiers, minimum product configuration, bundle ID and capability, signing, agreements, tax and banking, availability, and propagation time, while keeping code, account, and StoreKit validation outside LaunchBuddy."
+
+  - id: "kw-113"
+    keyword: "App Store review summaries"
+    proposed_slug: "app-store-review-summaries"
+    cluster: "reviews"
+    intent: "guide"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-review-management.md", "src/content/blog/app-store-review-reply-generator.md", "src/content/blog/reset-app-store-rating.md"]
+    product_features: ["App Store reviews inbox", "Agent plans and playbooks", "Editable AI artifacts", "AI review-to-backlog conversion"]
+    angle: "Treat Apple's generated and periodically refreshed summary as a storefront signal rather than source evidence, verify its themes against version- and territory-specific reviews, route individual reviews into replies or backlog tasks, and document the report-a-concern path without claiming LaunchBuddy generates or controls Apple's summary."
+
+  - id: "kw-114"
+    keyword: "TestFlight Beta App Review"
+    proposed_slug: "testflight-beta-app-review"
+    cluster: "testflight"
+    intent: "how-to"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/testflight-test-information.md", "src/content/blog/testflight-release-management.md", "src/content/blog/app-store-connect-help.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists"]
+    angle: "Own the external-build review lifecycle rather than repeating test-information fields: map first-build review, later-build review decisions, Waiting for Review and In Beta Review states, rejection follow-up, approval, and tester notification into a release checklist while leaving submission and status authority in App Store Connect."
