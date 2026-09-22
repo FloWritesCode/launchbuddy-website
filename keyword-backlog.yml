@@ -1763,7 +1763,8 @@ backlog:
     cluster: "monetization"
     intent: "how-to"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/submit-in-app-purchase-for-review/"
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/app-store-connect-draft-submissions.md", "src/content/blog/app-review-notes.md", "src/content/blog/app-store-connect-release-checklist.md"]
