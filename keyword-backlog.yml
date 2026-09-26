@@ -1832,7 +1832,8 @@ backlog:
     cluster: "monetization"
     intent: "how-to"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/schedule-in-app-purchase-price-changes/"
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/app-store-connect-analytics.md", "src/content/blog/ios-app-release-management.md", "src/content/blog/ios-post-launch-checklist.md"]
