@@ -1860,7 +1860,8 @@ backlog:
     cluster: "aso"
     intent: "guide"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/app-store-category-selection/"
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/app-store-app-tags.md", "src/content/blog/app-store-keyword-field.md", "src/content/blog/app-store-metadata-management.md"]
