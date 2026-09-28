@@ -1887,7 +1887,8 @@ backlog:
     cluster: "monetization"
     intent: "definition"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/in-app-purchase-types/"
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/app-store-connect-draft-submissions.md", "src/content/blog/ios-app-release-management.md", "src/content/blog/ios-app-launch-checklist.md"]
