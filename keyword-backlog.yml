@@ -1943,7 +1943,8 @@ backlog:
     cluster: "monetization"
     intent: "how-to"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/family-sharing-for-in-app-purchases/"
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/ios-app-release-management.md", "src/content/blog/app-store-connect-release-checklist.md"]
