@@ -171,7 +171,7 @@ Don't use either status as a signal to erase customer entitlements. Sale availab
 
 App Store Connect remains authoritative for In-App Purchase configuration, submissions, review messages, availability, and status. StoreKit remains authoritative for the app's transaction and entitlement handling.
 
-Keep LaunchBuddy on the planning side. Add the product ID, current Apple status, owner, evidence, and next check to the release. Turn a rejection or availability investigation into scoped tasks, and use a submission checklist so Ready for Review isn't mistaken for submitted. Release planning, taskboards, and default submission checklists are available on the Free plan; Pro adds custom reusable checklists. LaunchBuddy doesn't replace the final App Store Connect or StoreKit verification.
+Keep LaunchBuddy on the planning side. It doesn't sync per-product In-App Purchase statuses or validate StoreKit entitlements. Add the product ID, current Apple status, owner, evidence, and next check to the release. Turn a rejection or availability investigation into scoped tasks, and use a submission checklist so Ready for Review isn't mistaken for submitted. Release planning, taskboards, and default submission checklists are available on the Free plan; Pro adds custom reusable checklists. LaunchBuddy doesn't replace the final App Store Connect or StoreKit verification.
 
 The useful outcome isn't merely knowing what a label means. It's knowing which system holds the evidence, who acts next, and what will prove the issue is resolved.
 
