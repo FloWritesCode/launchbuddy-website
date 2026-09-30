@@ -1,0 +1,148 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Footer from '../../components/Footer.astro';
+import CTAStack from '../../components/CTAStack.astro';
+import DeviceFrame from '../../components/screens/DeviceFrame.astro';
+import ScreenArt from '../../components/screens/ScreenArt.astro';
+import {
+  CATEGORY_LABELS,
+  DEVICE_LABELS,
+  MRR_LABELS,
+  SCREENS,
+  SCREENS_PATH,
+  SCREEN_TYPE_LABELS,
+  SPOTLIGHT_LABELS,
+  getRelatedScreens,
+  type ScreenEntry,
+} from '../../lib/screens';
+import '../../styles/screens.css';
+
+export function getStaticPaths() {
+  return SCREENS.map((screen) => ({
+    params: { slug: screen.slug },
+    props: { screen },
+  }));
+}
+
+interface Props {
+  screen: ScreenEntry;
+}
+
+const { screen } = Astro.props;
+const related = getRelatedScreens(screen);
+const path = `${SCREENS_PATH}${screen.slug}/`;
+const title = `${screen.app} — ${screen.title} | LaunchBuddy Screens`;
+const description = `${screen.description} ${DEVICE_LABELS[screen.device]} · ${SCREEN_TYPE_LABELS[screen.screenType]} · ${CATEGORY_LABELS[screen.category]} · ${MRR_LABELS[screen.mrr]} MRR band.`;
+
+const meta = [
+  { href: `${SCREENS_PATH}?device=${screen.device}`, label: DEVICE_LABELS[screen.device] },
+  { href: `${SCREENS_PATH}?type=${screen.screenType}`, label: SCREEN_TYPE_LABELS[screen.screenType] },
+  { href: `${SCREENS_PATH}?category=${screen.category}`, label: CATEGORY_LABELS[screen.category] },
+  { href: `${SCREENS_PATH}?mrr=${screen.mrr}`, label: `${MRR_LABELS[screen.mrr]} MRR` },
+  { href: `${SCREENS_PATH}?spotlight=${screen.spotlight}`, label: SPOTLIGHT_LABELS[screen.spotlight] },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    name: `${screen.app} — ${screen.title}`,
+    description: screen.description,
+    url: new URL(path, Astro.site).href,
+    creator: { '@type': 'Organization', name: screen.app },
+    isPartOf: { '@type': 'CollectionPage', name: 'LaunchBuddy Screens', url: 'https://launchbuddy.app/screens/' },
+  }}
+>
+  <article class="max-w-6xl mx-auto px-4 sm:px-6 pt-10 md:pt-16 pb-8">
+    <a class="text-sm text-accent-blue hover:text-accent-cyan no-underline font-medium transition-colors" href={SCREENS_PATH}
+      >← All screens</a
+    >
+
+    <div
+      class:list={[
+        'mt-8 grid gap-10 lg:items-start',
+        screen.device === 'iphone' || screen.device === 'watch'
+          ? 'lg:grid-cols-[minmax(0,22rem)_1fr]'
+          : 'xl:grid-cols-[minmax(0,38rem)_1fr]',
+      ]}
+    >
+      <div class="max-w-sm mx-auto lg:max-w-none w-full">
+        <DeviceFrame device={screen.device} chrome={screen.chrome} size="detail">
+          <ScreenArt screen={screen} />
+        </DeviceFrame>
+      </div>
+
+      <div>
+        <p class="text-[11px] font-mono uppercase tracking-[0.16em] text-accent-cyan">{screen.app}</p>
+        <h1 class="font-display font-bold text-3xl md:text-4xl text-text-primary mt-2 mb-4">{screen.title}</h1>
+        <p class="text-lg text-text-secondary leading-relaxed mb-6">{screen.description}</p>
+
+        <div class="screen-meta mb-8">
+          {
+            meta.map((item) => (
+              <a class="screen-meta__chip no-underline hover:text-accent-blue hover:border-accent-blue/40" href={item.href}>
+                {item.label}
+              </a>
+            ))
+          }
+        </div>
+
+        <h2 class="font-display font-semibold text-text-primary text-xl mb-3">Why this works</h2>
+        <p class="text-text-secondary leading-relaxed mb-8">{screen.why}</p>
+
+        {
+          screen.appUrl && (
+            <a
+              class="text-sm text-accent-blue hover:text-accent-cyan no-underline font-medium"
+              href={screen.appUrl}
+              rel="noopener noreferrer"
+            >
+              View {screen.app} on the App Store →
+            </a>
+          )
+        }
+
+        <p class="text-xs text-text-muted mt-8 leading-relaxed max-w-xl">
+          Original reconstruction for design reference, except LaunchBuddy product photography. MRR bands are approximate
+          public estimates, not verified revenue.
+        </p>
+      </div>
+    </div>
+
+    {
+      related.length > 0 && (
+        <section class="mt-20">
+          <h2 class="font-display font-semibold text-text-primary text-xl mb-6">Related screens</h2>
+          <div class="screens-grid">
+            {related.map((item) => (
+              <a class="screens-card group block no-underline hover:no-underline" href={`/screens/${item.slug}/`}>
+                <DeviceFrame device={item.device} chrome={item.chrome} interactive>
+                  <ScreenArt screen={item} />
+                </DeviceFrame>
+                <p class="text-[11px] font-mono uppercase tracking-[0.14em] text-text-muted mt-3">{item.app}</p>
+                <p class="font-display font-semibold text-text-primary group-hover:text-accent-blue transition-colors">
+                  {item.title}
+                </p>
+              </a>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    <div class="cta-banner text-center mt-20">
+      <p class="section-label">Your turn</p>
+      <h2 class="cta-banner__headline mb-4">Ship the screens, then the release</h2>
+      <p class="text-text-secondary max-w-xl mx-auto mb-8">
+        LaunchBuddy keeps the App Store work next to the product so a sharp paywall still makes it through review.
+      </p>
+      <CTAStack size="md" showBadge showPricing />
+    </div>
+
+    <Footer />
+  </article>
+</BaseLayout>

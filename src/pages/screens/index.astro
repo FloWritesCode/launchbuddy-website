@@ -1,0 +1,268 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Footer from '../../components/Footer.astro';
+import ScreenCard from '../../components/screens/ScreenCard.astro';
+import {
+  APP_CATEGORIES,
+  CATEGORY_LABELS,
+  DEVICE_LABELS,
+  MRR_BANDS,
+  MRR_LABELS,
+  SCREEN_DEVICES,
+  SCREEN_TYPE_LABELS,
+  SCREEN_TYPES,
+  SCREENS,
+  SCREENS_DESCRIPTION,
+  SCREENS_FAQ,
+  SCREENS_PATH,
+  SPOTLIGHT_LABELS,
+  SPOTLIGHTS,
+  uniqueAppsCount,
+} from '../../lib/screens';
+import '../../styles/screens.css';
+
+const title = 'App Screens — UI reference for indie developers | LaunchBuddy';
+const appCount = uniqueAppsCount();
+const deviceCounts = Object.fromEntries(
+  SCREEN_DEVICES.map((id) => [id, SCREENS.filter((screen) => screen.device === id).length]),
+) as Record<(typeof SCREEN_DEVICES)[number], number>;
+const typeCounts = Object.fromEntries(
+  SCREEN_TYPES.map((id) => [id, SCREENS.filter((screen) => screen.screenType === id).length]),
+) as Record<(typeof SCREEN_TYPES)[number], number>;
+const categoryCounts = Object.fromEntries(
+  APP_CATEGORIES.map((id) => [id, SCREENS.filter((screen) => screen.category === id).length]),
+) as Record<(typeof APP_CATEGORIES)[number], number>;
+const mrrCounts = Object.fromEntries(
+  MRR_BANDS.map((id) => [id, SCREENS.filter((screen) => screen.mrr === id).length]),
+) as Record<(typeof MRR_BANDS)[number], number>;
+const spotlightCounts = Object.fromEntries(
+  SPOTLIGHTS.map((id) => [id, SCREENS.filter((screen) => screen.spotlight === id).length]),
+) as Record<(typeof SPOTLIGHTS)[number], number>;
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'LaunchBuddy Screens',
+    description: SCREENS_DESCRIPTION,
+    url: 'https://launchbuddy.app/screens/',
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: SCREENS.length,
+      itemListElement: SCREENS.map((screen, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        url: `https://launchbuddy.app/screens/${screen.slug}/`,
+        name: `${screen.app} — ${screen.title}`,
+      })),
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: SCREENS_FAQ.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: { '@type': 'Answer', text: item.answer },
+    })),
+  },
+];
+
+const filterGroups = [
+  { key: 'device', label: 'Device', options: SCREEN_DEVICES.map((id) => ({ id, label: DEVICE_LABELS[id], count: deviceCounts[id] })) },
+  { key: 'type', label: 'Screen type', options: SCREEN_TYPES.map((id) => ({ id, label: SCREEN_TYPE_LABELS[id], count: typeCounts[id] })) },
+  { key: 'category', label: 'App category', options: APP_CATEGORIES.map((id) => ({ id, label: CATEGORY_LABELS[id], count: categoryCounts[id] })) },
+  { key: 'mrr', label: 'MRR band', options: MRR_BANDS.map((id) => ({ id, label: MRR_LABELS[id], count: mrrCounts[id] })) },
+  { key: 'spotlight', label: 'Spotlight', options: SPOTLIGHTS.map((id) => ({ id, label: SPOTLIGHT_LABELS[id], count: spotlightCounts[id] })) },
+] as const;
+---
+
+<BaseLayout
+  title={title}
+  description={SCREENS_DESCRIPTION}
+  keywords="iOS app screens, app UI reference, paywall examples, empty states, indie app design, iPhone screenshots, App Store UI patterns"
+  path={SCREENS_PATH}
+  jsonLd={jsonLd}
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-10 md:pt-16 pb-8">
+    <span class="section-label">Screens</span>
+    <h1 class="font-display font-bold text-4xl md:text-5xl text-text-primary mb-4 max-w-3xl">
+      App screens worth stealing from
+    </h1>
+    <p class="text-lg text-text-secondary max-w-2xl mb-4 leading-relaxed">
+      A curated reference of original reconstructions from breakout apps and lesser-known indies. Filter by device,
+      category, MRR band, and the job of the screen.
+    </p>
+    <p class="trust-strip mb-10">
+      <span class="trust-strip__highlight">{SCREENS.length} screens</span>
+      <span class="trust-strip__dot" aria-hidden="true"></span>
+      <span>{appCount} apps</span>
+      <span class="trust-strip__dot" aria-hidden="true"></span>
+      <span>iPhone, iPad, Mac, Watch</span>
+    </p>
+
+    <div class="glass-card glass-card--static p-4 sm:p-5 mb-8" id="screens-filters">
+      <label class="sr-only" for="screens-search">Search screens</label>
+      <input
+        id="screens-search"
+        class="screens-search"
+        type="search"
+        placeholder="Search Flighty, paywall, Watch…"
+        autocomplete="off"
+      />
+
+      <div class="mt-5 space-y-4">
+        {
+          filterGroups.map((group) => (
+            <div>
+              <p class="text-[11px] font-mono uppercase tracking-[0.14em] text-text-muted mb-2">{group.label}</p>
+              <div class="flex flex-wrap gap-2" data-filter-group={group.key}>
+                {group.options.map((option) => (
+                  <button
+                    class="filter-chip"
+                    type="button"
+                    data-filter={group.key}
+                    data-value={option.id}
+                    aria-pressed="false"
+                  >
+                    {option.label}
+                    <span class="filter-chip__count">{option.count}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="mt-4 flex items-center justify-between gap-3">
+        <p class="text-sm text-text-muted">
+          Showing <span id="screens-visible">{SCREENS.length}</span> of {SCREENS.length}
+        </p>
+        <button class="text-sm text-accent-blue hover:text-accent-cyan" type="button" id="screens-reset" hidden>
+          Clear filters
+        </button>
+      </div>
+    </div>
+
+    <div class="screens-grid" id="screens-grid">
+      {SCREENS.map((screen) => <ScreenCard screen={screen} />)}
+    </div>
+
+    <p id="screens-empty" class="hidden text-center text-text-muted py-16" hidden>
+      No screens match those filters. Clear them and try a broader cut.
+    </p>
+
+    <section class="max-w-3xl mt-20">
+      <h2 class="section-heading mb-6">FAQ</h2>
+      <div class="space-y-3">
+        {
+          SCREENS_FAQ.map((item) => (
+            <details class="faq-item px-5 py-4">
+              <summary class="cursor-pointer font-display font-semibold text-text-primary">{item.question}</summary>
+              <p class="mt-3 text-sm text-text-secondary leading-relaxed">{item.answer}</p>
+            </details>
+          ))
+        }
+      </div>
+    </section>
+
+    <Footer />
+  </div>
+</BaseLayout>
+
+<script>
+  const groups = ['device', 'type', 'category', 'mrr', 'spotlight'] as const;
+
+  const searchInput = document.getElementById('screens-search') as HTMLInputElement | null;
+  const resetButton = document.getElementById('screens-reset');
+  const visibleLabel = document.getElementById('screens-visible');
+  const emptyState = document.getElementById('screens-empty');
+  const cards = Array.from(document.querySelectorAll<HTMLElement>('.screens-card'));
+  const chips = Array.from(document.querySelectorAll<HTMLButtonElement>('.filter-chip'));
+
+  const selected: Record<(typeof groups)[number], Set<string>> = {
+    device: new Set(),
+    type: new Set(),
+    category: new Set(),
+    mrr: new Set(),
+    spotlight: new Set(),
+  };
+
+  function readUrl() {
+    const params = new URLSearchParams(window.location.search);
+    for (const group of groups) {
+      selected[group] = new Set(params.get(group)?.split(',').filter(Boolean) ?? []);
+    }
+    if (searchInput) searchInput.value = params.get('q') ?? '';
+  }
+
+  function writeUrl() {
+    const params = new URLSearchParams();
+    for (const group of groups) {
+      if (selected[group].size) params.set(group, [...selected[group]].join(','));
+    }
+    const query = searchInput?.value.trim();
+    if (query) params.set('q', query);
+    const next = params.toString();
+    const url = next ? `${window.location.pathname}?${next}` : window.location.pathname;
+    window.history.replaceState({}, '', url);
+  }
+
+  function apply() {
+    const query = (searchInput?.value ?? '').trim().toLowerCase();
+    let visible = 0;
+
+    for (const card of cards) {
+      const matchesGroup = groups.every((group) => {
+        if (selected[group].size === 0) return true;
+        return selected[group].has(card.dataset[group] ?? '');
+      });
+      const matchesQuery = !query || (card.dataset.search ?? '').includes(query);
+      const show = matchesGroup && matchesQuery;
+      card.classList.toggle('is-hidden', !show);
+      if (show) visible += 1;
+    }
+
+    if (visibleLabel) visibleLabel.textContent = String(visible);
+    const hasFilters = query.length > 0 || groups.some((group) => selected[group].size > 0);
+    if (resetButton) resetButton.hidden = !hasFilters;
+    if (emptyState) {
+      emptyState.hidden = visible !== 0;
+      emptyState.classList.toggle('hidden', visible !== 0);
+    }
+
+    for (const chip of chips) {
+      const group = chip.dataset.filter as (typeof groups)[number];
+      const active = selected[group].has(chip.dataset.value ?? '');
+      chip.classList.toggle('is-active', active);
+      chip.setAttribute('aria-pressed', String(active));
+    }
+  }
+
+  readUrl();
+  apply();
+
+  chips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      const group = chip.dataset.filter as (typeof groups)[number];
+      const value = chip.dataset.value ?? '';
+      if (selected[group].has(value)) selected[group].delete(value);
+      else selected[group].add(value);
+      writeUrl();
+      apply();
+    });
+  });
+
+  searchInput?.addEventListener('input', () => {
+    writeUrl();
+    apply();
+  });
+
+  resetButton?.addEventListener('click', () => {
+    for (const group of groups) selected[group].clear();
+    if (searchInput) searchInput.value = '';
+    writeUrl();
+    apply();
+  });
+</script>

@@ -1,0 +1,330 @@
+.device {
+  width: 100%;
+}
+
+.device__chrome {
+  position: relative;
+  background: #0c0d11;
+  border: 1px solid rgb(255 255 255 / 0.1);
+  box-shadow:
+    0 18px 50px rgb(0 0 0 / 0.4),
+    inset 0 1px 0 rgb(255 255 255 / 0.08);
+}
+
+.device--interactive {
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.device--interactive:hover {
+  transform: translateY(-4px);
+  filter: brightness(1.04);
+}
+
+.device__screen {
+  pointer-events: none;
+}
+
+.device--iphone .device__chrome {
+  border-radius: 2.4rem;
+  padding: 0.5rem;
+}
+
+.device--iphone .device__screen {
+  aspect-ratio: 9 / 19.45;
+  border-radius: 1.95rem;
+  overflow: hidden;
+  background: #111;
+}
+
+.device--ipad .device__chrome {
+  border-radius: 1.5rem;
+  padding: 0.55rem;
+}
+
+.device--ipad .device__screen {
+  aspect-ratio: 3 / 4;
+  border-radius: 1.05rem;
+  overflow: hidden;
+  background: #111;
+}
+
+.device--mac .device__chrome {
+  border-radius: 0.9rem;
+  overflow: hidden;
+  padding: 0;
+}
+
+.device--mac .device__screen {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #111;
+}
+
+.device--watch .device__chrome {
+  border-radius: 2.35rem;
+  padding: 0.45rem;
+  max-width: 13.5rem;
+  margin-inline: auto;
+}
+
+.device--watch .device__screen {
+  aspect-ratio: 5 / 6.1;
+  border-radius: 1.85rem;
+  overflow: hidden;
+  background: #000;
+}
+
+.device__island {
+  position: absolute;
+  z-index: 3;
+  top: 0.72rem;
+  left: 50%;
+  width: 28%;
+  height: 1.15rem;
+  transform: translateX(-50%);
+  border-radius: 9999px;
+  background: #050506;
+}
+
+.device__statusbar,
+.device__watch-time {
+  position: absolute;
+  z-index: 2;
+  top: 0.62rem;
+  left: 1.35rem;
+  right: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 600;
+  pointer-events: none;
+}
+
+.device--dark .device__statusbar,
+.device--dark .device__watch-time {
+  color: #f8fafc;
+}
+
+.device--light .device__statusbar {
+  color: #0f172a;
+}
+
+.device__statusbar--ipad {
+  top: 0.7rem;
+  left: 1.1rem;
+  right: 1.1rem;
+}
+
+.device__watch-time {
+  justify-content: center;
+  top: 0.7rem;
+  font-size: 0.62rem;
+  color: rgb(255 255 255 / 0.55);
+}
+
+.device__status-icons {
+  display: flex;
+  align-items: center;
+  gap: 0.28rem;
+}
+
+.device__signal,
+.device__wifi {
+  width: 0.85rem;
+  height: 0.7rem;
+}
+
+.device__battery {
+  width: 1.35rem;
+  height: 0.7rem;
+  border: 1.5px solid currentColor;
+  border-radius: 0.2rem;
+  padding: 1px;
+  opacity: 0.9;
+  position: relative;
+}
+
+.device__battery::after {
+  content: '';
+  position: absolute;
+  right: -3px;
+  top: 50%;
+  width: 2px;
+  height: 0.3rem;
+  transform: translateY(-50%);
+  background: currentColor;
+  border-radius: 0 1px 1px 0;
+}
+
+.device__battery span {
+  display: block;
+  height: 100%;
+  width: 70%;
+  background: currentColor;
+  border-radius: 0.08rem;
+}
+
+.device__home {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  bottom: 0.72rem;
+  width: 32%;
+  height: 0.28rem;
+  transform: translateX(-50%);
+  border-radius: 9999px;
+  background: rgb(255 255 255 / 0.28);
+}
+
+.device--light .device__home {
+  background: rgb(15 23 42 / 0.28);
+}
+
+.device--ipad .device__home {
+  width: 22%;
+  bottom: 0.55rem;
+}
+
+.device__titlebar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  height: 1.7rem;
+  padding: 0 0.75rem;
+  background: #1a1c22;
+  border-bottom: 1px solid rgb(255 255 255 / 0.06);
+}
+
+.device__traffic {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 9999px;
+}
+
+.device__traffic--close { background: #ff5f57; }
+.device__traffic--min { background: #febc2e; }
+.device__traffic--zoom { background: #28c840; }
+
+.screens-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .screens-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 900px) {
+  .screens-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1200px) {
+  .screens-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.screens-grid__item--wide {
+  grid-column: span 1;
+}
+
+@media (min-width: 900px) {
+  .screens-grid__item--wide {
+    grid-column: span 2;
+  }
+}
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 9999px;
+  border: 1px solid var(--color-border-subtle);
+  background: rgb(255 255 255 / 0.03);
+  color: var(--color-text-secondary);
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.filter-chip:hover,
+.filter-chip:focus-visible {
+  border-color: rgb(56 189 248 / 0.35);
+  color: var(--color-text-primary);
+  outline: none;
+}
+
+.filter-chip.is-active {
+  border-color: rgb(56 189 248 / 0.45);
+  background: rgb(56 189 248 / 0.12);
+  color: var(--color-accent-blue);
+}
+
+.filter-chip__count {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  color: var(--color-text-muted);
+}
+
+.filter-chip.is-active .filter-chip__count {
+  color: var(--color-accent-cyan);
+}
+
+.screen-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.screen-meta__chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.55rem;
+  border-radius: 9999px;
+  border: 1px solid var(--color-border-subtle);
+  background: rgb(255 255 255 / 0.03);
+  color: var(--color-text-muted);
+  font-size: 0.6875rem;
+  font-weight: 500;
+}
+
+.screens-search {
+  width: 100%;
+  background: rgb(7 11 20 / 0.85);
+  color: var(--color-text-primary);
+  border: 1px solid rgb(255 255 255 / 0.12);
+  border-radius: 0.75rem;
+  padding: 0.8rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+}
+
+.screens-search:focus {
+  outline: none;
+  border-color: rgb(56 189 248 / 0.55);
+  box-shadow: 0 0 0 3px rgb(56 189 248 / 0.18);
+}
+
+.screens-card.is-hidden {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .device--interactive {
+    transition: none;
+  }
+
+  .device--interactive:hover {
+    transform: none;
+  }
+}

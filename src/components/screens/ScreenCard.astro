@@ -1,0 +1,49 @@
+---
+import DeviceFrame from './DeviceFrame.astro';
+import ScreenArt from './ScreenArt.astro';
+import {
+  CATEGORY_LABELS,
+  DEVICE_LABELS,
+  MRR_LABELS,
+  SCREEN_TYPE_LABELS,
+  SPOTLIGHT_LABELS,
+  searchBlob,
+  type ScreenEntry,
+} from '../../lib/screens';
+
+interface Props {
+  screen: ScreenEntry;
+}
+
+const { screen } = Astro.props;
+const wide = screen.device === 'mac' || screen.device === 'ipad';
+---
+
+<article
+  class:list={['screens-card', wide && 'screens-grid__item--wide']}
+  data-device={screen.device}
+  data-type={screen.screenType}
+  data-category={screen.category}
+  data-mrr={screen.mrr}
+  data-spotlight={screen.spotlight}
+  data-search={searchBlob(screen)}
+>
+  <a class="group block no-underline hover:no-underline" href={`/screens/${screen.slug}/`}>
+    <DeviceFrame device={screen.device} chrome={screen.chrome} interactive size="card">
+      <ScreenArt screen={screen} />
+    </DeviceFrame>
+    <div class="mt-3 px-0.5">
+      <p class="text-[11px] font-mono uppercase tracking-[0.14em] text-text-muted">{screen.app}</p>
+      <h2 class="font-display font-semibold text-text-primary mt-0.5 group-hover:text-accent-blue transition-colors">
+        {screen.title}
+      </h2>
+      <div class="screen-meta mt-2">
+        <span class="screen-meta__chip">{DEVICE_LABELS[screen.device]}</span>
+        <span class="screen-meta__chip">{SCREEN_TYPE_LABELS[screen.screenType]}</span>
+        <span class="screen-meta__chip">{CATEGORY_LABELS[screen.category]}</span>
+        <span class="screen-meta__chip">{MRR_LABELS[screen.mrr]}</span>
+        <span class="screen-meta__chip">{SPOTLIGHT_LABELS[screen.spotlight]}</span>
+      </div>
+    </div>
+  </a>
+</article>
