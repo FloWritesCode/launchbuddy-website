@@ -1,0 +1,231 @@
+---
+import ShipCTA from './ShipCTA.astro';
+import {
+  FREE_TIER_APPS,
+  PRO_MONTHLY_PRICE,
+  VSL_DURATION_LABEL,
+  VSL_TITLE,
+  VSL_YOUTUBE_ID,
+} from '../lib/site';
+
+interface Props {
+  poster: string;
+}
+
+const { poster } = Astro.props;
+const watchUrl = `https://www.youtube.com/watch?v=${VSL_YOUTUBE_ID}`;
+---
+
+<div class="vsl" data-vsl data-video-id={VSL_YOUTUBE_ID} data-state="idle">
+  <div class="vsl__glow" aria-hidden="true"></div>
+  <div class="hero-frame">
+    <div class="hero-frame__inner vsl__screen">
+      <div class="vsl__player">
+        <div data-vsl-mount></div>
+      </div>
+
+      <a
+        class="vsl__poster"
+        href={watchUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Play video: ${VSL_TITLE} (${VSL_DURATION_LABEL})`}
+        data-vsl-play
+      >
+        <img src={poster} alt="" width="1280" height="720" fetchpriority="high" decoding="async" />
+        <span class="vsl__play-button" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M8 5.14v13.72a1 1 0 0 0 1.52.85l10.6-6.86a1 1 0 0 0 0-1.7L9.52 4.29A1 1 0 0 0 8 5.14z"></path>
+          </svg>
+        </span>
+        <span class="vsl__duration" aria-hidden="true">{VSL_DURATION_LABEL} · Product tour</span>
+      </a>
+
+      <button type="button" class="vsl__sound" data-vsl-sound>
+        <span class="vsl__sound-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M11 5 6 9H3v6h3l5 4V5z"></path>
+            <path stroke-linecap="round" d="m16 9 5 6m0-6-5 6"></path>
+          </svg>
+          Watch with sound
+        </span>
+      </button>
+
+      <div class="vsl__end">
+        <p class="vsl__end-title">Ready to ship without the chaos?</p>
+        <ShipCTA size="md" />
+        <p class="vsl__end-meta">Free for {FREE_TIER_APPS} apps · Pro from {PRO_MONTHLY_PRICE}/mo</p>
+        <button type="button" class="vsl__replay" data-vsl-replay>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h5M5.07 15a7 7 0 1 0 1.6-7.3L4 9"></path>
+          </svg>
+          Watch again
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  type Player = {
+    playVideo(): void;
+    pauseVideo(): void;
+    seekTo(seconds: number, allowSeekAhead: boolean): void;
+    unMute(): void;
+    setVolume(volume: number): void;
+  };
+
+  type YouTubeWindow = Window & {
+    YT?: { Player: new (element: HTMLElement, options: object) => Player };
+    onYouTubeIframeAPIReady?: () => void;
+  };
+
+  type VslState = 'idle' | 'loading' | 'playing' | 'ended';
+
+  const YT_ENDED = 0;
+  const YT_PLAYING = 1;
+
+  const ytWindow = window as YouTubeWindow;
+  let apiPromise: Promise<void> | undefined;
+
+  function loadYouTubeApi(): Promise<void> {
+    if (ytWindow.YT?.Player) return Promise.resolve();
+    apiPromise ??= new Promise((resolve, reject) => {
+      const previousReady = ytWindow.onYouTubeIframeAPIReady;
+      ytWindow.onYouTubeIframeAPIReady = () => {
+        previousReady?.();
+        resolve();
+      };
+      const script = document.createElement('script');
+      script.src = 'https://www.youtube.com/iframe_api';
+      script.async = true;
+      script.onerror = () => reject(new Error('YouTube IFrame API failed to load'));
+      document.head.append(script);
+    });
+    return apiPromise;
+  }
+
+  function initVsl(root: HTMLElement) {
+    const videoId = root.dataset.videoId;
+    const mount = root.querySelector<HTMLElement>('[data-vsl-mount]');
+    const playLink = root.querySelector<HTMLAnchorElement>('[data-vsl-play]');
+    const soundButton = root.querySelector<HTMLButtonElement>('[data-vsl-sound]');
+    const replayButton = root.querySelector<HTMLButtonElement>('[data-vsl-replay]');
+    if (!videoId || !mount || !playLink) return;
+
+    let player: Player | undefined;
+    let creating = false;
+    let ready = false;
+    let failed = false;
+    let withSound = false;
+
+    const setState = (state: VslState) => {
+      root.dataset.state = state;
+    };
+
+    const enableSound = () => {
+      withSound = true;
+      root.dataset.sound = 'on';
+    };
+
+    const fail = () => {
+      failed = true;
+      setState('idle');
+    };
+
+    const playWithSound = (fromStart: boolean) => {
+      if (!player || !ready) return;
+      player.unMute();
+      player.setVolume(100);
+      if (fromStart) player.seekTo(0, true);
+      player.playVideo();
+    };
+
+    const createPlayer = (muted: boolean) => {
+      if (creating) return;
+      creating = true;
+      loadYouTubeApi().then(() => {
+        const YT = ytWindow.YT;
+        if (!YT) return fail();
+        player = new YT.Player(mount, {
+          host: 'https://www.youtube-nocookie.com',
+          videoId,
+          width: '100%',
+          height: '100%',
+          playerVars: {
+            autoplay: 1,
+            mute: muted ? 1 : 0,
+            playsinline: 1,
+            rel: 0,
+            iv_load_policy: 3,
+          },
+          events: {
+            onReady: () => {
+              ready = true;
+              // Reveal the iframe right away so browsers that refuse scripted playback
+              // (e.g. iOS Low Power Mode) still let the viewer tap YouTube's own play button.
+              if (withSound) {
+                setState('playing');
+                playWithSound(false);
+              }
+            },
+            onStateChange: ({ data }: { data: number }) => {
+              if (data === YT_PLAYING) {
+                setState('playing');
+              } else if (data === YT_ENDED) {
+                if (withSound) {
+                  setState('ended');
+                } else {
+                  player?.seekTo(0, true);
+                  player?.playVideo();
+                }
+              }
+            },
+            onError: fail,
+          },
+        });
+      }, fail);
+    };
+
+    playLink.addEventListener('click', (event) => {
+      if (failed) return;
+      event.preventDefault();
+      enableSound();
+      if (ready) {
+        setState('playing');
+        playWithSound(true);
+      } else {
+        setState('loading');
+        createPlayer(false);
+      }
+    });
+
+    soundButton?.addEventListener('click', () => {
+      enableSound();
+      playWithSound(true);
+    });
+
+    replayButton?.addEventListener('click', () => {
+      setState('playing');
+      playWithSound(true);
+    });
+
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(
+        ([entry]) => {
+          if (!player || withSound || root.dataset.state !== 'playing') return;
+          if (entry.isIntersecting) player.playVideo();
+          else player.pauseVideo();
+        },
+        { threshold: 0.2 },
+      ).observe(root);
+    }
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const saveData =
+      (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData === true;
+    if (!prefersReducedMotion && !saveData) createPlayer(true);
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-vsl]').forEach(initVsl);
+</script>

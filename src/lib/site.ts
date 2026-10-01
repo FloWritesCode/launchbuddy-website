@@ -13,8 +13,13 @@ export const USER_COUNT = '20,000+';
 export const FREE_TIER_APPS = 2;
 export const FREE_TIER_RELEASES = 2;
 
-export const DEMO_VIDEO_MP4 = '/videos/launchbuddy-demo.mp4';
-export const DEMO_VIDEO_WEBM = '/videos/launchbuddy-demo.webm';
+export const VSL_YOUTUBE_ID = '7CpJthlRuaI';
+export const VSL_TITLE = 'LaunchBuddy: The Shipping Command Center for Indie Developers';
+export const VSL_DESCRIPTION =
+  'LaunchBuddy is the release command center for indie devs. Plan releases, run App Store submission checklists, reply to reviews, and talk to AI that knows your apps, on iPhone, iPad and Mac.';
+export const VSL_DURATION_ISO = 'PT1M28S';
+export const VSL_DURATION_LABEL = '1:28';
+export const VSL_UPLOAD_DATE = '2026-10-01T04:53:14-07:00';
 
 export const PRIMARY_CTA_LABEL = 'Start shipping';
 export const SECONDARY_CTA_LABEL = 'Download on the App Store';
@@ -271,6 +276,11 @@ export const FAQ_ITEMS = [
     question: 'Do I need App Store Connect API access for Pro features?',
     answer:
       'ASC integration requires an API key (free from Apple). Tasks, AI chat, and checklists work without it — connect ASC when you want reviews, analytics, and release note uploads in-app.',
+  },
+  {
+    question: 'Does LaunchBuddy work with Cursor, Claude Code, or Codex?',
+    answer:
+      'Yes, on Mac. LaunchBuddy runs a local, localhost-only MCP server that Cursor, Claude Code, Codex, or any other MCP client can connect to. Read tools are free. Write tools require Pro and create approval proposals, so nothing changes until you approve it.',
   },
   {
     question: 'Is the iOS app included if I subscribe on the Mac?',

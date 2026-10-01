@@ -141,6 +141,8 @@ const jsonLdItems = Array.isArray(structuredData) ? structuredData : [structured
     <link rel="icon" type="image/x-icon" href="/icon.ico" />
     <link rel="alternate" type="application/rss+xml" title="LaunchBuddy Blog" href="/rss.xml" />
 
+    <slot name="head" />
+
     {
       jsonLdItems.map((item) => (
         <script type="application/ld+json" set:html={JSON.stringify(item)} />
