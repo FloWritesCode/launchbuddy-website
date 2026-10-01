@@ -2021,9 +2021,10 @@ backlog:
     keyword: "App Store Connect peer group benchmarks"
     proposed_slug: "app-store-connect-peer-group-benchmarks"
     cluster: "app-analytics"
-    intent: "guide"
+    intent: "how-to"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/app-store-connect-peer-group-benchmarks/"
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/app-store-connect-analytics.md", "src/content/blog/aso-experiment-tracker.md", "src/content/blog/ios-post-launch-checklist.md"]
