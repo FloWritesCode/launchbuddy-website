@@ -18,8 +18,8 @@ const watchUrl = `https://www.youtube.com/watch?v=${VSL_YOUTUBE_ID}`;
 
 <div class="vsl" data-vsl data-video-id={VSL_YOUTUBE_ID} data-state="idle">
   <div class="vsl__glow" aria-hidden="true"></div>
-  <div class="hero-frame">
-    <div class="hero-frame__inner vsl__screen">
+  <div class="vsl__bezel">
+    <div class="vsl__screen">
       <div class="vsl__player">
         <div data-vsl-mount></div>
       </div>
@@ -34,6 +34,8 @@ const watchUrl = `https://www.youtube.com/watch?v=${VSL_YOUTUBE_ID}`;
       >
         <img src={poster} alt="" width="1280" height="720" fetchpriority="high" decoding="async" />
         <span class="vsl__play-button" aria-hidden="true">
+          <span class="vsl__play-ring"></span>
+          <span class="vsl__play-ring"></span>
           <svg viewBox="0 0 24 24" fill="currentColor">
             <path d="M8 5.14v13.72a1 1 0 0 0 1.52.85l10.6-6.86a1 1 0 0 0 0-1.7L9.52 4.29A1 1 0 0 0 8 5.14z"></path>
           </svg>
@@ -187,9 +189,7 @@ const watchUrl = `https://www.youtube.com/watch?v=${VSL_YOUTUBE_ID}`;
       }, fail);
     };
 
-    playLink.addEventListener('click', (event) => {
-      if (failed) return;
-      event.preventDefault();
+    const startWithSound = () => {
       enableSound();
       if (ready) {
         setState('playing');
@@ -198,6 +198,24 @@ const watchUrl = `https://www.youtube.com/watch?v=${VSL_YOUTUBE_ID}`;
         setState('loading');
         createPlayer(false);
       }
+    };
+
+    playLink.addEventListener('click', (event) => {
+      if (failed) return;
+      event.preventDefault();
+      startWithSound();
+    });
+
+    document.querySelectorAll<HTMLElement>('[data-vsl-watch]').forEach((trigger) => {
+      trigger.addEventListener('click', () => {
+        const smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        root.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', block: 'center' });
+        if (failed) {
+          window.open(playLink.href, '_blank', 'noopener');
+          return;
+        }
+        startWithSound();
+      });
     });
 
     soundButton?.addEventListener('click', () => {

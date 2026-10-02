@@ -1,0 +1,191 @@
+---
+import ShipCTA from '../ShipCTA.astro';
+import VslPlayer from '../VslPlayer.astro';
+import {
+  APP_STORE_RATING,
+  FREE_TIER_APPS,
+  USER_COUNT,
+  VSL_DURATION_LABEL,
+} from '../../lib/site';
+
+interface Props {
+  poster: string;
+}
+
+const { poster } = Astro.props;
+
+const leadGroups = [
+  ['Ship', 'your'],
+  ['next', 'release'],
+];
+const leadWords = leadGroups.flat();
+const tailWords = ['without', 'the'];
+const chaosLetters = [
+  { char: 'c', x: '-0.28em', y: '-0.42em', r: '-26deg' },
+  { char: 'h', x: '0.08em', y: '0.34em', r: '18deg' },
+  { char: 'a', x: '-0.1em', y: '-0.56em', r: '-14deg' },
+  { char: 'o', x: '0.22em', y: '0.3em', r: '32deg' },
+  { char: 's', x: '0.36em', y: '-0.3em', r: '-22deg' },
+];
+const userCount = Number(USER_COUNT.replace(/\D/g, ''));
+
+const chips = [
+  {
+    tone: 'green',
+    title: 'Checklist complete',
+    detail: '2.4 · 6 of 6 done',
+    icon: 'M5 12.5l4.5 4.5L19 7.5',
+  },
+  {
+    tone: 'blue',
+    title: 'Release notes pushed',
+    detail: 'to App Store Connect',
+    icon: 'M12 16V5m0 0l-4.5 4.5M12 5l4.5 4.5M5 19h14',
+  },
+  {
+    tone: 'cyan',
+    title: '› What’s left for 2.4?',
+    detail: 'Your coding agent, via MCP',
+    icon: 'M5 7l5 5-5 5M12 17h7',
+  },
+  {
+    tone: 'violet',
+    title: '3 review replies drafted',
+    detail: 'Waiting for your approval',
+    icon: 'M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z',
+  },
+];
+---
+
+<section class="hero" data-progress="top" data-progress-distance="0.75">
+  <div class="hero__copy">
+    <a class="hero-announce" href="#agents">
+      <span class="hero-announce__tag">New</span>
+      <span class="hero-announce__text">Your coding agent now knows the plan</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"></path>
+      </svg>
+    </a>
+
+    <h1 class="hero__title">
+      <span class="sr-only">Ship your next release without the chaos.</span>
+      <span aria-hidden="true">
+        <span class="hero__line">
+          {
+            leadGroups.map((group) => (
+              <span class="hero__group">
+                {group.map((word) => (
+                  <span class="hero__word" style={`--i:${leadWords.indexOf(word)}`}>
+                    <span>{word}</span>
+                  </span>
+                ))}
+              </span>
+            ))
+          }
+        </span>
+        <span class="hero__line hero__line--accent">
+          {
+            tailWords.map((word, index) => (
+              <span class="hero__word" style={`--i:${index + leadWords.length}`}>
+                <span>{word}</span>
+              </span>
+            ))
+          }
+          <span class="hero__chaos">
+            {
+              chaosLetters.map((letter, index) => (
+                <span style={`--i:${index};--x:${letter.x};--y:${letter.y};--r:${letter.r}`}>
+                  {letter.char}
+                </span>
+              ))
+            }
+            <span class="hero__period">.</span>
+          </span>
+        </span>
+      </span>
+    </h1>
+
+    <p class="hero__sub">
+      Plan releases, run App Store submission checklists, reply to reviews, and ask AI that knows
+      your apps. One command center on iPhone, iPad, and Mac.
+    </p>
+
+    <div class="hero__actions">
+      <ShipCTA size="lg" />
+      <button type="button" class="btn-ghost btn-ghost--lg" data-vsl-watch>
+        <span class="hero__play" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M8 5.14v13.72a1 1 0 0 0 1.52.85l10.6-6.86a1 1 0 0 0 0-1.7L9.52 4.29A1 1 0 0 0 8 5.14z"></path>
+          </svg>
+        </span>
+        Watch the tour
+        <span class="hero__duration">{VSL_DURATION_LABEL}</span>
+      </button>
+    </div>
+
+    <p class="hero__meta">
+      <span class="hero__stars" aria-hidden="true">
+        {
+          Array.from({ length: 5 }, () => (
+            <svg viewBox="0 0 20 20" fill="currentColor">
+              <path d="M9.05 2.93c.3-.92 1.6-.92 1.9 0l1.07 3.29a1 1 0 0 0 .95.69h3.46c.97 0 1.37 1.24.59 1.81l-2.8 2.03a1 1 0 0 0-.36 1.12l1.07 3.29c.3.92-.75 1.69-1.54 1.12l-2.8-2.03a1 1 0 0 0-1.17 0l-2.8 2.03c-.78.57-1.83-.2-1.53-1.12l1.07-3.29a1 1 0 0 0-.36-1.12l-2.8-2.03c-.78-.57-.38-1.81.59-1.81h3.46a1 1 0 0 0 .95-.69z"></path>
+            </svg>
+          ))
+        }
+      </span>
+      <span>{APP_STORE_RATING} on the App Store</span>
+      <span class="hero__meta-dot" aria-hidden="true"></span>
+      <span>Free for {FREE_TIER_APPS} apps</span>
+      <span class="hero__meta-dot hero__meta-extra" aria-hidden="true"></span>
+      <span class="hero__meta-extra">Your data stays in your iCloud</span>
+    </p>
+  </div>
+
+  <div class="hero__stage">
+    <div class="hero__horizon" aria-hidden="true"></div>
+    <div class="hero__tilt">
+      <VslPlayer poster={poster} />
+    </div>
+    {
+      chips.map((chip, index) => (
+        <div class={`hero-chip hero-chip--${index + 1}`} data-tone={chip.tone} aria-hidden="true">
+          <span class="hero-chip__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d={chip.icon} />
+            </svg>
+          </span>
+          <span>
+            <span class="hero-chip__title">{chip.title}</span>
+            <span class="hero-chip__detail">{chip.detail}</span>
+          </span>
+        </div>
+      ))
+    }
+  </div>
+
+  <ul class="hero-proof" data-reveal-stagger="90">
+    <li data-reveal>
+      <strong>
+        <span aria-hidden="true" data-count-to={userCount} data-count-suffix="+">{USER_COUNT}</span>
+        <span class="sr-only">{USER_COUNT}</span>
+      </strong>
+      <span>indie developers</span>
+    </li>
+    <li data-reveal>
+      <strong>
+        <span aria-hidden="true" data-count-to={APP_STORE_RATING} data-count-decimals="1">{APP_STORE_RATING}</span>
+        <span class="sr-only">{APP_STORE_RATING} stars</span>
+        <span class="hero-proof__star" aria-hidden="true">★</span>
+      </strong>
+      <span>App Store rating</span>
+    </li>
+    <li data-reveal>
+      <strong>3</strong>
+      <span>platforms: iPhone, iPad &amp; Mac</span>
+    </li>
+    <li data-reveal>
+      <strong>$0</strong>
+      <span>to start, free for {FREE_TIER_APPS} apps</span>
+    </li>
+  </ul>
+</section>

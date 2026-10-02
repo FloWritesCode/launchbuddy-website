@@ -1,0 +1,213 @@
+---
+import ProBadge from '../ProBadge.astro';
+import AppWindow from './AppWindow.astro';
+import PlanScene from './scenes/PlanScene.astro';
+import ChecklistScene from './scenes/ChecklistScene.astro';
+import AscScene from './scenes/AscScene.astro';
+import AiScene from './scenes/AiScene.astro';
+import AgentScene from './scenes/AgentScene.astro';
+import { CHECKLIST_PATH, FREE_TIER_APPS, FREE_TIER_RELEASES } from '../../lib/site';
+
+const chapters = [
+  {
+    id: 'plan',
+    kicker: 'Release planning',
+    view: 'Releases',
+    color: 'var(--color-accent-blue)',
+    title: 'Plan releases, not to-do lists.',
+    body: 'Every fix and feature is tied to the version it ships in, with a status and a date. Always know what ships next, and what’s still in the way.',
+    points: ['Taskboards for every version', 'Release status & due dates', `Free for ${FREE_TIER_APPS} apps & ${FREE_TIER_RELEASES} releases`],
+    Scene: PlanScene,
+  },
+  {
+    id: 'checklists',
+    kicker: 'Submission checklists',
+    view: 'Checklists',
+    color: 'var(--color-accent-green)',
+    title: 'Nothing slips past Submit.',
+    body: 'Add a reusable App Store submission checklist to every release, so screenshots, privacy labels, and What’s New get done before you hit Submit, not after the rejection email.',
+    points: ['Default checklists included free', 'Custom checklists with Pro'],
+    link: { href: CHECKLIST_PATH, label: 'Get the free App Launch Checklist PDF' },
+    Scene: ChecklistScene,
+  },
+  {
+    id: 'app-store-connect',
+    kicker: 'App Store Connect',
+    view: 'Reviews',
+    color: 'var(--color-accent-violet)',
+    pro: true,
+    title: 'No more tab-hopping.',
+    body: 'Read and reply to reviews, check downloads and revenue, and push release notes to App Store Connect without leaving LaunchBuddy. Connect your API key once.',
+    points: ['Reviews inbox & replies', 'Analytics dashboard', 'Release notes upload'],
+    note: 'Requires Pro and an App Store Connect API key.',
+    Scene: AscScene,
+  },
+  {
+    id: 'ai',
+    kicker: 'LaunchBuddy AI',
+    view: 'LaunchBuddy AI',
+    color: 'var(--color-accent-magenta)',
+    pro: true,
+    title: 'AI that knows your apps.',
+    body: 'Ask about reviews, backlog, and releases, or hand it a playbook like “Prepare a release.” It drafts changelogs and review replies, and nothing changes until you approve.',
+    points: ['App-aware chat', 'Playbooks for releases, reviews & performance', 'Approval before every change'],
+    note: 'Included with Pro. AI usage limits apply.',
+    Scene: AiScene,
+  },
+  {
+    id: 'agents',
+    kicker: 'MCP server for Mac',
+    view: 'Releases',
+    color: 'var(--color-accent-cyan)',
+    title: 'Your coding agent knows the plan.',
+    body: 'Connect Cursor, Claude Code, or Codex to LaunchBuddy’s local MCP server. Agents read your releases, tasks, and checklists, and every change waits for your OK.',
+    points: ['Localhost-only, on your Mac', 'Read tools are free', 'Write tools with Pro, always approval-gated'],
+    Scene: AgentScene,
+  },
+];
+---
+
+<section id="features" class="track section-block" data-track aria-labelledby="track-title">
+  <div class="track__head">
+    <p class="section-label" data-reveal>How it works</p>
+    <h2 id="track-title" class="section-heading" data-reveal>
+      Everything between <span class="track__status">Build Succeeded</span> and
+      <span class="track__status">Ready for Sale</span>
+    </h2>
+    <p class="section-subheading mx-auto mt-5" data-reveal>
+      Five jobs that used to live in five different tools, now organized around the version you’re
+      shipping.
+    </p>
+  </div>
+
+  <div class="track__grid">
+    <div class="track__chapters" data-progress="center">
+      <div class="track__rail" aria-hidden="true"><span class="track__rail-fill"></span></div>
+      {
+        chapters.map(({ Scene, ...chapter }, index) => (
+          <article
+            id={chapter.id}
+            class:list={['chapter', { 'is-active': index === 0 }]}
+            data-chapter={chapter.id}
+            style={`--c:${chapter.color}`}
+          >
+            <div class="chapter__inner">
+              <span class="chapter__node" aria-hidden="true" />
+              <p class="chapter__kicker">
+                <span class="chapter__index">0{index + 1}</span>
+                {chapter.kicker}
+                {chapter.pro && <ProBadge />}
+              </p>
+              <h3 class="chapter__title">{chapter.title}</h3>
+              <p class="chapter__body">{chapter.body}</p>
+              <ul class="chapter__points">
+                {chapter.points.map((point) => (
+                  <li>
+                    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                      <path d="M4 8.5l2.5 2.5L12 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    {point}
+                  </li>
+                ))}
+              </ul>
+              {chapter.note && <p class="chapter__note">{chapter.note}</p>}
+              {chapter.link && (
+                <a class="chapter__link" href={chapter.link.href}>
+                  {chapter.link.label}
+                  <span aria-hidden="true">→</span>
+                </a>
+              )}
+            </div>
+            <div class="chapter__scene" aria-hidden="true">
+              <AppWindow sidebar={false} title={`Orbit Notes — ${chapter.view}`} active={chapter.id}>
+                <Scene />
+              </AppWindow>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="track__window" aria-hidden="true">
+      <div class="track__glow"></div>
+      <AppWindow class="app-window--stage" title="LaunchBuddy" active="plan">
+        <PlanScene />
+        <ChecklistScene />
+        <AscScene />
+        <AiScene />
+        <AgentScene />
+      </AppWindow>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { createSceneTimeline, type SceneTimeline } from '../../scripts/scenes';
+
+  const track = document.querySelector<HTMLElement>('[data-track]');
+  const stage = track?.querySelector<HTMLElement>('.app-window--stage');
+
+  if (track && stage && 'IntersectionObserver' in window) {
+    const desktop = window.matchMedia('(min-width: 1024px)');
+    const chapters = [...track.querySelectorAll<HTMLElement>('[data-chapter]')];
+    const stageScenes = new Map<string, SceneTimeline>();
+    stage.querySelectorAll<HTMLElement>('[data-scene]').forEach((scene) => {
+      stageScenes.set(scene.dataset.scene ?? '', createSceneTimeline(scene));
+    });
+
+    let active = 'plan';
+    let trackVisible = false;
+
+    const syncStage = (restart = false) => {
+      stageScenes.forEach((timeline, id) => {
+        if (id === active && trackVisible && desktop.matches) timeline.play(restart);
+        else timeline.pause();
+      });
+    };
+
+    const activate = (id: string) => {
+      if (id === active) return;
+      active = id;
+      stage.dataset.active = id;
+      const activeIndex = chapters.findIndex((chapter) => chapter.dataset.chapter === id);
+      chapters.forEach((chapter, index) => {
+        chapter.classList.toggle('is-active', index === activeIndex);
+        chapter.classList.toggle('is-past', index < activeIndex);
+      });
+      syncStage(true);
+    };
+
+    const chapterObserver = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) activate((entry.target as HTMLElement).dataset.chapter ?? 'plan');
+        }
+      },
+      { rootMargin: '-50% 0px -50% 0px' },
+    );
+    chapters.forEach((chapter) => chapterObserver.observe(chapter));
+
+    new IntersectionObserver(([entry]) => {
+      trackVisible = entry.isIntersecting;
+      syncStage();
+    }).observe(track);
+
+    desktop.addEventListener('change', () => syncStage());
+
+    const inlineObserver = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          const timeline = inlineScenes.get(entry.target as HTMLElement);
+          if (entry.isIntersecting && !desktop.matches) timeline?.play();
+          else timeline?.pause();
+        }
+      },
+      { threshold: 0.4 },
+    );
+    const inlineScenes = new Map<HTMLElement, SceneTimeline>();
+    track.querySelectorAll<HTMLElement>('.chapter__scene [data-scene]').forEach((scene) => {
+      inlineScenes.set(scene, createSceneTimeline(scene));
+      inlineObserver.observe(scene);
+    });
+  }
+</script>

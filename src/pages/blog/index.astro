@@ -29,7 +29,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
     <div class="space-y-6">
       {
         posts.map((post) => (
-          <article class="glass-card p-6">
+          <article class="glass-card glass-card--interactive spotlight p-6">
             <h2 class="font-display font-bold text-xl text-text-primary mb-2">
               <a class="text-text-primary no-underline hover:text-accent-blue transition-colors" href={`/blog/${post.id}/`}>
                 {post.data.title}
@@ -50,7 +50,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
         ))
       }
     </div>
-
-    <Footer />
   </div>
+
+  <Footer />
 </BaseLayout>

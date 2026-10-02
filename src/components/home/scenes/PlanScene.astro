@@ -1,0 +1,51 @@
+---
+const columns = [
+  { title: 'Backlog', cards: [['Home Screen widget', 'Feature'], ['Keyboard shortcuts', 'Feature']] },
+  { title: 'In progress', cards: [['Shared notebooks', 'Feature']] },
+  { title: 'Done', cards: [['Fix offline sync', 'Bugfix'], ['New onboarding', 'Design']], done: true },
+];
+---
+
+<div class="scene scene--plan" data-scene="plan" data-timeline="700 1300 1500 1500" data-hold="2800">
+  <div class="scene-head">
+    <div>
+      <p class="scene-head__title">2.4 · Shared Notebooks</p>
+      <p class="scene-head__meta">
+        Due Fri, Oct 16 ·
+        <span data-step-text="2 of 6 done|2 of 6 done|2 of 6 done|2 of 6 done|3 of 6 done">3 of 6 done</span>
+      </p>
+    </div>
+    <span class="scene-pill" style="--pc: var(--color-accent-blue)">In progress</span>
+  </div>
+
+  <div class="plan-progress"><span></span></div>
+
+  <div class="plan-board">
+    {
+      columns.map((column) => (
+        <div class="plan-col">
+          <p class="plan-col__title">{column.title}</p>
+          {column.cards.map(([title, tag]) => (
+            <div class:list={['plan-card', { 'is-done': column.done }]}>
+              <span>{title}</span>
+              <em>{tag}</em>
+            </div>
+          ))}
+        </div>
+      ))
+    }
+    <div class="plan-card plan-card--mover">
+      <span>Dark mode</span>
+      <em>Feature</em>
+      <svg class="plan-card__check" viewBox="0 0 16 16" fill="none">
+        <path d="M4 8.5l2.5 2.5L12 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </div>
+  </div>
+
+  <div class="plan-next">
+    <span class="mono-kicker">Up next</span>
+    <span class="plan-next__item"><i style="--pc: var(--color-accent-violet)"></i>2.5 · Widgets</span>
+    <span class="plan-next__item"><i style="--pc: var(--color-accent-cyan)"></i>2.6 · Mac app</span>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+---
+import { HOMEPAGE_BLOG_POSTS } from '../../lib/site';
+---
+
+<section class="section-block max-w-6xl mx-auto px-6" aria-labelledby="guides-title">
+  <div class="guides__head">
+    <div>
+      <p class="section-label" data-reveal>Learn how to ship</p>
+      <h2 id="guides-title" class="section-heading" data-reveal>Guides for indie iOS devs.</h2>
+    </div>
+    <a class="guides__all" href="/blog/" data-reveal>All guides →</a>
+  </div>
+
+  <div class="guides__grid" data-reveal-stagger="90">
+    {
+      HOMEPAGE_BLOG_POSTS.map((post, index) => (
+        <div data-reveal>
+          <a href={`/blog/${post.slug}/`} class="guide-card spotlight">
+            <span class="guide-card__index">0{index + 1}</span>
+            <h3 class="guide-card__title">{post.title}</h3>
+            <p class="guide-card__body">{post.description}</p>
+            <span class="guide-card__cta">
+              Read guide
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-5-5 5 5-5 5" />
+              </svg>
+            </span>
+          </a>
+        </div>
+      ))
+    }
+  </div>
+</section>

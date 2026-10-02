@@ -240,6 +240,63 @@ export const PRO_PILLARS = [
   },
 ] as const;
 
+/** Verbatim 5-star App Store reviews; only light trimming. */
+export const TESTIMONIALS = [
+  {
+    author: 'Maarten B.',
+    region: 'US',
+    quote:
+      'This is a great app. I use it for my iOS/Mac development to keep track of version & release documentation, bug fixes and enhancements. The developer appears more than willing to listen to customers and make changes as needed.',
+  },
+  {
+    author: 'Twiggyweasel',
+    region: 'US',
+    quote:
+      'LaunchBuddy is a great tool to help you organize your projects, keep on top of goals, and actually work towards shipping something on the App Store. Hard recommend.',
+  },
+  {
+    author: 'Mark from Mars',
+    region: 'US',
+    quote:
+      'I love having this app to keep track of how my release work in progress is going and my new app ideas. Such a great idea and a great tool!',
+  },
+  {
+    author: 'OBS5561',
+    region: 'US',
+    quote:
+      "This tool makes it super easy to track and plan what you're developing, and syncs between phone and Mac.",
+  },
+  {
+    author: 'B24R200',
+    region: 'CA',
+    quote:
+      'This app is a must have for any developer even if you are just beginning to learn to code or if you are a seasoned pro.',
+  },
+  {
+    author: '.holger',
+    region: 'DE',
+    quote:
+      "This app helps me as an indie developer to keep track of the apps I'm working on and capture ideas I want to implement in my apps. A great little tool to organize my work.",
+  },
+  {
+    author: 'HeyFutureJesse',
+    region: 'AU',
+    quote:
+      'Great app for storing app ideas, picking one to work on and implementing! Simple to understand and a joy to use.',
+  },
+  {
+    author: 'Berkant72',
+    region: 'DE',
+    quote:
+      "This is a great app to organize my apps. I can add release notes, URL's from App Store, website and a social Link from the app.",
+  },
+  {
+    author: 'Alcarbuccia',
+    region: 'US',
+    quote: 'As a new dev. This tool is amazing!',
+  },
+] as const;
+
 export const HOMEPAGE_BLOG_POSTS = [
   {
     slug: 'app-store-connect-release-checklist',

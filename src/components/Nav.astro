@@ -1,57 +1,52 @@
 ---
+import { Image } from 'astro:assets';
 import ShipCTA from './ShipCTA.astro';
+import appIcon from '../assets/app-icon.png';
 
 interface Props {
   currentPath?: string;
 }
 
 const { currentPath = '/' } = Astro.props;
+
+const links = [
+  { href: '/#features', label: 'Features' },
+  { href: '/#pricing', label: 'Pricing' },
+  { href: '/blog/', label: 'Blog', section: '/blog' },
+  { href: '/checklist/', label: 'Checklist', section: '/checklist' },
+];
 ---
 
-<header class="sticky top-0 z-50 nav-glass overflow-x-clip">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
-    <div class="flex items-center justify-between gap-2 sm:gap-4 min-w-0">
-      <a
-        class="flex items-center gap-2 sm:gap-2.5 no-underline hover:no-underline min-w-0 group"
-        href="/"
-        aria-label="LaunchBuddy home"
-      >
-        <img
-          src="/appicon.png"
-          class="h-9 w-9 lg:h-10 lg:w-10 rounded-xl shadow-lg shadow-sky-500/20 group-hover:scale-105 transition-transform duration-300 shrink-0"
-          alt="LaunchBuddy"
-        />
-        <span class="font-display font-bold text-lg sm:text-xl lg:text-2xl text-text-primary truncate hidden sm:inline">
-          Launch<span class="text-gradient">Buddy</span>
-        </span>
-      </a>
+<header class="site-nav" data-site-nav>
+  <nav class="site-nav__bar" aria-label="Main">
+    <a class="site-nav__brand" href="/" aria-label="LaunchBuddy home">
+      <Image src={appIcon} width={64} height={64} alt="" loading="eager" />
+      <span class="hidden min-[360px]:inline">LaunchBuddy</span>
+    </a>
 
-      <div class="flex items-center gap-1.5 sm:gap-3 md:gap-5 shrink-0">
-        <a
-          class={`hidden sm:inline text-sm font-medium no-underline transition-colors duration-200 ${currentPath.startsWith('/blog') ? 'text-text-primary' : 'text-text-secondary hover:text-accent-blue'}`}
-          href="/blog/"
-        >
-          Blog
-        </a>
-        <a
-          class={`hidden sm:inline text-sm font-medium no-underline transition-colors duration-200 ${currentPath.startsWith('/checklist') ? 'text-text-primary' : 'text-text-secondary hover:text-accent-blue'}`}
-          href="/checklist/"
-        >
-          Checklist
-        </a>
-        <a
-          class="inline-flex items-center justify-center w-9 h-9 rounded-lg text-text-secondary hover:text-text-primary hover:bg-white/5 transition-all duration-200"
-          href="https://twitter.com/LaunchBuddy_App"
-          aria-label="LaunchBuddy on X"
-        >
-          <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
-            ></path>
-          </svg>
-        </a>
-        <ShipCTA size="sm" compact />
-      </div>
+    <div class="site-nav__links">
+      {
+        links.map((link) => (
+          <a
+            class="site-nav__link"
+            href={link.href}
+            aria-current={link.section && currentPath.startsWith(link.section) ? 'page' : undefined}
+          >
+            {link.label}
+          </a>
+        ))
+      }
     </div>
-  </div>
+
+    <div class="site-nav__actions">
+      <a class="site-nav__icon" href="https://twitter.com/LaunchBuddy_App" aria-label="LaunchBuddy on X">
+        <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+          ></path>
+        </svg>
+      </a>
+      <ShipCTA size="sm" compact />
+    </div>
+  </nav>
 </header>

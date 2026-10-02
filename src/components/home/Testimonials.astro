@@ -1,0 +1,57 @@
+---
+import StarRating from '../StarRating.astro';
+import {
+  APP_STORE_RATING,
+  APP_STORE_REVIEWS_URL,
+  TESTIMONIALS,
+  USER_COUNT,
+} from '../../lib/site';
+
+const rows = [
+  TESTIMONIALS.filter((_, index) => index % 2 === 0),
+  TESTIMONIALS.filter((_, index) => index % 2 === 1),
+];
+const userCount = Number(USER_COUNT.replace(/\D/g, ''));
+---
+
+<section class="proof section-block" aria-labelledby="proof-title">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <p class="section-label" data-reveal>Loved by indie devs</p>
+    <h2 id="proof-title" data-reveal>
+      <span class="proof__number">
+        <span aria-hidden="true" data-count-to={userCount} data-count-suffix="+">{USER_COUNT}</span>
+        <span class="sr-only">{USER_COUNT}</span>
+      </span>
+      <span class="section-heading block">developers use LaunchBuddy</span>
+    </h2>
+    <a class="proof__rating" href={APP_STORE_REVIEWS_URL} rel="noopener noreferrer" data-reveal>
+      <StarRating rating={Number(APP_STORE_RATING)} />
+      <span>{APP_STORE_RATING} average on the App Store</span>
+      <span class="proof__rating-link">Read reviews →</span>
+    </a>
+  </div>
+
+  <div class="proof__marquee" data-reveal="fade">
+    {
+      rows.map((row, rowIndex) => (
+        <div class:list={['proof__row', { 'proof__row--reverse': rowIndex === 1 }]}>
+          <ul class="proof__track">
+            {[...row, ...row].map((review, index) => (
+              <li class="proof-card" aria-hidden={index >= row.length ? 'true' : undefined}>
+                <span class="proof-card__stars" aria-label="5 out of 5 stars">★★★★★</span>
+                <blockquote class="proof-card__quote">“{review.quote}”</blockquote>
+                <p class="proof-card__author">
+                  <span class="proof-card__avatar" aria-hidden="true">{review.author.replace(/[^A-Za-z]/g, '').charAt(0)}</span>
+                  <span>
+                    <span class="proof-card__name">{review.author}</span>
+                    <span class="proof-card__meta">App Store review · {review.region}</span>
+                  </span>
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</section>

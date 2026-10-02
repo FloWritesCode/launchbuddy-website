@@ -1,0 +1,56 @@
+---
+const steps = [
+  'Drafted the 2.4 changelog',
+  'Readiness audit: 1 checklist item open',
+  'Drafted 3 review replies',
+];
+---
+
+<div class="scene scene--ai" data-scene="ai" data-timeline="900 1000 900 900 1000 1600" data-hold="2800">
+  <p class="ai-heading">What should LaunchBuddy take care of?</p>
+  <div class="ai-playbooks">
+    <span class="is-picked">Prepare a release</span>
+    <span>Triage feedback and reviews</span>
+    <span>Analyze performance</span>
+  </div>
+
+  <div class="ai-thread">
+    <p class="ai-msg">Prepare 2.4 for release</p>
+    <ul class="ai-steps">
+      {
+        steps.map((step, index) => (
+          <li style={`--i:${index}`}>
+            <svg viewBox="0 0 16 16" fill="none">
+              <circle cx="8" cy="8" r="7" fill="currentColor" opacity="0.18" />
+              <path d="M5 8.2l2 2 4-4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            {step}
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="ai-approval">
+      <div class="ai-approval__head">
+        <span class="ai-approval__title">2 changes need your approval</span>
+        <span class="ai-approval__done">Approved · applied</span>
+      </div>
+      <ul class="ai-approval__list">
+        <li>Update changelog for 2.4</li>
+        <li>Push release notes to App Store Connect</li>
+      </ul>
+      <div class="ai-approval__actions">
+        <span>Reject</span>
+        <span class="is-primary">Approve</span>
+      </div>
+    </div>
+  </div>
+
+  <p class="ai-foot">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6z"></path>
+      <path d="M9 12l2 2 4-4"></path>
+    </svg>
+    Approval required for every change
+  </p>
+</div>

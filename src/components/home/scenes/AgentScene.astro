@@ -1,0 +1,50 @@
+---
+import { Image } from 'astro:assets';
+import appIcon from '../../../assets/app-icon.png';
+---
+
+<div class="scene scene--agent" data-scene="agents" data-timeline="900 900 1200 1000 1700" data-hold="2800">
+  <div class="agent-term">
+    <div class="agent-term__bar">
+      <span class="app-window__lights"><i></i><i></i><i></i></span>
+      <span>agent — orbit-notes</span>
+    </div>
+    <div class="agent-term__body">
+      <p class="agent-term__prompt" style="--n:0">› What’s left before 2.4 ships?</p>
+      <p class="agent-term__tool" style="--n:1">
+        <i></i>
+        <span>LaunchBuddy <b>Get next release</b></span>
+        <span class="agent-term__result">✓ 2.4</span>
+      </p>
+      <div class="agent-term__out" style="--n:2">
+        <p><b>2.4 Shared Notebooks</b> · in progress</p>
+        <p class="is-done">✓ 4 of 6 checklist items done</p>
+        <p class="agent-term__task">
+          <span class="agent-term__todo">○</span><span class="agent-term__todo-done">✓</span> Fix offline sync
+        </p>
+        <p>○ Update App Store screenshots</p>
+      </div>
+      <p class="agent-term__prompt" style="--n:3">› Mark offline sync as done</p>
+      <p class="agent-term__tool agent-term__tool--pending" style="--n:4">
+        <i></i>
+        <span>LaunchBuddy <b>Update task</b></span>
+        <span class="agent-term__result">
+          <span>waiting for approval</span>
+          <span>✓ approved</span>
+        </span>
+      </p>
+    </div>
+  </div>
+
+  <div class="agent-toast">
+    <Image src={appIcon} width={72} height={72} alt="" />
+    <div class="min-w-0">
+      <p class="agent-toast__title">Agent wants to update a task</p>
+      <p class="agent-toast__body">“Fix offline sync” → Done</p>
+    </div>
+    <div class="agent-toast__actions">
+      <span>Deny</span>
+      <span class="is-primary">Approve</span>
+    </div>
+  </div>
+</div>

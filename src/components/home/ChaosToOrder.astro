@@ -1,0 +1,145 @@
+---
+const alerts = [
+  { title: 'Submission rejected', body: 'Missing 13-inch iPad screenshots', at: 0.08 },
+  { title: 'New 1-star review', body: '“Dev never replies.” · 23 days ago', at: 0.15 },
+  { title: 'Release date missed', body: '2.4 was due last Friday', at: 0.22 },
+];
+
+const tasks = [
+  { title: 'Reply to “Crashes since the update”', tag: 'Review' },
+  { title: 'Dark mode', tag: 'Feature' },
+  { title: 'Fix login on iPad', tag: 'Bugfix' },
+  { title: 'What’s New for 2.4', tag: 'Notes' },
+  { title: 'Screenshots & privacy labels', tag: 'Checklist' },
+  { title: 'Submit for review', tag: 'Checklist' },
+];
+---
+
+<section class="c2o" data-progress aria-labelledby="c2o-problem">
+  <div class="c2o__sticky">
+    <div class="c2o__copy">
+      <div class="c2o__phase c2o__phase--problem">
+        <p class="section-label" style="--label-color: var(--color-accent-red)">Sound familiar?</p>
+        <h2 id="c2o-problem" class="section-heading">
+          You built the app.
+          <span class="text-text-muted">Now you have to ship it.</span>
+        </h2>
+        <p class="c2o__text">
+          Reviews live in App Store Connect. Feedback is buried in your DMs. Tasks sit in yet another
+          kanban app. Release notes? Some random doc. The checklist? In your head.
+        </p>
+        <p class="c2o__slip">So things slip.</p>
+      </div>
+
+      <div class="c2o__phase c2o__phase--solution">
+        <p class="section-label">Meet LaunchBuddy</p>
+        <h2 class="section-heading">
+          Not Jira. Not a kanban clone.
+          <span class="text-gradient">A release command center.</span>
+        </h2>
+        <p class="c2o__text">
+          Every review, idea, task, checklist, and release note lands in the version it belongs to,
+          so you always know what ships next and what’s still in the way.
+        </p>
+        <ul class="c2o__chips">
+          <li>Built for indie devs</li>
+          <li>iPhone, iPad &amp; Mac</li>
+          <li>Synced with iCloud</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="c2o__stage-wrap" aria-hidden="true">
+      <div class="c2o__stage">
+        <svg class="c2o__strings" viewBox="0 0 544 480" fill="none">
+          <path
+            pathLength="1"
+            d="M86 86C190 150 330 10 446 70S540 250 462 300 300 350 250 410 30 380 70 290 140 140 86 86"
+          ></path>
+          <path pathLength="1" d="M446 70C300 160 360 380 250 410"></path>
+          <path pathLength="1" d="M70 290C200 250 330 330 462 300"></path>
+        </svg>
+
+        <div class="c2o-card c2o-card--review" style="--x:-11.5rem;--y:-9.5rem;--r:-9deg">
+          <span class="c2o-card__stars"><b>★★</b>★★★</span>
+          <strong>Crashes since the update</strong>
+          <span class="c2o-card__meta">App Store Connect · 3d ago</span>
+        </div>
+
+        <div class="c2o-card c2o-card--dm" style="--x:10.5rem;--y:-10.5rem;--r:7deg">
+          <span class="c2o-card__meta">@sam_builds · DM</span>
+          <span class="c2o-card__bubble">any chance of dark mode? 🙏</span>
+        </div>
+
+        <div class="c2o-card c2o-card--board" style="--x:-12.5rem;--y:3.5rem;--r:6deg">
+          <span class="c2o-card__meta">yet-another-board</span>
+          <span class="c2o-card__cols">
+            <span><i></i><i></i><i></i></span>
+            <span><i></i><i class="is-hot"></i></span>
+            <span><i></i></span>
+          </span>
+        </div>
+
+        <div class="c2o-card c2o-card--doc" style="--x:11.5rem;--y:4rem;--r:-7deg">
+          <span class="c2o-card__file">release-notes-FINAL-v3.txt</span>
+          <span class="c2o-card__lines"><i></i><i></i><i></i><i></i></span>
+        </div>
+
+        <div class="c2o-card c2o-card--sticky" style="--x:-1.5rem;--y:10.5rem;--r:-4deg">
+          screenshots??<br />privacy labels??<br />bump build #
+        </div>
+
+        <ul class="c2o__alerts">
+          {
+            alerts.map((alert) => (
+              <li class="c2o-alert" style={`--a:${alert.at}`}>
+                <span class="c2o-alert__icon">!</span>
+                <span>
+                  <strong>{alert.title}</strong>
+                  <span>{alert.body}</span>
+                </span>
+                <span class="c2o-alert__time">now</span>
+              </li>
+            ))
+          }
+        </ul>
+
+        <div class="c2o-window">
+          <div class="c2o-window__bar">
+            <span class="c2o-window__lights"><i></i><i></i><i></i></span>
+            <span>Orbit Notes</span>
+          </div>
+          <div class="c2o-window__body">
+            <div class="c2o-window__head">
+              <div>
+                <p class="c2o-window__title">2.4 · Shared Notebooks</p>
+                <p class="c2o-window__meta">Due Fri · 6 tasks</p>
+              </div>
+              <span class="c2o-window__status">
+                <span class="is-progress">In progress</span>
+                <span class="is-ready">Ready to ship</span>
+              </span>
+            </div>
+            <div class="c2o-window__progress"><span></span></div>
+            <p class="c2o-window__count"></p>
+            <ul class="c2o-window__tasks">
+              {
+                tasks.map((task, index) => (
+                  <li style={`--i:${index}`}>
+                    <span class="c2o-window__check">
+                      <svg viewBox="0 0 16 16" fill="none">
+                        <path d="M4 8.5l2.5 2.5L12 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    </span>
+                    <span class="c2o-window__task">{task.title}</span>
+                    <span class="c2o-window__tag">{task.tag}</span>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

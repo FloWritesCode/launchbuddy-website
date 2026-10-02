@@ -1,0 +1,49 @@
+---
+const items = [
+  'Screenshots for every device size',
+  'Privacy nutrition labels up to date',
+  'What’s New text written',
+  'Release build tested on device',
+  'Version & build number bumped',
+  'Submit for review',
+];
+---
+
+<div
+  class="scene scene--check"
+  data-scene="checklists"
+  data-timeline="700 850 850 850 850 850 850"
+  data-hold="2800"
+>
+  <div class="scene-head">
+    <div>
+      <p class="scene-head__title">App Store release</p>
+      <p class="scene-head__meta">Checklist · added to 2.4</p>
+    </div>
+    <div class="check-ring">
+      <span data-step-text="0%|17%|33%|50%|67%|83%|100%|100%">100%</span>
+    </div>
+  </div>
+
+  <ul class="check-list">
+    {
+      items.map((item, index) => (
+        <li style={`--i:${index}`}>
+          <span class="check-box">
+            <svg viewBox="0 0 16 16" fill="none">
+              <path d="M4 8.5l2.5 2.5L12 5.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <span class="check-list__label">{item}</span>
+        </li>
+      ))
+    }
+  </ul>
+
+  <div class="check-stamp">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12.5l4.5 4.5L19 7.5"></path>
+    </svg>
+    Ready to ship
+  </div>
+</div>

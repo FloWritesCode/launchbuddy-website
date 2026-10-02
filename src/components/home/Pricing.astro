@@ -1,0 +1,131 @@
+---
+import AppStoreBadge from '../AppStoreBadge.astro';
+import FeatureComparisonTable from '../FeatureComparisonTable.astro';
+import ShipCTA from '../ShipCTA.astro';
+import {
+  APP_STORE_URL,
+  FREE_TIER_APPS,
+  FREE_TIER_RELEASES,
+  PRO_MONTHLY_PRICE,
+  PRO_YEARLY_PRICE,
+} from '../../lib/site';
+
+const monthly = Number(PRO_MONTHLY_PRICE.replace('$', ''));
+const yearly = Number(PRO_YEARLY_PRICE.replace('$', ''));
+const yearlySavings = Math.round((1 - yearly / (monthly * 12)) * 100);
+const yearlyPerMonth = `$${(yearly / 12).toFixed(2)}`;
+
+const freeFeatures = [
+  `${FREE_TIER_APPS} apps & ${FREE_TIER_RELEASES} releases`,
+  'Release planning & taskboards',
+  'Default App Store submission checklists',
+  'iCloud sync on iPhone, iPad & Mac',
+  'Widgets & menu bar release status',
+  'Shortcuts, Siri & MCP read tools',
+];
+
+const proFeatures = [
+  'Unlimited apps, releases & project notes',
+  'Custom submission checklists',
+  'App Store Connect: reviews, analytics & release notes*',
+  'LaunchBuddy AI: app chat, playbooks & reply drafts**',
+  'ASO experiments',
+  'Shortcuts, Siri & MCP write actions, with approval',
+];
+---
+
+<section id="pricing" class="pricing section-block max-w-6xl mx-auto px-6" aria-labelledby="pricing-title">
+  <div class="text-center max-w-2xl mx-auto mb-12 md:mb-14">
+    <p class="section-label" data-reveal>Pricing</p>
+    <h2 id="pricing-title" class="section-heading" data-reveal>
+      Start free. Upgrade when you ship more.
+    </h2>
+    <p class="section-subheading mx-auto mt-5" data-reveal>
+      Free covers your side project. Pro unlocks App Store Connect, AI, and unlimited apps. One
+      subscription for iPhone, iPad, and Mac.
+    </p>
+  </div>
+
+  <fieldset class="billing-toggle" data-reveal>
+    <legend class="sr-only">Billing period</legend>
+    <input type="radio" name="billing" id="billing-monthly" value="monthly" />
+    <label for="billing-monthly">Monthly</label>
+    <input type="radio" name="billing" id="billing-yearly" value="yearly" checked />
+    <label for="billing-yearly">Yearly <span class="billing-toggle__save">Save {yearlySavings}%</span></label>
+    <span class="billing-toggle__thumb" aria-hidden="true"></span>
+  </fieldset>
+
+  <div class="pricing__grid" data-reveal-stagger="120">
+    <div data-reveal>
+      <article class="price-card">
+        <p class="price-card__name">Free</p>
+        <p class="price-card__price"><strong>$0</strong><span>forever</span></p>
+        <p class="price-card__lede">Everything you need to plan and ship your first app.</p>
+        <a class="btn-ghost price-card__cta" href={APP_STORE_URL}>Download free</a>
+        <ul class="price-card__list">
+          {
+            freeFeatures.map((feature) => (
+              <li>
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M4 8.5l2.5 2.5L12 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                {feature}
+              </li>
+            ))
+          }
+        </ul>
+      </article>
+    </div>
+
+    <div data-reveal>
+      <article class="price-card price-card--pro">
+        <p class="price-card__name">
+          Pro <span class="price-card__badge">Everything unlocked</span>
+        </p>
+        <p class="price-card__price price-card__price--yearly">
+          <strong>{PRO_YEARLY_PRICE}</strong><span>per year</span>
+        </p>
+        <p class="price-card__price price-card__price--monthly">
+          <strong>{PRO_MONTHLY_PRICE}</strong><span>per month</span>
+        </p>
+        <p class="price-card__lede price-card__price--yearly">
+          That’s {yearlyPerMonth}/month, billed yearly.
+        </p>
+        <p class="price-card__lede price-card__price--monthly">Billed monthly through the App Store.</p>
+        <ShipCTA size="md" class="price-card__cta" />
+        <p class="price-card__plus">Everything in Free, plus</p>
+        <ul class="price-card__list">
+          {
+            proFeatures.map((feature) => (
+              <li>
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M4 8.5l2.5 2.5L12 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                {feature}
+              </li>
+            ))
+          }
+        </ul>
+        <p class="price-card__fine">
+          *Requires an App Store Connect API key. **AI usage limits apply. Subscribe inside the app.
+        </p>
+      </article>
+    </div>
+  </div>
+
+  <div class="pricing__badge" data-reveal>
+    <AppStoreBadge size="md" />
+  </div>
+
+  <details class="compare" data-reveal>
+    <summary>
+      Compare every feature
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+      </svg>
+    </summary>
+    <div class="compare__body">
+      <FeatureComparisonTable />
+    </div>
+  </details>
+</section>

@@ -1,26 +1,73 @@
 ---
-import { PRIVACY_POLICY_URL, SUPPORT_URL, TERMS_URL } from '../lib/site';
+import { Image } from 'astro:assets';
+import appIcon from '../assets/app-icon.png';
+import { APP_STORE_URL, CHECKLIST_PATH, PRIVACY_POLICY_URL, SUPPORT_URL, TERMS_URL } from '../lib/site';
+
+const columns = [
+  {
+    heading: 'Product',
+    links: [
+      { href: '/#features', label: 'Features' },
+      { href: '/#pricing', label: 'Pricing' },
+      { href: '/#faq', label: 'FAQ' },
+      { href: APP_STORE_URL, label: 'Download' },
+    ],
+  },
+  {
+    heading: 'Resources',
+    links: [
+      { href: '/blog/', label: 'Blog' },
+      { href: CHECKLIST_PATH, label: 'Launch checklist' },
+      { href: '/rss.xml', label: 'RSS' },
+    ],
+  },
+  {
+    heading: 'Company',
+    links: [
+      { href: SUPPORT_URL, label: 'Support' },
+      { href: 'https://twitter.com/LaunchBuddy_App', label: 'X / Twitter' },
+      { href: PRIVACY_POLICY_URL, label: 'Privacy' },
+      { href: TERMS_URL, label: 'Terms' },
+    ],
+  },
+];
 ---
 
-<footer class="max-w-6xl mx-auto px-6 pt-20 pb-10 fade-in">
-  <div class="glass-card glass-card--static p-8 md:p-10">
-    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-      <div>
-        <p class="font-display font-semibold text-text-primary text-lg mb-1">LaunchBuddy</p>
-        <p class="text-sm text-text-muted">
-          Ship your iOS apps faster.
-        </p>
-      </div>
-      <nav class="flex flex-wrap gap-x-6 gap-y-2">
-        <a class="text-sm text-text-muted no-underline hover:text-accent-blue transition-colors" href={PRIVACY_POLICY_URL}>Privacy</a>
-        <a class="text-sm text-text-muted no-underline hover:text-accent-blue transition-colors" href={TERMS_URL}>Terms</a>
-        <a class="text-sm text-text-muted no-underline hover:text-accent-blue transition-colors" href={SUPPORT_URL}>Support</a>
-        <a class="text-sm text-text-muted no-underline hover:text-accent-blue transition-colors" href="/checklist/">Checklist</a>
-        <a class="text-sm text-text-muted no-underline hover:text-accent-blue transition-colors" href="/blog/">Blog</a>
-      </nav>
+<footer class="site-footer">
+  <div class="site-footer__top">
+    <div>
+      <a class="site-footer__brand" href="/">
+        <Image src={appIcon} width={72} height={72} alt="" />
+        LaunchBuddy
+      </a>
+      <p class="site-footer__tagline">
+        The release command center for indie developers. Plan it, check it, ship it — on iPhone,
+        iPad, and Mac.
+      </p>
     </div>
-    <div class="mt-8 pt-6 border-t border-white/5">
-      <p class="text-xs text-text-muted">&copy; Florian Schweizer 2022–2026</p>
-    </div>
+
+    <nav class="site-footer__cols" aria-label="Footer">
+      {
+        columns.map((column) => (
+          <div>
+            <p class="mono-kicker site-footer__heading">{column.heading}</p>
+            <ul>
+              {column.links.map((link) => (
+                <li>
+                  <a href={link.href}>{link.label}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </nav>
+  </div>
+
+  <p class="site-footer__wordmark" aria-hidden="true">LaunchBuddy</p>
+
+  <div class="site-footer__bottom">
+    <p>&copy; Florian Schweizer 2022–2026</p>
+    <p>Made for indie devs who ship.</p>
   </div>
 </footer>

@@ -1,10 +1,6 @@
 ---
 import Nav from '../components/Nav.astro';
-import '@fontsource/space-grotesk/500.css';
-import '@fontsource/space-grotesk/600.css';
-import '@fontsource/space-grotesk/700.css';
-import '@fontsource/inter/400.css';
-import '@fontsource/inter/500.css';
+import '@fontsource-variable/inter/opsz.css';
 import '@fontsource/jetbrains-mono/500.css';
 import '../styles/global.css';
 import {
@@ -112,6 +108,8 @@ const jsonLdItems = Array.isArray(structuredData) ? structuredData : [structured
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="theme-color" content="#05070d" />
+    <script is:inline>document.documentElement.classList.add('js');</script>
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="keywords" content={keywords} />
@@ -152,12 +150,11 @@ const jsonLdItems = Array.isArray(structuredData) ? structuredData : [structured
 
   <body class="font-body leading-normal tracking-normal text-text-secondary min-h-screen antialiased">
     <div class="bg-scene" aria-hidden="true">
-      <div class="bg-scene__mesh"></div>
-      <div class="bg-scene__orb bg-scene__orb--1"></div>
-      <div class="bg-scene__orb bg-scene__orb--2"></div>
-      <div class="bg-scene__orb bg-scene__orb--3"></div>
-      <div class="bg-scene__grid"></div>
       <div class="bg-scene__noise"></div>
+    </div>
+    <div class="page-aurora" aria-hidden="true">
+      <div class="page-aurora__glow"></div>
+      <div class="page-aurora__grid"></div>
     </div>
 
     <div class="relative z-10">
@@ -166,5 +163,9 @@ const jsonLdItems = Array.isArray(structuredData) ? structuredData : [structured
         <slot />
       </main>
     </div>
+
+    <script>
+      import '../scripts/motion';
+    </script>
   </body>
 </html>

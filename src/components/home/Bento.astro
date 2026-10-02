@@ -1,0 +1,174 @@
+---
+import { Image } from 'astro:assets';
+import ProBadge from '../ProBadge.astro';
+import crossPlatformSync from '../../assets/cross-platform-sync.png';
+import appIcon from '../../assets/app-icon.png';
+
+const menuApps = [
+  { name: 'Orbit Notes', release: '2.4', progress: 0.83, tone: 'var(--color-accent-blue)' },
+  { name: 'Tiny Habits', release: '1.9', progress: 0.5, tone: 'var(--color-accent-green)' },
+  { name: 'Pixel Budget', release: '3.0', progress: 0.25, tone: 'var(--color-accent-violet)' },
+];
+
+const shortcuts = [
+  { label: 'Get next release', tone: '#3b82f6' },
+  { label: 'List release tasks', tone: '#8b5cf6' },
+  { label: 'Create backlog task', tone: '#f97316', pro: true },
+];
+---
+
+<section class="section-block max-w-6xl mx-auto px-6" aria-labelledby="bento-title">
+  <div class="max-w-2xl mb-12 md:mb-16">
+    <p class="section-label" data-reveal>And everything around it</p>
+    <h2 id="bento-title" class="section-heading" data-reveal>
+      Built for how indie devs <span class="text-gradient">actually</span> work.
+    </h2>
+  </div>
+
+  <div class="bento" data-reveal-stagger="80">
+    <div class="bento__cell bento__cell--sync" data-reveal>
+      <article class="bento-card spotlight">
+        <div class="bento-card__copy">
+          <p class="bento-card__kicker">iCloud sync</p>
+          <h3 class="bento-card__title">iPhone, iPad &amp; Mac. Always in sync.</h3>
+          <p class="bento-card__body">
+            Plan at your desk, reply to a review from the couch, and pick up exactly where you left off.
+            Your private iCloud keeps every project current.
+          </p>
+        </div>
+        <div class="bento-sync">
+          <span class="bento-sync__pill" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 18a4.5 4.5 0 0 1-.5-9 6 6 0 0 1 11.6 1.5A3.75 3.75 0 0 1 17.5 18z"></path>
+              <path d="M9.5 13.5l2 2 3.5-3.5"></path>
+            </svg>
+            Synced just now
+          </span>
+          <Image
+            src={crossPlatformSync}
+            alt="LaunchBuddy on a MacBook showing app feedback, next to an iPhone showing an iOS release board"
+            widths={[480, 760, 1024]}
+            sizes="(max-width: 1024px) 100vw, 640px"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </article>
+    </div>
+
+    <div class="bento__cell bento__cell--widget" data-reveal>
+      <article class="bento-card spotlight">
+        <div class="bento-widget" aria-hidden="true">
+          <div class="bento-widget__tile">
+            <div class="bento-widget__ring" style="--v: 0.67"><span>4/6</span></div>
+            <p class="bento-widget__app">Orbit Notes 2.4</p>
+            <p class="bento-widget__meta">Due Friday</p>
+          </div>
+          <div class="bento-widget__lock">
+            <span class="bento-widget__time">9:41</span>
+            <span class="bento-widget__chip">
+              <i style="--v: 0.67"></i>2.4 · 4 of 6
+            </span>
+          </div>
+        </div>
+        <div class="bento-card__copy">
+          <p class="bento-card__kicker">Widgets</p>
+          <h3 class="bento-card__title">Release status on your Home Screen.</h3>
+          <p class="bento-card__body">Progress, due date, and checklist completion, including Lock Screen sizes.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="bento__cell bento__cell--menubar" data-reveal>
+      <article class="bento-card spotlight">
+        <div class="bento-menubar" aria-hidden="true">
+          <div class="bento-menubar__bar">
+            <span></span>
+            <Image src={appIcon} width={40} height={40} alt="" />
+            <span class="bento-menubar__clock">Thu 9:41</span>
+          </div>
+          <div class="bento-menubar__panel">
+            {
+              menuApps.map((app) => (
+                <div class="bento-menubar__row" style={`--v:${app.progress};--tone:${app.tone}`}>
+                  <span class="bento-menubar__name">{app.name}</span>
+                  <span class="bento-menubar__release">{app.release}</span>
+                  <span class="bento-menubar__bar-track"><i /></span>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+        <div class="bento-card__copy">
+          <p class="bento-card__kicker">Menu bar · Mac</p>
+          <h3 class="bento-card__title">Every release, one click away.</h3>
+          <p class="bento-card__body">Open tasks, progress, and due dates without opening the main window.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="bento__cell" data-reveal>
+      <article class="bento-card spotlight">
+        <div class="bento-aso" aria-hidden="true">
+          <div class="bento-aso__row">
+            <span>Baseline icon</span><b>3.1%</b>
+            <span class="bento-aso__track"><i style="--v: 0.56"></i></span>
+          </div>
+          <div class="bento-aso__row is-variant">
+            <span>Variant icon</span><b>3.9%</b>
+            <span class="bento-aso__track"><i style="--v: 0.7"></i></span>
+          </div>
+          <p class="bento-aso__caption">Conversion rate · example data</p>
+        </div>
+        <div class="bento-card__copy">
+          <p class="bento-card__kicker">ASO experiments <ProBadge /></p>
+          <h3 class="bento-card__title">Test icons, screenshots &amp; copy.</h3>
+          <p class="bento-card__body">Baseline vs. variant metrics for every experiment, per app.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="bento__cell" data-reveal>
+      <article class="bento-card spotlight">
+        <div class="bento-privacy" aria-hidden="true">
+          <span class="bento-privacy__ring"></span>
+          <span class="bento-privacy__ring"></span>
+          <span class="bento-privacy__lock">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="5" y="10.5" width="14" height="10" rx="2.5"></rect>
+              <path d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3"></path>
+            </svg>
+          </span>
+        </div>
+        <div class="bento-card__copy">
+          <p class="bento-card__kicker">Privacy</p>
+          <h3 class="bento-card__title">Your data stays in your iCloud.</h3>
+          <p class="bento-card__body">LaunchBuddy doesn’t host your tasks, releases, or notes on its own servers.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="bento__cell" data-reveal>
+      <article class="bento-card spotlight">
+        <div class="bento-shortcuts" aria-hidden="true">
+          {
+            shortcuts.map((shortcut, index) => (
+              <span class="bento-shortcuts__action" style={`--tone:${shortcut.tone};--i:${index}`}>
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M13 3L4 14h7l-1 7 9-11h-7z" />
+                </svg>
+                {shortcut.label}
+                {shortcut.pro && <em>Pro</em>}
+              </span>
+            ))
+          }
+        </div>
+        <div class="bento-card__copy">
+          <p class="bento-card__kicker">Shortcuts &amp; Siri</p>
+          <h3 class="bento-card__title">Automate the busywork.</h3>
+          <p class="bento-card__body">Read actions are free. Create and update with Pro, through the approval flow.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>

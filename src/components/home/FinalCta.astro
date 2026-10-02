@@ -1,0 +1,44 @@
+---
+import { Image } from 'astro:assets';
+import AppStoreBadge from '../AppStoreBadge.astro';
+import ShipCTA from '../ShipCTA.astro';
+import appIcon from '../../assets/app-icon.png';
+import {
+  APP_STORE_RATING,
+  FREE_TIER_APPS,
+  PRO_MONTHLY_PRICE,
+  USER_COUNT,
+} from '../../lib/site';
+---
+
+<section class="final-cta max-w-6xl mx-auto px-4 sm:px-6" aria-labelledby="final-cta-title">
+  <div class="final-cta__panel" data-reveal="scale">
+    <div class="final-cta__grid" aria-hidden="true"></div>
+    <div class="final-cta__glow" aria-hidden="true"></div>
+
+    <div class="final-cta__icon" aria-hidden="true">
+      <span class="final-cta__trail"></span>
+      <Image src={appIcon} width={240} height={240} alt="" loading="lazy" />
+    </div>
+
+    <h2 id="final-cta-title" class="final-cta__title">
+      Ship your next release<br />without the chaos.
+    </h2>
+    <p class="final-cta__sub">
+      Free for {FREE_TIER_APPS} apps. Pro from {PRO_MONTHLY_PRICE}/mo when you’re ready for more.
+    </p>
+
+    <div class="final-cta__actions">
+      <ShipCTA size="lg" />
+      <AppStoreBadge size="md" />
+    </div>
+
+    <p class="final-cta__proof">
+      <span>★ {APP_STORE_RATING} App Store rating</span>
+      <span aria-hidden="true">·</span>
+      <span>{USER_COUNT} developers</span>
+      <span aria-hidden="true">·</span>
+      <span>iPhone, iPad &amp; Mac</span>
+    </p>
+  </div>
+</section>
