@@ -1240,7 +1240,8 @@ backlog:
     cluster: "developer-reference"
     intent: "list"
     priority: "P2"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/swiftui-font-styles-list/"
     confidence: "medium"
     overlap: "none"
     product_features: ["SwiftUI font list in the menu bar"]
