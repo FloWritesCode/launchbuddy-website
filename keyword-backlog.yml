@@ -1379,7 +1379,8 @@ backlog:
     cluster: "comparisons"
     intent: "comparison"
     priority: "P2"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/launchbuddy-vs-docket/"
     confidence: "medium"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/launchbuddy-vs-itsyconnect.md", "src/content/blog/launchbuddy-mcp-server.md"]
