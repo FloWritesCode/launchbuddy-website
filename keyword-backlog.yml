@@ -2038,7 +2038,8 @@ backlog:
     cluster: "aso"
     intent: "checklist"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/app-store-screenshot-requirements/"
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/app-store-metadata-management.md", "src/content/blog/app-store-product-page-optimization.md", "src/content/blog/app-store-connect-release-checklist.md"]
