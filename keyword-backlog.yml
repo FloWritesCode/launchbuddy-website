@@ -1,10 +1,10 @@
 version: 1
-researched_at: "2026-09-28"
+researched_at: "2026-10-05"
 market: "English-language web search"
 status: "healthy"
 
 methodology:
-  - "Compared candidate topics against all 95 existing posts in src/content/blog."
+  - "Compared candidate topics against all 100 existing posts in src/content/blog."
   - "Used current Google result language, Apple documentation terminology, competitor positioning, and LaunchBuddy product fit."
   - "Priorities are qualitative. They do not claim exact search volume or keyword difficulty."
   - "Before drafting, recheck the live search results and reject topics whose intent is already satisfied by an existing LaunchBuddy article."
@@ -220,6 +220,34 @@ research_sources:
     url: "https://developer.apple.com/documentation/storekit/testing-refund-requests"
   - name: "Apple: App preview specifications"
     url: "https://developer.apple.com/help/app-store-connect/reference/app-information/app-preview-specifications"
+  - name: "Apple: App Store Connect release notes"
+    url: "https://developer.apple.com/help/app-store-connect/release-notes/"
+  - name: "Apple: Declare regulated medical device status"
+    url: "https://developer.apple.com/help/app-store-connect/manage-app-information/declare-regulated-medical-device-status"
+  - name: "Apple: Update on regulated medical device apps"
+    url: "https://developer.apple.com/news/?id=nyqbfz1y"
+  - name: "Apple: Distributing your app for beta testing and releases"
+    url: "https://developer.apple.com/documentation/xcode/distributing-your-app-for-beta-testing-and-releases"
+  - name: "Apple: Testing In-App Purchases with sandbox"
+    url: "https://developer.apple.com/documentation/storekit/testing-in-app-purchases-with-sandbox"
+  - name: "Apple: Create a Sandbox Apple Account"
+    url: "https://developer.apple.com/help/app-store-connect/test-in-app-purchases/create-a-sandbox-apple-account"
+  - name: "Apple: Testing failing subscription renewals and In-App Purchases"
+    url: "https://developer.apple.com/documentation/storekit/testing-failing-subscription-renewals-and-in-app-purchases"
+  - name: "Apple: Overview of Apple-hosted asset packs"
+    url: "https://developer.apple.com/help/app-store-connect/manage-asset-packs/overview-of-apple-hosted-asset-packs"
+  - name: "Apple: Upload Apple-hosted asset packs"
+    url: "https://developer.apple.com/help/app-store-connect/manage-asset-packs/upload-apple-hosted-asset-packs/"
+  - name: "Apple: Test Apple-hosted asset packs"
+    url: "https://developer.apple.com/help/app-store-connect/test-a-beta-version/test-apple-hosted-asset-packs/"
+  - name: "Apple: Submit Apple-hosted asset packs"
+    url: "https://developer.apple.com/help/app-store-connect/manage-submissions-to-app-review/submit-apple-hosted-asset-packs/"
+  - name: "Apple: Localize app information"
+    url: "https://developer.apple.com/help/app-store-connect/manage-app-information/localize-app-information/"
+  - name: "Apple: Stop testing a TestFlight build"
+    url: "https://developer.apple.com/help/app-store-connect/test-a-beta-version/stop-testing-a-build"
+  - name: "Apple: Build upload statuses"
+    url: "https://developer.apple.com/help/app-store-connect/reference/app-uploads/build-upload-statuses/"
 
 existing_primary_targets:
   - keyword: "AI release notes for iOS apps"
@@ -507,6 +535,21 @@ existing_primary_targets:
   - keyword: "In-App Purchase types"
     file: "src/content/blog/in-app-purchase-types.md"
     intent: "definition"
+  - keyword: "Family Sharing for In-App Purchases"
+    file: "src/content/blog/family-sharing-for-in-app-purchases.md"
+    intent: "how-to"
+  - keyword: "In-App Purchase status meanings"
+    file: "src/content/blog/in-app-purchase-status-meanings.md"
+    intent: "troubleshooting"
+  - keyword: "App Store Connect peer group benchmarks"
+    file: "src/content/blog/app-store-connect-peer-group-benchmarks.md"
+    intent: "how-to"
+  - keyword: "SwiftUI font styles list"
+    file: "src/content/blog/swiftui-font-styles-list.md"
+    intent: "list"
+  - keyword: "App Store screenshot requirements"
+    file: "src/content/blog/app-store-screenshot-requirements.md"
+    intent: "checklist"
 
 excluded_due_to_overlap:
   - keyword: "iOS app project management"
@@ -653,6 +696,12 @@ excluded_due_to_overlap:
     reason: "The published App Store Connect help guide already owns tester-access troubleshooting across group assignment, build availability, compliance, Beta App Review, public links, and invitation acceptance, while the public-link guide covers invitation criteria and acceptance. Current results rely heavily on old forum workarounds rather than a distinct stable workflow."
   - keyword: "App Store promotional text"
     reason: "The published App Store metadata management and ASO experiment tracker guides already cover promotional text as version metadata, its release context, and before-and-after copy experiments. A field-only article would be a narrow variation with limited additional LaunchBuddy value."
+  - keyword: "stop TestFlight testing"
+    reason: "The published TestFlight build-expired troubleshooting guide already distinguishes Apple's manual Expire Build action from age-based expiration, group assignment problems, and replacement-build handoff. A separate stop-testing article would fragment the same build-lifecycle decision."
+  - keyword: "App Store Connect build upload status"
+    reason: "The published App Store Connect help guide already directs developers to Build Uploads, explains failed uploads and warnings, uses Apple's 24-hour Processing threshold, and gives the escalation evidence to collect. The webhook guide owns automated status-notification intent."
+  - keyword: "test billing retry in Sandbox"
+    reason: "The published App Store Billing Grace Period guide already provides Apple's Allow Purchases & Renewals procedure and a failure, grace, expiration, non-entitled retry, and recovery matrix. Tester-specific timing does not establish a separate intent, and kw-106 already owns Sandbox renewal-rate planning."
 
 backlog:
   - id: "kw-005"
@@ -2188,3 +2237,81 @@ backlog:
     related_existing_posts: ["src/content/blog/app-store-metadata-management.md", "src/content/blog/app-store-product-page-optimization.md", "src/content/blog/app-store-connect-release-checklist.md"]
     product_features: ["App Store submission checklists", "Release planning and taskboards", "ASO experiments"]
     angle: "Turn Apple's duration, file, codec, frame-rate, device-size, orientation, localization, content, poster-frame, and processing rules into a build-specific video preflight, then record any preview experiment without claiming LaunchBuddy captures, validates, or uploads video."
+
+  - id: "kw-122"
+    keyword: "App Store regulated medical device status"
+    proposed_slug: "app-store-regulated-medical-device-status"
+    cluster: "app-review"
+    intent: "checklist"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-age-rating-questionnaire.md", "src/content/blog/app-store-connect-release-checklist.md", "src/content/blog/app-store-metadata-management.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists", "App portfolio"]
+    angle: "Turn Apple's current category, age-rating, region, identifier, instructions-for-use, localization, and early-2027 update-blocking requirements into an evidence-and-owner checklist for affected apps, while requiring qualified regulatory judgment and stating that LaunchBuddy neither determines medical-device status nor validates compliance."
+
+  - id: "kw-123"
+    keyword: "TestFlight Internal Only vs App Store Connect"
+    proposed_slug: "testflight-internal-only-vs-app-store-connect"
+    cluster: "testflight"
+    intent: "comparison"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/testflight-release-management.md", "src/content/blog/testflight-build-expired.md", "src/content/blog/app-store-connect-help.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists"]
+    angle: "Resolve the Xcode distribution choice with a decision matrix for team-only prototype builds versus builds that may move to external TestFlight or the App Store, then record audience, group assignment, promotion boundary, and replacement plan without claiming LaunchBuddy uploads or distributes binaries."
+
+  - id: "kw-124"
+    keyword: "create Sandbox Apple Account"
+    proposed_slug: "create-sandbox-apple-account"
+    cluster: "monetization-testing"
+    intent: "how-to"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/testflight-what-to-test-examples.md", "src/content/blog/app-store-billing-grace-period.md", "src/content/blog/family-sharing-for-in-app-purchases.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists"]
+    angle: "Build a reusable tester record around account creation, unused email requirements, storefront, device sign-in, Developer Mode, product and scenario assignment, reset state, and safe retirement so later Sandbox tests start from known evidence without claiming LaunchBuddy creates or manages test accounts."
+
+  - id: "kw-125"
+    keyword: "change Sandbox account storefront"
+    proposed_slug: "change-sandbox-account-storefront"
+    cluster: "monetization-testing"
+    intent: "how-to"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/in-app-purchase-status-meanings.md", "src/content/blog/schedule-in-app-purchase-price-changes.md", "src/content/blog/family-sharing-for-in-app-purchases.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists"]
+    angle: "Provide a storefront-specific retest record that captures the previous and target regions, Sandbox Test Family constraint, required sign-out and sign-in, expected product availability and price, StoreKit result, and restoration step while separating test-account location from production availability configuration."
+
+  - id: "kw-126"
+    keyword: "change App Store primary language"
+    proposed_slug: "change-app-store-primary-language"
+    cluster: "localization"
+    intent: "how-to"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-localization-workflow.md", "src/content/blog/app-store-screenshot-requirements.md", "src/content/blog/app-store-metadata-management.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists"]
+    angle: "Turn Apple's prior-version approval, matching screenshot-size, supported-platform, localization, and custom-product-page prerequisites into a two-release transition plan with fallback and storefront verification, without claiming LaunchBuddy changes App Store metadata or validates translations."
+
+  - id: "kw-127"
+    keyword: "Apple-hosted asset packs"
+    proposed_slug: "apple-hosted-asset-packs"
+    cluster: "app-review"
+    intent: "guide"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/testflight-release-management.md", "src/content/blog/app-store-connect-draft-submissions.md", "src/content/blog/app-store-connect-webhooks.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists"]
+    angle: "Map the separate binary and asset-pack upload, processing, internal TestFlight, external Beta App Review, compatibility, replacement, and App Store submission states into one release matrix, including localized-pack boundaries, without claiming LaunchBuddy packages, uploads, hosts, or validates assets."
