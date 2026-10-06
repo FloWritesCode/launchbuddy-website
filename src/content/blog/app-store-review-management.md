@@ -1,7 +1,18 @@
 ---
-title: "App Store Review Management: Inbox Triage and Product Workflow"
+title: "App Store Review Management: A Triage Workflow"
 description: "Manage App Store reviews with a repeatable inbox, triage, backlog, and post-release follow-up workflow for indie iOS apps."
 pubDate: 2026-07-13
+updatedDate: 2026-10-06
+featured: 4
+shortTitle: App Store review management
+summary: A weekly routine for triaging reviews, replying from facts, and turning feedback into tasks.
+related:
+  - app-store-review-reply-generator
+  - testflight-feedback-vs-app-store-reviews
+  - reset-app-store-rating
+cta: Read and answer App Store reviews from one inbox
+image: ../../assets/guides/app-store-review-management-feature.jpg
+imageAlt: Frosted glass speech bubbles and star tokens sorted into three neat stacks by a beam of blue light
 ---
 
 **App Store review management** is the process of turning public customer feedback into a clear next action: reply, investigate, create product work, report a concern, or close with no action. For a solo developer or small studio, a sustainable starting point is one or two review sessions per week, with closer monitoring after a major or high-risk release.
@@ -243,6 +254,16 @@ Product queue: bugs and candidates awaiting investigation or release
 AI reply drafts are editable, and AI write actions pause for approval before they are sent or applied. Verify every proposed response and task against the live product state.
 
 The App Store Connect integration requires an API key and Pro. Core LaunchBuddy tasks and default submission checklists don't require that connection. Use the [App Store Connect API key setup guide](/blog/app-store-connect-api-key/) if you choose to connect Apple data.
+
+## Frequently asked questions
+
+### Can I delete or report an App Store review?
+
+You can't delete a customer review. In App Store Connect you can report a concern about a review that breaks Apple's rules, such as spam, offensive language, or a review meant for a different app, and Apple decides whether to remove it. For a review that is harsh but genuine, a short factual reply usually does more good.
+
+### Should I reset my App Store rating when I ship a fix?
+
+Resetting replaces the rating summary on your product page with ratings for the new version only, while existing written reviews stay visible. It's worth it when the release fixes the problem behind most low ratings, because you also give up the rating count new visitors see. The [rating reset guide](/blog/reset-app-store-rating/) covers the timing.
 
 ## Run the loop, not just the inbox
 

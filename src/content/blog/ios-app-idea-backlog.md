@@ -2,6 +2,16 @@
 title: "How to Build a Decision-Ready iOS App Idea Backlog"
 description: "Build an iOS app idea backlog that separates possible apps from committed work, preserves evidence, and promotes only decision-ready ideas."
 pubDate: 2026-07-23
+featured: 9
+shortTitle: iOS app idea backlog
+summary: Capture app ideas without committing to them, and promote one only when the evidence holds up.
+related:
+  - app-idea-validation-for-indie-developers
+  - turn-app-idea-into-mvp-plan
+  - indie-app-portfolio-management
+cta: Capture the idea now and decide later
+image: ../../assets/guides/ios-app-idea-backlog-feature.jpg
+imageAlt: A dark ceramic tray of blue glass beads, with one bead on the grid beside it sprouting a glass seedling
 ---
 
 An **iOS app idea backlog** is a holding area for possible apps that you have not committed to build. Capture each idea in a consistent, compact format, give it a next decision rather than a fake delivery priority, and move it into development only when evidence supports a specific audience and problem and you can define the first question that requires software.

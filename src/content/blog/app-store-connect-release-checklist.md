@@ -1,14 +1,25 @@
 ---
 title: App Store Connect Release Checklist for Indie iOS Developers
-description: Use this App Store Connect release checklist to prepare metadata, TestFlight builds, screenshots, privacy details, review notes, and AI-assisted release tasks before shipping your next iOS app update.
+description: "An App Store Connect release checklist for indie iOS developers: the build, What's New text, metadata, screenshots, privacy, review notes, and timing."
 pubDate: 2026-06-21
+updatedDate: 2026-10-06
+featured: 1
+shortTitle: App Store Connect release checklist
+summary: Eight checks to run before every App Store submission, from build selection to review notes.
+related:
+  - ios-app-launch-checklist
+  - testflight-release-management
+  - ios-app-release-management
+cta: Keep this checklist attached to your next release
+image: ../../assets/guides/app-store-connect-release-checklist-feature.jpg
+imageAlt: A translucent blue glass toy rocket beside six frosted glass tiles on a navy blueprint grid, four of them glowing blue
 ---
 
-An App Store Connect release checklist is one of the simplest ways to avoid the frustrating kind of rejection: the one caused by a missed field, stale screenshot, broken support link, or forgotten review note.
+An App Store Connect release checklist covers eight things before you click Submit for Review: the version goal, the processed build you will select, the What's New text, your metadata, screenshots, App Privacy and age rating answers, review notes with demo access, and the release timing. The compact version is at the end of this guide, and each section below explains what to check.
 
-For indie iOS developers, the problem is rarely that you do not know how to ship. The problem is that every release spreads across Xcode, TestFlight, App Store Connect, screenshots, App Privacy answers, release notes, and a dozen tiny decisions you only remember after clicking Submit for Review.
+Most of the frustrating rejections come from something small: a missed field, a stale screenshot, a broken support link, or a forgotten review note. Indie developers rarely lack the skill to ship. The trouble is that every release spreads across Xcode, TestFlight, App Store Connect, App Privacy answers, release notes, and a dozen tiny decisions you only remember after submitting.
 
-LaunchBuddy is built to keep that release workflow in one place. With App Store Connect integration and AI features, it can help you turn every version into a repeatable system instead of a last-minute scramble.
+In LaunchBuddy, every release can carry its own submission checklist next to its tasks, so the list below stays attached to the version it belongs to.
 
 ## Why App Store Connect releases need a checklist
 
@@ -170,6 +181,16 @@ Here is a compact checklist you can adapt for every iOS release:
 - Choose manual, automatic, scheduled, or phased release
 - Submit for review
 - Track review status and follow-up tasks
+
+## Frequently asked questions
+
+### How long does App Review take for an iOS update?
+
+Apple says most submissions are reviewed within a day, but first submissions, busy weeks around holidays and new iOS versions, and apps with logins or in-app purchases can take longer. Leave a buffer of a few days before any date you've announced, and pick a [manual release](/blog/manual-vs-automatic-app-store-release/) if the launch moment matters.
+
+### Should I use phased release for an App Store update?
+
+[Phased release](/blog/app-store-phased-release/) gives the update to users with automatic updates turned on over seven days, starting at 1% and ending at 100%, and you can pause it for up to 30 days in total. Anyone can still download it manually from the App Store, so it limits exposure without hiding the version. Use it for updates with migrations or new purchase flows, and skip it for urgent bug fixes.
 
 ## Turn every release into a system
 
