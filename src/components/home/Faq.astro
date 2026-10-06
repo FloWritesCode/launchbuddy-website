@@ -5,7 +5,7 @@ import { FAQ_ITEMS, SUPPORT_URL } from '../../lib/site';
 <section id="faq" class="faq section-block max-w-6xl mx-auto px-6" aria-labelledby="faq-title">
   <div class="faq__intro">
     <p class="section-label" data-reveal>FAQ</p>
-    <h2 id="faq-title" class="section-heading" data-reveal>Questions, answered.</h2>
+    <h2 id="faq-title" class="section-heading" data-reveal>LaunchBuddy questions, answered.</h2>
     <p class="faq__help" data-reveal>
       Something else on your mind?
       <a href={SUPPORT_URL}>Ask Flo on X →</a>
@@ -17,10 +17,15 @@ import { FAQ_ITEMS, SUPPORT_URL } from '../../lib/site';
       FAQ_ITEMS.map((item) => (
         <details class="faq-item" data-reveal>
           <summary>
-            <span>{item.question}</span>
+            <h3 class="faq-item__question">{item.question}</h3>
             <span class="faq-item__icon" aria-hidden="true" />
           </summary>
-          <p class="faq-item__answer">{item.answer}</p>
+          <div class="faq-item__answer">
+            <p>{item.answer}</p>
+            <a class="faq-item__link" href={item.link.href}>
+              Learn more: {item.link.label} →
+            </a>
+          </div>
         </details>
       ))
     }

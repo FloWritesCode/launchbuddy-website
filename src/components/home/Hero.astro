@@ -4,6 +4,7 @@ import VslPlayer from '../VslPlayer.astro';
 import {
   APP_STORE_RATING,
   FREE_TIER_APPS,
+  HERO_KICKER,
   USER_COUNT,
   VSL_DURATION_LABEL,
 } from '../../lib/site';
@@ -68,6 +69,7 @@ const chips = [
     </a>
 
     <h1 class="hero__title">
+      <span class="hero__kicker">LaunchBuddy · {HERO_KICKER}</span>
       <span class="sr-only">Ship your next release without the chaos.</span>
       <span aria-hidden="true">
         <span class="hero__line">
@@ -106,8 +108,8 @@ const chips = [
     </h1>
 
     <p class="hero__sub">
-      Plan releases, run App Store submission checklists, reply to reviews, and ask AI that knows
-      your apps. One command center on iPhone, iPad, and Mac.
+      Plan iOS app releases, run App Store submission checklists, reply to reviews, and ask AI that
+      knows your apps. One command center on iPhone, iPad, and Mac.
     </p>
 
     <div class="hero__actions">
