@@ -2115,7 +2115,8 @@ backlog:
     cluster: "monetization-testing"
     intent: "troubleshooting"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/in-app-purchases-not-showing-in-sandbox/"
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/app-store-connect-help.md", "src/content/blog/app-store-connect-draft-submissions.md", "src/content/blog/testflight-release-management.md"]
