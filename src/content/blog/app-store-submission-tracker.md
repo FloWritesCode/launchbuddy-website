@@ -10,24 +10,6 @@ For indie developers, that visibility matters. App Store Connect tells you the o
 
 LaunchBuddy is built for that gap. It helps iOS developers organize projects, tasks, releases, and checklists, and with App Store Connect integration and AI features, it can keep submission status connected to the release work that caused it.
 
-## The SEO opportunity: App Store submission tracker
-
-"App Store submission tracker" is a valuable long-tail keyword because it describes a specific job indie iOS developers need to do. It is more focused than broad phrases like "project management app" or "task manager," and it catches developers who are already thinking about shipping.
-
-Related phrases also point to the same intent:
-
-- App Store submission tracker
-- App Store Connect submission status
-- iOS release tracker
-- App Review status tracker
-- App Store submission checklist
-- TestFlight to App Store workflow
-- App Store Connect release workflow
-
-The search intent is practical. Developers are not only asking how to submit an app. Apple already explains the official flow in App Store Connect. They are looking for a calmer way to track everything around the submission so the final step does not depend on memory.
-
-That is where LaunchBuddy fits naturally.
-
 ## Why App Store submissions need tracking
 
 Submitting an iOS app update sounds like one action, but it is usually a sequence of smaller decisions:

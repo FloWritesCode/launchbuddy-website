@@ -10,23 +10,6 @@ Apple gives you 100 characters for keywords. That is not much room. It is easy t
 
 LaunchBuddy is built for that release workflow. With App Store Connect integration and AI features, it can help keep keyword work connected to the version you are preparing instead of treating App Store Optimization as a separate spreadsheet you only remember after submission.
 
-## The SEO opportunity: App Store keyword field
-
-"App Store keyword field" is a valuable long-tail keyword because it describes a specific, high-intent job. Developers searching for it are usually close to editing App Store Connect metadata, preparing an update, or improving discoverability for an existing app.
-
-Related phrases point to the same search intent:
-
-- App Store keyword field
-- iOS keyword field
-- App Store Connect keywords
-- 100-character keyword field
-- App Store metadata keywords
-- ASO keyword checklist
-- iOS ASO workflow
-- App Store Optimization for indie developers
-
-This topic is a natural fit for LaunchBuddy because keyword work is rarely isolated. A keyword update often belongs to a release: a new feature changes positioning, screenshots need a refresh, release notes need clearer language, and App Store Connect metadata needs to stay consistent with the build users will actually receive.
-
 ## What the App Store keyword field does
 
 The App Store keyword field is hidden metadata that helps Apple understand which searches may be relevant for your app. Users do not see the field directly, but Apple uses it alongside other product page metadata to help determine where the app appears in search.

@@ -2,6 +2,17 @@
 title: "LaunchBuddy MCP Server: Capabilities, Limits, and Safe Use"
 description: "Learn what the local LaunchBuddy MCP server can read, how approval-gated writes work, and how to connect without guessing security settings."
 pubDate: 2026-07-19
+updatedDate: 2026-10-06
+featured: 6
+shortTitle: LaunchBuddy MCP server
+summary: Let Cursor, Claude Code, or Codex read your release plan on Mac, with every write behind approval.
+related:
+  - app-store-connect-mcp-workflow
+  - human-in-the-loop-ai-approval-workflow
+  - app-store-connect-ai-agent
+cta: Give your coding agent the release plan
+image: ../../assets/guides/launchbuddy-mcp-server-feature.jpg
+imageAlt: A frosted glass cube and a faceted crystal on a dark desk, linked by a stream of blue light that passes between two glass panes
 ---
 
 The **LaunchBuddy MCP server** is a macOS-only, localhost-only bridge between LaunchBuddy and MCP clients such as Cursor, Claude Code, and Codex. It lets a client read local project and release context, including next-release status, task and checklist progress, backlog tasks, cached App Store reviews, and automation approval status.
@@ -196,6 +207,16 @@ Avoid guessing from a generic connection error. Check the relevant boundary:
 | A remote device can't connect | The server is localhost-only and isn't a remote cloud endpoint |
 
 Don't weaken localhost binding. If bearer authentication is enabled, don't remove it merely to match configuration copied from another product. Resolve the client and LaunchBuddy settings using their exact current documentation.
+
+## Frequently asked questions
+
+### Can the LaunchBuddy MCP server upload builds or change App Store metadata?
+
+No. It reads LaunchBuddy's own project and release context and proposes LaunchBuddy changes, such as task updates, new releases, release-status changes, and changelog edits. Building, signing, uploading a binary, and editing App Store metadata stay with Xcode, your CI, or App Store Connect.
+
+### What LaunchBuddy data does my AI client see?
+
+Only what its tool calls return. Each MCP result is passed to the connected client and to whatever model service that client uses, so check the client's data policy and keep requests narrow when they touch private reviews or project notes.
 
 ## When you need a different tool
 

@@ -6,6 +6,7 @@ import Hero from '../components/home/Hero.astro';
 import ChaosToOrder from '../components/home/ChaosToOrder.astro';
 import ReleaseTrack from '../components/home/ReleaseTrack.astro';
 import Bento from '../components/home/Bento.astro';
+import Screenshots from '../components/home/Screenshots.astro';
 import Testimonials from '../components/home/Testimonials.astro';
 import Pricing from '../components/home/Pricing.astro';
 import Faq from '../components/home/Faq.astro';
@@ -14,10 +15,6 @@ import FinalCta from '../components/home/FinalCta.astro';
 import vslPosterAsset from '../assets/vsl-poster.jpg';
 import '../styles/home.css';
 import {
-  APP_STORE_RATING,
-  APP_STORE_REVIEW_COUNT,
-  APP_STORE_URL,
-  DEFAULT_DESCRIPTION,
   FAQ_ITEMS,
   VSL_DESCRIPTION,
   VSL_DURATION_ISO,
@@ -25,31 +22,23 @@ import {
   VSL_UPLOAD_DATE,
   VSL_YOUTUBE_ID,
 } from '../lib/site';
+import { SCREENSHOTS } from '../lib/screenshots';
+import {
+  faqPageJsonLd,
+  organizationJsonLd,
+  softwareApplicationJsonLd,
+  websiteJsonLd,
+} from '../lib/seo';
 
 const vslPoster = await getImage({ src: vslPosterAsset, width: 1280, format: 'webp' });
+const screenshotUrls = await Promise.all(
+  SCREENSHOTS.map(async (shot) => (await getImage({ src: shot.image, width: 1300 })).src),
+);
 
 const homepageJsonLd = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
-    name: 'LaunchBuddy',
-    description: DEFAULT_DESCRIPTION,
-    applicationCategory: 'DeveloperApplication',
-    operatingSystem: 'iOS, macOS',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: APP_STORE_RATING,
-      bestRating: '5',
-      ratingCount: String(APP_STORE_REVIEW_COUNT),
-    },
-    url: 'https://launchbuddy.app',
-    downloadUrl: APP_STORE_URL,
-  },
+  websiteJsonLd(),
+  organizationJsonLd(),
+  softwareApplicationJsonLd(screenshotUrls),
   {
     '@context': 'https://schema.org',
     '@type': 'VideoObject',
@@ -60,15 +49,7 @@ const homepageJsonLd = [
     duration: VSL_DURATION_ISO,
     embedUrl: `https://www.youtube.com/embed/${VSL_YOUTUBE_ID}`,
   },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: FAQ_ITEMS.map((item) => ({
-      '@type': 'Question',
-      name: item.question,
-      acceptedAnswer: { '@type': 'Answer', text: item.answer },
-    })),
-  },
+  faqPageJsonLd(FAQ_ITEMS),
 ];
 ---
 
@@ -83,6 +64,7 @@ const homepageJsonLd = [
   <ChaosToOrder />
   <ReleaseTrack />
   <Bento />
+  <Screenshots />
   <Testimonials />
   <Pricing />
   <Faq />

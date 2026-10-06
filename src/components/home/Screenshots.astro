@@ -1,0 +1,45 @@
+---
+import { Image } from 'astro:assets';
+import ProBadge from '../ProBadge.astro';
+import { SCREENSHOTS } from '../../lib/screenshots';
+---
+
+<section id="screenshots" class="section-block max-w-6xl mx-auto px-6" aria-labelledby="screenshots-title">
+  <div class="max-w-2xl mb-12 md:mb-16">
+    <p class="section-label" data-reveal>Inside the app</p>
+    <h2 id="screenshots-title" class="section-heading" data-reveal>
+      LaunchBuddy on Mac: releases, reviews, AI, and ASO experiments.
+    </h2>
+    <p class="shots__intro" data-reveal>
+      These are screenshots from the Mac app. The same apps, releases, and tasks are on your iPhone
+      and iPad through iCloud.
+    </p>
+  </div>
+
+  <div class="shots__grid" data-reveal-stagger="90">
+    {
+      SCREENSHOTS.map((shot) => (
+        <figure class="shot" data-reveal>
+          <div class="shot__frame">
+            <Image
+              src={shot.image}
+              alt={shot.alt}
+              widths={[640, 960, 1300]}
+              sizes="(min-width: 1152px) 540px, (min-width: 768px) calc(50vw - 3.5rem), calc(100vw - 3rem)"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <figcaption class="shot__caption">
+            <span class="shot__kicker">
+              {shot.kicker}
+              {shot.pro && <ProBadge />}
+            </span>
+            <span class="shot__title">{shot.title}</span>
+            <span class="shot__body">{shot.caption}</span>
+          </figcaption>
+        </figure>
+      ))
+    }
+  </div>
+</section>

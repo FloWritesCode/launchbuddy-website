@@ -1,0 +1,43 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import { postPath } from '../lib/seo';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+  index?: number;
+  headingLevel?: 'h2' | 'h3';
+}
+
+const { post, index, headingLevel = 'h3' } = Astro.props;
+const Heading = headingLevel;
+const { image, shortTitle, summary, title, description } = post.data;
+---
+
+<a href={postPath(post)} class="guide-card spotlight">
+  {
+    image ? (
+      <Image
+        class="guide-card__image"
+        src={image}
+        alt=""
+        widths={[400, 640, 800]}
+        sizes="(min-width: 1152px) 352px, (min-width: 960px) calc(33vw - 2rem), (min-width: 640px) calc(50vw - 2.5rem), calc(100vw - 3rem)"
+        loading="lazy"
+        decoding="async"
+      />
+    ) : (
+      index !== undefined && (
+        <span class="guide-card__index">{String(index + 1).padStart(2, '0')}</span>
+      )
+    )
+  }
+  <Heading class="guide-card__title">{shortTitle ?? title}</Heading>
+  <p class="guide-card__body">{summary ?? description}</p>
+  <span class="guide-card__cta">
+    Read guide
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-5-5 5 5-5 5" />
+    </svg>
+  </span>
+</a>

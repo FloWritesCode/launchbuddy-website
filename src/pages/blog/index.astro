@@ -2,54 +2,100 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Footer from '../../components/Footer.astro';
+import GuideCard from '../../components/GuideCard.astro';
+import { absoluteUrl, breadcrumbJsonLd, featuredPosts, postPath } from '../../lib/seo';
+import { SITE_NAME } from '../../lib/site';
 
-const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const featured = featuredPosts(allPosts);
+const posts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const description =
+  'Guides for indie iOS developers on App Store submission checklists, TestFlight, release notes, App Store reviews, and App Store Connect.';
 ---
 
 <BaseLayout
-  title="Blog | LaunchBuddy"
-  description="Tips on shipping side projects, Xcode project management, and indie app development from the LaunchBuddy team."
+  title="App Store & iOS Release Guides | LaunchBuddy Blog"
+  description={description}
   path="/blog/"
-  jsonLd={{
-    '@context': 'https://schema.org',
-    '@type': 'Blog',
-    name: 'LaunchBuddy Blog',
-    url: 'https://launchbuddy.app/blog/',
-  }}
+  jsonLd={[
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Blog',
+      name: `${SITE_NAME} Blog`,
+      description,
+      url: absoluteUrl('/blog/'),
+      publisher: { '@id': absoluteUrl('/#organization') },
+    },
+    breadcrumbJsonLd([
+      { name: 'Home', path: '/' },
+      { name: 'Blog', path: '/blog/' },
+    ]),
+  ]}
 >
-  <div class="max-w-3xl mx-auto px-6 pt-12 md:pt-16 pb-8">
-    <span class="section-label">Blog</span>
-    <h1 class="font-display font-bold text-4xl md:text-5xl text-text-primary mb-4">LaunchBuddy Blog</h1>
-    <p class="text-lg text-text-secondary mb-12">
-      Practical advice for indie developers who want to ship faster.
-    </p>
-
-    <div class="space-y-6">
-      {
-        posts.map((post) => (
-          <article class="glass-card glass-card--interactive spotlight p-6">
-            <h2 class="font-display font-bold text-xl text-text-primary mb-2">
-              <a class="text-text-primary no-underline hover:text-accent-blue transition-colors" href={`/blog/${post.id}/`}>
-                {post.data.title}
-              </a>
-            </h2>
-            <p class="text-text-muted text-sm mb-3 font-mono">
-              {post.data.pubDate.toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-              })}
-            </p>
-            <p class="text-text-secondary mb-4">{post.data.description}</p>
-            <a class="text-sm text-accent-blue hover:text-accent-cyan no-underline font-medium transition-colors" href={`/blog/${post.id}/`}>
-              Read more →
-            </a>
-          </article>
-        ))
-      }
+  <div class="max-w-6xl mx-auto px-6 pt-12 md:pt-16 pb-8">
+    <div class="max-w-3xl">
+      <span class="section-label">Blog</span>
+      <h1 class="font-display font-bold text-4xl md:text-5xl text-text-primary mb-4 leading-tight">
+        App Store and iOS release guides for indie developers
+      </h1>
+      <p class="text-lg text-text-secondary mb-12">
+        Checklists and workflows for getting an iOS app through TestFlight, App Review, and every
+        update after launch, written by the developer of LaunchBuddy.
+      </p>
     </div>
+
+    <section aria-labelledby="featured-title" class="mb-16">
+      <h2 id="featured-title" class="font-display font-bold text-2xl md:text-3xl text-text-primary mb-6">
+        Start with these guides
+      </h2>
+      <div class="guides__grid">
+        {
+          featured.map((post, index) => (
+            <div>
+              <GuideCard post={post} index={index} />
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section aria-labelledby="all-title" class="max-w-3xl">
+      <h2 id="all-title" class="font-display font-bold text-2xl md:text-3xl text-text-primary mb-6">
+        All articles
+      </h2>
+      <div class="space-y-6">
+        {
+          posts.map((post) => (
+            <article class="glass-card glass-card--interactive spotlight p-6">
+              <h3 class="font-display font-bold text-xl text-text-primary mb-2">
+                <a class="text-text-primary no-underline hover:text-accent-blue transition-colors" href={postPath(post)}>
+                  {post.data.title}
+                </a>
+              </h3>
+              <p class="text-text-muted text-sm mb-3 font-mono">
+                <time datetime={post.data.pubDate.toISOString()}>
+                  {post.data.pubDate.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    timeZone: 'UTC',
+                  })}
+                </time>
+              </p>
+              <p class="text-text-secondary mb-4">{post.data.description}</p>
+              <a
+                class="text-sm text-accent-blue hover:text-accent-cyan no-underline font-medium transition-colors"
+                href={postPath(post)}
+                aria-label={`Read ${post.data.title}`}
+              >
+                Read more →
+              </a>
+            </article>
+          ))
+        }
+      </div>
+    </section>
   </div>
 
   <Footer />

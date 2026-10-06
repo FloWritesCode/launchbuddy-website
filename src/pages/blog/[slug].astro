@@ -1,58 +1,125 @@
 ---
+import { Image, getImage } from 'astro:assets';
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Footer from '../../components/Footer.astro';
 import CTAStack from '../../components/CTAStack.astro';
+import GuideCard from '../../components/GuideCard.astro';
+import { AUTHOR_NAME, AUTHOR_URL, DEFAULT_OG_IMAGE } from '../../lib/site';
+import {
+  articleJsonLd,
+  breadcrumbJsonLd,
+  extractFaq,
+  faqPageJsonLd,
+  postPath,
+  relatedPosts,
+} from '../../lib/seo';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
 
   return posts.map((post) => ({
     params: { slug: post.id },
-    props: { post },
+    props: { post, posts },
   }));
 }
 
-const { post } = Astro.props;
+const { post, posts } = Astro.props;
 const { Content } = await render(post);
-const path = `/blog/${post.id}/`;
-const canonicalUrl = new URL(path, Astro.site).href;
+const { title, description, pubDate, updatedDate, image, imageAlt, shortTitle } = post.data;
+const path = postPath(post);
+
+const brandedTitle = `${title} | LaunchBuddy`;
+const pageTitle = brandedTitle.length <= 60 ? brandedTitle : title;
+
+const socialImage = image
+  ? await getImage({ src: image, width: 1200, format: 'jpg', quality: 82 })
+  : undefined;
+const ogImage = socialImage
+  ? { src: socialImage.src, width: 1200, height: Math.round((1200 * image!.height) / image!.width), alt: imageAlt ?? '' }
+  : DEFAULT_OG_IMAGE;
+
+const breadcrumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Blog', path: '/blog/' },
+  { name: shortTitle ?? title, path },
+];
+const faq = extractFaq(post.rendered?.html);
+const related = relatedPosts(post, posts, 3);
+
+const jsonLd = [
+  articleJsonLd(post, ogImage.src),
+  breadcrumbJsonLd(breadcrumbs),
+  ...(faq.length > 0 ? [faqPageJsonLd(faq)] : []),
+];
+
+const formatDate = (date: Date) =>
+  date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+const showUpdated = updatedDate && updatedDate.valueOf() !== pubDate.valueOf();
 ---
 
 <BaseLayout
-  title={`${post.data.title} | LaunchBuddy Blog`}
-  description={post.data.description}
+  title={pageTitle}
+  description={description}
   path={path}
   ogType="article"
-  jsonLd={{
-    '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    headline: post.data.title,
-    description: post.data.description,
-    datePublished: post.data.pubDate.toISOString(),
-    dateModified: (post.data.updatedDate ?? post.data.pubDate).toISOString(),
-    author: {
-      '@type': 'Person',
-      name: 'Florian Schweizer',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'LaunchBuddy',
-      url: 'https://launchbuddy.app',
-    },
-    mainEntityOfPage: canonicalUrl,
-  }}
+  ogImage={ogImage}
+  jsonLd={jsonLd}
 >
+  <Fragment slot="head">
+    <meta property="article:published_time" content={pubDate.toISOString()} />
+    <meta property="article:modified_time" content={(updatedDate ?? pubDate).toISOString()} />
+    <meta property="article:author" content={AUTHOR_URL} />
+  </Fragment>
+
   <article class="max-w-3xl mx-auto px-6 pt-12 md:pt-16 pb-8">
-    <a class="text-sm text-accent-blue hover:text-accent-cyan no-underline font-medium transition-colors" href="/blog/">← Back to blog</a>
-    <h1 class="font-display font-bold text-3xl md:text-5xl text-text-primary my-6 leading-tight">{post.data.title}</h1>
-    <p class="text-text-muted text-sm mb-8 font-mono">
-      {post.data.pubDate.toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-      })}
+    <nav aria-label="Breadcrumb">
+      <ol class="post-breadcrumbs">
+        {
+          breadcrumbs.map((crumb, index) =>
+            index < breadcrumbs.length - 1 ? (
+              <li>
+                <a href={crumb.path}>{crumb.name}</a>
+              </li>
+            ) : (
+              <li aria-current="page">{crumb.name}</li>
+            ),
+          )
+        }
+      </ol>
+    </nav>
+
+    <h1 class="font-display font-bold text-3xl md:text-5xl text-text-primary my-6 leading-tight">{title}</h1>
+    <p class="post-byline">
+      By <a href={AUTHOR_URL} rel="author">{AUTHOR_NAME}</a>
+      <span aria-hidden="true">·</span>
+      <time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
+      {
+        showUpdated && (
+          <>
+            <span aria-hidden="true">·</span>
+            <span>
+              Updated <time datetime={updatedDate.toISOString()}>{formatDate(updatedDate)}</time>
+            </span>
+          </>
+        )
+      }
     </p>
+
+    {
+      image && (
+        <Image
+          class="post-feature"
+          src={image}
+          alt={imageAlt ?? ''}
+          widths={[640, 960, 1280]}
+          sizes="(min-width: 832px) 768px, calc(100vw - 3rem)"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+      )
+    }
 
     <div class="blog-content text-text-secondary space-y-4 leading-relaxed">
       <Content />
@@ -63,10 +130,133 @@ const canonicalUrl = new URL(path, Astro.site).href;
     </div>
   </article>
 
+  {
+    related.length > 0 && (
+      <section class="max-w-6xl mx-auto px-6 pt-8 pb-16" aria-labelledby="related-title">
+        <div class="guides__head">
+          <h2 id="related-title" class="font-display font-bold text-2xl md:text-3xl text-text-primary">
+            Related guides
+          </h2>
+          <a class="guides__all" href="/blog/">All guides →</a>
+        </div>
+        <div class="guides__grid">
+          {related.map((relatedPost) => (
+            <div>
+              <GuideCard post={relatedPost} />
+            </div>
+          ))}
+        </div>
+      </section>
+    )
+  }
+
   <Footer />
 </BaseLayout>
 
 <style>
+  .post-breadcrumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  .post-breadcrumbs li + li::before {
+    content: '›';
+    margin-right: 0.35rem;
+    color: var(--color-text-muted);
+  }
+
+  .post-breadcrumbs a {
+    font-weight: 500;
+    color: var(--color-accent-blue);
+    text-decoration: none;
+  }
+
+  .post-breadcrumbs a:hover {
+    color: var(--color-accent-cyan);
+  }
+
+  .post-byline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.5rem;
+    margin-bottom: 2rem;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+  }
+
+  .post-byline a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+  }
+
+  .post-byline a:hover {
+    color: var(--color-accent-cyan);
+  }
+
+  .post-feature {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-bottom: 2.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 0 1px rgb(255 255 255 / 0.08);
+  }
+
+  .blog-content :global(.guide-cta) {
+    margin: 2.5rem 0;
+    padding: 1.5rem;
+    border-radius: 1.25rem;
+    background:
+      radial-gradient(120% 140% at 0% 0%, rgb(47 123 255 / 0.18), transparent 60%),
+      rgb(255 255 255 / 0.03);
+    box-shadow: inset 0 0 0 1px rgb(124 176 255 / 0.25);
+  }
+
+  .blog-content :global(.guide-cta__kicker) {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-brand-light);
+  }
+
+  .blog-content :global(.guide-cta__title) {
+    margin-top: 0.5rem;
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 650;
+    line-height: 1.3;
+    color: var(--color-text-primary);
+  }
+
+  .blog-content :global(.guide-cta__body) {
+    margin-top: 0.4rem;
+    font-size: 0.9375rem;
+  }
+
+  .blog-content :global(a.guide-cta__button) {
+    display: inline-flex;
+    margin-top: 1rem;
+    padding: 0.6rem 1.1rem;
+    border-radius: 9999px;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    background: var(--color-brand);
+    transition: background 0.2s ease;
+  }
+
+  .blog-content :global(a.guide-cta__button:hover) {
+    color: #fff;
+    background: var(--color-brand-light);
+  }
+
   .blog-content :global(a) {
     color: var(--color-accent-blue);
     text-decoration: underline;

@@ -1,9 +1,17 @@
 ---
 import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
 import appIcon from '../assets/app-icon.png';
 import { APP_STORE_URL, CHECKLIST_PATH, PRIVACY_POLICY_URL, SUPPORT_URL, TERMS_URL } from '../lib/site';
+import { featuredPosts, postPath } from '../lib/seo';
+
+const guides = featuredPosts(await getCollection('blog', ({ data }) => !data.draft)).slice(0, 6);
 
 const columns = [
+  {
+    heading: 'Guides',
+    links: guides.map((post) => ({ href: postPath(post), label: post.data.shortTitle ?? post.data.title })),
+  },
   {
     heading: 'Product',
     links: [
@@ -41,8 +49,8 @@ const columns = [
         LaunchBuddy
       </a>
       <p class="site-footer__tagline">
-        The release command center for indie developers. Plan it, check it, ship it — on iPhone,
-        iPad, and Mac.
+        The iOS app release manager for indie developers. Plan it, check it, and ship it from your
+        iPhone, iPad, or Mac.
       </p>
     </div>
 

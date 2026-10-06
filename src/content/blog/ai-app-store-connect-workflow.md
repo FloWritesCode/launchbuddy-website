@@ -10,27 +10,6 @@ App Store Connect already holds the important App Store state: app versions, bui
 
 That is where LaunchBuddy fits. It is built as a project management app for iOS developers, and with App Store Connect integration and AI features, it can help keep release tasks, App Store status, AI drafts, and final launch decisions in one workflow.
 
-## The SEO opportunity: AI App Store Connect workflow
-
-"AI App Store Connect workflow" is a valuable long-tail keyword because it sits at the intersection of several searches that are becoming more common for iOS developers:
-
-- App Store Connect AI
-- AI App Store release workflow
-- AI App Store release notes
-- App Store Connect automation with AI
-- App Store Connect MCP workflow
-- AI iOS release automation
-- App Store metadata automation
-- TestFlight feedback AI summary
-- App Store Connect project management
-- iOS app release management
-
-Search results around this topic tend to focus on AI agents, App Store Connect API tools, MCP servers, command-line automation, metadata syncing, TestFlight distribution, and AI-generated release notes. That is useful, but it can also make the workflow sound like an all-or-nothing automation project.
-
-For many indie developers, the better opportunity is calmer and more practical: use AI to draft, summarize, and organize App Store Connect work while keeping human review in the places that affect users, reviewers, pricing, privacy, and positioning.
-
-LaunchBuddy can target that intent because it is not only about calling an API. It is about making the release easier to plan, verify, submit, and remember.
-
 ## What AI should do in an App Store Connect workflow
 
 AI is most useful when the release context is already structured. If you ask a generic AI tool to "write release notes," it can produce polished text that says very little. If you give it the selected build, completed tasks, TestFlight feedback, metadata goals, and known exclusions, it can draft something much closer to the truth.
@@ -299,8 +278,6 @@ LaunchBuddy fits the release-management layer:
 - Draft clearer release notes and metadata ideas with AI
 - Save final copy and launch decisions for future reference
 - Reduce the number of places an indie developer has to check before shipping
-
-That is why "AI App Store Connect workflow" is a strong SEO target for LaunchBuddy. Developers searching for it are not only curious about AI agents or API scripts. They are trying to make the whole release process less fragile.
 
 ## Ship with AI, App Store Connect, and human judgment connected
 

@@ -2,6 +2,17 @@
 title: "Indie App Portfolio Management: A Practical Solo Workflow"
 description: "Manage an indie app portfolio with clear lifecycle states, evidence-based reviews, explicit capacity limits, and a next decision for every app."
 pubDate: 2026-08-08
+updatedDate: 2026-10-06
+featured: 8
+shortTitle: Indie app portfolio management
+summary: Give every app a lifecycle state and one next decision, so your time goes where it matters.
+related:
+  - ios-app-idea-backlog
+  - ios-app-sunset-checklist
+  - app-feature-prioritization-for-indie-developers
+cta: Keep every app and its next release in one place
+image: ../../assets/guides/indie-app-portfolio-management-feature.jpg
+imageAlt: Five blank glass app icon tiles on a dark shelf, with the center tile lit bright blue by a spotlight
 ---
 
 **Indie app portfolio management** means deciding which apps deserve active work, which only need maintenance, and which should be parked or considered for exit. For a solo developer, the simplest useful system is one record per app, one current lifecycle state, and one next decision.
@@ -223,6 +234,16 @@ Does every non-active app have a trigger or date?
 ```
 
 This keeps a portfolio current without turning its review into a weekly performance ritual for dormant ideas.
+
+## Frequently asked questions
+
+### How many apps should a solo developer work on at once?
+
+There's no universal number, but most solo developers do best with one app getting feature work at a time. Other live apps can stay in maintenance for fixes and support, and everything else waits with a written trigger for when to look at it again.
+
+### When should I remove an app from the App Store?
+
+Consider it when the app needs upkeep you no longer plan to do, such as a new iOS version breaking it or a service it depends on shutting down, and nothing suggests it will earn that time back. Before removing it, deal with active subscriptions, user data, and support, or look at an [app transfer](/blog/app-store-app-transfer-checklist/) instead. The [app sunset checklist](/blog/ios-app-sunset-checklist/) covers the steps.
 
 ## Where LaunchBuddy fits
 

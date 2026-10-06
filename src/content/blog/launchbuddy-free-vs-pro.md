@@ -6,7 +6,7 @@ pubDate: 2026-08-11
 
 **Choose LaunchBuddy Free if you manage no more than two apps and two releases, can work within the project-note limit, and need only the default submission checklists. Choose Pro when you need unlimited apps, releases, or notes; custom checklists; App Store Connect tools; LaunchBuddy AI; ASO experiments; or supported write actions.**
 
-As of August 11, 2026, the [LaunchBuddy plan comparison](/#pro-features) lists Pro at **$2.99 per month or $19.99 per year**. One subscription covers iPhone, iPad, and Mac, although some features are platform-specific.
+As of August 11, 2026, the [LaunchBuddy plan comparison](/#pricing) lists Pro at **$2.99 per month or $19.99 per year**. One subscription covers iPhone, iPad, and Mac, although some features are platform-specific.
 
 App Store Connect workflows require API credentials, AI has usage limits, and the local MCP server runs only on macOS. Upgrade when Free blocks work you need now, not because Pro might become useful later.
 

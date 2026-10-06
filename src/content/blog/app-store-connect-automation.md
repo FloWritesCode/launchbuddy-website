@@ -10,27 +10,6 @@ For indie developers, the promise is not just speed. It is fewer missed details,
 
 LaunchBuddy is built for that release workflow. With App Store Connect integration and AI features, it helps keep automation connected to the real work behind each version: tasks, checklists, App Store metadata, release notes, TestFlight feedback, and launch decisions.
 
-## The SEO opportunity: App Store Connect automation
-
-"App Store Connect automation" is a valuable long-tail keyword because it captures high-intent developers who are already trying to improve their shipping process. Search results around this topic often focus on CI/CD, Fastlane, App Store Connect API tools, TestFlight uploads, metadata sync, and scripted submissions.
-
-That creates a useful opportunity for LaunchBuddy. Many developers do not need a fully unattended release train on day one. They need a reliable system that tells them what is ready, what is blocked, what still needs human review, and where AI can safely help.
-
-Related phrases worth targeting across LaunchBuddy content include:
-
-- App Store Connect automation
-- App Store Connect workflow automation
-- App Store Connect API workflow
-- TestFlight automation
-- iOS release automation
-- App Store metadata automation
-- AI App Store release notes
-- App Store Connect release workflow
-- iOS app release management
-- App Store submission checklist
-
-The shared search intent is clear: developers want to ship App Store updates with less manual repetition while staying confident that the release is still accurate and review-ready.
-
 ## What App Store Connect automation can actually automate
 
 App Store Connect has many parts, and not all of them should be treated the same way. Some steps are good candidates for automation because they are repetitive and state-based. Others need developer judgment because they affect users, reviewers, pricing, privacy, or positioning.

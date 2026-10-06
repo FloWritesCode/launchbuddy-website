@@ -17,6 +17,7 @@ Publish at most one high-quality LaunchBuddy blog article.
 - use descriptive headings and concise paragraphs;
 - include 2–4 relevant internal links;
 - explain LaunchBuddy only where genuinely relevant;
+- never include SEO or keyword commentary in the article (no "SEO opportunity" sections, keyword lists, search-intent notes, or "strong SEO target" lines); keep that research in keyword-backlog.yml;
 - include a FAQ only when it answers distinct useful questions;
 - end with one appropriate CTA.
 
