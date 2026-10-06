@@ -1,4 +1,14 @@
+export const SITE_URL = 'https://launchbuddy.app';
+export const SITE_NAME = 'LaunchBuddy';
+export const AUTHOR_NAME = 'Florian Schweizer';
+export const AUTHOR_URL = 'https://twitter.com/FloWritesCode';
+export const X_URL = 'https://twitter.com/LaunchBuddy_App';
+
+export const APP_STORE_ID = '1615169630';
+export const APP_STORE_NAME = 'LaunchBuddy: App Planner';
 export const APP_STORE_URL = 'https://apple.co/3iFcjjW';
+export const APP_STORE_LISTING_URL =
+  'https://apps.apple.com/us/app/launchbuddy-app-planner/id1615169630';
 export const APP_STORE_REVIEWS_URL =
   'https://apps.apple.com/us/app/launchbuddy/id1615169630?see-all=reviews';
 export const PRIVACY_POLICY_URL = 'https://flowritesco.de/launchbuddy/privacy-policy.html';
@@ -8,7 +18,7 @@ export const SUPPORT_URL = 'https://twitter.com/FloWritesCode';
 export const PRO_MONTHLY_PRICE = '$2.99';
 export const PRO_YEARLY_PRICE = '$19.99';
 export const APP_STORE_RATING = '4.8';
-export const APP_STORE_REVIEW_COUNT = 106;
+export const APP_STORE_REVIEW_COUNT = 107;
 export const USER_COUNT = '20,000+';
 export const FREE_TIER_APPS = 2;
 export const FREE_TIER_RELEASES = 2;
@@ -24,8 +34,16 @@ export const VSL_UPLOAD_DATE = '2026-10-01T04:53:14-07:00';
 export const PRIMARY_CTA_LABEL = 'Start shipping';
 export const SECONDARY_CTA_LABEL = 'Download on the App Store';
 
+export const DEFAULT_TITLE = 'LaunchBuddy — iOS App Release Manager for Indie Developers';
 export const DEFAULT_DESCRIPTION =
-  'LaunchBuddy helps indie iOS developers plan releases, manage App Store submissions, reply to reviews, and use AI — on iPhone and Mac. Free for 2 apps.';
+  'Plan iOS releases, run App Store submission checklists, and reply to App Store reviews on iPhone, iPad, and Mac. Free for 2 apps, Pro from $2.99/mo.';
+export const DEFAULT_OG_IMAGE = {
+  src: '/images/preview.png',
+  width: 1200,
+  height: 630,
+  alt: 'Two iPhones running LaunchBuddy, one showing a release timeline and one showing a list of apps',
+};
+export const HERO_KICKER = 'iOS app release manager for indie developers';
 
 export const DEFAULT_KEYWORDS =
   'App Store Connect, iOS app release manager, App Store submission tracker, LaunchBuddy AI, ASO experiments, indie iOS developer, Xcode project manager, TestFlight release management';
@@ -297,64 +315,71 @@ export const TESTIMONIALS = [
   },
 ] as const;
 
-export const HOMEPAGE_BLOG_POSTS = [
-  {
-    slug: 'app-store-connect-release-checklist',
-    title: 'App Store submission checklist',
-    description: 'The release checklist indie devs use before every App Store submission.',
-  },
-  {
-    slug: 'app-store-connect-ai-agent',
-    title: 'App Store Connect AI workflow',
-    description: 'How to use AI with your ASC data without leaving your release workflow.',
-  },
-  {
-    slug: 'testflight-release-management',
-    title: 'TestFlight release management',
-    description: 'Keep beta builds, feedback, and release tasks organized in one place.',
-  },
-] as const;
+export type FaqItem = {
+  question: string;
+  answer: string;
+  link: { href: string; label: string };
+};
 
-export const FAQ_ITEMS = [
-  {
-    question: "What's included in the free version?",
-    answer: `Up to ${FREE_TIER_APPS} apps and ${FREE_TIER_RELEASES} releases, default submission checklists, taskboards, and iCloud sync. Enough to try LaunchBuddy on a side project.`,
-  },
-  {
-    question: 'What does Pro unlock?',
-    answer:
-      'Unlimited apps and releases, custom checklists, unlimited project notes, ASO experiments, the App Store Connect dashboard (reviews, analytics, release notes), and LaunchBuddy AI (App Chat, Idea Chat, review-to-task). AI features are included with Pro and subject to usage limits.',
-  },
+/** Rendered on the homepage and as its FAQPage JSON-LD, so both always match. */
+export const FAQ_ITEMS: FaqItem[] = [
   {
     question: 'Is LaunchBuddy free?',
-    answer: `Yes — free for up to ${FREE_TIER_APPS} apps and ${FREE_TIER_RELEASES} releases, forever. Pro starts at ${PRO_MONTHLY_PRICE}/month or ${PRO_YEARLY_PRICE}/year.`,
+    answer: `Yes. The free plan covers ${FREE_TIER_APPS} apps and ${FREE_TIER_RELEASES} releases with taskboards, the default App Store submission checklists, and iCloud sync, and it has no time limit. Pro costs ${PRO_MONTHLY_PRICE} a month or ${PRO_YEARLY_PRICE} a year and adds unlimited apps, custom checklists, App Store Connect reviews and analytics, ASO experiments, and LaunchBuddy AI.`,
+    link: { href: '/blog/launchbuddy-free-vs-pro/', label: 'Compare Free and Pro' },
   },
   {
-    question: 'Do I need App Store Connect API access for Pro features?',
+    question: 'What should be on an App Store submission checklist?',
     answer:
-      'ASC integration requires an API key (free from Apple). Tasks, AI chat, and checklists work without it — connect ASC when you want reviews, analytics, and release note uploads in-app.',
+      'At minimum: the release build tested on a real device, a bumped version and build number, screenshots for every required device size, current privacy labels, What’s New text, and review notes or a demo account if the app needs a login. LaunchBuddy attaches a reusable checklist to each release, so these steps don’t depend on memory.',
+    link: {
+      href: '/blog/app-store-connect-release-checklist/',
+      label: 'The full App Store Connect release checklist',
+    },
+  },
+  {
+    question: 'How do I keep track of releases across several apps?',
+    answer:
+      'Give each app its own list of versions and attach every task, checklist, and release note to the version it ships in. LaunchBuddy keeps every app in one dashboard, and its Home Screen widgets and Mac menu bar show each release’s progress, due date, and open tasks.',
+    link: { href: '/blog/ios-app-release-management/', label: 'An iOS release management workflow' },
+  },
+  {
+    question: 'How does LaunchBuddy work with App Store Connect?',
+    answer:
+      'It sits next to it. App Store Connect is still where your builds, metadata, and submissions live, and LaunchBuddy organizes the work around them: release tasks, checklists, reviews, analytics, and release notes you can push to App Store Connect when they’re approved.',
+    link: { href: '/blog/launchbuddy-vs-app-store-connect/', label: 'LaunchBuddy vs App Store Connect' },
+  },
+  {
+    question: 'Which LaunchBuddy features need an App Store Connect API key?',
+    answer:
+      'Only for the App Store Connect features (the reviews inbox, analytics, and release note uploads), which also require Pro. Tasks, checklists, and AI chat work without one. You create the key in App Store Connect under Users and Access, then Integrations; team keys need the Admin role.',
+    link: { href: '/blog/app-store-connect-api-key/', label: 'How to create an App Store Connect API key' },
+  },
+  {
+    question: 'Can I reply to App Store reviews without opening App Store Connect?',
+    answer:
+      'Yes, with Pro and an API key. LaunchBuddy collects your reviews in an inbox on iPhone, iPad, and Mac, drafts replies with AI that you edit and approve before sending, and can turn a review into a backlog task.',
+    link: { href: '/blog/app-store-review-management/', label: 'A review management workflow' },
   },
   {
     question: 'Does LaunchBuddy work with Cursor, Claude Code, or Codex?',
     answer:
-      'Yes, on Mac. LaunchBuddy runs a local, localhost-only MCP server that Cursor, Claude Code, Codex, or any other MCP client can connect to. Read tools are free. Write tools require Pro and create approval proposals, so nothing changes until you approve it.',
+      'Yes, on Mac. LaunchBuddy runs a localhost-only MCP server that Cursor, Claude Code, Codex, and other MCP clients can connect to. Read tools are free; write tools need Pro and create proposals that change nothing until you approve them.',
+    link: { href: '/blog/launchbuddy-mcp-server/', label: 'Set up the LaunchBuddy MCP server' },
   },
   {
-    question: 'Is the iOS app included if I subscribe on the Mac?',
+    question: 'Does LaunchBuddy run on iPhone, iPad, and Mac?',
     answer:
-      'Yes. One subscription covers iPhone, iPad, and Mac, with feature availability depending on the platform.',
+      'Yes. It’s a single App Store listing for all three, and one Pro subscription covers every device. iCloud keeps your apps, releases, and tasks in sync, while the MCP server and menu bar features are Mac-only.',
+    link: { href: '/blog/manage-app-store-connect-from-iphone/', label: 'Running releases from your iPhone' },
   },
   {
-    question: 'Is my data private?',
+    question: 'Where does LaunchBuddy store my data?',
     answer:
-      'Your project data is stored in your private iCloud account. LaunchBuddy does not host your tasks, releases, or notes on its own servers.',
+      'In your private iCloud account. LaunchBuddy doesn’t host your tasks, releases, or notes on its own servers, and with Pro you choose which notes and project details the AI may use.',
+    link: {
+      href: '/blog/icloud-project-management-for-indie-developers/',
+      label: 'How iCloud project sync works',
+    },
   },
-  {
-    question: 'Does my data sync between iOS and macOS?',
-    answer: 'Yes. iCloud keeps your apps, releases, and tasks current across iPhone, iPad, and Mac.',
-  },
-  {
-    question: 'Can I suggest features?',
-    answer: 'Yes — use the in-app roadmap to vote on and suggest features.',
-  },
-] as const;
+];
