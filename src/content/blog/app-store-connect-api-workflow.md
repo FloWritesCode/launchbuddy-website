@@ -10,27 +10,6 @@ App Store Connect is still the place where Apple manages apps, TestFlight, metad
 
 LaunchBuddy is built for the release-management layer around that process. With App Store Connect integration and AI features, it can help keep API-driven status, release tasks, checklists, and App Store copy connected to the version you are actually preparing.
 
-## The SEO opportunity: App Store Connect API workflow
-
-"App Store Connect API workflow" is a valuable long-tail keyword because it captures developers who already understand that App Store Connect can be automated, but still need a practical system around the automation.
-
-Search results around this topic tend to cluster around Apple's App Store Connect API documentation, WWDC automation updates, CI/CD pipelines, command-line tools, metadata scripts, TestFlight workflows, webhooks, and AI-assisted release notes. That is a good fit for LaunchBuddy because the product does not need to compete with the API itself. It can own the workflow problem around the API.
-
-Related keywords worth targeting across LaunchBuddy content include:
-
-- App Store Connect API workflow
-- App Store Connect integration
-- App Store Connect webhooks
-- App Store Connect Feedback API
-- App Store Connect Build Upload API
-- App Store metadata API
-- TestFlight API workflow
-- iOS release automation
-- AI App Store release notes
-- App Store Connect project management
-
-The shared intent is clear: iOS developers want App Store Connect data and release actions to fit into the way they already plan, test, write, submit, and follow up.
-
 ## What the App Store Connect API can bring into a release workflow
 
 The App Store Connect API is not only for large teams with complex CI/CD systems. It can also help indie developers make release state visible at the right moment.

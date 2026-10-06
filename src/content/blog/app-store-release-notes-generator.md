@@ -10,25 +10,6 @@ For indie iOS developers, the real workflow is usually less tidy. The source mat
 
 LaunchBuddy is built for that context. It helps iOS developers manage projects, tasks, releases, and checklists, and with App Store Connect integration and AI features, it can give an App Store release notes generator the one thing it needs most: a clear picture of what actually shipped.
 
-## The SEO opportunity: App Store release notes generator
-
-"App Store release notes generator" is a valuable long-tail keyword because it captures developers with immediate release intent. They are not casually researching project management. They have a build, a changelog, or a version in progress, and they need App Store-ready copy.
-
-Related keywords worth targeting across LaunchBuddy content include:
-
-- App Store release notes generator
-- iOS release notes generator
-- AI App Store release notes
-- App Store Connect release notes
-- What's New generator
-- App Store changelog generator
-- release notes from git commits
-- TestFlight release notes
-- App Store metadata automation
-- iOS app release workflow
-
-The search intent is practical: developers want to turn technical work into user-facing release notes without writing vague copy like "bug fixes and performance improvements." LaunchBuddy fits that intent because release notes are not an isolated writing task. They are part of the release workflow.
-
 ## Why generic release notes generators fall short
 
 A generic generator can rewrite text, but it usually does not know:

@@ -29,24 +29,6 @@ But TestFlight is not a complete release management system. It does not know:
 
 That is why "upload to TestFlight" should not be treated as a single checkbox. TestFlight release management gives the beta stage a clear workflow, so every build, task, and feedback item has a place.
 
-## The SEO opportunity: TestFlight release management
-
-For LaunchBuddy, "TestFlight release management" is a valuable long-tail keyword because it matches a specific pain indie iOS developers feel while shipping.
-
-Broad keywords like "project management app" or "task manager" are crowded and do not say much about App Store work. More focused keywords have stronger intent:
-
-- TestFlight release management
-- TestFlight workflow
-- TestFlight build checklist
-- App Store Connect beta testing workflow
-- TestFlight feedback management
-- iOS beta release workflow
-- App Store Connect release management
-
-The useful pattern is that developers are not only searching for how to upload a build. Apple already documents that. They are looking for a way to manage the work around the build: testing, feedback, release notes, metadata, submission, and follow-up.
-
-That is where LaunchBuddy fits naturally.
-
 ## What a TestFlight release management workflow includes
 
 A strong TestFlight workflow connects three things:

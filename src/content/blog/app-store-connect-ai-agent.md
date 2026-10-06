@@ -10,28 +10,6 @@ That can be powerful. It can also be risky if the agent has more authority than 
 
 LaunchBuddy is built for the layer between planning and App Store Connect. With App Store Connect integration and AI features, it can help indie iOS developers use AI agents and automation more safely by keeping builds, release tasks, TestFlight feedback, metadata decisions, and launch checklists connected to the version being shipped.
 
-## The SEO opportunity: App Store Connect AI agent
-
-"App Store Connect AI agent" is a valuable long-tail keyword because it captures an emerging search intent. Developers are no longer only searching for App Store Connect documentation or release checklists. They are searching for ways to connect App Store Connect to AI tools, coding agents, MCP servers, command-line workflows, and release automation.
-
-Related phrases worth targeting across LaunchBuddy content include:
-
-- App Store Connect AI agent
-- App Store Connect MCP workflow
-- AI App Store Connect workflow
-- AI iOS release automation
-- Cursor App Store Connect workflow
-- Claude App Store Connect workflow
-- App Store Connect automation with AI
-- App Store metadata AI agent
-- AI TestFlight feedback summary
-- App Store Connect release checklist
-- iOS app release management
-
-Search results around this topic are mostly technical: MCP servers, App Store Connect API wrappers, CLI tools, agent skills, and end-to-end release pipeline examples. Those tools are useful, but they leave an important product question open: what should the agent be allowed to do, and where should the release decision live?
-
-That is the gap LaunchBuddy can target. The best App Store Connect AI agent workflow is not only about giving an AI tool access to more API endpoints. It is about giving the release a reliable source of truth before AI starts acting on it.
-
 ## What an App Store Connect AI agent can help with
 
 An AI agent is most useful when it can inspect structured state and turn it into a clear next action.
@@ -290,8 +268,6 @@ LaunchBuddy fits the human release-management layer:
 - Use AI to draft release notes and metadata ideas
 - Save final copy and launch decisions
 - Keep follow-up tasks visible after the update ships
-
-That is why "App Store Connect AI agent" is a strong SEO target for LaunchBuddy. Developers searching for the phrase are not only looking for a tool that can call an API. They are trying to understand how much of the release process an AI agent should handle and how to keep control when the workflow touches real App Store data.
 
 ## Let the agent help, but keep the release accountable
 

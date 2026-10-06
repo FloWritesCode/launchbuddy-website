@@ -12,28 +12,6 @@ That is powerful. It is also exactly the kind of workflow that needs a reliable 
 
 LaunchBuddy is built for that layer. With App Store Connect integration and AI features, it helps indie iOS developers keep tasks, versions, TestFlight feedback, App Store metadata, AI drafts, release notes, and final launch decisions connected before an agent starts acting on App Store Connect.
 
-## The SEO opportunity: App Store Connect MCP workflow
-
-"App Store Connect MCP workflow" is a valuable long-tail keyword because it sits at the intersection of several high-intent searches:
-
-- App Store Connect MCP
-- App Store Connect MCP server
-- App Store Connect AI workflow
-- App Store Connect AI agent
-- App Store Connect automation with AI
-- App Store Connect API workflow
-- AI iOS release automation
-- App Store metadata automation
-- TestFlight automation workflow
-- AI App Store release notes
-- App Store Connect release checklist
-
-Search results around this topic are mostly technical. Developers find MCP servers, GitHub repositories, tool catalogs, API wrappers, release automation examples, ASO automation tools, and natural-language submission demos.
-
-That technical content answers an important question: how can an AI agent connect to App Store Connect?
-
-LaunchBuddy can target the next question: once the agent is connected, how do you keep the release organized enough for AI to help safely?
-
 ## What an App Store Connect MCP server can do
 
 An MCP server is useful because it turns App Store Connect API capabilities into tools an AI assistant can call. Instead of manually clicking through App Store Connect or writing a one-off script, the developer can ask for a release summary, metadata check, or TestFlight status update in natural language.
@@ -335,8 +313,6 @@ LaunchBuddy fits the layer that makes them safer and more useful:
 - Track ASO experiments and metadata notes
 - Save final copy and launch decisions
 - Keep post-launch follow-up work visible
-
-That is why "App Store Connect MCP workflow" is a strong SEO target for LaunchBuddy. Developers searching for it are already thinking about AI access to App Store Connect. The opportunity is to show them that the best workflow is not only about more tools. It is about better release context.
 
 ## Connect the agent, but keep the release accountable
 

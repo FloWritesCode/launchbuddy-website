@@ -12,25 +12,6 @@ For indie iOS developers, the problem is not only writing better metadata. It is
 
 LaunchBuddy is built for that workflow. With App Store Connect integration and AI features, it helps keep metadata review close to tasks, releases, checklists, TestFlight feedback, and App Store submission status.
 
-## The SEO opportunity: App Store metadata management
-
-"App Store metadata management" is a valuable keyword because it captures developers who are already thinking beyond code. They may be preparing a new version, improving App Store Optimization, updating screenshots, automating metadata through the App Store Connect API, or trying to avoid stale copy before submission.
-
-Related keywords worth targeting across LaunchBuddy content include:
-
-- App Store metadata management
-- App Store Connect metadata
-- iOS app metadata
-- ASO metadata workflow
-- App Store product page management
-- App Store description checklist
-- App Store subtitle keywords
-- App Store metadata automation
-- AI App Store metadata
-- App Store Connect release workflow
-
-The search intent is practical. Developers want a repeatable way to manage the fields that affect discovery, conversion, App Review, and release quality. That is a natural fit for LaunchBuddy because metadata work belongs inside the release workflow, not in a forgotten spreadsheet.
-
 ## What counts as App Store metadata?
 
 

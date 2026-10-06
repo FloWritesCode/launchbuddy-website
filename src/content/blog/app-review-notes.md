@@ -12,27 +12,6 @@ For indie iOS developers, App Review notes matter because the submission moment 
 
 LaunchBuddy is built for that release-management layer. With App Store Connect integration and AI features, it can help keep reviewer notes connected to the version, the selected build, the release checklist, and the final submission decisions.
 
-## The SEO opportunity: App Review notes
-
-"App Review notes" is a valuable long-tail keyword because it matches a specific App Store Connect problem with clear intent. Developers searching for it are usually preparing a submission, fixing a rejection, updating demo credentials, or trying to understand what Apple's reviewer needs from them.
-
-Related phrases worth targeting across LaunchBuddy content include:
-
-- App Review notes
-- App Store Connect review notes
-- Notes for Review
-- Notes for Reviewer
-- App Review Information
-- demo account for App Review
-- App Store submission notes
-- App Store review instructions
-- AI App Review notes
-- App Store Connect release checklist
-
-The search intent is practical. A developer does not need a generic explanation of the App Store. They need to know what to put in the field, how to keep it accurate for each build, and how to avoid pasting stale instructions from the previous version.
-
-That makes App Review notes a natural topic for LaunchBuddy. The field itself lives in App Store Connect, but the source material comes from the release plan: tasks completed, features changed, TestFlight feedback reviewed, metadata updated, and reviewer-specific context saved before submission.
-
 ## What App Review notes are for
 
 
@@ -351,8 +330,6 @@ LaunchBuddy fits the work around that submission:
 - Draft reviewer-facing notes from structured release context
 - Save final release notes, App Review notes, and follow-up decisions together
 - Reduce the chance of submitting stale instructions
-
-That is why "App Review notes" is a strong SEO target for LaunchBuddy. It is specific, high-intent, and closely tied to the stressful moment where project management, App Store Connect state, and AI-assisted writing can work together.
 
 ## Submit with clearer reviewer context
 

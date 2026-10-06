@@ -26,23 +26,6 @@ For a single app update, you can sometimes keep that in memory. For multiple app
 
 App Store Connect project management gives the release a home before, during, and after submission.
 
-## The SEO keyword opportunity: App Store Connect project management
-
-Broad phrases like "project management app" are crowded and vague. They attract people managing every kind of work, not necessarily developers preparing App Store releases.
-
-More focused phrases are better aligned with LaunchBuddy:
-
-- App Store Connect project management
-- App Store Connect workflow
-- iOS app release management
-- App Store release checklist
-- App Store submission tracker
-- AI release notes for iOS apps
-- iOS developer task manager
-- App Store Connect release workflow
-
-The valuable pattern is clear: indie iOS developers are not only looking for a generic task list. They are looking for a calmer way to ship through App Store Connect without losing context. A blog post targeting App Store Connect project management can speak directly to that need.
-
 ## What belongs in an App Store Connect project management workflow
 
 A practical workflow should connect the work you plan with the App Store state you need to act on.
