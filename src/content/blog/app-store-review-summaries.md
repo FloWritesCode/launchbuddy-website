@@ -6,7 +6,7 @@ pubDate: 2026-10-07
 
 **App Store review summaries are short paragraphs Apple generates from customer reviews using large language models.** When an app has enough reviews, Apple may show a summary on its App Store product page and in App Store Connect. Developers don't write the summary. The practical job is to check what it says, verify each theme against individual reviews, act on the underlying feedback, and report the summary to Apple if it is inaccurate or otherwise concerning.
 
-Don't treat the paragraph as a survey result or product diagnosis. Apple says summaries compile highlights and key information from reviews and are refreshed regularly, but it doesn't publish the review threshold, refresh schedule, selection method, or weight assigned to each theme.
+Don't treat the paragraph as a survey result or product diagnosis. Apple says summaries compile highlights and key information from reviews and are refreshed regularly. The linked Apple sources don't specify a numeric review threshold, a refresh interval, how source reviews are selected, or how themes are weighted.
 
 ## Review summary, overview rating, and individual reviews are different
 
@@ -40,7 +40,7 @@ Summary visible in App Store Connect: Yes | No
 Checked at:
 ```
 
-A missing summary doesn't prove a configuration error. The app may not meet Apple's unpublished review threshold, the storefront may not be supported, or the rollout may differ across the surfaces you checked.
+A missing summary doesn't prove an error. The app may not meet Apple's unpublished review threshold, the storefront may not be one Apple currently lists, or the device used to check the public App Store may not meet Apple's documented OS requirement.
 
 ## How to audit an App Store review summary
 
@@ -55,7 +55,7 @@ Record:
 - The summary text
 - App, platform, and storefront
 - The date you checked it
-- The generation date shown in App Store Connect
+- The “last generated” date shown in App Store Connect
 - The public app version at the time
 - Whether the same summary is visible on the product page you checked
 
@@ -98,7 +98,7 @@ Unknowns:
 
 Don't cherry-pick only the newest negative review or the clearest positive review. Look across ratings and versions. A recurring complaint tied to an old version means something different from the same complaint appearing after the latest release.
 
-Apple doesn't expose the summary model's selection logic in its public documentation. Your manual sample can test whether a theme exists and whether it is still relevant, but it can't reproduce Apple's generation process or prove why a phrase appeared.
+The linked Apple sources don't explain how source reviews are selected or weighted. A manual audit can show whether you found support for a theme and whether that support still looks current, but it can't reproduce Apple's generation process, identify the model's inputs, or prove why a phrase appeared. If you sampled rather than reviewed every relevant review, label the result “not found in this audit,” not “Apple had no supporting review.”
 
 ### 4. Classify each theme before taking action
 
@@ -109,7 +109,7 @@ Use four evidence states:
 | Supported | Several relevant reviews clearly describe the theme | Route the underlying feedback |
 | Mixed | Relevant reviews disagree or describe different contexts | Segment by version, territory, or workflow |
 | Stale | The theme is supported mainly by reviews for an older experience | Verify the public fix and consider replying to affected reviews |
-| Unsupported or misleading | You can't find reasonable review support, or the wording materially misrepresents the reviews | Preserve evidence and report a concern |
+| Unsupported or misleading | Your audit finds no reasonable support, or the wording materially misrepresents the reviews inspected | Record the audit scope, preserve evidence, and report a concern |
 
 “Unflattering” isn't the same as inaccurate. A supported negative theme may call for product work, a clearer product page, or a factual response to individual reviews. Reporting should focus on what is wrong with the summary, not on its marketing impact.
 
@@ -172,7 +172,7 @@ Decision:
 - Confirm 4.2 is public in the storefront.
 - Reply to the two 4.1 reviews with the shipped version, without asking for a rating change.
 - Investigate the versionless report only if more evidence appears.
-- Recheck the summary after new review activity; don't claim Apple will refresh it by a particular date.
+- Recheck the summary after new review activity.
 ```
 
 The right response isn't to create three new sync bugs or declare the summary wrong. The evidence supports a narrower conclusion: the theme reflects real historical reports, while current-version evidence is still limited.
@@ -188,7 +188,9 @@ Apple documents two reporting paths. On the App Store, tap and hold the summary 
 5. Choose **Report a Concern**.
 6. Select a concern, describe it, and submit.
 
-Apple says reporting a concern doesn't notify the customer who wrote the review.
+Apple lists Account Holder, Admin, App Manager, Customer Support, Developer, and Marketing as roles that can view the Ratings and Reviews page.
+
+For reports about an individual customer review, Apple says that customer isn't notified. A generated summary has no single customer author, and the linked guidance doesn't describe a customer-notification effect for a summary report.
 
 Write the report as an evidence packet:
 
@@ -205,7 +207,7 @@ Relevant version or product context:
 
 Keep the claim narrow. “The summary says subscriptions are required, but the cited reviews discuss an optional upgrade and the current product page identifies the free workflow” is more actionable than “This hurts conversion.”
 
-Apple's current guidance documents reporting a concern, not directly editing the summary or choosing its wording. Submit once with clear evidence, preserve the record, and continue addressing any valid underlying feedback.
+Apple's current guidance documents reporting a concern, not directly editing the summary or choosing its wording. Submit a clear, evidence-backed report, preserve the record, and continue addressing any valid underlying feedback.
 
 ## What not to infer from a review summary
 
@@ -219,7 +221,7 @@ A summary does not tell you:
 - How a theme affects conversion or ranking
 - When the next refresh will happen
 
-It also isn't a replacement for reading low-volume feedback. An app without enough reviews for a summary can still have one severe, actionable report. Conversely, a prominent theme may describe many customers but still need reproduction before you choose a fix.
+It also isn't a replacement for reading low-volume feedback. An app without enough reviews for a summary can still have one severe, actionable report. Conversely, even a theme supported by many individual reviews still needs product verification before you choose a fix.
 
 ## Where LaunchBuddy fits
 
@@ -238,7 +240,7 @@ App Store Connect:
 LaunchBuddy:
 - Triage connected individual reviews
 - Draft and approve factual replies
-- Turn supported feedback into release work
+- Turn one-star feedback into a backlog task
 ```
 
 The integration requires Pro and an App Store Connect API key. LaunchBuddy's core release planning and default submission checklists don't require that connection. If you choose to connect reviews, follow the [App Store Connect API key guide](/blog/app-store-connect-api-key/) and grant only the access the workflow needs.
