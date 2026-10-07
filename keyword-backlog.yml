@@ -2127,9 +2127,10 @@ backlog:
     keyword: "App Store review summaries"
     proposed_slug: "app-store-review-summaries"
     cluster: "reviews"
-    intent: "guide"
+    intent: "how-to"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/app-store-review-summaries/"
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/app-store-review-management.md", "src/content/blog/app-store-review-reply-generator.md", "src/content/blog/reset-app-store-rating.md"]
