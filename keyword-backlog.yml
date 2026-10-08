@@ -2143,7 +2143,8 @@ backlog:
     cluster: "testflight"
     intent: "how-to"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/testflight-beta-app-review/"
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/testflight-test-information.md", "src/content/blog/testflight-release-management.md", "src/content/blog/app-store-connect-help.md"]
