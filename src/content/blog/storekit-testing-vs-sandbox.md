@@ -4,7 +4,7 @@ description: "Compare StoreKit Testing in Xcode with Apple's Sandbox, choose an 
 pubDate: 2026-10-09
 ---
 
-**Use StoreKit Testing in Xcode for fast, local, repeatable purchase tests. Use Apple's Sandbox when you need real App Store Connect product data, App Store-signed transactions, or an end-to-end test through Apple's infrastructure. TestFlight also uses Sandbox, but it adds evidence from the uploaded beta build.**
+**Use StoreKit Testing in Xcode for fast, local, repeatable purchase tests. Use Apple's Sandbox when you need product information configured in App Store Connect, App Store-signed transactions, or an end-to-end test through Apple's infrastructure. TestFlight also uses Sandbox, but it adds evidence from the uploaded beta build.**
 
 These environments are complementary. A local pass can prove that your app handles a simulated purchase state; it can't prove that the product in App Store Connect is configured correctly. A Sandbox pass can exercise Apple's test infrastructure; it still can't prove that an untested production account, storefront, or server condition will behave identically.
 
@@ -53,7 +53,7 @@ Even when a StoreKit configuration is based on App Store Connect products, the a
 
 ## What Apple's Sandbox proves
 
-Sandbox uses the App Store's infrastructure and the real test product information configured in App Store Connect. Transactions don't incur charges, but Apple returns test transactions as if payment had been processed.
+Sandbox uses the App Store's infrastructure and the product information configured in App Store Connect. Transactions don't incur charges, but Apple returns test transactions as if payment had been processed.
 
 Use Sandbox when the claim depends on an Apple-controlled boundary:
 
@@ -62,7 +62,7 @@ Use Sandbox when the claim depends on an Apple-controlled boundary:
 - A purchase returns an App Store-signed receipt or JWS transaction.
 - Your server uses the Sandbox endpoints and validates the resulting data correctly.
 - Your Sandbox App Store Server Notifications arrive and trigger the expected entitlement refresh.
-- A controlled Sandbox Apple Account reproduces subscription changes, interrupted purchases, billing scenarios, storefront differences, or Family Sharing tests.
+- A controlled Sandbox Apple Account exercises subscription, interrupted-purchase, billing, storefront, and Family Sharing scenarios.
 
 Apple's [Sandbox overview](https://developer.apple.com/help/app-store-connect/test-in-app-purchases/overview-of-testing-in-sandbox/) specifically includes storefront testing, accelerated subscription events, App Store Server Notifications, and Sandbox Test Families. Those are not interchangeable with a local simulation.
 
@@ -74,14 +74,7 @@ When products don't appear, don't turn the comparison into a random reset exerci
 
 Apps installed through TestFlight automatically use Sandbox for In-App Purchases. TestFlight therefore isn't a fourth transaction environment. Its additional value is the build and distribution boundary: the test runs against the binary uploaded to App Store Connect rather than the development build on your Mac.
 
-Start with TestFlight's default Sandbox behavior for an ordinary purchase, cancel, relaunch, and restore check. Use a Sandbox Apple Account only when you need its controlled settings, such as a different storefront, interrupted purchases, billing retry, a clean history, or a selected subscription renewal rate.
-
-This distinction prevents two common mistakes:
-
-1. A tester doesn't need a shared Sandbox credential merely to make a test purchase in a TestFlight build.
-2. A successful development-Sandbox run doesn't prove that the uploaded build has the same product IDs, entitlements, client code, or server configuration.
-
-For build-specific account setup, renewal timing, and evidence, use the [TestFlight subscription and In-App Purchase testing guide](/blog/test-subscriptions-in-app-purchases-testflight/).
+A basic TestFlight purchase doesn't require a separate Sandbox Apple Account. Use one only when the test needs controlled Sandbox settings. A successful development-Sandbox run still doesn't prove that the uploaded build contains the same product IDs, entitlements, client code, or server configuration. For account setup, renewal timing, and build-specific evidence, use the [TestFlight subscription and In-App Purchase testing guide](/blog/test-subscriptions-in-app-purchases-testflight/).
 
 ## Choose the environment from the claim
 
@@ -233,7 +226,7 @@ Don't place passwords, full Sandbox account addresses, private keys, payment det
 
 ## Where LaunchBuddy fits
 
-LaunchBuddy can organize this ladder as version-scoped tasks and checklist items: local entitlement regression, App Store Connect parity check, Sandbox server verification, and TestFlight release-candidate check. Release planning, taskboards, default submission checklists, and iCloud sync are available on the Free plan within its two-app, two-release, and limited-notes limits. Pro adds custom checklists and unlimited apps, releases, and project notes.
+LaunchBuddy can organize this ladder as version-scoped tasks; Pro users can turn it into a custom reusable checklist. Release planning, taskboards, default submission checklists, and iCloud sync are available on the Free plan within its two-app, two-release, and limited-notes limits. Pro also adds unlimited apps, releases, and project notes.
 
 LaunchBuddy doesn't create StoreKit configurations, configure In-App Purchases, manage Sandbox Apple Accounts, run purchase tests, inspect transactions, validate entitlements, receive App Store Server Notifications, or prove that a test passed. Xcode, App Store Connect, StoreKit, and your app or server remain authoritative.
 
