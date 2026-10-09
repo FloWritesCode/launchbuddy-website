@@ -2157,7 +2157,8 @@ backlog:
     cluster: "monetization-testing"
     intent: "comparison"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/storekit-testing-vs-sandbox/"
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/testflight-what-to-test-examples.md", "src/content/blog/testflight-release-management.md", "src/content/blog/app-store-billing-grace-period.md"]
