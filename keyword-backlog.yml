@@ -1,10 +1,10 @@
 version: 1
-researched_at: "2026-10-05"
+researched_at: "2026-10-12"
 market: "English-language web search"
 status: "healthy"
 
 methodology:
-  - "Compared candidate topics against all 100 existing posts in src/content/blog."
+  - "Compared candidate topics against all 106 existing posts in src/content/blog."
   - "Used current Google result language, Apple documentation terminology, competitor positioning, and LaunchBuddy product fit."
   - "Priorities are qualitative. They do not claim exact search volume or keyword difficulty."
   - "Before drafting, recheck the live search results and reject topics whose intent is already satisfied by an existing LaunchBuddy article."
@@ -248,6 +248,28 @@ research_sources:
     url: "https://developer.apple.com/help/app-store-connect/test-a-beta-version/stop-testing-a-build"
   - name: "Apple: Build upload statuses"
     url: "https://developer.apple.com/help/app-store-connect/reference/app-uploads/build-upload-statuses/"
+  - name: "Apple: Create offer codes for In-App Purchases"
+    url: "https://developer.apple.com/help/app-store-connect/manage-in-app-purchases/create-offer-codes-for-in-app-purchases"
+  - name: "Apple: Supporting offer codes in your app"
+    url: "https://developer.apple.com/documentation/storekit/supporting-offer-codes-in-your-app"
+  - name: "Apple: Manage European Union Digital Services Act trader requirements"
+    url: "https://developer.apple.com/help/app-store-connect/manage-compliance-information/manage-european-union-digital-services-act-trader-requirements/"
+  - name: "Apple: Provide your trader status in App Store Connect"
+    url: "https://developer.apple.com/news/?id=x60uzbu9"
+  - name: "Apple: Compliance review"
+    url: "https://developer.apple.com/help/app-store-connect/reference/account-management/compliance-review/"
+  - name: "Apple: App Store Connect Asset Library launch"
+    url: "https://developer.apple.com/news/?id=ljpl7kyn"
+  - name: "Apple: App Store asset best practices"
+    url: "https://developer.apple.com/app-store/asset-best-practices/"
+  - name: "Apple: Get your subscriptions ready for iOS 27"
+    url: "https://developer.apple.com/news/?id=likeohx4"
+  - name: "Apple: Bundles and Suites for Auto-Renewable Subscriptions"
+    url: "https://developer.apple.com/app-store/subscriptions/bundles-and-suites/"
+  - name: "Apple: Explore Retention Messaging in App Store Connect"
+    url: "https://developer.apple.com/videos/play/wwdc2026/309/"
+  - name: "Apple: Retention Messaging API"
+    url: "https://developer.apple.com/documentation/retentionmessaging"
 
 existing_primary_targets:
   - keyword: "AI release notes for iOS apps"
@@ -550,6 +572,24 @@ existing_primary_targets:
   - keyword: "App Store screenshot requirements"
     file: "src/content/blog/app-store-screenshot-requirements.md"
     intent: "checklist"
+  - keyword: "test subscriptions and In-App Purchases in TestFlight"
+    file: "src/content/blog/test-subscriptions-in-app-purchases-testflight.md"
+    intent: "how-to"
+  - keyword: "In-App Purchases not showing in Sandbox"
+    file: "src/content/blog/in-app-purchases-not-showing-in-sandbox.md"
+    intent: "troubleshooting"
+  - keyword: "App Store review summaries"
+    file: "src/content/blog/app-store-review-summaries.md"
+    intent: "how-to"
+  - keyword: "TestFlight Beta App Review"
+    file: "src/content/blog/testflight-beta-app-review.md"
+    intent: "how-to"
+  - keyword: "StoreKit Testing vs Sandbox"
+    file: "src/content/blog/storekit-testing-vs-sandbox.md"
+    intent: "comparison"
+  - keyword: "App Store review time"
+    file: "src/content/blog/app-store-review-time.md"
+    intent: "guide"
 
 excluded_due_to_overlap:
   - keyword: "iOS app project management"
@@ -701,7 +741,21 @@ excluded_due_to_overlap:
   - keyword: "App Store Connect build upload status"
     reason: "The published App Store Connect help guide already directs developers to Build Uploads, explains failed uploads and warnings, uses Apple's 24-hour Processing threshold, and gives the escalation evidence to collect. The webhook guide owns automated status-notification intent."
   - keyword: "test billing retry in Sandbox"
-    reason: "The published App Store Billing Grace Period guide already provides Apple's Allow Purchases & Renewals procedure and a failure, grace, expiration, non-entitled retry, and recovery matrix. Tester-specific timing does not establish a separate intent, and kw-106 already owns Sandbox renewal-rate planning."
+    reason: "The published App Store Billing Grace Period guide already provides Apple's Allow Purchases & Renewals procedure and a failure, grace, expiration, non-entitled retry, and recovery matrix. The published TestFlight purchase-testing guide now owns Sandbox renewal-rate planning, so tester-specific timing does not establish a separate intent."
+  - keyword: "Sandbox Test Families"
+    reason: "The published Family Sharing for In-App Purchases guide already provides the complete Sandbox Test Family setup, organizer and same-storefront constraints, sharing-state matrix, entitlement grant and revocation checks, and cleanup workflow. A family-only page would split the same end-to-end test intent."
+  - keyword: "iPhone Duo screenshots"
+    reason: "This is a device-specific variation of the published App Store screenshot requirements checklist, which owns Apple's current required display sizes, formats, scaling, localization, content, and submission preflight. Update that living specification article when the April 2027 requirement takes effect rather than creating a second screenshot page."
+  - keyword: "App Store creative assets requirements"
+    reason: "Apple's new creative assets belong to the reapproved App Store Connect Asset Library guide, which will own placement, specification, preview, review, and submission workflow. Separate requirements content would also fragment the published screenshot, app-preview, and In-App Event media intents."
+  - keyword: "Sandbox subscription renewal rate"
+    reason: "The published TestFlight subscription and In-App Purchase testing guide now owns this intent with the default TestFlight clock, Sandbox renewal-rate profiles, product-duration lookup, timestamp evidence, automatic-renewal limit, billing-retry and grace checkpoints, and the production-timing boundary."
+  - keyword: "Apple Business Manager subscription volume purchasing"
+    reason: "This is one not-yet-live distribution branch of the approved App Store multiseat subscriptions candidate. A separate page would duplicate its availability, entitlement, assignment, test, rollout, and support decisions before current search results establish a stable standalone intent after the October 22 launch."
+  - keyword: "App Store Group Purchases"
+    reason: "Apple says Group Purchases will launch in winter 2026, so procedural intent is not stable yet. The approved multiseat subscriptions guide will own the current default-on audit and preserve Group Purchases as a dated future branch that requires a live documentation check."
+  - keyword: "TestFlight App Review limit"
+    reason: "The six-builds-per-24-hours detail is a limit inside the published TestFlight Beta App Review lifecycle rather than a separate user goal. Update that living guide if Apple's current documentation changes instead of creating a limit-only page."
 
 backlog:
   - id: "kw-005"
@@ -1715,14 +1769,14 @@ backlog:
     proposed_slug: "app-store-connect-asset-library"
     cluster: "aso"
     intent: "guide"
-    priority: "P2"
-    status: "rejected"
-    rejection_reason: "Apple still labels Asset Library as coming in fall 2026 and says more detailed resources and guidance are forthcoming. Announcement language does not yet establish a stable live-control how-to intent, so reconsider only after Apple publishes complete documentation and the feature is available."
-    confidence: "medium"
+    priority: "P1"
+    status: "approved"
+    historical_rejection_reason: "Apple still labeled Asset Library as coming in fall 2026 during the 2026-09-21 research pass, and detailed live-control guidance was not yet available."
+    confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/app-store-product-page-optimization.md", "src/content/blog/aso-experiment-tracker.md", "src/content/blog/app-store-metadata-management.md"]
     product_features: ["ASO experiments", "App Store Connect analytics dashboard", "Release planning and taskboards", "App Store submission checklists"]
-    angle: "Prepare an asset inventory and approval workflow for Apple's announced fall-2026 Asset Library, creative assets, product-page preview, and reuse across placements, clearly separating announced behavior from live controls and requiring a fresh documentation and search check before drafting."
+    angle: "Use Apple's now-live Asset Library terminology to separate app previews, screenshots, and creative assets by platform, size, and placement, then build an inventory, preview, review, submission, and experiment record without claiming LaunchBuddy creates, validates, uploads, or submits the media; keep downloadable Apple-hosted asset packs outside this marketing-asset workflow."
 
   - id: "kw-084"
     keyword: "App Store campaign links"
@@ -2034,7 +2088,8 @@ backlog:
     cluster: "monetization-testing"
     intent: "how-to"
     priority: "P2"
-    status: "approved"
+    status: "rejected"
+    rejection_reason: "Substantially satisfied by src/content/blog/test-subscriptions-in-app-purchases-testflight.md, which covers the default TestFlight renewal clock, Sandbox renewal-rate profiles, product-duration-specific intervals, timestamp evidence, the automatic-renewal limit, billing-retry and grace checkpoints, and the production-timing boundary."
     confidence: "medium"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/testflight-release-management.md", "src/content/blog/testflight-what-to-test-examples.md"]
@@ -2321,3 +2376,81 @@ backlog:
     related_existing_posts: ["src/content/blog/testflight-release-management.md", "src/content/blog/app-store-connect-draft-submissions.md", "src/content/blog/app-store-connect-webhooks.md"]
     product_features: ["Release planning and taskboards", "App Store submission checklists"]
     angle: "Map the separate binary and asset-pack upload, processing, internal TestFlight, external Beta App Review, compatibility, replacement, and App Store submission states into one release matrix, including localized-pack boundaries, without claiming LaunchBuddy packages, uploads, hosts, or validates assets."
+
+  - id: "kw-128"
+    keyword: "In-App Purchase offer codes"
+    proposed_slug: "in-app-purchase-offer-codes"
+    cluster: "monetization"
+    intent: "how-to"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-subscription-offer-codes.md", "src/content/blog/app-store-promo-codes.md", "src/content/blog/in-app-purchase-types.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists", "App Store Connect analytics dashboard"]
+    angle: "Own Apple's distinct consumable, non-consumable, and non-renewing-subscription offer-code workflow: compare one-time-use, custom, and Sandbox codes; record product approval, eligibility, storefront, redemption surface, StoreKit support, test evidence, distribution, and later results; and explicitly leave auto-renewable subscription offer codes and paid-app promo codes to their existing guides."
+
+  - id: "kw-129"
+    keyword: "App Store DSA trader status"
+    proposed_slug: "app-store-dsa-trader-status"
+    cluster: "app-compliance"
+    intent: "checklist"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-connect-release-checklist.md", "src/content/blog/ios-app-launch-checklist.md", "src/content/blog/indie-app-portfolio-management.md"]
+    product_features: ["App portfolio", "Release planning and taskboards", "App Store submission checklists"]
+    angle: "Turn Apple's account declaration, contact verification, public product-page disclosure, and per-app DSA setting into an evidence-and-owner checklist across a portfolio, with a release-blocker check and live-listing verification; require the developer to obtain qualified advice on trader classification and state that LaunchBuddy neither decides legal status nor submits compliance information."
+
+  - id: "kw-130"
+    keyword: "App Store Connect compliance review"
+    proposed_slug: "app-store-connect-compliance-review"
+    cluster: "app-compliance"
+    intent: "troubleshooting"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-connect-help.md", "src/content/blog/app-store-connect-release-checklist.md", "src/content/blog/indie-app-portfolio-management.md"]
+    product_features: ["App portfolio", "Release planning and taskboards", "App Store submission checklists"]
+    angle: "Separate Apple's individual or user, legal-entity, and bank-account reviews; map each to the Account Holder, requested evidence, blocked App Store Connect actions, Business-module status, and Apple's cited contact threshold; then track affected releases without storing identity documents or claiming LaunchBuddy performs verification, resolves the review, or gives legal advice."
+
+  - id: "kw-131"
+    keyword: "App Store multiseat subscriptions"
+    proposed_slug: "app-store-multiseat-subscriptions"
+    cluster: "monetization"
+    intent: "guide"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-subscription-groups.md", "src/content/blog/family-sharing-for-in-app-purchases.md", "src/content/blog/test-subscriptions-in-app-purchases-testflight.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists", "App Store Connect analytics dashboard"]
+    angle: "Audit Apple's default-on multiseat setting before rollout: separate App Store, Apple Business Manager, and Apple School Manager availability; distinguish Volume Purchasing from the not-yet-live Group Purchases path; map StoreKit 2 entitlement, Family Sharing, seat-assignment, test, support, and launch checks; and avoid claiming LaunchBuddy configures subscriptions or that multiseat access will increase revenue."
+
+  - id: "kw-132"
+    keyword: "App Store subscription Bundles vs Suites"
+    proposed_slug: "app-store-subscription-bundles-vs-suites"
+    cluster: "monetization"
+    intent: "comparison"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-app-bundles.md", "src/content/blog/app-store-subscription-groups.md", "src/content/blog/in-app-purchase-types.md"]
+    product_features: ["App portfolio", "Release planning and taskboards", "App Store submission checklists"]
+    angle: "Distinguish Apple's new purchase of multiple existing subscriptions as a Bundle from one subscription spanning multiple apps as a Suite, then compare ownership, matching duration, request eligibility, StoreKit 2 and OS requirements, partial cancellation, entitlement tests, and release coordination without confusing either option with app bundles or subscription groups; recheck live availability before drafting."
+
+  - id: "kw-133"
+    keyword: "App Store Retention Messaging"
+    proposed_slug: "app-store-retention-messaging"
+    cluster: "monetization"
+    intent: "guide"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-win-back-offers.md", "src/content/blog/app-store-subscription-offer-codes.md", "src/content/blog/app-store-connect-analytics.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists", "App Store Connect analytics dashboard"]
+    angle: "Compare default App Store Connect messages with real-time server selection, then plan product and locale mapping, fallback messages, optional assets or offers, Sandbox and performance checks, cancellation-flow QA, and an evidence review while leaving configuration and reporting authoritative in Apple's systems; verify account availability before documenting live UI steps."
