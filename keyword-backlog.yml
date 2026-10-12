@@ -2185,7 +2185,8 @@ backlog:
     cluster: "aso"
     intent: "how-to"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/create-app-store-custom-product-page/"
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/custom-product-pages-vs-product-page-optimization.md", "src/content/blog/app-store-product-page-optimization.md", "src/content/blog/aso-experiment-tracker.md"]
