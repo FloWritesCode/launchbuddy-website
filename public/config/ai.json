@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-02T00:00:00Z",
-  "model": "gpt-5.4-mini",
+  "updatedAt": "2026-10-13T19:10:00Z",
+  "model": "gpt-6-luna",
   "usageLimits": {
     "appChat": 75,
     "agentSteps": 150,
