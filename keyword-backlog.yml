@@ -2255,7 +2255,8 @@ backlog:
     cluster: "testflight"
     intent: "guide"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/testflight-build-metrics/"
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/testflight-release-management.md", "src/content/blog/testflight-feedback-management.md", "src/content/blog/testflight-public-link-criteria.md"]
