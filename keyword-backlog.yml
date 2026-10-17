@@ -2323,7 +2323,8 @@ backlog:
     cluster: "testflight"
     intent: "comparison"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/testflight-internal-only-vs-app-store-connect/"
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/testflight-release-management.md", "src/content/blog/testflight-build-expired.md", "src/content/blog/app-store-connect-help.md"]
