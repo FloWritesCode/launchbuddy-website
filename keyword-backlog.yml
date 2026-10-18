@@ -2337,7 +2337,8 @@ backlog:
     cluster: "monetization-testing"
     intent: "how-to"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/create-sandbox-apple-account/"
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/testflight-what-to-test-examples.md", "src/content/blog/app-store-billing-grace-period.md", "src/content/blog/family-sharing-for-in-app-purchases.md"]
