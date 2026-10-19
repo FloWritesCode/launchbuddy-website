@@ -1775,7 +1775,7 @@ backlog:
     status: "approved"
     confidence: "medium"
     overlap: "medium"
-    related_existing_posts: ["src/content/blog/testflight-release-management.md", "src/content/blog/testflight-feedback-management.md"]
+    related_existing_posts: ["src/content/blog/testflight-release-management.md", "src/content/blog/testflight-feedback-management.md", "src/content/blog/testflight-internal-only-vs-app-store-connect.md"]
     product_features: ["Release planning and taskboards", "App Store submission checklists"]
     angle: "Separate automatic internal-group delivery, manual Xcode Cloud assignment, external Beta App Review, and optional tester notification, then provide a release-candidate guardrail checklist so an unverified build is not distributed merely because it finished processing."
 
@@ -2064,10 +2064,11 @@ backlog:
     cluster: "monetization"
     intent: "troubleshooting"
     priority: "P2"
-    status: "approved"
+    status: "rejected"
+    rejection_reason: "Substantially satisfied by src/content/blog/create-sandbox-apple-account.md, which documents both Sandbox purchase-history controls, the irreversible reset warning, the account-state record, the required sign-out and sign-in cache reset, and the first-purchase retest. A separate troubleshooting page would repeat that reset-and-retest intent."
     confidence: "medium"
     overlap: "medium"
-    related_existing_posts: ["src/content/blog/testflight-what-to-test-examples.md", "src/content/blog/testflight-release-management.md", "src/content/blog/ios-app-release-management.md"]
+    related_existing_posts: ["src/content/blog/create-sandbox-apple-account.md", "src/content/blog/testflight-what-to-test-examples.md", "src/content/blog/testflight-release-management.md", "src/content/blog/ios-app-release-management.md"]
     product_features: ["Release planning and taskboards", "App Store submission checklists"]
     angle: "Provide a reproducible reset-and-retest record that separates App Store Connect and on-device controls, irreversible sandbox history clearing, cache sign-out, account state, expected entitlement, and escalation evidence, while stating that LaunchBuddy neither manages Sandbox accounts nor validates StoreKit."
 
@@ -2149,7 +2150,7 @@ backlog:
     status: "approved"
     confidence: "medium"
     overlap: "medium"
-    related_existing_posts: ["src/content/blog/testflight-what-to-test-examples.md", "src/content/blog/ios-app-release-management.md", "src/content/blog/testflight-release-management.md"]
+    related_existing_posts: ["src/content/blog/create-sandbox-apple-account.md", "src/content/blog/testflight-what-to-test-examples.md", "src/content/blog/ios-app-release-management.md", "src/content/blog/testflight-release-management.md"]
     product_features: ["Release planning and taskboards", "App Store submission checklists"]
     angle: "Provide a reproducible scenario for enabling interruption on one Sandbox account, verifying the out-of-app action and resumed transaction, resetting the tester flag, and recording evidence across app relaunches without claiming LaunchBuddy can inspect transactions or validate StoreKit behavior."
 
@@ -2395,7 +2396,7 @@ backlog:
     status: "approved"
     confidence: "medium"
     overlap: "medium"
-    related_existing_posts: ["src/content/blog/in-app-purchase-status-meanings.md", "src/content/blog/schedule-in-app-purchase-price-changes.md", "src/content/blog/family-sharing-for-in-app-purchases.md"]
+    related_existing_posts: ["src/content/blog/create-sandbox-apple-account.md", "src/content/blog/in-app-purchase-status-meanings.md", "src/content/blog/schedule-in-app-purchase-price-changes.md", "src/content/blog/family-sharing-for-in-app-purchases.md"]
     product_features: ["Release planning and taskboards", "App Store submission checklists"]
     angle: "Provide a storefront-specific retest record that captures the previous and target regions, Sandbox Test Family constraint, required sign-out and sign-in, expected product availability and price, StoreKit result, and restoration step while separating test-account location from production availability configuration."
 
