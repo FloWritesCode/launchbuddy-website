@@ -2,9 +2,10 @@
 title: "App Store Screenshot Requirements: A Submission Checklist"
 description: "Check current App Store screenshot sizes, formats, device coverage, localization, content rules, and upload status before submitting an app version."
 pubDate: 2026-10-04
+updatedDate: 2026-10-19
 ---
 
-App Store screenshots must use an accepted pixel size, contain no alpha channel or transparency, and be uploaded as `.jpeg`, `.jpg`, or `.png` files. Apple allows **one to 10 screenshots**. For an iPhone app, provide a 6.9-inch or 6.5-inch set; if the app runs on iPad, a 13-inch iPad set is also required. Mac, Apple TV, Apple Vision Pro, and Apple Watch apps each have their own required sizes.
+App Store screenshots must use an accepted pixel size, contain no alpha channel or transparency, and be uploaded as `.jpeg`, `.jpg`, or `.png` files. Apple allows **one to 10 screenshots**. For an iPhone app, Apple now lists the medium Dynamic Island display (iPhone 17 and iPhone 18 Pro, for example) as the required set; if the app runs on iPad, a 13-inch iPad set is also required. iPhone Duo screenshots become required in April 2027. Mac, Apple TV, Apple Vision Pro, and Apple Watch apps each have their own required sizes.
 
 Passing the file check isn't enough. The screenshots must show the app in use, accurately represent the submitted build, be suitable for a 4+ audience, and cover the platform and localizations you intend to publish.
 
@@ -14,16 +15,20 @@ Use this three-gate preflight:
 - **Coverage gate:** every supported platform, required display set, locale, and screenshot position is accounted for.
 - **Truth gate:** every screen and overlay matches the build customers will receive.
 
-Apple changes its device table as hardware changes. The dimensions below were checked against Apple's live documentation on October 4, 2026; confirm them in the [current screenshot specifications](https://developer.apple.com/help/app-store-connect/reference/app-information/screenshot-specifications/) before exporting final assets.
+Apple changes its device table as hardware changes. The dimensions below were checked against Apple's live documentation on October 19, 2026; confirm them in the [current screenshot specifications](https://developer.apple.com/help/app-store-connect/reference/app-information/screenshot-specifications/) before exporting final assets.
 
 ## Current App Store screenshot sizes
 
-The shortest compliant path for an iPhone and iPad app is usually one high-resolution iPhone set plus one 13-inch iPad set. App Store Connect scales those images for smaller displays when you don't supply custom sets.
+The shortest compliant path for an iPhone and iPad app is usually one iPhone set plus one 13-inch iPad set. App Store Connect scales those images for other displays when you don't supply custom sets.
+
+Apple now names iPhone sets by display type rather than by inch size. The former 6.9-inch set is "iPhone with Dynamic Island (large display)" and the former 6.5-inch set is "iPhone with Face ID (large display)".
 
 | Platform or display set | Accepted landscape or portrait dimensions | When it is required |
 | --- | --- | --- |
-| iPhone 6.9-inch | 1260 × 2736, 1290 × 2796, or 1320 × 2868 pixels; reverse either pair for landscape | Provide this set, or provide the 6.5-inch set |
-| iPhone 6.5-inch | 1284 × 2778 or 1242 × 2688 pixels; reverse for landscape | Required for an iPhone app only when a 6.9-inch set isn't provided |
+| iPhone with Dynamic Island (medium display) | 1206 × 2622 or 1179 × 2556 pixels; reverse for landscape | Listed as the required iPhone set |
+| iPhone with Dynamic Island (large display), formerly 6.9-inch | 1260 × 2736, 1290 × 2796, or 1320 × 2868 pixels; reverse for landscape | Optional; scaled from the Face ID large set if missing |
+| iPhone with Face ID (large display), formerly 6.5-inch | 1284 × 2778 or 1242 × 2688 pixels; reverse for landscape | Marked as required when no Dynamic Island large set is provided |
+| iPhone Duo | Outer display 1398 × 2034, inner display 2007 × 2853 pixels; reverse for landscape | Required from April 2027; see below |
 | iPad 13-inch | 2064 × 2752 or 2048 × 2732 pixels; reverse for landscape | Required when the app runs on iPad |
 | Mac | 1280 × 800, 1440 × 900, 2560 × 1600, or 2880 × 1800 pixels | Required for a Mac app |
 | Apple TV | 1920 × 1080 or 3840 × 2160 pixels | Required for an Apple TV app |
@@ -32,7 +37,11 @@ The shortest compliant path for an iPhone and iPad app is usually one high-resol
 
 This table lists the primary submission sets, not every optional iPhone and iPad display size. Media Manager accepts additional device-specific sets when scaling would misrepresent the interface.
 
-Apple's current table also lists outer- and inner-display sizes for iPhone Duo, but notes that App Store Connect upload support will arrive later in 2026. Don't treat a future upload well as a current submission requirement. Recheck the live table when App Store Connect exposes the control.
+Apple's page currently reads two ways for iPhone. Its summary says you must provide at least one screenshot for the medium Dynamic Island display, while the table still marks the Face ID large set as required when no Dynamic Island large set is uploaded. Until Apple reconciles the two, the safe path is to upload a medium Dynamic Island set and either large set, then confirm App Store Connect doesn't flag a missing well before you submit.
+
+### iPhone Duo screenshots
+
+App Store Connect now accepts iPhone Duo screenshots for the outer and inner displays. Submitting them adds a badge to your product page saying the app is optimized for iPhone Duo. Apple's announcement says that "starting April 2027, any apps or games submitted will need to include screenshots for iPhone Duo," and the specifications page says they will be required for any app using the iOS 27.1 SDK or later. Apple hasn't published the exact date, so recheck the live table before spring releases. The [iPhone Duo app update checklist](/blog/iphone-duo-app-update-checklist/) covers the layout work that should come before those screenshots.
 
 ## Decide whether Apple's scaling is safe for your app
 
@@ -52,9 +61,9 @@ Record the decision instead of relying on memory:
 
 ```text
 Platform: iPhone
-Source set: 6.9-inch, 1290 × 2796
+Source set: Dynamic Island (medium display), 1206 × 2622
 Scaled by App Store Connect: Yes
-Displays spot-checked: 6.3-inch, 6.1-inch, 5.5-inch
+Displays spot-checked: Face ID (medium display), Home Button (large display)
 Reason custom assets aren't needed: Same layout and readable captions
 Reviewer and date:
 ```
@@ -75,7 +84,7 @@ Run the file gate on the exported files, not only on the design document:
 A useful filename can prevent an otherwise valid image from entering the wrong well:
 
 ```text
-03-focus-timer_iphone-6.9_en-US_v4.2-b317.png
+03-focus-timer_iphone-di-medium_en-US_v4.2-b317.png
 ```
 
 The name isn't App Store metadata, so customers won't see it. It is an internal control that makes review and replacement less error-prone.
@@ -129,8 +138,8 @@ Maintain a simple coverage matrix:
 
 | Locale | iPhone source set | iPad source set | Overlay reviewed | In-app UI reviewed | Fallback intentional |
 | --- | --- | --- | --- | --- | --- |
-| en-US | 6.9-inch custom | 13-inch custom | Yes | Yes | Not applicable |
-| de-DE | 6.9-inch custom | 13-inch custom | Yes | Yes | No |
+| en-US | Dynamic Island medium custom | 13-inch custom | Yes | Yes | Not applicable |
+| de-DE | Dynamic Island medium custom | 13-inch custom | Yes | Yes | No |
 | fr-FR | Inherits en-US | Inherits en-US | No | No | Yes, for this release |
 
 The last row isn't automatically wrong. It makes the compromise visible so it can be approved, deferred, or turned into a release task. For a broader process, use the [App Store localization workflow](/blog/app-store-localization-workflow/).
@@ -163,22 +172,24 @@ Finish with a rendered-result check:
 
 Suppose version 4.2 of a focus timer supports iPhone and iPad in English and German. Its iPad layout uses a sidebar, while iPhone uses tabs.
 
-The release owner creates four source sets:
+The release owner creates six source sets:
 
 ```text
-iPhone 6.9-inch — en-US — six screenshots
-iPhone 6.9-inch — de-DE — six screenshots
+iPhone Dynamic Island (medium display) — en-US — six screenshots
+iPhone Dynamic Island (medium display) — de-DE — six screenshots
+iPhone Dynamic Island (large display) — en-US — six screenshots
+iPhone Dynamic Island (large display) — de-DE — six screenshots
 iPad 13-inch — en-US — five screenshots
 iPad 13-inch — de-DE — five screenshots
 ```
 
-They allow App Store Connect to scale the iPhone set to smaller iPhones because the tab layout and captions survive the smaller previews. They don't reuse iPhone images for iPad, because doing so would hide the sidebar experience customers receive.
+The large-display sets cover both readings of Apple's current iPhone requirement. They allow App Store Connect to scale the iPhone sets to other iPhones because the tab layout and captions survive the smaller previews. They don't reuse iPhone images for iPad, because doing so would hide the sidebar experience customers receive.
 
 The manifest for each screenshot records:
 
 ```text
 App version and build: 4.2 (317)
-Platform and display set: iPhone 6.9-inch
+Platform and display set: iPhone Dynamic Island (medium display)
 Locale: de-DE
 Position: 01
 Screen and state: Active timer, 24 minutes remaining
@@ -220,7 +231,9 @@ File gate
 [ ] Orientation and filename checked
 
 Coverage gate
-[ ] 6.9-inch or 6.5-inch iPhone set supplied
+[ ] Dynamic Island (medium display) iPhone set supplied
+[ ] A large-display iPhone set supplied, or App Store Connect confirms none is missing
+[ ] iPhone Duo outer and inner sets supplied (required from April 2027)
 [ ] 13-inch iPad set supplied if the app runs on iPad
 [ ] Other supported-platform requirements supplied
 [ ] Scaling reviewed on representative smaller displays
