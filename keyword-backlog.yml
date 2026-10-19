@@ -1,10 +1,10 @@
 version: 1
-researched_at: "2026-10-12"
+researched_at: "2026-10-19"
 market: "English-language web search"
 status: "healthy"
 
 methodology:
-  - "Compared candidate topics against all 106 existing posts in src/content/blog."
+  - "Compared candidate topics against all 113 existing posts in src/content/blog."
   - "Used current Google result language, Apple documentation terminology, competitor positioning, and LaunchBuddy product fit."
   - "Priorities are qualitative. They do not claim exact search volume or keyword difficulty."
   - "Before drafting, recheck the live search results and reject topics whose intent is already satisfied by an existing LaunchBuddy article."
@@ -270,6 +270,18 @@ research_sources:
     url: "https://developer.apple.com/videos/play/wwdc2026/309/"
   - name: "Apple: Retention Messaging API"
     url: "https://developer.apple.com/documentation/retentionmessaging"
+  - name: "Apple: Test an App Clip experience"
+    url: "https://developer.apple.com/help/app-store-connect/test-a-beta-version/test-an-app-clip-experience/"
+  - name: "Apple: Overview of App Clips"
+    url: "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/"
+  - name: "Apple: Offer a default App Clip experience"
+    url: "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/offer-a-default-app-clip-experience/"
+  - name: "Release Pilot"
+    url: "https://senthilmkm.github.io/release-pilot/"
+  - name: "MetaRun"
+    url: "https://metarun.dev/"
+  - name: "HyperRelease"
+    url: "https://hyperrelease.com/"
 
 existing_primary_targets:
   - keyword: "AI release notes for iOS apps"
@@ -590,6 +602,27 @@ existing_primary_targets:
   - keyword: "App Store review time"
     file: "src/content/blog/app-store-review-time.md"
     intent: "guide"
+  - keyword: "create App Store custom product page"
+    file: "src/content/blog/create-app-store-custom-product-page.md"
+    intent: "how-to"
+  - keyword: "App Store Connect Asset Library"
+    file: "src/content/blog/app-store-connect-asset-library.md"
+    intent: "guide"
+  - keyword: "TestFlight build metrics"
+    file: "src/content/blog/testflight-build-metrics.md"
+    intent: "guide"
+  - keyword: "LaunchBuddy vs Docket"
+    file: "src/content/blog/launchbuddy-vs-docket.md"
+    intent: "comparison"
+  - keyword: "LaunchBuddy vs Keelport"
+    file: "src/content/blog/launchbuddy-vs-keelport.md"
+    intent: "comparison"
+  - keyword: "TestFlight Internal Only vs App Store Connect"
+    file: "src/content/blog/testflight-internal-only-vs-app-store-connect.md"
+    intent: "comparison"
+  - keyword: "create Sandbox Apple Account"
+    file: "src/content/blog/create-sandbox-apple-account.md"
+    intent: "how-to"
 
 excluded_due_to_overlap:
   - keyword: "iOS app project management"
@@ -756,6 +789,14 @@ excluded_due_to_overlap:
     reason: "Apple says Group Purchases will launch in winter 2026, so procedural intent is not stable yet. The approved multiseat subscriptions guide will own the current default-on audit and preserve Group Purchases as a dated future branch that requires a live documentation check."
   - keyword: "TestFlight App Review limit"
     reason: "The six-builds-per-24-hours detail is a limit inside the published TestFlight Beta App Review lifecycle rather than a separate user goal. Update that living guide if Apple's current documentation changes instead of creating a limit-only page."
+  - keyword: "TestFlight tester status meanings"
+    reason: "The published TestFlight build-metrics, public-link-criteria, release-management, and help guides already explain invitation, acceptance, installation, access, group, and activity evidence. A status glossary would fragment that tester-management intent without adding a distinct LaunchBuddy workflow."
+  - keyword: "remove auto-renewable subscription from sale"
+    reason: "The published iOS app sunset checklist already owns the customer-notice, entitlement, service-duration, product-removal, and support plan, while approved kw-120 owns storefront availability. A subscription-only removal page would split the same retirement decision."
+  - keyword: "AI App Store screenshot generator"
+    reason: "Current results expect tools that generate or design screenshot files. LaunchBuddy only provides an editable screenshot-recommendation artifact and does not generate, capture, validate, or upload screenshots; the published screenshot-requirements guide already explains the supported recommendation and human-verification boundary."
+  - keyword: "LaunchBuddy vs RevenueCat"
+    reason: "RevenueCat is a subscription infrastructure and analytics service rather than a release planner, so a head-to-head comparison would imply a false replacement decision. The published App Store Connect analytics and alternatives guides already explain LaunchBuddy's narrower selected-metrics role."
 
 backlog:
   - id: "kw-005"
@@ -2296,11 +2337,11 @@ backlog:
     proposed_slug: "app-store-app-preview-requirements"
     cluster: "aso"
     intent: "checklist"
-    priority: "P2"
+    priority: "P1"
     status: "approved"
     confidence: "high"
     overlap: "medium"
-    related_existing_posts: ["src/content/blog/app-store-metadata-management.md", "src/content/blog/app-store-product-page-optimization.md", "src/content/blog/app-store-connect-release-checklist.md"]
+    related_existing_posts: ["src/content/blog/app-store-metadata-management.md", "src/content/blog/app-store-product-page-optimization.md", "src/content/blog/app-store-connect-release-checklist.md", "src/content/blog/app-store-screenshot-requirements.md", "src/content/blog/app-store-connect-asset-library.md"]
     product_features: ["App Store submission checklists", "Release planning and taskboards", "ASO experiments"]
     angle: "Turn Apple's duration, file, codec, frame-rate, device-size, orientation, localization, content, poster-frame, and processing rules into a build-specific video preflight, then record any preview experiment without claiming LaunchBuddy captures, validates, or uploads video."
 
@@ -2461,3 +2502,68 @@ backlog:
     related_existing_posts: ["src/content/blog/app-store-win-back-offers.md", "src/content/blog/app-store-subscription-offer-codes.md", "src/content/blog/app-store-connect-analytics.md"]
     product_features: ["Release planning and taskboards", "App Store submission checklists", "App Store Connect analytics dashboard"]
     angle: "Compare default App Store Connect messages with real-time server selection, then plan product and locale mapping, fallback messages, optional assets or offers, Sandbox and performance checks, cancellation-flow QA, and an evidence review while leaving configuration and reporting authoritative in Apple's systems; verify account availability before documenting live UI steps."
+
+  - id: "kw-134"
+    keyword: "LaunchBuddy vs Release Pilot"
+    proposed_slug: "launchbuddy-vs-release-pilot"
+    cluster: "comparisons"
+    intent: "comparison"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/manage-app-store-connect-from-iphone.md", "src/content/blog/app-store-submission-tracker.md", "src/content/blog/app-store-review-management.md", "src/content/blog/launchbuddy-vs-app-store-connect.md"]
+    product_features: ["App portfolio", "Release planning and taskboards", "App Store submission checklists", "App Store reviews inbox", "Release Status widget", "iCloud sync"]
+    angle: "Compare LaunchBuddy's cross-device app-and-version planning, reusable submission process, reviews, and private iCloud project data with Release Pilot's first-party-documented iPhone status dashboard, push notifications, Live Activities, review replies, checklist, and RevenueCat view; distinguish planned release work from live Apple-state monitoring and revalidate both products before drafting."
+
+  - id: "kw-135"
+    keyword: "LaunchBuddy vs MetaRun"
+    proposed_slug: "launchbuddy-vs-metarun"
+    cluster: "comparisons"
+    intent: "comparison"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-connect-ai-agent.md", "src/content/blog/human-in-the-loop-ai-approval-workflow.md", "src/content/blog/launchbuddy-mcp-server.md", "src/content/blog/launchbuddy-vs-app-store-connect.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists", "App Store reviews inbox", "Release notes upload", "Local MCP server", "Approval-gated AI actions", "Automation approvals"]
+    angle: "Compare LaunchBuddy's private iCloud release workspace and localhost MCP proposal queue with MetaRun's first-party-documented hosted agent surface for broader App Store Connect operations, previews, localization, pricing, and team access; use one release to show when planning context or direct store-operation breadth is the missing layer and recheck live capabilities before drafting."
+
+  - id: "kw-136"
+    keyword: "LaunchBuddy vs HyperRelease"
+    proposed_slug: "launchbuddy-vs-hyperrelease"
+    cluster: "comparisons"
+    intent: "comparison"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-localization-workflow.md", "src/content/blog/app-store-release-notes-generator.md", "src/content/blog/launchbuddy-vs-fastlane-asc-cli.md", "src/content/blog/ios-app-release-management.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists", "iCloud sync", "Release notes upload", "Local MCP server", "Automation approvals"]
+    angle: "Compare LaunchBuddy's iOS app backlog, version scope, submission checklists, selected Apple context, and approval-gated local writes with HyperRelease's first-party-documented iOS-and-Android store-copy localization and publish handoff; define a non-duplicative boundary for teams that need both product planning and cross-store listing operations, with a fresh product check before drafting."
+
+  - id: "kw-137"
+    keyword: "TestFlight App Clip testing"
+    proposed_slug: "testflight-app-clip-testing"
+    cluster: "testflight"
+    intent: "how-to"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/testflight-release-management.md", "src/content/blog/testflight-what-to-test-examples.md", "src/content/blog/testflight-feedback-management.md", "src/content/blog/testflight-test-information.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists"]
+    angle: "Turn Apple's build-specific App Clip invocation controls into a three-URL test matrix covering localized titles, full-app-versus-clip switching, expected launch state, supported TestFlight feedback, and replacement-build evidence, while stating that LaunchBuddy neither builds the App Clip nor configures invocation URLs."
+
+  - id: "kw-138"
+    keyword: "App Clip default experience"
+    proposed_slug: "app-clip-default-experience"
+    cluster: "app-setup"
+    intent: "how-to"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-connect-release-checklist.md", "src/content/blog/app-review-notes.md", "src/content/blog/testflight-release-management.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists"]
+    angle: "Own the production setup and release intent rather than kw-137's beta test path: coordinate the default experience's invocation URL, card metadata, localized imagery, domain association, build, App Review evidence, and live launch verification without claiming LaunchBuddy implements, validates, or publishes an App Clip."
