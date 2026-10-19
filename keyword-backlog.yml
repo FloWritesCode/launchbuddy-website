@@ -2432,7 +2432,8 @@ backlog:
     cluster: "monetization"
     intent: "how-to"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/in-app-purchase-offer-codes/"
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/app-store-subscription-offer-codes.md", "src/content/blog/app-store-promo-codes.md", "src/content/blog/in-app-purchase-types.md"]
