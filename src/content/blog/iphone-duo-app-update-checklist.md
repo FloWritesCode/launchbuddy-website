@@ -147,6 +147,7 @@ Before April 2027:
 
 ## Further reading
 
+- [Fold-Proof your App for iPhone Duo](https://x.com/FloWritesCode/status/2108133383133950388), the full walkthrough on X, with the reasoning behind each step
 - [Preparing your app for iPhone Duo](https://developer.apple.com/documentation/technologyoverviews/preparing-your-app-for-iphone-duo), Apple's developer documentation
 - [Designing for iPhone Duo](https://developer.apple.com/design/human-interface-guidelines/designing-for-iphone-duo), the Human Interface Guidelines chapter
 - [Three steps to make your app shine on iPhone Duo](https://developer.apple.com/iphone-duo/prepare/), Apple's overview
