@@ -4,9 +4,9 @@ description: "Test an App Clip in TestFlight with up to three invocation URLs, a
 pubDate: 2026-10-22
 ---
 
-To test an App Clip with TestFlight, upload the full app archive that contains the App Clip, open that iOS build in App Store Connect, and add up to three App Clip invocation URLs under **Test Information**. Give each URL a clear title, save the build, distribute it to your testers, and verify every URL against a written expected result. TestFlight covers these URL-based experiences; Apple says other invocation methods aren't supported in this test path.
+To test an App Clip with TestFlight, associate the App Clip with its website, upload the full app archive that contains it, and add up to three App Clip experiences to that iOS build in App Store Connect. Testers launch those experiences from the TestFlight app; Apple doesn't show the App Clip card in this path. To test a card, QR code, NFC tag, or App Clip Code with the beta App Clip, first cache it by launching a configured TestFlight experience, then register a local experience on the test device.
 
-Treat the setup as build-specific. A configured URL isn't evidence that the right screen, content, or error state appeared in the build your tester installed. The workflow below creates that evidence and gives a replacement build its own test record.
+Treat the setup as build-specific. A configured URL isn't evidence that the right screen, content, or error state appeared in the beta App Clip your tester launched. The workflow below creates that evidence and gives a replacement build its own test record.
 
 ## Before you configure the TestFlight build
 
@@ -16,10 +16,14 @@ Prepare these items first:
 
 - A processed iOS build that includes the App Clip
 - Account Holder, Admin, or App Manager access in App Store Connect
+- The Associated Domains entitlement on both the full app and App Clip targets
+- An Apple App Site Association file with an `appclips` entry on each invocation domain
 - One to three HTTPS invocation URLs handled by this App Clip build
 - A short, observable expected result for each URL
 - A tester who can switch between the App Clip and full app
 - Current build-specific instructions for the test group
+
+Apple's [website-association guide](https://developer.apple.com/documentation/appclip/associating-your-app-clip-with-your-website) explains both sides of the requirement: add each `appclips:` domain to the Associated Domains capability, and serve an AASA file that names the App Clip. Apple's launch-testing documentation specifically requires this association for TestFlight App Clip experiences.
 
 Don't use the production App Clip card as proof that the beta build is ready. TestFlight's App Clip invocations belong to the selected build's Test Information, while production default and advanced experiences are separate App Store Connect configuration.
 
@@ -85,7 +89,7 @@ This separates configuration from behavior. “URL saved” is an App Store Conn
 
 ## 3. Give testers an exact switching sequence
 
-Apple's [TestFlight overview](https://developer.apple.com/help/app-store-connect/test-a-beta-version/testflight-overview/) says an invited tester can test both the full app and its App Clip, but only one can be installed on the device at a time. Testers can switch between them in TestFlight.
+Apple's [TestFlight overview](https://developer.apple.com/help/app-store-connect/test-a-beta-version/testflight-overview/) says an invited tester can test both the full app and its App Clip, but only one can be active on the device at a time. Testers can switch between them in TestFlight. They launch the configured App Clip experiences from the TestFlight app, and the App Clip card doesn't appear.
 
 Use that behavior deliberately:
 
@@ -95,31 +99,49 @@ Use that behavior deliberately:
 4. Switch to the full app in TestFlight and verify the full-app path named in your release plan.
 5. Switch back to the App Clip and rerun the release-blocking invocation.
 
-The last step catches assumptions about state left behind by the full app. Define the expected state first; don't label shared, retained, or reset data a bug unless it differs from your app's intended behavior.
+The last step verifies the expected state after switching between the two. Define whether data should migrate, persist, or reset based on your implementation before labeling the result a bug.
 
 For the rest of the beta packet, keep the App Clip matrix beside your [TestFlight test information](/blog/testflight-test-information/) and adapt the [What to Test template](/blog/testflight-what-to-test-examples/) to name the exact invocation and expected result.
 
-## 4. Test the URL path and the real-world invocation path separately
+## 4. Add a local experience for cards, codes, QR, or NFC
 
-Apple currently limits this TestFlight workflow to the configured invocation URLs. Its documentation explicitly says testing other invocation methods isn't supported here.
+Apple's three TestFlight experiences are launched inside TestFlight and don't display an App Clip card. That path verifies the beta App Clip and its configured URLs, but it doesn't exercise another invocation surface.
 
-That means a successful TestFlight pass doesn't validate an NFC tag, QR code, App Clip Code, Safari or Messages link, or another discovery surface. Keep two separate results:
+Apple's [launch-experience testing guide](https://developer.apple.com/documentation/appclip/testing-the-launch-experience-of-your-app-clip) documents a second path for a TestFlight-distributed App Clip:
+
+1. Launch one of the App Clip experiences configured for the build in TestFlight. This caches the beta App Clip on the device.
+2. Open **Settings → Developer → Local Experiences**.
+3. Register a local experience with the invocation URL, App Clip bundle ID, title, subtitle, call to action, and header image.
+4. Invoke it with the App Clip Code, QR code, or NFC tag being tested.
+5. Compare the card and launched state with the written expectation.
+
+Local experiences can also help test Safari or Messages entry points, but Apple documents additional website, Smart App Banner, contact, and released-app prerequisites for those surfaces. Apply those requirements rather than treating a registered local experience alone as proof.
+
+A local experience takes precedence over App Clip experiences configured in App Store Connect. Remove it before checking App Store Connect configuration or a released experience. Keep three separate results:
 
 ```text
-TestFlight build result
+Configured TestFlight experience
 - Invocation URL routing:
 - App Clip behavior:
 - Full-app switching:
 - Tester feedback:
 
-Release-environment result
-- Discovery surface tested:
-- Associated production configuration:
+Local experience
+- Registration values:
+- App Clip card:
+- Code, QR, NFC, or other surface:
 - Physical placement or encoded value:
+- Observed card and launch:
+
+Released configuration
+- App Store Connect experience:
+- Website association:
+- Local experience removed:
+- App Clip diagnostics:
 - Observed card and launch:
 ```
 
-TestFlight is useful for the uploaded binary and URL-driven experience. A production-like check is still needed for each discovery method you intend to ship. Keeping the records separate prevents a passing URL test from being misreported as end-to-end proof of a QR or NFC launch.
+The local result proves how the cached beta App Clip behaves with that device-local registration. It doesn't prove that App Store Connect, the website association, and the released experience are configured correctly. Keeping the records separate prevents a passing local test from being misreported as production evidence.
 
 ## 5. Collect evidence that identifies the experience
 
@@ -150,7 +172,7 @@ App Store Connect exposes App Clip Invocations from an individual build's Test I
 4. Correct or add the intended values and save.
 5. Update What to Test with the replacement build number.
 6. Run the matrix again, including the full-app switching check.
-7. Link each result to the replacement build and retire evidence for the old one.
+7. Link each result to the replacement build and mark the old evidence as superseded.
 
 Don't assume a URL or test result carries forward merely because the marketing version is unchanged. The evidence belongs to the binary the tester actually used.
 
@@ -161,6 +183,8 @@ Build
 [ ] Full app archive includes the App Clip
 [ ] Intended version and build are processed
 [ ] Internal or external test group has the intended build
+[ ] Associated Domains covers every invocation domain
+[ ] Each domain's AASA file names the App Clip
 
 Invocations
 [ ] One to three supported URLs are configured on this build
@@ -182,15 +206,17 @@ Evidence
 [ ] Replacement build, if any, has a fresh matrix result
 
 Scope
-[ ] URL testing isn't presented as proof of QR, NFC, or App Clip Code behavior
-[ ] Planned real-world invocation methods have separate checks
+[ ] TestFlight-launched experience is recorded without claiming a card appeared
+[ ] Beta App Clip was launched once before registering a local experience
+[ ] Local registration and App Store Connect configuration have separate results
+[ ] Local experience is removed before released-configuration testing
 ```
 
 ## Where LaunchBuddy fits
 
 In LaunchBuddy, you can turn the matrix into release tasks, preserve its assumptions in project notes, and run submission checks on iPhone, iPad, and Mac. Release planning, taskboards, default submission checklists, and iCloud sync are available on the Free plan within its two-app and two-release limits; custom reusable checklists require Pro.
 
-LaunchBuddy doesn't build or upload an App Clip, configure invocation URLs, switch the TestFlight installation, or inspect App Clip behavior and feedback. Keep those operations and records authoritative in Xcode, TestFlight, and App Store Connect. Use LaunchBuddy for surrounding work such as “verify invocation B on build 241,” “repeat the full-app switch,” and “recheck all URLs on build 242.”
+LaunchBuddy doesn't build or upload an App Clip, configure invocation URLs, launch or switch beta experiences, or inspect App Clip behavior and feedback. Keep those operations and records authoritative in Xcode, TestFlight, and App Store Connect. Use LaunchBuddy for surrounding work such as “verify invocation B on build 241,” “repeat the full-app switch,” and “recheck all URLs on build 242.”
 
 For the wider build-to-submission process, see the [TestFlight release management guide](/blog/testflight-release-management/).
 
@@ -198,11 +224,11 @@ For the wider build-to-submission process, see the [TestFlight release managemen
 
 ### Can TestFlight test an App Clip QR code or NFC tag?
 
-Not through Apple's App Clip invocation setup for a TestFlight build. Apple says that workflow supports up to three invocation URLs and currently doesn't support testing other invocation methods. Test the intended QR, NFC, or App Clip Code discovery path separately before release.
+Yes, through a local experience on the tester's device. First launch a configured App Clip experience from TestFlight so the beta App Clip is cached. Then register a local experience and scan the intended App Clip Code, QR code, or NFC tag. Local configuration overrides App Store Connect experiences and doesn't prove that the released configuration works.
 
 ### Can the App Clip and full app be installed together during the beta?
 
-No. Apple says only the full app or its App Clip can be installed on a device at one time. An invited tester can switch between them in TestFlight.
+No. Apple says only the full app or its App Clip can be active on a device at one time. An invited tester can switch between them in TestFlight.
 
 ### Do I upload the App Clip separately to TestFlight?
 
