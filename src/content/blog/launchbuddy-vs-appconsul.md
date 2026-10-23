@@ -8,7 +8,7 @@ pubDate: 2026-10-23
 
 They solve adjacent layers rather than replacing each other. LaunchBuddy is an app and release planner with selected App Store Connect features. AppConsul describes itself as a native macOS client for the App Store Connect API. Apple still owns the official app, build, review, and distribution records.
 
-This comparison was checked against both products' first-party information on October 23, 2026. AppConsul's public site doesn't currently display a numeric Pro price, so this guide leaves it unspecified.
+This comparison was checked against both products' first-party information on October 23, 2026. AppConsul's site lists a Pro price, but its linked GitHub source and releases pages returned 404 during this review. Verify that an installer and purchase path are available before making it part of a live release.
 
 ## LaunchBuddy vs AppConsul at a glance
 
@@ -23,7 +23,7 @@ This comparison was checked against both products' first-party information on Oc
 | Automation | Shortcuts and Siri on supported devices; local MCP server on Mac with approval-gated Pro writes | Pro feature table lists release automation, but the public page does not define its triggers or authority |
 | Devices | iPhone, iPad, and Mac | Native macOS app |
 | Current free boundary | Two apps, two releases, limited project notes, default checklists, iCloud sync, and read actions | One app with the documented core metadata, screenshot, version, analytics, and publish workflow |
-| Paid boundary | $2.99/month or $19.99/year; one subscription covers iPhone, iPad, and Mac | Pro adds unlimited apps and the listed advanced features; verify the current price before buying |
+| Paid boundary | $2.99/month or $19.99/year; one subscription covers iPhone, iPad, and Mac | Site lists $12.99/month or $99/year for Pro; linked source and release pages were unavailable during this review |
 
 The quick test is simple: if a release fails because its scope and checks are scattered, start with LaunchBuddy. If the plan is clear but App Store Connect editing creates repeated browser work, start with AppConsul.
 
@@ -74,7 +74,7 @@ The practical advantage is traceability. LaunchBuddy can retain the path from ba
 
 Neither tool replaces the build pipeline. AppConsul's site explicitly says the build still comes from Xcode or CI; AppConsul syncs available builds and lets you attach one to a version. LaunchBuddy doesn't build, sign, notarize, or upload app binaries either. Apple documents the supported binary paths in its [build upload guide](https://developer.apple.com/help/app-store-connect/manage-builds/upload-builds/).
 
-AppConsul's public pages name TestFlight and include a “Set Up TestFlight Beta” Guided Flow. However, the detailed capability list on its homepage specifies build syncing and selection without spelling out tester, group, invitation, public-link, feedback, or Beta App Review administration. Verify any required TestFlight operation in the current app instead of assuming full coverage from the label.
+AppConsul's dedicated [TestFlight page](https://appconsul.com/use-cases/app-store-connect-for-testflight-beta-programs/) claims internal and external group management, email or CSV tester imports, invitations, public links, build-expiry warnings, localized What to Test notes, feedback and crash views, and Beta App Review submission. Those are broader operational capabilities than LaunchBuddy's verified scope. Because the linked AppConsul download was unavailable during this review, treat them as vendor-documented features rather than hands-on verification and test every required operation before moving a real beta.
 
 LaunchBuddy's verified feature set doesn't include TestFlight administration or direct beta-feedback import. Track beta work as release tasks and checklist items, then use App Store Connect or another documented client for the actual TestFlight operation. The [TestFlight release management guide](/blog/testflight-release-management/) shows how to keep the beta decision and Apple state from drifting apart.
 
@@ -109,9 +109,9 @@ Use least privilege with either product. Apple's [API access documentation](http
 
 LaunchBuddy Free supports two apps and two releases, limited project notes, default checklists, iCloud sync, widgets, and supported read actions. Pro is **$2.99 per month or $19.99 per year** and adds unlimited apps, releases, and notes; custom checklists; selected App Store Connect features; AI; ASO experiments; and supported approval-gated writes. AI usage limits apply.
 
-AppConsul's current public table says Free supports one app and includes its core metadata, screenshot, version, app-details, analytics, publish, Guided Flows, and command-palette features. Pro adds unlimited apps, store-asset generation, AI captions and translation, custom product pages, in-app purchase management, territories and pricing, release automation, and priority support.
+AppConsul's current public table says Free supports one app and includes its core metadata, screenshot, version, app-details, analytics, publish, Guided Flows, and command-palette features. Its site lists Pro at **$12.99 per month or $99 per year**, adding unlimited apps, store-asset generation, AI captions and translation, custom product pages, in-app purchase management, territories and pricing, release automation, and priority support.
 
-The AppConsul page available during this review did not show a numeric Pro price. Check the current download or purchase screen rather than relying on an old comparison. The [LaunchBuddy Free vs Pro guide](/blog/launchbuddy-free-vs-pro/) explains LaunchBuddy's exact plan prerequisites.
+Price isn't the only availability check. On October 23, 2026, AppConsul's official “Get AppConsul” and “Source” links pointed to GitHub release and repository URLs that returned 404. The site may be ahead of a public release or its links may simply be stale; either way, this comparison couldn't verify a downloadable build or working checkout. Confirm both before choosing it. The [LaunchBuddy Free vs Pro guide](/blog/launchbuddy-free-vs-pro/) explains LaunchBuddy's exact plan prerequisites.
 
 ## Run the same update through both workflows
 
