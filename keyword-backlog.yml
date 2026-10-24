@@ -1663,7 +1663,8 @@ backlog:
     cluster: "comparisons"
     intent: "comparison"
     priority: "P2"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/launchbuddy-vs-asomium/"
     confidence: "medium"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/launchbuddy-vs-forgeasc.md", "src/content/blog/launchbuddy-vs-appfigures.md", "src/content/blog/launchbuddy-vs-fastlane-asc-cli.md"]
