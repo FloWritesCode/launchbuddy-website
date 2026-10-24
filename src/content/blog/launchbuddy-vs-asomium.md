@@ -4,7 +4,7 @@ description: "Compare LaunchBuddy and Asomium for release planning, metadata, sc
 pubDate: 2026-10-24
 ---
 
-**Choose LaunchBuddy when the hard part is deciding what belongs in each release and making sure the work gets finished. Choose [Asomium](https://asomium.com/) when the release is already defined and you want one Mac app for metadata, screenshots, ASO research, building, uploading, and supported App Store Connect actions.**
+**Choose LaunchBuddy when the hard part is deciding what belongs in each release and tracking whether the work is finished. Choose [Asomium](https://asomium.com/) when the release is already defined and you want one Mac app for metadata, screenshots, ASO research, building, uploading, and supported App Store Connect actions.**
 
 The products solve adjacent layers. LaunchBuddy is an app and release planner with selected App Store Connect features. Asomium is a Mac-native App Store Connect workspace with a direct shipping pipeline. Apple remains the source of truth for the app record, submitted build, review state, and distribution either way.
 
@@ -15,21 +15,21 @@ This comparison was checked against both products' first-party information on Oc
 | Decision area | LaunchBuddy | Asomium |
 | --- | --- | --- |
 | Best fit | Product backlog, version scope, recurring release checks, and post-launch follow-up | Direct App Store listing, asset, ASO, build, submission, and release operations |
-| Starting point | An idea, app project, backlog, or planned version | An App Store Connect app plus a Mac development environment |
-| Release planning | Version-scoped taskboards, status, notes, changelog, and default or custom reusable checklists | A six-stage App Store pipeline driven by current Apple records and supported readiness checks |
+| Starting point | An idea, app project, backlog, or planned version | An App Store Connect app and API key; an Xcode-installed Mac is additionally required for build and ship |
+| Release planning | Version-scoped taskboards, release status, project notes, and default or custom checklists; Pro supports changelog proposals | A six-stage App Store pipeline driven by current Apple records and supported readiness checks |
 | Metadata and screenshots | Tracks the work; Pro can upload approved release notes and record ASO experiments | Edits and translates localized metadata, creates localized screenshot sets, and uploads supported assets |
 | Build and submission | Does not build, sign, upload, or submit binaries | Runs an `xcodebuild` archive and export, uploads, attaches the build, and supports submission |
 | ASO | Records icon, screenshot, and copy hypotheses with baseline and result metrics | Discovers and tracks keywords, compares competitors, and overlays store changes on analytics |
 | Analytics and reviews | Pro provides selected downloads, revenue, subscription metrics, reviews, replies, and review-to-task | Pulls Sales and Trends plus an Apple Analytics funnel; reads reviews and supports responses |
 | Agent access | Mac-only localhost MCP; reads are free, while Pro writes become proposals requiring approval in LaunchBuddy | Local stdio MCP with 42 documented tools spanning metadata, ASO, builds, TestFlight, reviews, and analytics |
-| Devices | Native iPhone, iPad, and Mac apps with private iCloud sync | Native Mac app; macOS 15 or later is required |
-| Current price | Free for two apps and two releases; Pro is $2.99/month or $19.99/year | €14.99/month or €119.99/year; a 14-day no-card trial becomes read-only when it ends |
+| Apps run on | iPhone, iPad, and Mac, with private iCloud sync | Mac only; macOS 15 or later is required |
+| Current price | Free for two apps and two releases; Pro is $2.99/month or $19.99/year | €14.99/month or €119.99/year; the homepage advertises a 14-day no-card trial, although the MCP page currently says 3 days |
 
 The deciding question is not which product has more features. It is whether your recurring failure happens **before the App Store operation is clear** or **while carrying out that operation**.
 
-## The core difference is release memory versus store execution
+## The core difference is planning context versus App Store execution
 
-LaunchBuddy holds product intent. A backlog item can remain unscheduled, move into a particular version, become completed work, inform the changelog, and later receive follow-up from a review or an experiment. Default submission checklists are included in Free; Pro adds custom reusable checklists.
+LaunchBuddy records product intent through version-scoped tasks, release status, project notes, and reusable submission checklists. Pro adds custom checklists, ASO experiments, and supported changelog actions.
 
 ![LaunchBuddy Releases board with backlog tasks, version metadata, and changelog draft](/screenshots/launchbuddy/releases.jpg)
 
@@ -51,9 +51,9 @@ Its screenshot tool adds iPhone, iPad, and Mac frames, caption layers, themes, l
 
 LaunchBuddy does not claim general metadata editing, translation, screenshot generation, or screenshot upload. It can place that work in a release, keep the decision attached to a version, upload approved release notes with Pro and App Store Connect API credentials, and record icon, screenshot, or copy experiments. The [ASO experiment tracker](/blog/aso-experiment-tracker/) explains the evidence record LaunchBuddy is designed to preserve.
 
-Choose Asomium for repeated field and asset operations across locales. Choose LaunchBuddy when the bigger risk is losing the hypothesis, owner, release dependency, or follow-up decision around those changes.
+Choose Asomium for repeated field and asset operations across locales. Choose LaunchBuddy when the bigger risk is losing the hypothesis, version context, or follow-up decision around those changes.
 
-## Asomium owns a direct build-to-review path
+## Asomium provides a build-to-review pipeline
 
 The sharpest capability difference is binary handling. Asomium's [first-party introduction](https://asomium.com/docs/introduction/) says its pipeline can run `xcodebuild archive`, upload the result, wait for indexing, attach the build to a version, and submit it for review. An Xcode-installed Mac is required for that pipeline.
 
@@ -67,7 +67,7 @@ This difference can settle the choice immediately. If archive-to-submission auto
 
 Asomium combines keyword discovery, daily rank tracking, competitor metadata, Sales and Trends data, and an Apple Analytics funnel. Its product page says metadata pushes, keyword changes, and versions can be overlaid on the analytics timeline. That gives an operator a direct view from store change to later observation.
 
-LaunchBuddy's ASO feature is narrower: Pro records an experiment involving an icon, screenshot, or copy with baseline and experiment metrics. Its connected analytics dashboard shows selected downloads, revenue, and subscription metrics beside app and release work. It does not claim keyword discovery, rank tracking, competitor intelligence, or Asomium's analytics depth.
+LaunchBuddy's ASO feature is narrower: Pro records an experiment involving an icon, screenshot, or copy with baseline and experiment metrics. Its connected analytics dashboard shows selected downloads, revenue, and subscription metrics. It does not claim keyword discovery, rank tracking, competitor intelligence, or Asomium's analytics depth.
 
 The distinction is useful:
 
@@ -96,7 +96,7 @@ Asomium's [current MCP page](https://asomium.com/mcp/) lists 42 local stdio tool
 
 That is not the same as LaunchBuddy's mandatory in-product approval queue. A client confirmation may provide a useful guard, but its behavior belongs to the client and configuration.
 
-Use an authority ladder before connecting either tool:
+Use this safety sequence before connecting either tool:
 
 1. Start with a read that cannot change either product or Apple.
 2. Confirm the app, team, platform, and version returned.
@@ -104,7 +104,7 @@ Use an authority ladder before connecting either tool:
 4. Inspect the result in the app and in App Store Connect.
 5. Keep build upload, public metadata, review responses, submission, and release behind an explicit human decision.
 
-Asomium is the stronger agent surface for direct App Store operations. LaunchBuddy is the stronger choice when every supported project write must wait in one visible approval queue.
+Asomium provides the broader set of agent-accessible actions for direct App Store operations. LaunchBuddy is the stronger choice when every supported project write must wait in one visible approval queue.
 
 ## Credentials and data have different boundaries
 
@@ -118,7 +118,7 @@ Neither description evaluates what a connected AI client may receive. MCP result
 
 LaunchBuddy runs on iPhone, iPad, and Mac. Free supports two apps and two releases, limited project notes, default checklists, iCloud sync, widgets, and supported read actions. Pro is **$2.99 per month or $19.99 per year** and adds unlimited capacity, custom checklists, selected App Store Connect features, AI, ASO experiments, and approval-gated writes. AI usage limits apply. The [LaunchBuddy Free vs Pro guide](/blog/launchbuddy-free-vs-pro/) lists the prerequisites.
 
-Asomium is a Mac app requiring macOS 15 or later. Its current site lists **€14.99 per month or €119.99 per year** for the same Pro feature surface. The no-card trial provides 14 days of full access; afterward, pulled data stays visible but pushing, translating, building, and submitting require a license. One active Mac is currently allowed per license.
+Asomium is a Mac app requiring macOS 15 or later. Its current site lists **€14.99 per month or €119.99 per year** for the same Pro feature surface. The homepage advertises 14 days of no-card access, while the MCP page says 3 days; verify the offer shown in the app before relying on either duration. Asomium says pulled data stays visible after the trial, but pushing, translating, building, and submitting require a license. One active Mac is currently allowed per license.
 
 Do not compare the prices as if the products cover the same job. Asomium includes direct listing, asset, ASO, build, and submission operations that LaunchBuddy does not provide. LaunchBuddy includes cross-device product planning and reusable release context that Asomium's public pages do not describe as a general backlog or version-scoped development taskboard.
 
@@ -126,11 +126,11 @@ Do not compare the prices as if the products cover the same job. Asomium include
 
 Use a small update instead of comparing demo screens. Suppose version 2.8 has one crash fix, one onboarding change, revised metadata in three locales, one new screenshot set, and a customer review that may describe the crash.
 
-First assign one owner to each record:
+First choose one system of record for each data type:
 
-| Record | Owner |
+| Record | System of record |
 | --- | --- |
-| Accepted scope, development tasks, and app-specific checks | LaunchBuddy or your existing planner |
+| Accepted scope, development tasks, and custom submission checks | LaunchBuddy or your existing planner |
 | Localized metadata, screenshots, build pipeline, and supported submission actions | Asomium or another App Store Connect client |
 | Official build, review, release, and distribution state | App Store Connect |
 | Follow-up work accepted after release | One chosen backlog |
@@ -158,15 +158,22 @@ Then run two passes.
 Score the result against your actual failure mode:
 
 ```text
-Release scope stayed explicit:                 /5
-App-specific checks were difficult to skip:    /5
-Locale and screenshot work avoided repetition: /5
-Build and submission state stayed clear:       /5
-Agent authority matched the action's risk:     /5
-Post-release evidence reached one backlog:      /5
+Planning
+Release scope stayed explicit:                  /5
+Custom submission checks were hard to skip:     /5
+Post-release evidence reached one backlog:       /5
+Planning subtotal:                              /15
+
+Execution
+Locale and screenshot work avoided repetition:  /5
+Build and submission state stayed clear:        /5
+Apple's authoritative state stayed unambiguous: /5
+Execution subtotal:                             /15
+
+Agent authority matched the action's risk: Pass | Fail
 ```
 
-The score reveals whether your missing layer is planning, execution, or both.
+Compare the two subtotals. The lower one identifies the larger workflow gap; treat agent authority as a separate constraint rather than averaging it away.
 
 ## Can LaunchBuddy and Asomium work together?
 
@@ -174,7 +181,7 @@ Yes, with clear ownership:
 
 ```text
 LaunchBuddy
-  -> backlog, version scope, tasks, app-specific checklist, changelog draft
+  -> backlog, version scope, tasks, custom submission checks, changelog draft
 
 Asomium
   -> metadata, screenshots, ASO research, build, upload, supported submission actions
@@ -187,7 +194,7 @@ Do not mirror every Apple status into LaunchBuddy or every development task into
 
 ## Choose the missing layer
 
-Choose **LaunchBuddy** for a durable app backlog, version-scoped work, reusable app-specific checks, iPhone-to-Mac planning, selected review and analytics follow-up, or approval-gated project writes.
+Choose **LaunchBuddy** for a durable app backlog, version-scoped work, reusable release checks, iPhone-to-Mac planning, selected review and analytics follow-up, or approval-gated project writes.
 
 Choose **Asomium** for direct multi-locale metadata and screenshot work, keyword tracking, a Mac build-to-submission pipeline, broader App Store analytics, or agent tools that operate Apple's records.
 
