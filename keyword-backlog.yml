@@ -1930,7 +1930,8 @@ backlog:
     cluster: "monetization"
     intent: "guide"
     priority: "P2"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/promoted-in-app-purchases/"
     confidence: "medium"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/app-store-metadata-management.md", "src/content/blog/app-store-product-page-optimization.md", "src/content/blog/app-store-connect-analytics.md"]
