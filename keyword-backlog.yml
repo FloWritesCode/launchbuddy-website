@@ -1,10 +1,10 @@
 version: 1
-researched_at: "2026-10-19"
+researched_at: "2026-10-26"
 market: "English-language web search"
 status: "healthy"
 
 methodology:
-  - "Compared candidate topics against all 113 existing posts in src/content/blog."
+  - "Compared candidate topics against all 121 existing posts in src/content/blog."
   - "Used current Google result language, Apple documentation terminology, competitor positioning, and LaunchBuddy product fit."
   - "Priorities are qualitative. They do not claim exact search volume or keyword difficulty."
   - "Before drafting, recheck the live search results and reject topics whose intent is already satisfied by an existing LaunchBuddy article."
@@ -282,6 +282,24 @@ research_sources:
     url: "https://metarun.dev/"
   - name: "HyperRelease"
     url: "https://hyperrelease.com/"
+  - name: "Apple: Creating a workflow that builds your app for distribution"
+    url: "https://developer.apple.com/documentation/xcode/creating-a-workflow-that-builds-your-app-for-distribution"
+  - name: "Apple: Role permissions"
+    url: "https://developer.apple.com/help/app-store-connect/reference/account-management/role-permissions/"
+  - name: "Apple: Generate catalog reports"
+    url: "https://developer.apple.com/help/app-store-connect/reference/generate-catalog-reports/"
+  - name: "Apple: Offer an advanced App Clip experience"
+    url: "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/offer-an-advanced-app-clip-experience/"
+  - name: "Apple: User notifications"
+    url: "https://developer.apple.com/help/app-store-connect/reference/account-management/user-notifications/"
+  - name: "Apple: Set up OS data transfer"
+    url: "https://developer.apple.com/help/app-store-connect/manage-your-team/set-up-os-data-transfer/"
+  - name: "TestApp.io: What's new"
+    url: "https://help.testapp.io/whats-new/"
+  - name: "TestApp.io: Launches"
+    url: "https://help.testapp.io/launches/"
+  - name: "TestApp.io: Pricing"
+    url: "https://testapp.io/pricing/"
 
 existing_primary_targets:
   - keyword: "AI release notes for iOS apps"
@@ -623,6 +641,30 @@ existing_primary_targets:
   - keyword: "create Sandbox Apple Account"
     file: "src/content/blog/create-sandbox-apple-account.md"
     intent: "how-to"
+  - keyword: "App Store app preview requirements"
+    file: "src/content/blog/app-store-app-preview-requirements.md"
+    intent: "checklist"
+  - keyword: "In-App Purchase offer codes"
+    file: "src/content/blog/in-app-purchase-offer-codes.md"
+    intent: "how-to"
+  - keyword: "iPhone Duo app update checklist"
+    file: "src/content/blog/iphone-duo-app-update-checklist.md"
+    intent: "checklist"
+  - keyword: "LaunchBuddy vs AppConsul"
+    file: "src/content/blog/launchbuddy-vs-appconsul.md"
+    intent: "comparison"
+  - keyword: "LaunchBuddy vs Asomium"
+    file: "src/content/blog/launchbuddy-vs-asomium.md"
+    intent: "comparison"
+  - keyword: "LaunchBuddy vs Helm"
+    file: "src/content/blog/launchbuddy-vs-helm.md"
+    intent: "comparison"
+  - keyword: "TestFlight App Clip testing"
+    file: "src/content/blog/testflight-app-clip-testing.md"
+    intent: "how-to"
+  - keyword: "TestFlight automatic distribution"
+    file: "src/content/blog/testflight-automatic-distribution.md"
+    intent: "how-to"
 
 excluded_due_to_overlap:
   - keyword: "iOS app project management"
@@ -797,6 +839,18 @@ excluded_due_to_overlap:
     reason: "Current results expect tools that generate or design screenshot files. LaunchBuddy only provides an editable screenshot-recommendation artifact and does not generate, capture, validate, or upload screenshots; the published screenshot-requirements guide already explains the supported recommendation and human-verification boundary."
   - keyword: "LaunchBuddy vs RevenueCat"
     reason: "RevenueCat is a subscription infrastructure and analytics service rather than a release planner, so a head-to-head comparison would imply a false replacement decision. The published App Store Connect analytics and alternatives guides already explain LaunchBuddy's narrower selected-metrics role."
+  - keyword: "App Store Connect user notifications"
+    reason: "The published submission tracker, review-management, analytics, and featuring-nomination guides already own the actionable app-status, edited-review, weekly-metrics, and featuring follow-up intents. A settings-only page would repeat those workflows without a distinct LaunchBuddy capability because LaunchBuddy does not ingest App Store Connect email notifications."
+  - keyword: "OS data transfer app mapping"
+    reason: "Apple's setup requires an Android package, signing-certificate fingerprints, AppMigrationKit implementation, and corresponding Google configuration. LaunchBuddy has no verified Android or migration capability, and the remaining task-tracking angle would add weak original value beyond Apple's procedure."
+  - keyword: "LaunchBuddy keyboard shortcuts"
+    reason: "Keyboard navigation is a verified macOS feature, but the product facts do not document the actual key combinations or commands. Current results expose only a historical feature announcement, so a useful shortcut reference would require unsupported details rather than a defensible original workflow."
+  - keyword: "LaunchBuddy deep links"
+    reason: "The published iOS app idea backlog, iOS Shortcuts, release-widget, and human-in-the-loop guides already use deep links for the supported app, idea, settings, and approval handoffs. The product facts do not document a URL scheme or parameters, so a separate implementation guide cannot add verified procedural value."
+  - keyword: "LaunchBuddy app-aware chat"
+    reason: "The published AI App Store Connect workflow, AI-agent workflow, Free-vs-Pro comparison, and approved LaunchBuddy AI playbooks entry already cover app-specific context, supported draft and analysis work, data-disclosure choices, and approval boundaries. A chat-only page would be a minor product phrasing variation."
+  - keyword: "App Clip Codes"
+    reason: "Code generation is one invocation and deployment branch of the approved advanced App Clip experiences entry, which will own URL, card, place, code, review, and live-verification decisions. A code-only page would fragment the same production experience lifecycle."
 
 backlog:
   - id: "kw-005"
@@ -2575,3 +2629,81 @@ backlog:
     related_existing_posts: ["src/content/blog/app-store-connect-release-checklist.md", "src/content/blog/app-review-notes.md", "src/content/blog/testflight-release-management.md"]
     product_features: ["Release planning and taskboards", "App Store submission checklists"]
     angle: "Own the production setup and release intent rather than kw-137's beta test path: coordinate the default experience's invocation URL, card metadata, localized imagery, domain association, build, App Review evidence, and live launch verification without claiming LaunchBuddy implements, validates, or publishes an App Clip."
+
+  - id: "kw-139"
+    keyword: "Xcode Cloud TestFlight distribution"
+    proposed_slug: "xcode-cloud-testflight-distribution"
+    cluster: "testflight"
+    intent: "how-to"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/testflight-automatic-distribution.md", "src/content/blog/testflight-internal-only-vs-app-store-connect.md", "src/content/blog/testflight-release-management.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists"]
+    angle: "Turn Apple's archive destination, clean-build, start-condition, TestFlight post-action, group, and Beta App Review choices into separate internal-feedback and release-candidate contracts, then record each cloud build's intended audience and verification gate in the release without claiming LaunchBuddy configures Xcode Cloud or distributes binaries."
+
+  - id: "kw-140"
+    keyword: "App Store Connect roles and permissions"
+    proposed_slug: "app-store-connect-roles-permissions"
+    cluster: "app-store-connect"
+    intent: "guide"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-connect-api-key.md", "src/content/blog/app-store-connect-release-checklist.md", "src/content/blog/app-store-review-management.md"]
+    product_features: ["Release planning and taskboards", "App Store reviews inbox", "App Store Connect analytics dashboard", "Release notes upload"]
+    angle: "Map Apple's Account Holder, Admin, Finance, App Manager, Developer, Marketing, Sales, and Customer Support roles to concrete release, review, analytics, and integration handoffs; add a least-privilege preflight for the LaunchBuddy API connection while stating that LaunchBuddy does not provision users or override Apple permissions."
+
+  - id: "kw-141"
+    keyword: "App Store Connect catalog reports"
+    proposed_slug: "app-store-connect-catalog-reports"
+    cluster: "portfolio-management"
+    intent: "guide"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "low"
+    related_existing_posts: ["src/content/blog/indie-app-portfolio-management.md", "src/content/blog/app-store-connect-app-record.md", "src/content/blog/in-app-purchase-status-meanings.md"]
+    product_features: ["App portfolio", "Release planning and taskboards"]
+    angle: "Explain Apple's app, In-App Purchase, leaderboard, and achievement catalog exports, then provide a reproducible portfolio-reconciliation workflow for identifiers, versions, statuses, pricing, availability, and follow-up tasks while keeping the report in a spreadsheet and avoiding any claim that LaunchBuddy imports it."
+
+  - id: "kw-142"
+    keyword: "advanced App Clip experiences"
+    proposed_slug: "advanced-app-clip-experiences"
+    cluster: "app-setup"
+    intent: "how-to"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/testflight-app-clip-testing.md", "src/content/blog/app-store-connect-release-checklist.md", "src/content/blog/app-review-notes.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists"]
+    angle: "Start after the required default experience and build a production matrix for multiple invocation URLs, localized cards, place associations, App Clip Codes, review states, activation, deactivation, and live Maps or scan verification without claiming LaunchBuddy implements domains, generates codes, or configures App Store Connect."
+
+  - id: "kw-143"
+    keyword: "LaunchBuddy vs TestApp.io"
+    proposed_slug: "launchbuddy-vs-testapp-io"
+    cluster: "comparisons"
+    intent: "comparison"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-connect-alternatives.md", "src/content/blog/ios-app-release-management.md", "src/content/blog/testflight-release-management.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists", "App portfolio", "iCloud sync"]
+    angle: "Compare LaunchBuddy's Apple-focused, private-iCloud release planning and reusable submission checks with TestApp.io's first-party-documented cross-platform build sharing, tester feedback, team tasks, CI integrations, version lifecycle, Launches, and Playbooks; use one beta-to-store handoff to show when the products are alternatives or complementary, and revalidate both before drafting."
+
+  - id: "kw-144"
+    keyword: "LaunchBuddy AI playbooks"
+    proposed_slug: "launchbuddy-ai-playbooks"
+    cluster: "ai-safety"
+    intent: "product-guide"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-connect-ai-agent.md", "src/content/blog/ai-app-store-connect-workflow.md", "src/content/blog/human-in-the-loop-ai-approval-workflow.md"]
+    product_features: ["Agent plans and playbooks", "App-aware chat", "Editable AI artifacts", "Approval-gated AI actions", "Automation approvals"]
+    angle: "Walk one prepare-release, feedback-triage, and performance-analysis goal through context selection, an editable artifact, a narrowly scoped proposal, approval or rejection, and verification; distinguish delegated playbooks from conversational App Chat and state the Pro, usage-limit, data-disclosure, and App Store credential boundaries."
