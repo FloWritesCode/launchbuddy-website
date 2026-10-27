@@ -60,16 +60,18 @@ Workflow: Release Candidate
 Starts when: A tag beginning with release- is created
 Authorized audience: Internal sign-off group
 May advance to: External onboarding group, then App Review
-Stop condition: Required tests fail or release owner withdraws the candidate
+Stop condition: Cloud build fails or release owner withdraws the candidate
 ```
 
 This record catches configuration drift. If the workflow says “release tag” but starts on every change to `main`, the trigger and the claimed release gate disagree.
 
-## 3. Add tests that can actually stop distribution
+## 3. Make release-blocking tests fail the cloud build
 
 Add a Test action for the platform, scheme, test plan, and destinations that matter to this lane. In the action settings, select **Required To Pass** for any test whose failure should fail the Xcode Cloud build. Apple's [workflow-actions documentation](https://developer.apple.com/documentation/xcode/configuring-your-xcode-cloud-workflow-s-actions) distinguishes this from **Not Required to Pass**.
 
-Don't mark a test blocking merely to make the workflow look strict. Use a short decision table:
+Apple documents the build-failure behavior, but not every consequence for every TestFlight post-action. Before treating it as a distribution gate, run a controlled failure and confirm that the failed build wasn't made available to the selected group. Don't mark a test blocking merely to make the workflow look strict.
+
+Use a short decision table:
 
 | Test result | Should the build still reach this group? | Setting |
 | --- | --- | --- |
@@ -169,4 +171,4 @@ LaunchBuddy can keep each lane's distribution contract, version-scoped checks, r
 
 Use concrete tasks such as “confirm build 302 is assigned to Internal Sign-off” and “tester Mina installed 302 and completed the upgrade check,” not “TestFlight done.”
 
-Choose the audience before the workflow starts, make failures block the right lane, verify the uploaded artifact, and <a href="https://apple.co/3iFcjjW">track the release gates in LaunchBuddy</a>.
+Choose the audience before the workflow starts, treat a failed cloud build as a stop, verify the post-action and uploaded artifact, and <a href="https://apple.co/3iFcjjW">track the release gates in LaunchBuddy</a>.
