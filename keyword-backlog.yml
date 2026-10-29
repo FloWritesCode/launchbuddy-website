@@ -2663,9 +2663,10 @@ backlog:
     keyword: "App Store Connect catalog reports"
     proposed_slug: "app-store-connect-catalog-reports"
     cluster: "portfolio-management"
-    intent: "guide"
+    intent: "how-to"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/app-store-connect-catalog-reports/"
     confidence: "high"
     overlap: "low"
     related_existing_posts: ["src/content/blog/indie-app-portfolio-management.md", "src/content/blog/app-store-connect-app-record.md", "src/content/blog/in-app-purchase-status-meanings.md"]
