@@ -2180,7 +2180,8 @@ backlog:
     cluster: "monetization"
     intent: "how-to"
     priority: "P2"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/create-non-renewing-subscription-app-store-connect/"
     confidence: "medium"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/app-store-connect-draft-submissions.md", "src/content/blog/ios-app-release-management.md"]
