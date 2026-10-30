@@ -56,7 +56,7 @@ This is the last inexpensive point to change the product model. Apple doesn't le
 
 ## 2. Create the product in App Store Connect
 
-Apple's current [non-renewing subscription instructions](https://developer.apple.com/help/app-store-connect/manage-in-app-purchases/create-non-renewing-subscriptions/) use this path:
+Apple's current [non-renewing subscription instructions](https://developer.apple.com/help/app-store-connect/manage-subscriptions/create-non-renewing-subscriptions) use this path:
 
 1. In **Apps**, select the app.
 2. Under **Monetization**, select **Subscriptions**.
