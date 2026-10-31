@@ -2208,7 +2208,8 @@ backlog:
     cluster: "monetization-testing"
     intent: "how-to"
     priority: "P2"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/test-interrupted-purchases-in-sandbox/"
     confidence: "medium"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/create-sandbox-apple-account.md", "src/content/blog/testflight-what-to-test-examples.md", "src/content/blog/ios-app-release-management.md", "src/content/blog/testflight-release-management.md"]
