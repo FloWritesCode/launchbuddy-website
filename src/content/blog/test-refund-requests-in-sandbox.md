@@ -6,7 +6,7 @@ pubDate: 2026-11-02
 
 **To test a refund request in Apple's Sandbox, start from a completed test purchase and open your app's StoreKit refund-request sheet. Trigger an approved refund with an ordinary reason, a declined refund by entering `DECLINE` under Other, or a prorated refund by entering `GRANT_PRORATED`.**
 
-Don't stop when the sheet closes. Verify the updated transaction, current entitlement, app UI, server notification, and relaunch result. A successful request only proves that Sandbox accepted the scenario; it doesn't prove that your app removed, retained, or adjusted access correctly.
+When the refund API returns `.success`, it only means the App Store received the request. Use the eventual transaction or server-notification outcome to decide whether access should change, then check the app again after relaunch.
 
 This workflow assumes the app already presents Apple's refund-request sheet with a supported StoreKit API, such as `Transaction.beginRefundRequest(in:)` or SwiftUI's `refundRequestSheet`. App Store Connect doesn't supply that in-app entry point for you.
 
@@ -18,7 +18,7 @@ Apple supports refund requests in both StoreKit Testing in Xcode and Sandbox, bu
 | --- | --- | --- |
 | Does the in-app refund sheet open? | Yes | Yes |
 | Does app logic react to an approved refund? | Yes | Yes |
-| Can a test refund happen outside the app? | Yes, with Xcode's transaction manager or `SKTestSession` | Exercise the App Store path instead |
+| Can a test refund happen outside the app? | Yes, with Xcode's transaction manager or `SKTestSession` | The documented Sandbox test path starts from your app's refund-request sheet |
 | Can you trigger Apple's documented `DECLINE` outcome? | Not the documented path | Yes |
 | Can you trigger `GRANT_PRORATED` and inspect proration data? | Not the documented path | Yes |
 | Can a Sandbox App Store Server Notifications V2 endpoint receive the result? | No | Yes |
@@ -49,24 +49,7 @@ Product type matters. A non-consumable may control permanent access, an auto-ren
 
 Keep a separate tester or a clearly recorded starting state for each outcome. Reusing an account with an unknown purchase and refund history can make an old transaction look like the result of the current run.
 
-## 1. Prove the approved path in Xcode first
-
-For a fast local test, run the app with a StoreKit configuration selected in the Xcode scheme:
-
-1. Buy the test product and verify the initial entitlement.
-2. Open the refund-request sheet from the app.
-3. Select any refund reason and submit it.
-4. Observe the updated transaction.
-5. Refresh the relevant verified StoreKit state and the app or server entitlement ledger.
-6. Relaunch and repeat the entitlement check.
-
-Apple's [refund-testing documentation](https://developer.apple.com/documentation/storekit/testing-refund-requests) says an ordinary reason is automatically approved in a testing environment. The updated `Transaction` contains `revocationDate` and `revocationReason`.
-
-If you need to test a refund that happens outside the app, use Xcode's StoreKit transaction manager or `SKTestSession.refundTransaction(identifier:)`. Apple's [`SKTestSession` reference](https://developer.apple.com/documentation/storekittest/sktestsession) describes this as a refund that completes outside the app. That test is valuable because production refund results can arrive independently of the screen where the purchase began.
-
-The app should derive access from current verified StoreKit state, not from the refund sheet's dismissal or a local “refund submitted” flag. Keep the `Transaction.updates` listener active for updates that arrive while the app runs, and refresh entitlement state when the app launches. For consumables, also check the app or server ledger because [`Transaction.currentEntitlements`](https://developer.apple.com/documentation/storekit/transaction/currententitlements) covers currently entitled non-consumables and subscriptions, not spent consumable balances. A local pass proves your tested code handled the local state; it doesn't prove the Sandbox server path.
-
-## 2. Prepare an App Store Sandbox transaction
+## 1. Prepare an App Store Sandbox transaction
 
 For Sandbox, remove the local environment from the run:
 
@@ -81,7 +64,7 @@ Apple's [Sandbox overview](https://developer.apple.com/help/app-store-connect/te
 
 Don't clear purchase history between every run. That action deletes all of the tester's past Sandbox purchases and can't be reversed. Use it only when a clean purchase state is part of the test contract, and record that reset.
 
-## 3. Test an approved Sandbox refund
+## 2. Test an approved Sandbox refund
 
 With the purchased transaction selected by your app:
 
@@ -89,16 +72,13 @@ With the purchased transaction selected by your app:
 2. Choose any ordinary refund reason.
 3. Submit the request.
 4. Wait for the updated transaction rather than changing access because the sheet closed.
-5. Verify `revocationDate` and `revocationReason`.
-6. Verify the affected entitlement and customer-facing UI.
-7. If you use App Store Server Notifications V2, confirm that the Sandbox endpoint receives `REFUND`.
-8. Relaunch the app and confirm the same entitlement result.
+5. Check `revocationDate` and `revocationReason`; if you use App Store Server Notifications V2, match the Sandbox `REFUND` notification to the same transaction.
 
 Record client and server evidence separately. A `REFUND` notification proves delivery to the endpoint; it doesn't prove that the client refreshed or that the server changed the correct account. Likewise, a locked feature doesn't prove the server processed the matching transaction.
 
 For products with several ways to grant access, check the whole entitlement set. A refunded transaction shouldn't accidentally remove access supplied by another valid subscription, purchase, or sharing relationship.
 
-## 4. Test a declined refund without revoking access
+## 3. Test a declined refund without revoking access
 
 Apple documents the declined path specifically for Sandbox:
 
@@ -106,16 +86,14 @@ Apple documents the declined path specifically for Sandbox:
 2. Under **Issue**, select **Other**.
 3. Enter `DECLINE` exactly.
 4. Tap **Request Refund**.
-5. Verify that the app doesn't remove or downgrade access merely because a request was submitted.
-6. Confirm the latest verified StoreKit state and, for a consumable, the app or server ledger.
-7. If you receive App Store Server Notifications V2, verify `REFUND_DECLINED` at the Sandbox endpoint.
-8. Relaunch and verify that access still matches current verified state.
+5. Keep access unchanged while the request is pending.
+6. If you receive App Store Server Notifications V2, match `REFUND_DECLINED` to the transaction and confirm that valid access remains.
 
 Treat “submitted” and “approved” as different states in both code and support copy. A request can close successfully while its eventual decision is a decline. The declined test passes only when the app avoids a false revocation and the server routes the event to the correct transaction without changing paid access.
 
 Testing environments don't send refund-request emails, so email arrival isn't a valid test checkpoint.
 
-## 5. Test a prorated refund and preserve the percentage
+## 4. Test a prorated refund and preserve the percentage
 
 For Apple's automatic prorated path:
 
@@ -123,12 +101,9 @@ For Apple's automatic prorated path:
 2. Select **Other**.
 3. Enter `GRANT_PRORATED` exactly.
 4. Submit the request.
-5. Verify the transaction's revocation information.
-6. Inspect `revocationType` and `revocationPercentage`.
-7. Confirm the app and server apply the product's documented access policy.
-8. Relaunch and verify the resulting state again.
+5. Wait for the result, then inspect its revocation type and percentage before applying the product's documented access policy.
 
-Apple calculates an auto-renewable subscription's test proration from the time remaining. For consumables, non-consumables, and non-renewing subscriptions, the testing environment uses 50%. The Sandbox server receives `REFUND`, while the transaction identifies the result as `REFUND_PRORATED` and provides the percentage.
+Apple calculates an auto-renewable subscription's test proration from the time remaining. For consumables, non-consumables, and non-renewing subscriptions, the testing environment uses 50%. Your Sandbox notification endpoint receives `REFUND`. Signed transaction data uses `REFUND_PRORATED`; in StoreKit's Swift `Transaction`, compare `revocationType` with `.proratedRefund` and read `revocationPercentage`.
 
 That percentage describes the amount refunded. Don't silently reinterpret it as “remove half the features” or “leave access for half the original duration.” Write the intended access rule for the product, then test that rule against verified transaction data.
 
@@ -144,9 +119,24 @@ If your server provides consumption information, test that path separately:
 
 The five-minute Sandbox window comes from Apple's refund-testing documentation. Acknowledging the notification isn't the same as sending valid consumption information, and a timely response doesn't by itself prove the correct customer entitlement.
 
+## Optionally prove the approved path in Xcode
+
+StoreKit Testing in Xcode gives you a faster local loop before or alongside the Sandbox run:
+
+1. Select a StoreKit configuration in the Xcode scheme and buy the test product.
+2. Submit an ordinary reason through the app's refund-request sheet.
+3. Observe the updated transaction's `revocationDate` and `revocationReason`.
+4. Recompute access from verified StoreKit state and the app or server ledger.
+
+To simulate a refund completed outside the app, use Xcode's StoreKit transaction manager or `SKTestSession.refundTransaction(identifier:)`. Apple's [`SKTestSession` reference](https://developer.apple.com/documentation/storekittest/sktestsession) documents that local path.
+
+Keep the `Transaction.updates` listener active for changes received while the app runs. At launch, refresh the verified StoreKit and server state appropriate to the product. [`Transaction.currentEntitlements`](https://developer.apple.com/documentation/storekit/transaction/currententitlements) covers non-consumables and subscriptions; handle consumable refunds through transaction updates and the app's or server's quantity ledger.
+
+Apple's [refund-testing documentation](https://developer.apple.com/documentation/storekit/testing-refund-requests) confirms that an ordinary reason is automatically approved in a testing environment. A local pass proves the tested code handled local state, not that the Sandbox notification path works.
+
 ## Use one matrix for client and server convergence
 
-Run each outcome as a separate row:
+For every outcome, record the refund-request status, eventual verified transaction, server event when applicable, resulting app or server ledger, customer-facing state, and fresh-launch result. Run each outcome as a separate row:
 
 | Outcome | Sheet input | Transaction evidence | Server evidence | Entitlement assertion |
 | --- | --- | --- | --- | --- |
@@ -179,8 +169,6 @@ Change one layer at a time. Switching testers, clearing history, editing product
 
 ## Track the refund gate in LaunchBuddy
 
-LaunchBuddy can keep each matrix row as a version-scoped task: approved refund, declined refund, prorated refund, notification handling, and relaunch verification. Release planning, taskboards, and default App Store submission checklists are available on the Free plan within its two-app and two-release limits. A custom reusable refund checklist requires Pro.
-
-LaunchBuddy doesn't submit refunds, manage Sandbox accounts, run StoreKit transactions, receive server notifications, inspect transaction data, or validate entitlements. Keep those facts in StoreKit, App Store Connect, and your app or server diagnostics; use LaunchBuddy to track the owner, build, result, and release decision.
+Use LaunchBuddy to assign each refund scenario to an owner and build, then record the evidence required for release sign-off. StoreKit, App Store Connect, and your app or server diagnostics remain authoritative for transactions and entitlements.
 
 <a href="https://apple.co/3iFcjjW">Download LaunchBuddy and organize your refund test matrix</a>.
