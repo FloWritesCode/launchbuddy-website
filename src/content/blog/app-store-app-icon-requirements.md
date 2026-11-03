@@ -1,10 +1,10 @@
 ---
 title: "App Store App Icon Requirements: A Release Checklist"
-description: "Check App Store app icon size, Xcode setup, appearance variants, Release-build selection, validation, upload, and live display before shipping."
+description: "Check App Store app icon size, Xcode setup, appearance variants, archive configuration, validation, upload, and live display before shipping."
 pubDate: 2026-11-03
 ---
 
-For an iOS or iPadOS app, the App Store icon must ship inside the app build. Use either an Icon Composer file or an `AppIcon` set in the Xcode asset catalog. With the asset-catalog path, provide the App Store artwork in the **iOS 1,024pt image well**; Xcode can generate the smaller system variations from a single **1024 × 1024-pixel** image. Then archive the Release configuration, validate it, upload the build, and inspect the processed result.
+For an iOS or iPadOS app, the App Store icon must ship inside the app build. Use either an Icon Composer file or an `AppIcon` set in the Xcode asset catalog. With the asset-catalog path, provide the App Store artwork in the **iOS 1,024pt image well**; Xcode can generate the smaller system variations from a single **1024 × 1024-pixel** image. Then archive the intended scheme and configuration, upload the build, and inspect the processed result.
 
 You don't upload a separate default icon on the app's App Store Connect version page. Apple derives it from the build. If the app is already published, changing that icon requires a new app version and another review.
 
@@ -12,9 +12,11 @@ Use this five-gate preflight:
 
 1. **Source gate:** choose Icon Composer or an asset catalog and document the source-art setup.
 2. **Variant gate:** inspect every supported platform, appearance, and rendered size.
-3. **Target gate:** make sure the intended icon source is selected for the Release build.
+3. **Target gate:** make sure the intended icon source is selected for the archived build.
 4. **Build gate:** archive, validate, upload, and wait for App Store Connect processing.
 5. **Display gate:** compare the processed icon across TestFlight, App Store, and device surfaces.
+
+The delivery and size rows below are Apple requirements. Validating before upload and checking rendered surfaces are recommended release controls that catch configuration or visual mistakes; Apple doesn't require every control in this checklist.
 
 Apple's tooling changes over time. The requirements below were checked against Apple's current documentation on November 3, 2026. Recheck the [Add an app icon](https://developer.apple.com/help/app-store-connect/manage-app-information/add-an-app-icon/) and Xcode documentation before the final archive.
 
@@ -25,11 +27,12 @@ Apple's tooling changes over time. The requirements below were checked against A
 | Delivery | Include the icon in the app build, then upload the build to App Store Connect |
 | iOS and iPadOS asset-catalog source | Put App Store artwork in the iOS 1,024pt image well |
 | Single-size source | 1024 × 1024 pixels for iOS and iPadOS; Xcode can generate system variations |
-| Appearance options | iOS and iPadOS support Light, Dark, and Tinted styles; you can supply custom variants or use the system treatment |
+| Rendered appearances | Apple's current HIG lists Default, Dark, Clear Light, Clear Dark, Tinted Light, and Tinted Dark for iOS, iPadOS, and macOS layered icons |
+| Asset-catalog appearance inputs | The iOS and iPadOS asset-catalog workflow supports the default image plus optional Dark and Tinted variants; the system can generate treatments when custom variants aren't supplied |
 | Icon Composer source canvas | Apple's current guidance uses 1024 × 1024 pixels for iPhone, iPad, and Mac |
 | Published-icon change | Upload a new app version and submit it for review |
 | Product Page Optimization icon | The alternate icon must already be in the current App Store binary and be 1024 × 1024 pixels |
-| Custom product page icon | Not a supported custom product page creative field |
+| Custom product page icon | Apple's [supported custom product page fields](https://developer.apple.com/help/app-store-connect/create-custom-product-pages/configure-multiple-product-page-versions/) don't include the app icon |
 
 This isn't the same workflow as screenshots. Screenshots are listing assets uploaded to App Store Connect, while the default app icon comes from the binary. Use the separate [App Store screenshot requirements](/blog/app-store-screenshot-requirements/) when checking product-page images.
 
@@ -67,7 +70,9 @@ Two active sources with unclear precedence are more dangerous than either suppor
 
 ## Gate 2: preflight the source and its variants
 
-Passing a 1024 × 1024 size check doesn't prove the icon works. Apple's [App Store asset guidance](https://developer.apple.com/app-store/asset-best-practices/) says the icon should express the app's purpose and remain legible from the App Store down to Spotlight and the Home Screen.
+Passing a 1024 × 1024 size check doesn't prove the icon works. Apple's [Human Interface Guidelines for app icons](https://developer.apple.com/design/human-interface-guidelines/app-icons) allow either nonlayered bitmap artwork, such as PNG, or a layered Icon Composer file on iOS, iPadOS, macOS, and watchOS. The HIG also specifies square, unmasked layers for iOS and iPadOS so the system can apply the final rounded-corner mask.
+
+Apple lists sRGB, Gray Gamma 2.2, and Display P3 as supported app-icon color spaces, with Display P3 available for iOS, iPadOS, macOS, tvOS, and watchOS. Its [App Store asset guidance](https://developer.apple.com/app-store/asset-best-practices/) says the icon should express the app's purpose and remain legible from the App Store down to Spotlight and the Home Screen.
 
 Review the source at three levels:
 
@@ -77,10 +82,10 @@ Review the source at three levels:
 
 For iOS and iPadOS appearance variants, check:
 
-- [ ] Light appearance on several light and dark wallpapers.
-- [ ] Dark appearance against the system-provided background.
-- [ ] Tinted appearance with more than one tint color.
-- [ ] The automatic system treatment too, if you don't provide custom variants.
+- [ ] Default and Dark appearances on several light and dark wallpapers.
+- [ ] Clear Light and Clear Dark appearances in Icon Composer when that pipeline is used.
+- [ ] Tinted Light and Tinted Dark with more than one tint color.
+- [ ] Asset-catalog default, Dark, and Tinted inputs, plus the system-generated treatment for any custom variant you omit.
 - [ ] The icon at the smallest preview size available in the tool.
 
 Don't evaluate each variant in isolation. The customer should still recognize the same app after changing appearance.
@@ -94,6 +99,7 @@ Pipeline: Asset catalog, Single Size
 Default source: Assets.xcassets/AppIcon, 1024 × 1024
 Custom Dark variant: Yes
 Custom Tinted variant: No; system treatment accepted
+Rendered appearances: Default, Dark, Clear Light, Clear Dark, Tinted Light, Tinted Dark
 Platforms checked: iPhone, iPad
 Small-size reviewer:
 Appearance reviewer:
@@ -101,21 +107,22 @@ Appearance reviewer:
 
 The manifest adds the context a filename cannot. It also makes later icon experiments traceable.
 
-## Gate 3: verify the correct target and Release configuration
+## Gate 3: verify the correct target and archive configuration
 
 A correct file in the repository can still be absent from the uploaded build.
 
-For an asset catalog, confirm the target's **App Icons Source** points to the intended set. Xcode's build settings can specialize the **Primary App Icon Set Name** for Debug and Release. This is useful when a developer build has a visible badge, but it also creates a release risk: a debug icon can ship if the wrong set or configuration is archived.
+For an asset catalog, confirm the target's **App Icons Source** points to the intended set. Xcode's build settings can specialize the **Primary App Icon Set Name** by build configuration. A scheme's Archive action chooses which configuration Xcode archives, so verify that setting instead of assuming every archive uses `Release`.
 
 For Icon Composer, confirm the target's **App Icon** field matches the Icon Composer filename without its extension.
 
 Before archiving:
 
 - [ ] The selected target is the app's distribution target, not a sample or staging target.
-- [ ] The Release configuration points to the production icon source.
+- [ ] The scheme's Archive action uses the intended distribution configuration.
+- [ ] That configuration points to the production icon source.
 - [ ] The icon source belongs to the intended target.
-- [ ] Debug-only badges or artwork aren't present in the Release result.
-- [ ] Alternate icon sets are included only when the app or an approved experiment needs them.
+- [ ] Debug-only badges or artwork aren't present in the archive.
+- [ ] Alternate icon sets are included only when the app needs them; a Product Page Optimization icon must be in the live binary before treatment selection.
 - [ ] Every supported platform target has its required App Store icon source.
 
 Apple's asset-catalog documentation places platform-specific App Store artwork in different wells:
@@ -134,7 +141,9 @@ Don't copy the iOS rule across every platform. A universal app may need several 
 
 ## Gate 4: validate and upload the exact build
 
-Create the archive from the intended release branch and configuration. In Xcode, open **Window → Organizer**, select the archive, and choose **Validate App**. Apple's [distribution guidance](https://developer.apple.com/documentation/xcode/distributing-your-app-for-beta-testing-and-releases) describes this as an initial automated check; it doesn't replace the validation App Store Connect performs after upload.
+Create the archive from the intended branch, scheme, run destination, and Archive-action configuration. Apple's [distribution guidance](https://developer.apple.com/documentation/xcode/distributing-your-app-for-beta-testing-and-releases) says to choose the scheme and run destination, then use **Product → Archive**.
+
+As a recommended preflight, open **Window → Organizer**, select the archive, and choose **Validate App**. Apple describes this as an optional, limited automated check; it doesn't replace the validation App Store Connect performs after upload.
 
 Save a build receipt:
 
@@ -170,7 +179,7 @@ Check the public App Store product page after release too. Record the storefront
 ```text
 Build checked: 4.2 (317)
 TestFlight icon: Pass
-Home Screen Light / Dark / Tinted: Pass / Pass / Pass
+Home Screen Default / Dark / Clear Light / Clear Dark / Tinted Light / Tinted Dark:
 Spotlight and Settings: Pass
 Public product page:
 Storefront and device:
@@ -197,6 +206,8 @@ Define the question and preserve the exact control before adding alternates. The
 
 ## Copy-and-use App Store icon checklist
 
+Only the applicable delivery, source, and platform items are submission requirements. The review receipts and rendered checks are recommended operational controls.
+
 ```text
 Scope
 [ ] App version, build, platforms, and minimum OS versions recorded
@@ -204,23 +215,25 @@ Scope
 [ ] Existing production-icon behavior preserved or migration approved
 
 Source and variants
-[ ] Current Apple template used, or documented canvas size configured
+[ ] Current Apple template used, or documented canvas size configured (recommended)
 [ ] iOS/iPadOS App Store source is 1024 × 1024
-[ ] Light, Dark, Tinted, and system-generated treatments reviewed as applicable
+[ ] Square, unmasked source layers supplied for iOS/iPadOS
+[ ] Default, Dark, Clear Light/Dark, and Tinted Light/Dark reviewed as applicable
+[ ] Source color space is supported
 [ ] Full, Home Screen, and small system sizes inspected
 [ ] Platform-specific App Store sources supplied
 
 Target and build
 [ ] Production icon selected for the app's distribution target
-[ ] Release configuration checked separately from Debug
+[ ] Scheme's Archive action and build configuration recorded
 [ ] Icon Composer filename or asset-set name matches target settings
 [ ] Required alternate icons included; unrelated sets excluded
 [ ] Release archive created from the intended commit
-[ ] Xcode validation passed
+[ ] Xcode validation passed (recommended before upload)
 [ ] App Store Connect processing passed
 
 Rendered result
-[ ] Exact processed build installed through TestFlight
+[ ] Exact processed build installed through TestFlight, if used
 [ ] Home Screen, search, Settings, and relevant system surfaces checked
 [ ] App Store product page checked after release
 [ ] Storefront, device, reviewer, and date recorded
