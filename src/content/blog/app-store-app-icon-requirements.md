@@ -10,7 +10,7 @@ You don't upload a separate default icon on the app's App Store Connect version 
 
 Use this five-gate preflight:
 
-1. **Source gate:** choose Icon Composer or an asset catalog and use the current Apple template.
+1. **Source gate:** choose Icon Composer or an asset catalog and document the source-art setup.
 2. **Variant gate:** inspect every supported platform, appearance, and rendered size.
 3. **Target gate:** make sure the intended icon source is selected for the Release build.
 4. **Build gate:** archive, validate, upload, and wait for App Store Connect processing.
@@ -41,13 +41,13 @@ Apple currently documents two supported ways to provide the app icon.
 
 [Icon Composer](https://developer.apple.com/documentation/xcode/creating-your-app-icon-using-icon-composer) creates a multilayer icon file for Liquid Glass. Xcode renders the supported platform, appearance, and size variants from that file. The current source-art guidance uses a 1024 × 1024-pixel canvas for iPhone, iPad, and Mac, and 1088 × 1088 pixels for Apple Watch.
 
-This route fits a new icon designed as layered artwork. Keep the source layers separate, use Apple's latest design template, and preview the icon for every platform and appearance you support.
+This route fits a new icon designed as layered artwork. Apple recommends starting with its latest design template; you can instead configure the documented canvas size yourself. Keep the source layers separate and preview the icon for every platform and appearance you support.
 
 There is an important migration caveat: adding an Icon Composer file makes Xcode use it instead of the existing icon asset catalog. Xcode can generate a similar-looking icon for older OS releases, but Apple says to continue using asset catalogs if the existing icon must remain unchanged on those releases. Treat a pipeline switch as a visual product change, not a file-format cleanup.
 
 ### Option B: an asset catalog
 
-With the [asset-catalog workflow](https://developer.apple.com/documentation/xcode/configuring-your-app-icon.md), a standard Xcode project contains `Assets.xcassets` with an `AppIcon` set. For iOS and iPadOS, select **Single Size** if one 1024 × 1024-pixel source should generate the variations. Select **All Sizes** only when you need to provide and maintain the individual images yourself.
+With the [asset-catalog workflow](https://developer.apple.com/documentation/xcode/configuring-your-app-icon), a standard Xcode project contains `Assets.xcassets` with an `AppIcon` set. For iOS and iPadOS, select **Single Size** if one 1024 × 1024-pixel source should generate the variations. Select **All Sizes** only when you need to provide and maintain the individual images yourself.
 
 An asset catalog also lets you supply custom Dark and Tinted variants. Those are choices, not a reason to leave the default image unfinished: Apple can apply its system-generated treatment when custom variants aren't supplied.
 
@@ -111,7 +111,7 @@ For Icon Composer, confirm the target's **App Icon** field matches the Icon Comp
 
 Before archiving:
 
-- [ ] The selected target is the App Store target, not a sample or staging target.
+- [ ] The selected target is the app's distribution target, not a sample or staging target.
 - [ ] The Release configuration points to the production icon source.
 - [ ] The icon source belongs to the intended target.
 - [ ] Debug-only badges or artwork aren't present in the Release result.
@@ -134,7 +134,7 @@ Don't copy the iOS rule across every platform. A universal app may need several 
 
 ## Gate 4: validate and upload the exact build
 
-Create the archive from the intended release branch and configuration. In Xcode, open **Window → Organizer**, select the archive, and choose **Validate App**. Apple's [distribution guidance](https://developer.apple.com/documentation/xcode/distributing-your-app-for-beta-testing-and-releases.md) describes this as an initial automated check; it doesn't replace the validation App Store Connect performs after upload.
+Create the archive from the intended release branch and configuration. In Xcode, open **Window → Organizer**, select the archive, and choose **Validate App**. Apple's [distribution guidance](https://developer.apple.com/documentation/xcode/distributing-your-app-for-beta-testing-and-releases) describes this as an initial automated check; it doesn't replace the validation App Store Connect performs after upload.
 
 Save a build receipt:
 
@@ -151,7 +151,7 @@ App Store Connect processing: Passed | Failed
 
 If validation fails, fix the source or target configuration and create a new archive. Don't treat a locally correct preview as evidence that the uploaded binary contains the same icon.
 
-After upload, wait for processing to finish. Then select that exact build for TestFlight or the App Store version and attach the wider [App Store Connect release checklist](/blog/app-store-connect-release-checklist/).
+After upload, wait for processing to finish. Confirm that the exact processed build is the one you distribute to TestFlight groups or select for the App Store version, then attach the wider [App Store Connect release checklist](/blog/app-store-connect-release-checklist/).
 
 ## Gate 5: inspect rendered surfaces, not only source files
 
@@ -191,7 +191,7 @@ Product Page Optimization has a separate path. Apple's [treatment configuration 
 - come from a build made with an appropriate SDK; and
 - be 1024 × 1024 pixels.
 
-The treatment icon appears during download and on the customer's device. If the test supports making that icon the new default, Apple still requires you to promote it through a later app version rather than applying it like a screenshot treatment.
+The treatment icon appears during download and on the customer's device. To make a tested icon the new default, Apple requires you to set it as the default in a later app version rather than applying it like a screenshot treatment.
 
 Define the question and preserve the exact control before adding alternates. The [Product Page Optimization workflow](/blog/app-store-product-page-optimization/) covers Apple's test mechanics, while the [ASO experiment tracker](/blog/aso-experiment-tracker/) provides a decision record for the hypothesis, assets, evidence, and outcome.
 
@@ -204,14 +204,14 @@ Scope
 [ ] Existing production-icon behavior preserved or migration approved
 
 Source and variants
-[ ] Current Apple template used
+[ ] Current Apple template used, or documented canvas size configured
 [ ] iOS/iPadOS App Store source is 1024 × 1024
 [ ] Light, Dark, Tinted, and system-generated treatments reviewed as applicable
 [ ] Full, Home Screen, and small system sizes inspected
 [ ] Platform-specific App Store sources supplied
 
 Target and build
-[ ] Production icon selected for the App Store target
+[ ] Production icon selected for the app's distribution target
 [ ] Release configuration checked separately from Debug
 [ ] Icon Composer filename or asset-set name matches target settings
 [ ] Required alternate icons included; unrelated sets excluded
