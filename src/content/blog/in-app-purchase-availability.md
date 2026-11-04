@@ -8,7 +8,7 @@ pubDate: 2026-11-04
 
 For a non-renewing subscription, use **Subscriptions → Non-Renewing Subscriptions → Manage** instead. Apple requires the Account Holder, an Admin, or an App Manager to change availability.
 
-That setting is only one gate. A purchase is ready for a storefront when the app is available there, the product includes that country or region, App Review has approved it, and the shipped build can retrieve and sell the exact product through StoreKit. Treat those as separate records rather than using “availability” to mean all four.
+That setting is only one gate. For a new-customer launch, also confirm that the app is available there, App Review has approved the product, and the public build can retrieve and sell the exact product through StoreKit. Existing customers need a separate check because removing an app from a region doesn't necessarily remove their update or redownload access.
 
 ## Set availability in App Store Connect
 
@@ -23,7 +23,7 @@ Apple's current [In-App Purchase availability instructions](https://developer.ap
 
 To change the selection later, reopen the product and select **Edit** under Availability. Apple says additions and removals take effect immediately. That makes the control useful for a deliberate launch or removal, but it also means an accidental deselection isn't a harmless draft.
 
-Record the selection before saving:
+Capture the selection before saving:
 
 ```text
 App:
@@ -40,7 +40,7 @@ Changed by / at:
 Verification owner:
 ```
 
-One product-level record matters because an app can have several purchases with different regional plans. “The app is worldwide” doesn't prove that every purchase is.
+A product-level entry matters because an app can have several purchases with different regional plans. “The app is worldwide” doesn't prove that every purchase is.
 
 ## Separate the four availability gates
 
@@ -48,7 +48,7 @@ Use this operational model when a product is missing or shouldn't be sold yet:
 
 | App availability | IAP country or region | IAP status | StoreKit evidence | Result |
 | --- | --- | --- | --- | --- |
-| Available | Selected | Approved | Product and purchase path verified | Ready for the tested storefront |
+| Available | Selected | Approved | Public-build product and purchase path verified | Ready for the tested new-customer path |
 | Available | Not selected | Approved or in review | Any | Not for sale in that storefront |
 | Not available | Selected | Approved | Any | App isn't available to new customers there |
 | Available | Selected | Prepare for Submission, Ready for Review, Waiting for Review, or In Review | Any | Availability selection alone doesn't make it purchasable |
@@ -65,7 +65,9 @@ App availability and In-App Purchase availability live in different controls. In
 - **App availability:** **Pricing and Availability → App Availability**
 - **IAP availability:** the individual product's **Availability** section
 
-The practical sale area is their overlap. If the app is available in the US and Canada but the product is selected only for the US, don't label the product “North America.” Record US as available and Canada as an intentional exclusion or a mismatch to resolve.
+For customers who haven't downloaded the app before, the acquisition footprint starts with the overlap between app and product availability. If the app is available in the US and Canada but the product is selected only for the US, don't label the product “North America.” Mark US as available and Canada as an intentional exclusion or a mismatch to resolve.
+
+Treat prior downloaders separately. Apple says that after an app is removed from a country or region, previous customers can continue receiving updates and can redownload it from purchase history while the necessary contract remains active. The app-level setting therefore isn't a universal IAP purchase or entitlement gate; verify the product and customer path through StoreKit.
 
 Apple documents an option for an app to become available in future countries or regions added to the App Store. Its IAP availability instructions don't document an equivalent future-storefront choice. Don't copy the app-level assumption into a purchase record. Keep a separate product matrix and add a recheck when Apple adds a storefront or when your app's country selection changes.
 
@@ -94,9 +96,9 @@ This is especially useful when a build, marketing date, support plan, or regiona
 
 The [In-App Purchase review guide](/blog/submit-in-app-purchase-for-review/) covers first-of-type app-version dependencies, review screenshots, draft contents, and the final submission handoff.
 
-## Verify selected and excluded storefronts in Sandbox
+## Test in Sandbox, then verify the public build
 
-Don't verify a regional plan with one tester from one storefront. Apple's Sandbox accounts are each associated with an App Store country or region. In **Users and Access → Sandbox**, you can change a tester's region, save it, and sign in again on the device to apply the change.
+Don't test a regional plan with one tester from one storefront. Apple's Sandbox accounts are each associated with an App Store country or region. In **Users and Access → Sandbox**, you can change a tester's region, save it, and sign in again on the device to apply the change.
 
 If the tester belongs to a Sandbox Test Family, Apple requires every member to use the organizer's region. Remove the tester from that family before changing the account's country or region.
 
@@ -125,6 +127,8 @@ Evidence:
 For the excluded storefront, the app should handle the observed StoreKit result without a dead purchase button, stale hard-coded price, or promise that the item is available. Record what StoreKit actually returns; don't infer product behavior from the App Store Connect checkbox alone.
 
 Apple notes that product metadata changes can take up to one hour to appear in Sandbox. Preserve the product ID, tester region, time, and result before diagnosing a permanent defect. If the account itself is new, the [Sandbox Apple Account guide](/blog/create-sandbox-apple-account/) provides a reusable tester record.
+
+Sandbox is pre-release evidence, not proof that a production storefront is live. After release or an availability edit, install or redownload the public App Store build in each priority storefront and confirm that StoreKit returns the exact product ID and localized price and that the paywall handles the result correctly. If a real transaction is part of the plan, record its purchase and entitlement result separately. Keep Sandbox and production results in different rows, and don't call a storefront live from a Sandbox check alone.
 
 ## Remove a product from selected regions or from sale
 
@@ -161,10 +165,10 @@ Suppose an app is available in the US, Canada, and the UK. Version 4.0 introduce
 
 Before review, the developer sets the product to **Remove from sale**, submits it with the required app version, and records the review status. Approval produces a reviewed product that remains off sale.
 
-On launch day, the developer selects the US and Canada for the product but leaves the UK unselected. The verification record then has three distinct outcomes:
+On launch day, the developer selects the US and Canada for the product but leaves the UK unselected. The launch check then has three distinct outcomes:
 
-- **US:** app available, product selected, Approved, positive Sandbox check;
-- **Canada:** app available, product selected, Approved, positive Sandbox check;
+- **US:** app available, product selected, Approved, Sandbox preflight passed, public-build StoreKit check passed;
+- **Canada:** app available, product selected, Approved, Sandbox preflight passed, public-build StoreKit check passed;
 - **UK:** app available, product not selected, intentional no-sale behavior verified.
 
 The UK isn't described as “coming soon” unless there is an owned localization, support, StoreKit, and availability task. When those gates pass, the developer adds the UK and repeats the storefront check.
