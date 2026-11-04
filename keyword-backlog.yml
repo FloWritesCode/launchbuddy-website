@@ -2457,7 +2457,8 @@ backlog:
     cluster: "monetization"
     intent: "how-to"
     priority: "P2"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/in-app-purchase-availability/"
     confidence: "medium"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/submit-in-app-purchase-for-review.md", "src/content/blog/schedule-in-app-purchase-price-changes.md", "src/content/blog/ios-app-sunset-checklist.md"]
