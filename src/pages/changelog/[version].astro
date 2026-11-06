@@ -1,0 +1,116 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Footer from '../../components/Footer.astro';
+import { changelog, changelogPath, formatChangelogDate } from '../../lib/changelog';
+import { absoluteUrl, breadcrumbJsonLd } from '../../lib/seo';
+
+export function getStaticPaths() {
+  return changelog.map((entry) => ({
+    params: { version: entry.version },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const path = changelogPath(entry);
+const description = entry.summary;
+const title = `${entry.version}: ${entry.title}`;
+---
+
+<BaseLayout
+  title={`${title} | LaunchBuddy`}
+  description={description}
+  path={path}
+  jsonLd={[
+    {
+      '@context': 'https://schema.org',
+      '@type': 'TechArticle',
+      headline: title,
+      description,
+      datePublished: entry.date,
+      url: absoluteUrl(path),
+      publisher: { '@id': absoluteUrl('/#organization') },
+    },
+    breadcrumbJsonLd([
+      { name: 'Home', path: '/' },
+      { name: 'Changelog', path: '/changelog/' },
+      { name: entry.version, path },
+    ]),
+  ]}
+>
+  <article class="max-w-4xl mx-auto px-6 pt-12 md:pt-16 pb-8">
+    <nav aria-label="Breadcrumb">
+      <ol class="post-breadcrumbs">
+        <li><a href="/">Home</a></li>
+        <li><a href="/changelog/">Changelog</a></li>
+        <li aria-current="page">{entry.version}</li>
+      </ol>
+    </nav>
+
+    <p class="font-mono text-sm text-text-muted mt-6 mb-3">
+      <time datetime={entry.date}>{formatChangelogDate(entry.date)}</time>
+      <span aria-hidden="true"> · </span>
+      Version {entry.version}
+    </p>
+    <h1 class="font-display font-bold text-4xl md:text-5xl text-text-primary mb-4 leading-tight">
+      {entry.title}
+    </h1>
+    <p class="text-lg text-text-secondary mb-12 max-w-3xl">{entry.summary}</p>
+
+    {
+      entry.sections.map((section) => (
+        <section class="mb-14">
+          <h2 class="font-display font-bold text-2xl md:text-3xl text-text-primary mb-3">{section.heading}</h2>
+          <p class="text-text-secondary text-lg max-w-3xl">{section.body}</p>
+          {section.shots.length > 0 && (
+            <div class:list={['mt-6', section.shots.length > 1 && 'changelog-pair']}>
+              {section.shots.map((shot) => (
+                <figure class="m-0">
+                  <Image
+                    src={shot.image}
+                    alt={shot.alt}
+                    widths={[640, 960, 1280]}
+                    sizes={section.shots.length > 1 ? '(min-width: 900px) 50vw, 100vw' : '(min-width: 896px) 896px, 100vw'}
+                    class:list={[
+                    'changelog-shot',
+                    section.shots.length === 1 && shot.image.height / shot.image.width > 1.6 && 'changelog-shot--phone',
+                  ]}
+                  />
+                  <figcaption class="changelog-caption">{shot.caption}</figcaption>
+                </figure>
+              ))}
+            </div>
+          )}
+        </section>
+      ))
+    }
+  </article>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .post-breadcrumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  .post-breadcrumbs li + li::before {
+    content: '›';
+    margin-right: 0.35rem;
+    color: var(--color-text-muted);
+  }
+
+  .post-breadcrumbs a {
+    font-weight: 500;
+    color: var(--color-accent-blue);
+    text-decoration: none;
+  }
+
+  .post-breadcrumbs a:hover {
+    color: var(--color-accent-cyan);
+  }
+</style>

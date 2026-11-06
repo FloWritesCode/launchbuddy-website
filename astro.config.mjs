@@ -26,6 +26,12 @@ const blogLastmod = new Map(
 );
 const newestPost = [...blogLastmod.values()].filter(Boolean).sort().at(-1);
 
+/** Last-modified date per changelog URL. Bump the date when an entry is added. */
+const changelogLastmod = new Map([
+  ['/changelog/', '2026-11-06'],
+  ['/changelog/7.3.0/', '2026-11-06'],
+]);
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://launchbuddy.app',
@@ -34,7 +40,8 @@ export default defineConfig({
     sitemap({
       serialize(item) {
         const path = new URL(item.url).pathname;
-        const lastmod = blogLastmod.get(path) ?? (path === '/blog/' ? newestPost : undefined);
+        const lastmod =
+          blogLastmod.get(path) ?? changelogLastmod.get(path) ?? (path === '/blog/' ? newestPost : undefined);
         return lastmod ? { ...item, lastmod: new Date(lastmod).toISOString() } : item;
       },
     }),

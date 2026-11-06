@@ -1,0 +1,71 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Footer from '../../components/Footer.astro';
+import { changelog, changelogPath, formatChangelogDate } from '../../lib/changelog';
+import { absoluteUrl, breadcrumbJsonLd } from '../../lib/seo';
+import { SITE_NAME } from '../../lib/site';
+
+const description =
+  'What shipped in LaunchBuddy: release notes for iPhone, iPad, and Mac, with pictures of the actual screens.';
+---
+
+<BaseLayout
+  title="Changelog | LaunchBuddy"
+  description={description}
+  path="/changelog/"
+  jsonLd={[
+    {
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      name: `${SITE_NAME} Changelog`,
+      description,
+      url: absoluteUrl('/changelog/'),
+      publisher: { '@id': absoluteUrl('/#organization') },
+    },
+    breadcrumbJsonLd([
+      { name: 'Home', path: '/' },
+      { name: 'Changelog', path: '/changelog/' },
+    ]),
+  ]}
+>
+  <div class="max-w-3xl mx-auto px-6 pt-12 md:pt-16 pb-8">
+    <span class="section-label">Changelog</span>
+    <h1 class="font-display font-bold text-4xl md:text-5xl text-text-primary mb-4 leading-tight">
+      What shipped
+    </h1>
+    <p class="text-lg text-text-secondary mb-12">
+      The newest version is at the top. Screenshots are from the app, not a mood board.
+    </p>
+
+    <ol class="space-y-6 list-none p-0 m-0">
+      {
+        changelog.map((entry) => (
+          <li>
+            <article class="glass-card glass-card--interactive spotlight p-6 md:p-8">
+              <p class="font-mono text-sm text-text-muted mb-2">
+                <time datetime={entry.date}>{formatChangelogDate(entry.date)}</time>
+                <span aria-hidden="true"> · </span>
+                {entry.version}
+              </p>
+              <h2 class="font-display font-bold text-2xl text-text-primary mb-3">
+                <a class="text-text-primary no-underline hover:text-accent-blue transition-colors" href={changelogPath(entry)}>
+                  {entry.title}
+                </a>
+              </h2>
+              <p class="text-text-secondary mb-5">{entry.summary}</p>
+              <Image
+                src={entry.preview}
+                alt=""
+                widths={[480, 720]}
+                sizes="(min-width: 768px) 280px, 70vw"
+                class="changelog-shot changelog-preview"
+              />
+            </article>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+  <Footer />
+</BaseLayout>
