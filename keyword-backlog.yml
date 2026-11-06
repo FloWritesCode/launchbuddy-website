@@ -2527,7 +2527,8 @@ backlog:
     cluster: "monetization-testing"
     intent: "how-to"
     priority: "P2"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/change-sandbox-account-storefront/"
     confidence: "medium"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/create-sandbox-apple-account.md", "src/content/blog/in-app-purchase-status-meanings.md", "src/content/blog/schedule-in-app-purchase-price-changes.md", "src/content/blog/family-sharing-for-in-app-purchases.md"]
