@@ -2553,9 +2553,10 @@ backlog:
     keyword: "Apple-hosted asset packs"
     proposed_slug: "apple-hosted-asset-packs"
     cluster: "app-review"
-    intent: "guide"
+    intent: "how-to"
     priority: "P2"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/apple-hosted-asset-packs/"
     confidence: "medium"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/testflight-release-management.md", "src/content/blog/app-store-connect-draft-submissions.md", "src/content/blog/app-store-connect-webhooks.md"]
