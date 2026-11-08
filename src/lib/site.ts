@@ -49,6 +49,7 @@ export const DEFAULT_KEYWORDS =
   'App Store Connect, iOS app release manager, App Store submission tracker, LaunchBuddy AI, ASO experiments, indie iOS developer, Xcode project manager, TestFlight release management';
 
 export const CHECKLIST_PATH = '/checklist/';
+export const CHECKLIST_KIT_FORM_UID = 'ee3043c54c';
 
 export const CHECKLIST_FAQ = [
   {
@@ -75,6 +76,50 @@ export const CHECKLIST_FAQ = [
     question: 'How is this different from LaunchBuddy?',
     answer:
       'The PDF is a printable first-submission field guide you can keep next to App Store Connect. LaunchBuddy is the app that turns checks like these into reusable submission checklists on iPhone and Mac, tied to each release. Grab the PDF either way — you do not need the app to use it.',
+  },
+] as const;
+
+export const FRAMES_PATH = '/frames/';
+export const FRAMES_KIT_FORM_UID = '53c455dabb';
+export const FRAMEBUDDY_APP_STORE_ID = '1625346520';
+export const FRAMEBUDDY_APP_STORE_URL =
+  'https://apps.apple.com/app/framebuddy-screenshot-frames/id1625346520';
+
+export const FRAMES_FAQ = [
+  {
+    question: 'Is FrameBuddy free?',
+    answer:
+      'Yes. FrameBuddy is free on the App Store, with no subscription, no in-app purchases, and no watermark on your exports.',
+  },
+  {
+    question: 'When is FrameBuddy coming to iPhone and iPad?',
+    answer:
+      'The iPhone and iPad version is finished and waiting for App Review. It shares the App Store listing with the Mac app, so the same download link works on iPhone and iPad once Apple approves it. Leave your email on this page to hear when it is live.',
+  },
+  {
+    question: 'Which devices does FrameBuddy have frames for?',
+    answer:
+      'Thirteen iPhones from iPhone 13 Pro Max to iPhone 18 Pro Max, the inner and outer displays of iPhone Duo, and seven iPads including iPad Pro M5, iPad Air M4, iPad A16, and iPad mini A17 Pro, each in the colors Apple sells it in. iPads and the iPhone Duo inner display can be framed in landscape as well as portrait.',
+  },
+  {
+    question: 'How does FrameBuddy pick the right device?',
+    answer:
+      'It reads the pixel size of each screenshot and picks the newest device whose screen matches it. Cropped or scaled screenshots get the device closest in shape. You can change the device, color, and rotation of any screenshot, or set a default that Finder, Shortcuts, and the command line tool follow too.',
+  },
+  {
+    question: 'Can FrameBuddy frame screen recordings?',
+    answer:
+      'Yes. Screen recordings are framed like screenshots and saved as QuickTime movies with a transparent background, so the device sits cleanly on any page or slide. Screenshots are saved as PNGs with a transparent background.',
+  },
+  {
+    question: 'Can I frame screenshots without opening the app?',
+    answer:
+      'On the Mac, right-click screenshots in Finder and choose Quick Actions, then Add Device Frames, or run the framebuddy command line tool from Terminal, scripts, or CI. The Frame Screenshots action in Shortcuts does the same on Mac, iPhone, and iPad.',
+  },
+  {
+    question: 'Can I upload framed screenshots to App Store Connect?',
+    answer:
+      'Not as they are. App Store Connect only accepts screenshots at exact pixel sizes, and a framed PNG is larger and has a transparent background. Place the framed device on a canvas at the required size, with your own background and caption, and upload that.',
   },
 ] as const;
 

@@ -1,0 +1,552 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Footer from '../components/Footer.astro';
+import KitForm from '../components/KitForm.astro';
+import '../styles/frames.css';
+import framebuddyIcon from '../assets/frames/framebuddy-icon.png';
+import ipadShot from '../assets/frames/ipad.png';
+import iphoneShot from '../assets/frames/iphone.png';
+import duoOuterGridShot from '../assets/frames/duo-outer-grid.png';
+import duoInnerShot from '../assets/frames/duo-inner.png';
+import duoOuterShot from '../assets/frames/duo-outer.png';
+import macShot from '../assets/frames/mac.png';
+import {
+  AUTHOR_NAME,
+  AUTHOR_URL,
+  FRAMEBUDDY_APP_STORE_ID,
+  FRAMEBUDDY_APP_STORE_URL,
+  FRAMES_FAQ,
+  FRAMES_KIT_FORM_UID,
+  FRAMES_PATH,
+  SITE_URL,
+} from '../lib/site';
+
+const title = 'FrameBuddy: Free Device Frames for Screenshots';
+const description =
+  'Put screenshots and screen recordings into iPhone, iPad, and iPhone Duo frames in every color. Free on the App Store, with Finder, Shortcuts, and a CLI.';
+const keywords =
+  'device frames, screenshot frames, iPhone mockup, iPad mockup, iPhone Duo frame, frame screenshots Mac, screen recording device frame, App Store screenshot frames, FrameBuddy';
+
+const ogImage = {
+  src: '/images/framebuddy-preview.jpg',
+  width: 1200,
+  height: 750,
+  alt: 'The FrameBuddy Mac app showing screenshots framed in iPhone, iPad, and iPhone Duo devices',
+};
+
+const stats = [
+  { value: '21', label: 'iPhones, iPads & iPhone Duo' },
+  { value: '100+', label: 'Frames in every color' },
+  { value: 'PNG + MOV', label: 'Transparent exports' },
+  { value: '$0', label: 'No in-app purchases' },
+];
+
+const steps = [
+  {
+    n: '1',
+    title: 'Drop in screenshots',
+    body: 'Drag screenshots and screen recordings onto the window, or add them with the + button. Whole sets at once.',
+  },
+  {
+    n: '2',
+    title: 'FrameBuddy picks the device',
+    body: 'Each one is matched to the device whose screen has the same resolution. Change the model, color, or rotation anytime.',
+  },
+  {
+    n: '3',
+    title: 'Export or copy',
+    body: 'Save transparent PNGs and movies to any folder with ⌘E, or copy them straight to the clipboard with ⇧⌘C.',
+  },
+];
+
+const features = [
+  {
+    platform: 'Mac · iPhone · iPad',
+    title: 'Every color',
+    body: 'Each device in the colors Apple sells it in, from Cosmic Orange to Night Sky. Pick one for the whole set or a different one per screenshot.',
+  },
+  {
+    platform: 'Mac · iPhone · iPad',
+    title: 'Screen recordings',
+    body: 'Videos are framed like screenshots and saved as QuickTime movies with a transparent background, ready for a landing page or a launch post.',
+  },
+  {
+    platform: 'Mac · iPhone · iPad',
+    title: 'Portrait and landscape',
+    body: 'iPads and the iPhone Duo inner display frame in both orientations. Rotate any device together with its screenshot.',
+  },
+  {
+    platform: 'Mac',
+    title: 'Finder Quick Action',
+    body: 'Right-click screenshots in Finder and choose Add Device Frames. The framed files land next to the originals without opening the app.',
+  },
+  {
+    platform: 'Mac · iPhone · iPad',
+    title: 'Shortcuts',
+    body: 'The Frame Screenshots action frames whatever you hand it, so a screenshot can go from capture to framed in one automation.',
+  },
+  {
+    platform: 'iPhone · iPad',
+    title: 'Share sheet',
+    body: 'Share screenshots to FrameBuddy from Photos or any other app, then save the framed result back to Photos or Files.',
+  },
+];
+
+const deviceGroups = [
+  {
+    family: 'iPhone',
+    devices: [
+      { name: 'iPhone 18 Pro / Pro Max', colors: 'Black, Burgundy, Glacier, Silver' },
+      { name: 'iPhone 17 Pro / Pro Max', colors: 'Cosmic Orange, Deep Blue, Silver' },
+      { name: 'iPhone Air', colors: 'Cloud White, Light Gold, Sky Blue, Space Black' },
+      { name: 'iPhone 17', colors: 'Black, Lavender, Mist Blue, Sage, White' },
+      { name: 'iPhone 16 Pro / Pro Max', colors: 'Black, Desert, Natural, White Titanium' },
+      { name: 'iPhone 16 / 16 Plus', colors: 'Black, Pink, Teal, Ultramarine, White' },
+      { name: 'iPhone 15 Pro Max', colors: 'Black, Blue, Natural, White Titanium' },
+      { name: 'iPhone 14 Pro Max', colors: 'Deep Purple, Gold, Silver, Space Black' },
+      { name: 'iPhone 13 Pro Max', colors: 'Graphite, Silver' },
+    ],
+  },
+  {
+    family: 'iPhone Duo',
+    devices: [
+      { name: 'iPhone Duo inner display', colors: 'Night Sky, Star White · portrait and landscape' },
+      { name: 'iPhone Duo outer display', colors: 'Night Sky, Star White' },
+    ],
+  },
+  {
+    family: 'iPad',
+    devices: [
+      { name: 'iPad Pro 13″ M5 / 11″ M5', colors: 'Silver, Space Black' },
+      { name: 'iPad Pro 13″ M4', colors: 'Silver, Space Gray' },
+      { name: 'iPad Air 13″ / 11″ M4', colors: 'Blue, Purple, Space Gray, Starlight' },
+      { name: 'iPad A16', colors: 'Blue, Pink, Silver, Yellow' },
+      { name: 'iPad mini A17 Pro', colors: 'Blue, Purple, Space Gray, Starlight' },
+    ],
+  },
+];
+
+const cliExamples = [
+  { comment: 'Frame every screenshot in Downloads', command: 'framebuddy ~/Downloads/*.png' },
+  {
+    comment: 'Pick the device and color yourself',
+    command: 'framebuddy -d "iPhone 17 Pro" -c "Deep Blue" shot.png -o Framed',
+  },
+  { comment: 'Screen recordings become framed .mov files', command: 'framebuddy ~/Downloads/recording.mov' },
+  { comment: 'Pipe it through a script', command: 'framebuddy < shot.png > framed.png' },
+];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'FrameBuddy',
+    description,
+    url: new URL(FRAMES_PATH, SITE_URL).href,
+    isPartOf: {
+      '@type': 'WebSite',
+      name: 'LaunchBuddy',
+      url: SITE_URL,
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'FrameBuddy',
+    alternateName: 'FrameBuddy - Screenshot Frames',
+    description:
+      'Put screenshots and screen recordings into iPhone, iPad, and iPhone Duo device frames, with a Finder Quick Action, a Shortcuts action, and the framebuddy command line tool.',
+    applicationCategory: 'DeveloperApplication',
+    operatingSystem: 'macOS 14 or later',
+    url: new URL(FRAMES_PATH, SITE_URL).href,
+    downloadUrl: FRAMEBUDDY_APP_STORE_URL,
+    image: new URL(framebuddyIcon.src, SITE_URL).href,
+    screenshot: new URL(ogImage.src, SITE_URL).href,
+    author: { '@type': 'Person', name: AUTHOR_NAME, url: AUTHOR_URL },
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: FRAMES_FAQ.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: { '@type': 'Answer', text: item.answer },
+    })),
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  keywords={keywords}
+  path={FRAMES_PATH}
+  ogImage={ogImage}
+  jsonLd={jsonLd}
+  appStoreId={FRAMEBUDDY_APP_STORE_ID}
+>
+  <section class="max-w-6xl mx-auto px-6 pt-10 md:pt-16 pb-16 md:pb-24">
+    <div class="hero-split">
+      <div class="text-left max-w-xl lg:max-w-none">
+        <div class="frames-brand fade-in">
+          <Image src={framebuddyIcon} width={56} height={56} alt="" loading="eager" class="frames-brand__icon" />
+          <div>
+            <p class="frames-brand__name">FrameBuddy</p>
+            <p class="frames-brand__meta">Free · From the maker of LaunchBuddy</p>
+          </div>
+        </div>
+        <h1
+          class="font-display font-bold text-4xl sm:text-5xl lg:text-[3.15rem] text-text-primary leading-[1.08] tracking-tight mb-5 fade-in fade-in-delay-1"
+        >
+          Screenshots and screen recordings, <span class="text-gradient">framed.</span>
+        </h1>
+        <p class="text-lg text-text-secondary mb-8 leading-relaxed fade-in fade-in-delay-2">
+          Drop in a screenshot and FrameBuddy puts it in the iPhone, iPad, or iPhone Duo it was taken
+          on. Pick any color, then export transparent PNGs and movies for your App Store page, website,
+          or launch post.
+        </p>
+
+        <div id="download" class="frames-download fade-in fade-in-delay-3">
+          <a href={FRAMEBUDDY_APP_STORE_URL} class="btn-ship btn-ship--lg">
+            <svg class="frames-apple" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"
+              ></path>
+            </svg>
+            Download free on the App Store
+          </a>
+          <p class="frames-availability">
+            <span class="frames-availability__dot is-live" aria-hidden="true"></span>
+            Mac: available now
+            <span class="frames-availability__dot" aria-hidden="true"></span>
+            iPhone &amp; iPad: coming soon
+          </p>
+        </div>
+
+        <div id="notify" class="frames-capture fade-in fade-in-delay-4">
+          <p class="frames-capture__label">Not on a Mac? Get an email when the iPhone and iPad version is live.</p>
+          <KitForm uid={FRAMES_KIT_FORM_UID} />
+          <p class="frames-capture__fineprint">Confirm your email to subscribe. Unsubscribe anytime.</p>
+        </div>
+      </div>
+
+      <div class="frames-stage fade-in-up fade-in-delay-2" aria-hidden="true">
+        <div class="frames-stage__glow"></div>
+        <Image
+          src={ipadShot}
+          widths={[600, 900, 1200]}
+          sizes="(min-width: 1024px) 34rem, 82vw"
+          alt=""
+          loading="eager"
+          class="frames-stage__device frames-stage__ipad"
+        />
+        <Image
+          src={iphoneShot}
+          widths={[240, 360, 480]}
+          sizes="(min-width: 1024px) 12.5rem, 30vw"
+          alt=""
+          loading="eager"
+          class="frames-stage__device frames-stage__iphone"
+        />
+        <Image
+          src={duoOuterGridShot}
+          widths={[240, 360, 480]}
+          sizes="(min-width: 1024px) 12.5rem, 30vw"
+          alt=""
+          loading="eager"
+          class="frames-stage__device frames-stage__duo"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-6 section-block--tight border-y border-white/[0.04]">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-4xl mx-auto">
+      {
+        stats.map((stat) => (
+          <div class="stat-pill text-center">
+            <span class="stat-pill__value">{stat.value}</span>
+            <span class="stat-pill__label">{stat.label}</span>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-6 section-block">
+    <div class="mb-12 max-w-2xl">
+      <span class="section-label" data-reveal>How it works</span>
+      <h2 class="section-heading mb-4" data-reveal>Drop it in. It's framed.</h2>
+      <p class="section-subheading" data-reveal>
+        No templates to pick and no canvas to line up. FrameBuddy reads the resolution of each
+        screenshot and puts it in the matching device, so a whole set is framed the moment it lands.
+      </p>
+    </div>
+    <figure class="frames-window" data-reveal="scale">
+      <Image
+        src={macShot}
+        widths={[800, 1200, 1800, 2400]}
+        sizes="(min-width: 1152px) 72rem, 100vw"
+        alt="The FrameBuddy Mac app with five screenshots framed as iPhones, iPads, and iPhone Duo, and the device options sidebar open"
+        class="frames-window__image"
+      />
+    </figure>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12" data-reveal-stagger="90">
+      {
+        steps.map((step) => (
+          <div data-reveal>
+            <span class="frames-step-n">{step.n}</span>
+            <h3 class="font-display font-semibold text-text-primary text-lg mt-4 mb-2">{step.title}</h3>
+            <p class="text-text-secondary leading-relaxed text-sm md:text-base">{step.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-6 section-block border-t border-white/[0.04]">
+    <div class="mb-12 max-w-2xl">
+      <span class="section-label" style="--label-color: var(--color-accent-violet)" data-reveal>New device</span>
+      <h2 class="section-heading mb-4" data-reveal>Ready for iPhone Duo</h2>
+      <p class="section-subheading" data-reveal>
+        Frames for both displays: the tablet-sized inner display in portrait and landscape, and the
+        outer display with its tighter corners on the hinge side. Screenshots from either one are
+        matched by resolution, so you never pick the wrong half.
+      </p>
+    </div>
+    <div class="frames-duo" data-reveal-stagger="120">
+      <figure data-reveal>
+        <Image
+          src={duoInnerShot}
+          widths={[600, 900, 1300]}
+          sizes="(min-width: 1152px) 44rem, 64vw"
+          alt="A screenshot framed in the iPhone Duo inner display in landscape, showing FrameBuddy's device menu"
+          class="frames-duo__image"
+        />
+        <figcaption class="frames-duo__caption">Inner display · landscape</figcaption>
+      </figure>
+      <figure data-reveal>
+        <Image
+          src={duoOuterShot}
+          widths={[300, 450, 680]}
+          sizes="(min-width: 1152px) 23rem, 33vw"
+          alt="A screenshot framed in the iPhone Duo outer display, showing FrameBuddy's color options"
+          class="frames-duo__image"
+        />
+        <figcaption class="frames-duo__caption">Outer display · portrait</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-6 section-block border-t border-white/[0.04]">
+    <div class="mb-12 max-w-2xl">
+      <span class="section-label" data-reveal>Features</span>
+      <h2 class="section-heading mb-4" data-reveal>Frame from wherever the screenshot is</h2>
+      <p class="section-subheading" data-reveal>
+        Set a default device and color once. The app, Finder, Shortcuts, and the command line tool all
+        follow it.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" data-reveal-stagger="70">
+      {
+        features.map((feature) => (
+          <article class="glass-card p-6" data-reveal>
+            <p class="font-mono text-[0.6875rem] tracking-wider uppercase text-accent-cyan mb-3">
+              {feature.platform}
+            </p>
+            <h3 class="font-display font-semibold text-text-primary text-lg mb-2">{feature.title}</h3>
+            <p class="text-text-secondary leading-relaxed text-sm md:text-base">{feature.body}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-6 section-block">
+    <div class="frames-cli">
+      <div>
+        <span class="section-label" style="--label-color: var(--color-accent-green)" data-reveal>Mac · Terminal</span>
+        <h2 class="section-heading mb-4" data-reveal>Automate it from the command line</h2>
+        <p class="section-subheading mb-6" data-reveal>
+          The framebuddy tool ships inside the Mac app and frames screenshots and recordings from
+          Terminal, scripts, and CI, with the same devices and colors. FrameBuddy's Command Line Tool
+          window gives you the one command that adds it to your PATH.
+        </p>
+        <p class="text-sm text-text-muted" data-reveal>
+          Run <code class="frames-inline-code">framebuddy devices</code> for every device name, and
+          <code class="frames-inline-code">framebuddy help</code> for all options.
+        </p>
+      </div>
+      <div class="frames-terminal" data-reveal="scale">
+        <div class="frames-terminal__bar" aria-hidden="true">
+          <span></span><span></span><span></span>
+          <p>Terminal</p>
+        </div>
+        <div class="frames-terminal__body">
+          {
+            cliExamples.map((example) => (
+              <div class="frames-terminal__example">
+                <p class="frames-terminal__comment"># {example.comment}</p>
+                <p>
+                  <span class="frames-terminal__prompt" aria-hidden="true">$</span>
+                  <code>{example.command}</code>
+                </p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-6 section-block border-t border-white/[0.04]">
+    <div class="mb-12 max-w-2xl">
+      <span class="section-label" data-reveal>Devices</span>
+      <h2 class="section-heading mb-4" data-reveal>Every frame in FrameBuddy</h2>
+      <p class="section-subheading" data-reveal>
+        Apple's official device bezels, from iPhone 13 Pro Max to iPhone 18 Pro Max, every current
+        iPad, and both displays of iPhone Duo.
+      </p>
+    </div>
+    <div class="frames-devices" data-reveal-stagger="90">
+      {
+        deviceGroups.map((group) => (
+          <div class="glass-card p-6" data-reveal>
+            <h3 class="font-display font-semibold text-text-primary text-lg mb-4">{group.family}</h3>
+            <ul class="frames-devices__list">
+              {group.devices.map((device) => (
+                <li>
+                  <span class="frames-devices__name">{device.name}</span>
+                  <span class="frames-devices__colors">{device.colors}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-6 section-block">
+    <div class="cta-banner relative z-10">
+      <div class="flex flex-col items-center text-center max-w-xl mx-auto">
+        <h2 class="cta-banner__headline mb-4">Frame your next screenshot in seconds</h2>
+        <p class="text-text-secondary text-lg mb-8">
+          Free on the App Store. No account, no subscription, no watermark.
+        </p>
+        <div id="download-again">
+          <a href={FRAMEBUDDY_APP_STORE_URL} class="btn-ship btn-ship--lg">
+            <svg class="frames-apple" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"
+              ></path>
+            </svg>
+            Download free on the App Store
+          </a>
+        </div>
+        <div class="frames-capture frames-capture--on-dark w-full mt-10">
+          <p class="frames-capture__label">Waiting for iPhone and iPad? Get an email when it's approved.</p>
+          <KitForm uid={FRAMES_KIT_FORM_UID} />
+          <p class="frames-capture__fineprint">Confirm your email to subscribe. Unsubscribe anytime.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-6 section-block--tight">
+    <div class="glass-card p-8 md:p-10 max-w-3xl mx-auto text-center">
+      <h2 class="font-display font-bold text-2xl text-text-primary mb-3">Screenshots framed. What about the release?</h2>
+      <p class="text-text-secondary leading-relaxed mb-6">
+        FrameBuddy is made by the developer of LaunchBuddy, the release manager for indie iOS
+        developers. Plan each version, run App Store submission checklists, and reply to reviews on
+        iPhone, iPad, and Mac.
+      </p>
+      <a href="/" class="btn-ghost">
+        See LaunchBuddy
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-6 section-block">
+    <div class="mb-12">
+      <span class="section-label">FAQ</span>
+      <h2 class="section-heading">Questions about FrameBuddy</h2>
+    </div>
+    <div class="max-w-3xl mx-auto space-y-3">
+      {
+        FRAMES_FAQ.map((item) => (
+          <details class="faq-item group">
+            <summary class="flex justify-between items-center cursor-pointer p-5 md:p-6 text-text-primary font-display font-semibold">
+              <span>{item.question}</span>
+              <svg
+                class="w-5 h-5 text-text-muted transition-transform group-open:rotate-180 shrink-0 ml-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"></path></svg
+              >
+            </summary>
+            <div class="px-5 md:px-6 pb-5 md:pb-6 text-text-secondary leading-relaxed">{item.answer}</div>
+          </details>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-6 pb-16 md:pb-24">
+    <p class="text-center text-sm text-text-muted">
+      Preparing your listing? Read the
+      <a
+        href="/blog/app-store-screenshot-requirements/"
+        class="text-accent-blue hover:text-accent-cyan no-underline">App Store screenshot requirements</a
+      > and the
+      <a
+        href="/blog/app-store-app-preview-requirements/"
+        class="text-accent-blue hover:text-accent-cyan no-underline">App Preview requirements</a
+      >.
+    </p>
+  </section>
+
+  <a href={FRAMEBUDDY_APP_STORE_URL} class="frames-sticky-cta is-hidden" data-frames-sticky>
+    Download FrameBuddy free
+  </a>
+
+  <div class="h-20 md:hidden" aria-hidden="true"></div>
+
+  <Footer />
+</BaseLayout>
+
+<script>
+  const sticky = document.querySelector('[data-frames-sticky]');
+  const ctas = ['download', 'notify', 'download-again']
+    .map((id) => document.getElementById(id))
+    .filter((el): el is HTMLElement => Boolean(el));
+
+  if (sticky instanceof HTMLElement && ctas.length && 'IntersectionObserver' in window) {
+    const visible = new Set<Element>();
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) visible.add(entry.target);
+          else visible.delete(entry.target);
+        }
+        sticky.classList.toggle('is-hidden', visible.size > 0);
+      },
+      { threshold: 0.25 },
+    );
+    ctas.forEach((el) => io.observe(el));
+  }
+</script>

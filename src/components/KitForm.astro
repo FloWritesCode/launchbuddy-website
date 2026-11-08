@@ -1,12 +1,14 @@
 ---
+import '../styles/kit-form.css';
+
 interface Props {
+  uid: string;
   class?: string;
 }
 
-const { class: className = '' } = Astro.props;
+const { uid, class: className = '' } = Astro.props;
 ---
 
 <div class:list={['kit-form', className]}>
-  <script is:inline async data-uid="ee3043c54c" src="https://flowritescode.kit.com/ee3043c54c/index.js"
-  ></script>
+  <script is:inline async data-uid={uid} src={`https://flowritescode.kit.com/${uid}/index.js`}></script>
 </div>

@@ -2,7 +2,14 @@
 import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import appIcon from '../assets/app-icon.png';
-import { APP_STORE_URL, CHECKLIST_PATH, PRIVACY_POLICY_URL, SUPPORT_URL, TERMS_URL } from '../lib/site';
+import {
+  APP_STORE_URL,
+  CHECKLIST_PATH,
+  FRAMES_PATH,
+  PRIVACY_POLICY_URL,
+  SUPPORT_URL,
+  TERMS_URL,
+} from '../lib/site';
 import { featuredPosts, postPath } from '../lib/seo';
 
 const guides = featuredPosts(await getCollection('blog', ({ data }) => !data.draft)).slice(0, 6);
@@ -27,6 +34,7 @@ const columns = [
       { href: '/changelog/', label: 'Changelog' },
       { href: '/blog/', label: 'Blog' },
       { href: CHECKLIST_PATH, label: 'Launch checklist' },
+      { href: FRAMES_PATH, label: 'Device frames' },
       { href: '/rss.xml', label: 'RSS' },
     ],
   },

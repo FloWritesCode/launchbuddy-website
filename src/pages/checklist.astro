@@ -11,6 +11,7 @@ import {
   APP_STORE_REVIEWS_URL,
   APP_STORE_URL,
   CHECKLIST_FAQ,
+  CHECKLIST_KIT_FORM_UID,
   CHECKLIST_PATH,
   USER_COUNT,
 } from '../lib/site';
@@ -174,7 +175,7 @@ const jsonLd = [
 
         <div id="get-the-pdf" class="checklist-capture fade-in fade-in-delay-3">
           <p class="checklist-capture__label">Get the free PDF</p>
-          <KitForm />
+          <KitForm uid={CHECKLIST_KIT_FORM_UID} />
           <p class="checklist-capture__fineprint">
             Free forever. Confirm your email to receive the PDF. Unsubscribe anytime.
           </p>
@@ -355,7 +356,7 @@ const jsonLd = [
           25 actions. One email. The PDF arrives after you confirm.
         </p>
         <div id="get-the-pdf-again" class="checklist-capture checklist-capture--on-dark w-full">
-          <KitForm />
+          <KitForm uid={CHECKLIST_KIT_FORM_UID} />
           <p class="checklist-capture__fineprint">
             Free forever. Confirm your email to receive the PDF. Unsubscribe anytime.
           </p>
