@@ -94,7 +94,7 @@ export const FRAMES_FAQ = [
   {
     question: 'When is FrameBuddy coming to iPhone and iPad?',
     answer:
-      'The iPhone and iPad version is finished and waiting for App Review. It shares the App Store listing with the Mac app, so the same download link works on iPhone and iPad once Apple approves it. Leave your email on this page to hear when it is live.',
+      'The iPhone and iPad version is coming soon. It shares the App Store listing with the Mac app, so the same download link will work on iPhone and iPad once it is out. Leave your email on this page to hear when it is live.',
   },
   {
     question: 'Which devices does FrameBuddy have frames for?',

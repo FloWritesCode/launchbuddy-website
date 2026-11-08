@@ -2,6 +2,8 @@
 import { Image } from 'astro:assets';
 import ShipCTA from './ShipCTA.astro';
 import appIcon from '../assets/app-icon.png';
+import framebuddyIcon from '../assets/frames/framebuddy-icon.png';
+import { CHECKLIST_PATH, FRAMES_PATH } from '../lib/site';
 
 interface Props {
   currentPath?: string;
@@ -14,8 +16,14 @@ const links = [
   { href: '/#pricing', label: 'Pricing' },
   { href: '/changelog/', label: 'Changelog', section: '/changelog' },
   { href: '/blog/', label: 'Blog', section: '/blog' },
-  { href: '/checklist/', label: 'Checklist', section: '/checklist' },
 ];
+
+const tools = [
+  { href: CHECKLIST_PATH, label: 'Launch checklist', description: 'Free PDF for your first App Store submit' },
+  { href: FRAMES_PATH, label: 'FrameBuddy', description: 'Free device frames for screenshots', icon: framebuddyIcon },
+];
+
+const isToolPage = tools.some((tool) => currentPath.startsWith(tool.href));
 ---
 
 <header class="site-nav" data-site-nav>
@@ -37,6 +45,51 @@ const links = [
           </a>
         ))
       }
+      <div class="site-nav__menu" data-nav-menu>
+        <button
+          type="button"
+          class:list={['site-nav__link site-nav__menu-button', isToolPage && 'is-current']}
+          aria-expanded="false"
+          aria-controls="nav-tools"
+        >
+          Tools
+          <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path
+              fill-rule="evenodd"
+              d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.06l3.71-3.83a.75.75 0 1 1 1.08 1.04l-4.25 4.39a.75.75 0 0 1-1.08 0L5.21 8.27a.75.75 0 0 1 .02-1.06Z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </button>
+        <div id="nav-tools" class="site-nav__dropdown">
+          <ul class="site-nav__dropdown-panel">
+            {
+              tools.map((tool) => (
+                <li>
+                  <a
+                    class="site-nav__tool"
+                    href={tool.href}
+                    aria-current={currentPath.startsWith(tool.href) ? 'page' : undefined}
+                  >
+                    {tool.icon ? (
+                      <Image src={tool.icon} width={64} height={64} alt="" class="site-nav__tool-icon" />
+                    ) : (
+                      <span class="site-nav__tool-icon site-nav__tool-icon--checklist" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M9 6h11M9 12h11M9 18h11M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2" />
+                        </svg>
+                      </span>
+                    )}
+                    <span>
+                      <span class="site-nav__tool-label">{tool.label}</span>
+                      <span class="site-nav__tool-description">{tool.description}</span>
+                    </span>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
     </div>
 
     <div class="site-nav__actions">
@@ -51,3 +104,40 @@ const links = [
     </div>
   </nav>
 </header>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-nav-menu]').forEach((menu) => {
+    const button = menu.querySelector('button');
+    if (!button) return;
+
+    let openedByHover = false;
+    const setOpen = (open: boolean) => {
+      menu.toggleAttribute('data-open', open);
+      button.setAttribute('aria-expanded', String(open));
+    };
+
+    button.addEventListener('click', () => {
+      setOpen(openedByHover || !menu.hasAttribute('data-open'));
+      openedByHover = false;
+    });
+    menu.addEventListener('mouseenter', () => {
+      openedByHover = !menu.hasAttribute('data-open');
+      setOpen(true);
+    });
+    menu.addEventListener('mouseleave', () => {
+      openedByHover = false;
+      setOpen(false);
+    });
+    menu.addEventListener('focusout', (event) => {
+      if (!menu.contains(event.relatedTarget as Node | null)) setOpen(false);
+    });
+    menu.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape' || !menu.hasAttribute('data-open')) return;
+      setOpen(false);
+      button.focus();
+    });
+    document.addEventListener('click', (event) => {
+      if (!menu.contains(event.target as Node)) setOpen(false);
+    });
+  });
+</script>
