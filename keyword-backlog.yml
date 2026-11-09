@@ -2646,7 +2646,8 @@ backlog:
     cluster: "app-compliance"
     intent: "checklist"
     priority: "P2"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/app-store-dsa-trader-status/"
     confidence: "medium"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/app-store-connect-release-checklist.md", "src/content/blog/ios-app-launch-checklist.md", "src/content/blog/indie-app-portfolio-management.md"]
