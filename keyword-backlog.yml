@@ -340,6 +340,8 @@ research_sources:
     url: "https://github.com/blitzdotdev/blitz-mac/blob/master/docs/mcp-tools-approval-flow.md"
   - name: "Apple: App Store Connect release notes"
     url: "https://developer.apple.com/help/app-store-connect/release-notes/"
+  - name: "Apple: Upcoming new age rating content descriptors"
+    url: "https://developer.apple.com/news/?id=yxkh08us"
   - name: "Apple: View agreements status"
     url: "https://developer.apple.com/help/app-store-connect/manage-agreements/view-agreements-status/"
   - name: "Apple: Manage purchase options for an auto-renewable subscription"
