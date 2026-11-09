@@ -1,10 +1,10 @@
 version: 1
-researched_at: "2026-11-02"
+researched_at: "2026-11-09"
 market: "English-language web search"
 status: "healthy"
 
 methodology:
-  - "Compared candidate topics against all 128 existing posts in src/content/blog."
+  - "Compared candidate topics against all 135 existing posts in src/content/blog."
   - "Used current Google result language, Apple documentation terminology, competitor positioning, and LaunchBuddy product fit."
   - "Priorities are qualitative. They do not claim exact search volume or keyword difficulty."
   - "Before drafting, recheck the live search results and reject topics whose intent is already satisfied by an existing LaunchBuddy article."
@@ -338,6 +338,38 @@ research_sources:
     url: "https://github.com/blitzdotdev/blitz-mac"
   - name: "Blitz: MCP tool approval flow"
     url: "https://github.com/blitzdotdev/blitz-mac/blob/master/docs/mcp-tools-approval-flow.md"
+  - name: "Apple: App Store Connect release notes"
+    url: "https://developer.apple.com/help/app-store-connect/release-notes/"
+  - name: "Apple: View agreements status"
+    url: "https://developer.apple.com/help/app-store-connect/manage-agreements/view-agreements-status/"
+  - name: "Apple: Manage purchase options for an auto-renewable subscription"
+    url: "https://developer.apple.com/help/app-store-connect/manage-subscriptions/manage-purchase-options-for-auto-renewable-subscriptions/"
+  - name: "Apple: Offer your subscriptions to businesses and schools"
+    url: "https://developer.apple.com/news/?id=yfo21auu"
+  - name: "Apple: App pricing and availability"
+    url: "https://developer.apple.com/help/app-store-connect/reference/pricing-and-availability/app-pricing-and-availability/"
+  - name: "Apple: Manage availability of iPhone and iPad apps on Macs with Apple silicon"
+    url: "https://developer.apple.com/help/app-store-connect/manage-your-apps-availability/manage-availability-of-iphone-and-ipad-apps-on-macs-with-apple-silicon/"
+  - name: "Apple: Test iPhone and iPad apps on Macs with Apple silicon"
+    url: "https://developer.apple.com/help/app-store-connect/test-a-beta-version/test-iphone-and-ipad-apps-on-macs-with-apple-silicon"
+  - name: "Apple: Get an alternative distribution package ID"
+    url: "https://developer.apple.com/help/app-store-connect/managing-alternative-distribution/get-an-alternative-distribution-package-id/"
+  - name: "Apple: Submit for Notarization"
+    url: "https://developer.apple.com/help/app-store-connect/managing-alternative-distribution/submit-for-notarization"
+  - name: "Apple: View builds and metadata"
+    url: "https://developer.apple.com/help/app-store-connect/manage-builds/view-builds-and-metadata/"
+  - name: "Releaser"
+    url: "https://apps.chbeer.de/releaser/"
+  - name: "Storebench"
+    url: "https://storebench.viktornyberg.com/"
+  - name: "Connected for App Developers"
+    url: "https://apps.apple.com/us/app/connected-for-app-developers/id6451065078"
+  - name: "LaunchDockx"
+    url: "https://apps.apple.com/pk/app/launchdockx/id6762794087"
+  - name: "ReleaseX"
+    url: "https://www.enlightenment.school/releasex.html"
+  - name: "LaunchLayer"
+    url: "https://launch-layers.cloud/features"
 
 existing_primary_targets:
   - keyword: "AI release notes for iOS apps"
@@ -724,6 +756,27 @@ existing_primary_targets:
   - keyword: "App Store Connect catalog reports"
     file: "src/content/blog/app-store-connect-catalog-reports.md"
     intent: "how-to"
+  - keyword: "test refund requests in Sandbox"
+    file: "src/content/blog/test-refund-requests-in-sandbox.md"
+    intent: "how-to"
+  - keyword: "App Store app icon requirements"
+    file: "src/content/blog/app-store-app-icon-requirements.md"
+    intent: "checklist"
+  - keyword: "In-App Purchase availability"
+    file: "src/content/blog/in-app-purchase-availability.md"
+    intent: "how-to"
+  - keyword: "change Sandbox account storefront"
+    file: "src/content/blog/change-sandbox-account-storefront.md"
+    intent: "how-to"
+  - keyword: "App Store regulated medical device status"
+    file: "src/content/blog/app-store-regulated-medical-device-status.md"
+    intent: "checklist"
+  - keyword: "change App Store primary language"
+    file: "src/content/blog/change-app-store-primary-language.md"
+    intent: "how-to"
+  - keyword: "Apple-hosted asset packs"
+    file: "src/content/blog/apple-hosted-asset-packs.md"
+    intent: "how-to"
 
 excluded_due_to_overlap:
   - keyword: "iOS app project management"
@@ -885,9 +938,9 @@ excluded_due_to_overlap:
   - keyword: "Sandbox subscription renewal rate"
     reason: "The published TestFlight subscription and In-App Purchase testing guide now owns this intent with the default TestFlight clock, Sandbox renewal-rate profiles, product-duration lookup, timestamp evidence, automatic-renewal limit, billing-retry and grace checkpoints, and the production-timing boundary."
   - keyword: "Apple Business Manager subscription volume purchasing"
-    reason: "This is one not-yet-live distribution branch of the approved App Store multiseat subscriptions candidate. A separate page would duplicate its availability, entitlement, assignment, test, rollout, and support decisions before current search results establish a stable standalone intent after the October 22 launch."
+    reason: "This is the organization-and-school distribution branch of the approved App Store multiseat subscriptions candidate. A separate page would duplicate kw-131's availability, entitlement, seat-assignment, test, rollout, and support decisions."
   - keyword: "App Store Group Purchases"
-    reason: "Apple says Group Purchases will launch in winter 2026, so procedural intent is not stable yet. The approved multiseat subscriptions guide will own the current default-on audit and preserve Group Purchases as a dated future branch that requires a live documentation check."
+    reason: "Apple currently allows Group Purchases configuration and Sandbox testing but says public App Store availability will begin in winter 2026. The approved kw-131 guide owns this dated future branch beside live organization Volume Purchasing and requires a fresh availability check before procedural drafting."
   - keyword: "TestFlight App Review limit"
     reason: "The six-builds-per-24-hours detail is a limit inside the published TestFlight Beta App Review lifecycle rather than a separate user goal. Update that living guide if Apple's current documentation changes instead of creating a limit-only page."
   - keyword: "TestFlight tester status meanings"
@@ -918,6 +971,14 @@ excluded_due_to_overlap:
     reason: "The accepted Game Center release checklist candidate owns the Xcode, TestFlight, App Review, and live-component lifecycle, including prerelease account visibility and clearing leaderboard test data. A beta-only page would fragment that release workflow."
   - keyword: "Game Center achievements App Store Connect"
     reason: "Achievement identifiers, localization, testing, submission, and live verification are component rows in the accepted Game Center release checklist. A single-component setup page would mostly restate Apple documentation and overlap the broader release intent."
+  - keyword: "App Store Shared Location age rating"
+    reason: "The published App Store age rating questionnaire guide owns content-descriptor evidence and change-triggered release review. Shared Location is a new questionnaire row to add to that living guide, not a separate search intent."
+  - keyword: "App Store Dating and Relationships age rating"
+    reason: "The published App Store age rating questionnaire guide owns content-descriptor evidence, regional outcomes, and release review. Dating and Relationships is a new questionnaire row to add to that living guide, not a separate article."
+  - keyword: "Pending Developer Release checklist"
+    reason: "The published manual-versus-automatic App Store release comparison already explains Pending Developer Release, and the published post-launch and release checklists own the final verification and follow-up workflow."
+  - keyword: "App Store support URL requirements"
+    reason: "The published App Store metadata management and release-checklist guides already own required URL review, localization, build accuracy, and pre-submission verification. A field-only page would be a minor variation."
 
 backlog:
   - id: "kw-005"
@@ -2614,7 +2675,7 @@ backlog:
     overlap: "medium"
     related_existing_posts: ["src/content/blog/app-store-subscription-groups.md", "src/content/blog/family-sharing-for-in-app-purchases.md", "src/content/blog/test-subscriptions-in-app-purchases-testflight.md"]
     product_features: ["Release planning and taskboards", "App Store submission checklists", "App Store Connect analytics dashboard"]
-    angle: "Audit Apple's default-on multiseat setting before rollout: separate App Store, Apple Business Manager, and Apple School Manager availability; distinguish Volume Purchasing from the not-yet-live Group Purchases path; map StoreKit 2 entitlement, Family Sharing, seat-assignment, test, support, and launch checks; and avoid claiming LaunchBuddy configures subscriptions or that multiseat access will increase revenue."
+    angle: "Audit Apple's default-on multiseat setting before rollout: separate live Apple Business Manager and Apple School Manager Volume Purchasing from Group Purchases that can be configured and tested in Sandbox but are not yet publicly available; map StoreKit 2 eligibility, purchaser and member entitlements, Family Sharing interactions, seat assignment, support, and launch checks; require a live availability recheck and avoid claiming LaunchBuddy configures subscriptions or that multiseat access will increase revenue."
 
   - id: "kw-132"
     keyword: "App Store subscription Bundles vs Suites"
@@ -2866,3 +2927,146 @@ backlog:
     related_existing_posts: ["src/content/blog/launchbuddy-mcp-server.md", "src/content/blog/launchbuddy-vs-fastlane-asc-cli.md", "src/content/blog/app-store-connect-alternatives.md", "src/content/blog/human-in-the-loop-ai-approval-workflow.md"]
     product_features: ["Release planning and taskboards", "App Store submission checklists", "Local MCP server", "MCP read tools", "MCP write tools", "Automation approvals"]
     angle: "Compare two macOS localhost MCP workflows without implying feature parity: LaunchBuddy keeps app, release, task, and checklist context and turns MCP writes into approval proposals, while Blitz's first-party repository documents broader direct App Store Connect, simulator, screenshot, purchase, TestFlight, and submission tools with a configurable native approval flow; run one read-first release task and one bounded write in each, then recheck both products before drafting."
+
+  - id: "kw-151"
+    keyword: "App Store agreements status meanings"
+    proposed_slug: "app-store-agreements-status-meanings"
+    cluster: "app-store-connect"
+    intent: "troubleshooting"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-connect-help.md", "src/content/blog/app-store-connect-api-key.md"]
+    product_features: ["App portfolio", "Release planning and taskboards", "App Store submission checklists"]
+    angle: "Map Apple's 12 exact agreement states—New, Pending User Info, Processing, Verifying, Active, Active (Pending User), Active (New Agreement Available), Pending (New Legal Entity), Pending (Update Legal Entity), Pending (New Agreement Available), Expired, and Disabled—to the responsible role and next evidence or escalation task; show how one account-level blocker affects a portfolio without storing tax, banking, identity, or contract data in LaunchBuddy, and state that LaunchBuddy cannot sign agreements or provide financial or legal advice."
+
+  - id: "kw-152"
+    keyword: "iPhone app on Apple silicon Mac"
+    proposed_slug: "iphone-app-apple-silicon-mac"
+    cluster: "distribution"
+    intent: "checklist"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "low"
+    related_existing_posts: ["src/content/blog/testflight-release-management.md", "src/content/blog/app-store-universal-purchase.md", "src/content/blog/app-store-connect-release-checklist.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists", "App portfolio"]
+    angle: "Turn Apple's app-level availability, minimum-macOS calculation, TestFlight group setting, compatibility verification, opt-out, and later native-macOS replacement behavior into a build-specific test and release checklist, while stating that LaunchBuddy neither changes availability nor validates Mac compatibility."
+
+  - id: "kw-153"
+    keyword: "App Store last compatible version"
+    proposed_slug: "app-store-last-compatible-version"
+    cluster: "distribution"
+    intent: "guide"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/ios-app-sunset-checklist.md", "src/content/blog/ios-version-number-vs-build-number.md", "src/content/blog/ios-app-release-management.md"]
+    product_features: ["App portfolio", "Release planning and taskboards", "App Store submission checklists"]
+    angle: "Explain that Apple's Last Compatible Version Settings govern redownloads for existing customers rather than new acquisition, then build a support-policy record for minimum-OS changes, legal or usability exclusions, entitlement and backend compatibility, customer communication, and verification without claiming LaunchBuddy changes the setting or can roll back an App Store release."
+
+  - id: "kw-154"
+    keyword: "iOS alternative distribution release checklist"
+    proposed_slug: "ios-alternative-distribution-release-checklist"
+    cluster: "distribution"
+    intent: "checklist"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-connect-draft-submissions.md", "src/content/blog/app-store-connect-release-checklist.md", "src/content/blog/app-store-unlisted-vs-private-distribution.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists", "App portfolio"]
+    angle: "Separate App Store review from Notarization, then coordinate region eligibility, Account Holder agreement, marketplace or web-distribution setup, per-version review type, package ID, partner handoff, update notification, and live verification in one release matrix; keep legal eligibility and all package, marketplace, and website operations outside LaunchBuddy."
+
+  - id: "kw-155"
+    keyword: "App Store app file size"
+    proposed_slug: "app-store-app-file-size"
+    cluster: "release-quality"
+    intent: "guide"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-connect-help.md", "src/content/blog/testflight-release-management.md", "src/content/blog/ios-app-release-management.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists"]
+    angle: "Use Apple's build-metadata terminology to distinguish uploaded, compressed download, install, essential-content, and device-variant sizes; preserve one build-to-build size record and route a warning into a scoped optimization task without claiming LaunchBuddy measures binaries, predicts final DRM-compressed size, or performs app thinning."
+
+  - id: "kw-156"
+    keyword: "LaunchBuddy vs Releaser"
+    proposed_slug: "launchbuddy-vs-releaser"
+    cluster: "comparisons"
+    intent: "comparison"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/launchbuddy-vs-helm.md", "src/content/blog/launchbuddy-vs-app-store-connect.md", "src/content/blog/indie-app-portfolio-management.md"]
+    product_features: ["App portfolio", "Release planning and taskboards", "App Store submission checklists", "iCloud sync", "Release notes upload"]
+    angle: "Compare LaunchBuddy's cross-device portfolio, version-scoped tasks, reusable checklists, and selected App Store workflows with Releaser's first-party-documented Mac workspace for bulk version creation, build matching, localization, submission, and multi-app release operations; use a two-app update to show when planning context or direct portfolio execution is the missing layer and revalidate both products before drafting."
+
+  - id: "kw-157"
+    keyword: "LaunchBuddy vs Storebench"
+    proposed_slug: "launchbuddy-vs-storebench"
+    cluster: "comparisons"
+    intent: "comparison"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/launchbuddy-vs-appconsul.md", "src/content/blog/launchbuddy-vs-helm.md", "src/content/blog/human-in-the-loop-ai-approval-workflow.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists", "ASO experiments", "iCloud sync", "Automation approvals"]
+    angle: "Compare LaunchBuddy's app-and-version planning, private iCloud sync, experiment records, and shared proposal queue with Storebench's first-party-documented encrypted local workspace for listing drafts, pricing, screenshots, TestFlight, release preparation, and reviewed Apple mutations; test one metadata-heavy update and revalidate capabilities and licensing before drafting."
+
+  - id: "kw-158"
+    keyword: "LaunchBuddy vs Connected for App Developers"
+    proposed_slug: "launchbuddy-vs-connected-app-developers"
+    cluster: "comparisons"
+    intent: "comparison"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/launchbuddy-vs-app-store-connect.md", "src/content/blog/manage-app-store-connect-from-iphone.md", "src/content/blog/xcode-cloud-testflight-distribution.md"]
+    product_features: ["App portfolio", "Release planning and taskboards", "App Store submission checklists", "App Store reviews inbox", "App Store Connect analytics dashboard", "iCloud sync"]
+    angle: "Compare LaunchBuddy's release scope, reusable checklists, selected reviews and analytics, and private cross-device plan with Connected's current App Store listing for direct metadata, version submission, Xcode Cloud, user-access, and Sandbox-tester operations; identify when a planning companion or an unofficial App Store Connect client is the missing layer and recheck the listing before drafting."
+
+  - id: "kw-159"
+    keyword: "LaunchBuddy vs LaunchDockx"
+    proposed_slug: "launchbuddy-vs-launchdockx"
+    cluster: "comparisons"
+    intent: "comparison"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "high"
+    related_existing_posts: ["src/content/blog/ios-app-release-management.md", "src/content/blog/app-store-release-notes-generator.md", "src/content/blog/launchbuddy-free-vs-pro.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists", "iCloud sync", "App portfolio", "Release notes upload"]
+    angle: "Compare two indie release planners directly: LaunchBuddy's multi-app, cross-device iCloud workflow, selected App Store context, and reusable checklists against LaunchDockx's current App Store listing for local-only release pipelines, feature categories, templates, progress, and changelog export; use the same small update, acknowledge the high overlap, and revalidate naming, plans, sync, and integrations before drafting."
+
+  - id: "kw-160"
+    keyword: "LaunchBuddy vs ReleaseX"
+    proposed_slug: "launchbuddy-vs-releasex"
+    cluster: "comparisons"
+    intent: "comparison"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/launchbuddy-vs-asomium.md", "src/content/blog/launchbuddy-vs-helm.md", "src/content/blog/app-store-metadata-management.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists", "Release notes upload", "ASO experiments", "Automation approvals"]
+    angle: "Compare LaunchBuddy's version scope, taskboards, reusable checks, experiment records, and approval-gated AI actions with ReleaseX's first-party-documented project-aware metadata, screenshot, TestFlight, compliance, submission, and release workspace; use one localized update to define planning versus direct store-operation boundaries and verify current availability and pricing before drafting."
+
+  - id: "kw-161"
+    keyword: "LaunchBuddy vs LaunchLayer"
+    proposed_slug: "launchbuddy-vs-launchlayer"
+    cluster: "comparisons"
+    intent: "comparison"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-connect-alternatives.md", "src/content/blog/human-in-the-loop-ai-approval-workflow.md", "src/content/blog/app-store-connect-ai-agent.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists", "App-aware chat", "Editable AI artifacts", "Approval-gated AI actions", "iCloud sync"]
+    angle: "Compare LaunchBuddy's private iCloud release workspace, app-aware planning artifacts, and approval-gated local changes with LaunchLayer's first-party-documented hosted project, preflight, listing, TestFlight, compliance, and confirmed App Store publishing workflow; use one release to expose the local-versus-hosted trust and execution boundary, and revalidate plans and live capabilities before drafting."
