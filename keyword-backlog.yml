@@ -2728,7 +2728,7 @@ backlog:
     confidence: "medium"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/app-store-connect-ai-agent.md", "src/content/blog/human-in-the-loop-ai-approval-workflow.md", "src/content/blog/launchbuddy-mcp-server.md", "src/content/blog/launchbuddy-vs-app-store-connect.md"]
-    product_features: ["Release planning and taskboards", "App Store submission checklists", "App Store reviews inbox", "Release notes upload", "Local MCP server", "Approval-gated AI actions", "Automation approvals"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists", "iCloud sync", "App Store reviews inbox", "Release notes upload", "Local MCP server", "Approval-gated AI actions", "Automation approvals"]
     angle: "Compare LaunchBuddy's private iCloud release workspace and localhost MCP proposal queue with MetaRun's first-party-documented hosted agent surface for broader App Store Connect operations, previews, localization, pricing, and team access; use one release to show when planning context or direct store-operation breadth is the missing layer and recheck live capabilities before drafting."
 
   - id: "kw-136"
@@ -2741,7 +2741,7 @@ backlog:
     confidence: "medium"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/app-store-localization-workflow.md", "src/content/blog/app-store-release-notes-generator.md", "src/content/blog/launchbuddy-vs-fastlane-asc-cli.md", "src/content/blog/ios-app-release-management.md"]
-    product_features: ["Release planning and taskboards", "App Store submission checklists", "iCloud sync", "Release notes upload", "Local MCP server", "Automation approvals"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists", "iCloud sync", "Release notes upload", "Local MCP server", "MCP write tools", "Automation approvals"]
     angle: "Compare LaunchBuddy's iOS app backlog, version scope, submission checklists, selected Apple context, and approval-gated local writes with HyperRelease's first-party-documented iOS-and-Android store-copy localization and publish handoff; define a non-duplicative boundary for teams that need both product planning and cross-store listing operations, with a fresh product check before drafting."
 
   - id: "kw-137"
@@ -2848,7 +2848,7 @@ backlog:
     confidence: "medium"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/app-store-connect-ai-agent.md", "src/content/blog/ai-app-store-connect-workflow.md", "src/content/blog/human-in-the-loop-ai-approval-workflow.md"]
-    product_features: ["Agent plans and playbooks", "App-aware chat", "Editable AI artifacts", "Approval-gated AI actions", "Automation approvals"]
+    product_features: ["Agent plans and playbooks", "App-aware chat", "Editable AI artifacts", "Approval-gated AI actions", "Automation approvals", "AI data disclosure controls"]
     angle: "Walk one prepare-release, feedback-triage, and performance-analysis goal through context selection, an editable artifact, a narrowly scoped proposal, approval or rejection, and verification; distinguish delegated playbooks from conversational App Chat and state the Pro, usage-limit, data-disclosure, and App Store credential boundaries."
 
   - id: "kw-145"
