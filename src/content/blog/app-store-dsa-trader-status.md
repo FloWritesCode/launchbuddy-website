@@ -4,7 +4,7 @@ description: "Declare App Store DSA trader status, verify public contact details
 pubDate: 2026-11-09
 ---
 
-Apple requires developers using App Store Connect to declare whether their account has **trader status** under the EU Digital Services Act (DSA), even if they don't distribute apps in the EU. If you're a trader with an app available in any of the EU's 27 territories, Apple verifies and displays the contact information you provide on that app's product page. Apple says apps without trader status were removed from the EU App Store starting February 18, 2025, until the status is provided and verified.
+Apple requires developers using App Store Connect to declare whether their account has **trader status** under the EU Digital Services Act (DSA), even if they don't distribute apps in the EU. If you're a trader with an app available in any of the EU's 27 territories, Apple verifies and displays the contact information you provide on that app's product page. EU availability depends on providing and, when required, verifying the status.
 
 The declaration is a legal self-assessment, not an App Store optimization setting. Apple can't decide your status for you, and neither can LaunchBuddy. If the answer isn't clear, get advice from a lawyer familiar with your business and EU consumer law before changing the account or app-level setting.
 
@@ -16,6 +16,7 @@ Use this checklist:
 - [ ] Gather the correct public contact details and verification documents.
 - [ ] Complete the account-level DSA declaration in App Store Connect.
 - [ ] Check the DSA setting for every app after the account declaration.
+- [ ] Add a Labels and Markings URL for an app when applicable.
 - [ ] Wait for required verification to complete.
 - [ ] Verify each affected app's EU availability and public disclosure.
 - [ ] Keep a dated receipt for the decision and add a release recheck trigger.
@@ -51,7 +52,7 @@ Keep legal analysis and identity documents in an appropriately secured system. Y
 
 Only an Account Holder or Admin can complete the compliance flow. Before opening App Store Connect, identify the information Apple will display and the information it needs for verification.
 
-| Enrollment type | Public contact information Apple requests |
+| Enrollment type | Information Apple displays |
 | --- | --- |
 | Organization | The address associated with the D-U-N-S Number, plus a phone number and email address |
 | Individual | An address or P.O. Box, phone number, and email address |
@@ -108,6 +109,7 @@ For each app:
 4. Under **Digital Services Act**, select **Edit**.
 5. Confirm the app-specific status.
 6. If this is the first trader declaration, complete the contact-information verification Apple requests.
+7. If applicable, select **Add Labels and Markings** in the same section and enter the URL for labels or markings required by EU law.
 
 Use a portfolio matrix instead of one account-wide checkbox:
 
@@ -160,7 +162,7 @@ Set the trigger when you close the task. “Check later” isn't useful unless i
 
 ## Where LaunchBuddy fits
 
-LaunchBuddy can keep one DSA owner, deadline, app-level audit, and release gate next to the affected app and version. Its portfolio, release planning, taskboards, and default App Store submission checklists work on iPhone, iPad, and Mac. The Free plan supports two apps and two releases; custom reusable checklists require Pro.
+In LaunchBuddy, represent this work as release tasks or checklist items next to the affected app and version. Its portfolio, release planning, taskboards, and default App Store submission checklists work on iPhone, iPad, and Mac. The Free plan supports two apps and two releases; custom reusable checklists require Pro.
 
 Project tasks, releases, and notes sync through the user's private iCloud account. Even so, a task manager isn't the right place for identity documents, bank details, or a full legal file. Store a safe reference to the controlled evidence instead.
 
