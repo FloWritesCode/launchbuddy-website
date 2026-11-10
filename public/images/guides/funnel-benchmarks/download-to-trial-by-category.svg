@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 650" role="img" aria-labelledby="title desc">
+  <title id="title">Median download-to-trial rate by category</title>
+  <desc id="desc">RevenueCat State of Subscription Apps 2026 medians: Business 9.1 percent, Health and Fitness 6.9 percent, Education 6.5 percent, Utilities 6.5 percent, Gaming 4.4 percent, Travel 4.1 percent, Media and Entertainment 4.0 percent. Most other non-Gaming categories convert between 5 and 6 percent.</desc>
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, "Segoe UI", Roboto, sans-serif; }
+    .title { fill: #f5f7fb; font-size: 26px; font-weight: 650; }
+    .subtitle { fill: #a1adc0; font-size: 16px; }
+    .label { fill: #f5f7fb; font-size: 17px; }
+    .value { fill: #f5f7fb; font-size: 16px; font-weight: 600; }
+    .axis { fill: #6b778c; font-size: 14px; }
+    .note { fill: #6b778c; font-size: 13px; }
+    .band-label { fill: #22d3ee; font-size: 14px; }
+    .grid { stroke: #ffffff; stroke-opacity: 0.07; }
+    .bar { fill: #2f7bff; }
+  </style>
+  <rect x="0.5" y="0.5" width="799" height="649" rx="20" fill="#0b1120" stroke="#ffffff" stroke-opacity="0.08"/>
+  <text class="title" x="40" y="58">Download to trial, by category</text>
+  <text class="subtitle" x="40" y="88">Median share of installs that start a free trial within 30 days</text>
+
+  <g class="grid">
+    <line x1="290" y1="138" x2="290" y2="525"/>
+    <line x1="384" y1="138" x2="384" y2="525"/>
+    <line x1="478" y1="138" x2="478" y2="525"/>
+    <line x1="572" y1="138" x2="572" y2="525"/>
+    <line x1="666" y1="138" x2="666" y2="525"/>
+    <line x1="760" y1="138" x2="760" y2="525"/>
+  </g>
+
+  <rect x="525" y="138" width="47" height="387" fill="#22d3ee" fill-opacity="0.1"/>
+  <text class="band-label" x="548.5" y="128" text-anchor="middle">Most other non-Gaming categories: 5&#8211;6%</text>
+
+  <text class="label" x="270" y="176" text-anchor="end">Business</text>
+  <rect class="bar" x="290" y="157" width="427.7" height="26" rx="5"/>
+  <text class="value" x="726" y="176">9.1%</text>
+
+  <text class="label" x="270" y="230" text-anchor="end">Health &amp; Fitness</text>
+  <rect class="bar" x="290" y="211" width="324.3" height="26" rx="5"/>
+  <text class="value" x="623" y="230">6.9%</text>
+
+  <text class="label" x="270" y="284" text-anchor="end">Education</text>
+  <rect class="bar" x="290" y="265" width="305.5" height="26" rx="5"/>
+  <text class="value" x="604" y="284">6.5%</text>
+
+  <text class="label" x="270" y="338" text-anchor="end">Utilities</text>
+  <rect class="bar" x="290" y="319" width="305.5" height="26" rx="5"/>
+  <text class="value" x="604" y="338">6.5%</text>
+
+  <text class="label" x="270" y="392" text-anchor="end">Gaming</text>
+  <rect class="bar" x="290" y="373" width="206.8" height="26" rx="5"/>
+  <text class="value" x="505" y="392">4.4%</text>
+
+  <text class="label" x="270" y="446" text-anchor="end">Travel</text>
+  <rect class="bar" x="290" y="427" width="192.7" height="26" rx="5"/>
+  <text class="value" x="491" y="446">4.1%</text>
+
+  <text class="label" x="270" y="500" text-anchor="end">Media &amp; Entertainment</text>
+  <rect class="bar" x="290" y="481" width="188" height="26" rx="5"/>
+  <text class="value" x="487" y="500">4.0%</text>
+
+  <line x1="290" y1="525" x2="760" y2="525" stroke="#ffffff" stroke-opacity="0.18"/>
+  <text class="axis" x="290" y="549" text-anchor="middle">0%</text>
+  <text class="axis" x="384" y="549" text-anchor="middle">2%</text>
+  <text class="axis" x="478" y="549" text-anchor="middle">4%</text>
+  <text class="axis" x="572" y="549" text-anchor="middle">6%</text>
+  <text class="axis" x="666" y="549" text-anchor="middle">8%</text>
+  <text class="axis" x="760" y="549" text-anchor="middle">10%</text>
+
+  <text class="note" x="40" y="598">Source: RevenueCat, State of Subscription Apps 2026. Calculated for apps with a trial-based</text>
+  <text class="note" x="40" y="618">strategy. revenuecat.com/state-of-subscription-apps</text>
+</svg>

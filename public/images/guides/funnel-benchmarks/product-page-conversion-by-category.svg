@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 710" role="img" aria-labelledby="title desc">
+  <title id="title">Average iOS product page conversion rate by category</title>
+  <desc id="desc">Appalize 2026 iOS average conversion ranges: Weather 38 to 48 percent, Utilities 35 to 45, Productivity 30 to 38, Games overall 30 to 35, Education 28 to 35, Health and Fitness 25 to 30, Finance 22 to 28, Shopping 20 to 26, Social Networking 18 to 25, Travel 18 to 24. LaunchBuddy's band is 20 to 40 percent with a 30 percent median.</desc>
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, "Segoe UI", Roboto, sans-serif; }
+    .title { fill: #f5f7fb; font-size: 26px; font-weight: 650; }
+    .subtitle { fill: #a1adc0; font-size: 16px; }
+    .label { fill: #f5f7fb; font-size: 17px; }
+    .range { fill: #a1adc0; font-size: 15px; }
+    .axis { fill: #6b778c; font-size: 14px; }
+    .note { fill: #6b778c; font-size: 13px; }
+    .ref-label { fill: #fbbf24; font-size: 14px; }
+    .grid { stroke: #ffffff; stroke-opacity: 0.07; }
+    .bar { fill: #34d399; fill-opacity: 0.85; }
+  </style>
+  <rect x="0.5" y="0.5" width="799" height="709" rx="20" fill="#0b1120" stroke="#ffffff" stroke-opacity="0.08"/>
+  <text class="title" x="40" y="58">Page view to download, by category</text>
+  <text class="subtitle" x="40" y="88">Average iOS conversion range, downloads &#247; product page views</text>
+
+  <g class="grid">
+    <line x1="290" y1="134" x2="290" y2="580"/>
+    <line x1="384" y1="134" x2="384" y2="580"/>
+    <line x1="478" y1="134" x2="478" y2="580"/>
+    <line x1="572" y1="134" x2="572" y2="580"/>
+    <line x1="666" y1="134" x2="666" y2="580"/>
+    <line x1="760" y1="134" x2="760" y2="580"/>
+  </g>
+
+  <rect x="478" y="134" width="188" height="446" fill="#fbbf24" fill-opacity="0.06"/>
+  <line x1="572" y1="134" x2="572" y2="580" stroke="#fbbf24" stroke-width="2" stroke-dasharray="6 5"/>
+  <text class="ref-label" x="572" y="124" text-anchor="middle">LaunchBuddy band 20&#8211;40%, median 30%</text>
+
+  <text class="label" x="40" y="166">Weather</text>
+  <text class="range" x="270" y="166" text-anchor="end">38&#8211;48%</text>
+  <rect class="bar" x="647.2" y="150" width="94" height="20" rx="5"/>
+
+  <text class="label" x="40" y="210">Utilities</text>
+  <text class="range" x="270" y="210" text-anchor="end">35&#8211;45%</text>
+  <rect class="bar" x="619" y="194" width="94" height="20" rx="5"/>
+
+  <text class="label" x="40" y="254">Productivity</text>
+  <text class="range" x="270" y="254" text-anchor="end">30&#8211;38%</text>
+  <rect class="bar" x="572" y="238" width="75.2" height="20" rx="5"/>
+
+  <text class="label" x="40" y="298">Games (overall)</text>
+  <text class="range" x="270" y="298" text-anchor="end">30&#8211;35%</text>
+  <rect class="bar" x="572" y="282" width="47" height="20" rx="5"/>
+
+  <text class="label" x="40" y="342">Education</text>
+  <text class="range" x="270" y="342" text-anchor="end">28&#8211;35%</text>
+  <rect class="bar" x="553.2" y="326" width="65.8" height="20" rx="5"/>
+
+  <text class="label" x="40" y="386">Health &amp; Fitness</text>
+  <text class="range" x="270" y="386" text-anchor="end">25&#8211;30%</text>
+  <rect class="bar" x="525" y="370" width="47" height="20" rx="5"/>
+
+  <text class="label" x="40" y="430">Finance</text>
+  <text class="range" x="270" y="430" text-anchor="end">22&#8211;28%</text>
+  <rect class="bar" x="496.8" y="414" width="56.4" height="20" rx="5"/>
+
+  <text class="label" x="40" y="474">Shopping</text>
+  <text class="range" x="270" y="474" text-anchor="end">20&#8211;26%</text>
+  <rect class="bar" x="478" y="458" width="56.4" height="20" rx="5"/>
+
+  <text class="label" x="40" y="518">Social Networking</text>
+  <text class="range" x="270" y="518" text-anchor="end">18&#8211;25%</text>
+  <rect class="bar" x="459.2" y="502" width="65.8" height="20" rx="5"/>
+
+  <text class="label" x="40" y="562">Travel</text>
+  <text class="range" x="270" y="562" text-anchor="end">18&#8211;24%</text>
+  <rect class="bar" x="459.2" y="546" width="56.4" height="20" rx="5"/>
+
+  <line x1="290" y1="580" x2="760" y2="580" stroke="#ffffff" stroke-opacity="0.18"/>
+  <text class="axis" x="290" y="604" text-anchor="middle">0%</text>
+  <text class="axis" x="384" y="604" text-anchor="middle">10%</text>
+  <text class="axis" x="478" y="604" text-anchor="middle">20%</text>
+  <text class="axis" x="572" y="604" text-anchor="middle">30%</text>
+  <text class="axis" x="666" y="604" text-anchor="middle">40%</text>
+  <text class="axis" x="760" y="604" text-anchor="middle">50%</text>
+
+  <text class="note" x="40" y="652">Source: Appalize, App Store Conversion Rate Benchmarks by Category (2026). Blended traffic,</text>
+  <text class="note" x="40" y="672">total downloads including redownloads. Ten of the report's 22 iOS categories shown.</text>
+</svg>

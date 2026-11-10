@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 830" role="img" aria-labelledby="title desc">
+  <title id="title">Median trial-to-paid rate by category, region and trial length</title>
+  <desc id="desc">RevenueCat State of Subscription Apps 2026 medians. By category: Travel 43.5 percent, Health and Fitness 37.7 percent, Gaming 25.0 percent, Photo and Video 22.2 percent. By region: North America 34.2 percent, Asia-Pacific 31.9 percent, Western Europe 29.7 percent, India and Southeast Asia 15.2 percent. By trial length: 17 to 32 days 42.5 percent, 5 to 9 days 37.4 percent, 4 days or less 25.5 percent. LaunchBuddy's reference median is 32 percent.</desc>
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, "Segoe UI", Roboto, sans-serif; }
+    .title { fill: #f5f7fb; font-size: 26px; font-weight: 650; }
+    .subtitle { fill: #a1adc0; font-size: 16px; }
+    .group { fill: #7cb0ff; font-size: 13px; font-weight: 700; letter-spacing: 1.5px; }
+    .label { fill: #f5f7fb; font-size: 17px; }
+    .value { fill: #f5f7fb; font-size: 16px; font-weight: 600; paint-order: stroke; stroke: #0b1120; stroke-width: 5px; stroke-linejoin: round; }
+    .axis { fill: #6b778c; font-size: 14px; }
+    .note { fill: #6b778c; font-size: 13px; }
+    .ref-label { fill: #fbbf24; font-size: 14px; }
+    .grid { stroke: #ffffff; stroke-opacity: 0.07; }
+    .bar { fill: #a78bfa; }
+  </style>
+  <rect x="0.5" y="0.5" width="799" height="829" rx="20" fill="#0b1120" stroke="#ffffff" stroke-opacity="0.08"/>
+  <text class="title" x="40" y="58">Trial to paid: what moves the rate</text>
+  <text class="subtitle" x="40" y="88">Median share of free trials that convert to a paid subscription</text>
+
+  <g class="grid">
+    <line x1="290" y1="140" x2="290" y2="700"/>
+    <line x1="384" y1="140" x2="384" y2="700"/>
+    <line x1="478" y1="140" x2="478" y2="700"/>
+    <line x1="572" y1="140" x2="572" y2="700"/>
+    <line x1="666" y1="140" x2="666" y2="700"/>
+    <line x1="760" y1="140" x2="760" y2="700"/>
+  </g>
+
+  <rect x="498.7" y="140" width="200.2" height="560" fill="#fbbf24" fill-opacity="0.06"/>
+  <line x1="590.8" y1="140" x2="590.8" y2="700" stroke="#fbbf24" stroke-width="2" stroke-dasharray="6 5"/>
+  <text class="ref-label" x="590.8" y="130" text-anchor="middle">LaunchBuddy reference: 32% (band 22.2&#8211;43.5%)</text>
+
+  <text class="group" x="40" y="162">BY CATEGORY</text>
+  <text class="label" x="270" y="194" text-anchor="end">Travel</text>
+  <rect class="bar" x="290" y="177" width="408.9" height="22" rx="5"/>
+  <text class="value" x="707" y="194">43.5%</text>
+  <text class="label" x="270" y="234" text-anchor="end">Health &amp; Fitness</text>
+  <rect class="bar" x="290" y="217" width="354.4" height="22" rx="5"/>
+  <text class="value" x="653" y="234">37.7%</text>
+  <text class="label" x="270" y="274" text-anchor="end">Gaming</text>
+  <rect class="bar" x="290" y="257" width="235" height="22" rx="5"/>
+  <text class="value" x="534" y="274">25.0%</text>
+  <text class="label" x="270" y="314" text-anchor="end">Photo &amp; Video</text>
+  <rect class="bar" x="290" y="297" width="208.7" height="22" rx="5"/>
+  <text class="value" x="507" y="314">22.2%</text>
+
+  <text class="group" x="40" y="364">BY REGION</text>
+  <text class="label" x="270" y="396" text-anchor="end">North America</text>
+  <rect class="bar" x="290" y="379" width="321.5" height="22" rx="5"/>
+  <text class="value" x="620" y="396">34.2%</text>
+  <text class="label" x="270" y="436" text-anchor="end">Asia-Pacific</text>
+  <rect class="bar" x="290" y="419" width="299.9" height="22" rx="5"/>
+  <text class="value" x="599" y="436">31.9%</text>
+  <text class="label" x="270" y="476" text-anchor="end">Western Europe</text>
+  <rect class="bar" x="290" y="459" width="279.2" height="22" rx="5"/>
+  <text class="value" x="578" y="476">29.7%</text>
+  <text class="label" x="270" y="516" text-anchor="end">India &amp; Southeast Asia</text>
+  <rect class="bar" x="290" y="499" width="142.9" height="22" rx="5"/>
+  <text class="value" x="442" y="516">15.2%</text>
+
+  <text class="group" x="40" y="566">BY TRIAL LENGTH</text>
+  <text class="label" x="270" y="598" text-anchor="end">17&#8211;32 days</text>
+  <rect class="bar" x="290" y="581" width="399.5" height="22" rx="5"/>
+  <text class="value" x="698" y="598">42.5%</text>
+  <text class="label" x="270" y="638" text-anchor="end">5&#8211;9 days</text>
+  <rect class="bar" x="290" y="621" width="351.6" height="22" rx="5"/>
+  <text class="value" x="650" y="638">37.4%</text>
+  <text class="label" x="270" y="678" text-anchor="end">4 days or less</text>
+  <rect class="bar" x="290" y="661" width="239.7" height="22" rx="5"/>
+  <text class="value" x="538" y="678">25.5%</text>
+
+  <line x1="290" y1="700" x2="760" y2="700" stroke="#ffffff" stroke-opacity="0.18"/>
+  <text class="axis" x="290" y="724" text-anchor="middle">0%</text>
+  <text class="axis" x="384" y="724" text-anchor="middle">10%</text>
+  <text class="axis" x="478" y="724" text-anchor="middle">20%</text>
+  <text class="axis" x="572" y="724" text-anchor="middle">30%</text>
+  <text class="axis" x="666" y="724" text-anchor="middle">40%</text>
+  <text class="axis" x="760" y="724" text-anchor="middle">50%</text>
+
+  <text class="note" x="40" y="772">Source: RevenueCat, State of Subscription Apps 2026 (category, region and trial-length medians).</text>
+  <text class="note" x="40" y="792">The 32% reference line is LaunchBuddy's choice, not a RevenueCat figure.</text>
+</svg>
