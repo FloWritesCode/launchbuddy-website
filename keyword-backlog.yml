@@ -2951,7 +2951,8 @@ backlog:
     cluster: "distribution"
     intent: "checklist"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/iphone-app-apple-silicon-mac/"
     confidence: "high"
     overlap: "low"
     related_existing_posts: ["src/content/blog/testflight-release-management.md", "src/content/blog/app-store-universal-purchase.md", "src/content/blog/app-store-connect-release-checklist.md"]
