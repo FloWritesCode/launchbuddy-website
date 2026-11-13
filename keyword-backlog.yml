@@ -2965,7 +2965,8 @@ backlog:
     cluster: "distribution"
     intent: "guide"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/app-store-last-compatible-version/"
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/ios-app-sunset-checklist.md", "src/content/blog/ios-version-number-vs-build-number.md", "src/content/blog/ios-app-release-management.md"]
