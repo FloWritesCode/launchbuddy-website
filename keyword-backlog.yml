@@ -2660,7 +2660,8 @@ backlog:
     cluster: "app-compliance"
     intent: "troubleshooting"
     priority: "P2"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/app-store-connect-compliance-review/"
     confidence: "medium"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/app-store-connect-help.md", "src/content/blog/app-store-connect-release-checklist.md", "src/content/blog/indie-app-portfolio-management.md"]
