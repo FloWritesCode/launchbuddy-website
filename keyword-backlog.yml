@@ -2674,7 +2674,8 @@ backlog:
     cluster: "monetization"
     intent: "guide"
     priority: "P2"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/app-store-multiseat-subscriptions/"
     confidence: "medium"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/app-store-subscription-groups.md", "src/content/blog/family-sharing-for-in-app-purchases.md", "src/content/blog/test-subscriptions-in-app-purchases-testflight.md"]
