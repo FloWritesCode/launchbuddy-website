@@ -4,7 +4,7 @@ description: "Audit, implement, and test App Store multiseat subscriptions acros
 pubDate: 2026-11-15
 ---
 
-**App Store multiseat subscriptions let one buyer purchase more than one seat of an auto-renewable subscription. As of November 15, 2026, Volume Purchasing is live for organizations using Apple Business Manager or Apple School Manager. App Store Group Purchases can be configured and tested in Sandbox, but Apple says their public App Store launch is still planned for winter 2026.**
+**App Store multiseat subscriptions let one buyer purchase more than one seat of an auto-renewable subscription. As of November 15, 2026, Volume Purchasing is live for organizations using Apple Business or Apple School Manager. Group Purchases can be configured and tested in Sandbox, but they aren't yet available to App Store customers; Apple says availability is planned for later in 2026, described as “this winter” in its October announcement.**
 
 That split should control your rollout. Audit every subscription's current setting now, support assigned organization members in production if that channel fits your app, and keep the in-app Group Purchase flow behind a release gate until Apple confirms public availability.
 
@@ -16,10 +16,10 @@ Apple uses one multiseat setting for two different purchase and seat-management 
 
 | Path | Buyer | Purchase location | Seat assignment | Status on November 15, 2026 |
 | --- | --- | --- | --- | --- |
-| Volume Purchasing | An organization or school | Apple Business Manager or Apple School Manager | The organization uses its device-management tools | Live |
-| Group Purchases | A person buying for a team or social group | Your app through StoreKit 2 | Apple can provide invitations and seat management, or you can use a supported custom flow | Sandbox testing available; public App Store launch still planned for winter 2026 |
+| Volume Purchasing | An organization or school | Apple Business or Apple School Manager | The organization uses its device-management tools | Live |
+| Group Purchases | A person buying for a team or social group | Your app through StoreKit 2 | Apple can provide invitations and seat management; custom invitation APIs are currently Sandbox-only | Sandbox testing available; not yet available to App Store customers |
 
-Apple's [October 22 announcement](https://developer.apple.com/news/?id=yfo21auu) is explicit about this sequence. Organizations can already purchase and assign subscription seats. Group Purchases entered configuration and Sandbox testing in November, but they're not yet a public customer workflow.
+Apple's [October 22 announcement](https://developer.apple.com/news/?id=yfo21auu) confirms this sequence. StoreKit 2 is required for both Volume Purchasing and Group Purchases.
 
 Don't treat the two paths as interchangeable. Volume Purchasing fits buyers that already use managed procurement and device-management systems. Group Purchases are designed for a purchaser who chooses a seat count in your app and invites members.
 
@@ -48,13 +48,13 @@ Keep | enable | disable | investigate
 Owner and review date:
 ```
 
-This is separate from subscription-group structure. A subscription group determines which plans replace one another and how upgrades, downgrades, and crossgrades work. Multiseat options determine whether one purchaser can buy quantities of a particular subscription. If that foundation is unclear, review the [App Store subscription groups guide](/blog/app-store-subscription-groups/) first.
+Subscription groups govern plan transitions; purchase options govern seat quantities and sales channels. If the plan structure is unclear, review the [App Store subscription groups guide](/blog/app-store-subscription-groups/) first.
 
 Also check who will make the change. Apple currently requires the Account Holder, Admin, or App Manager role to manage purchase options.
 
 ### Treat custom apps as a separate branch
 
-Apple doesn't expose purchase-option management for subscriptions in custom apps. Those subscriptions are automatically available through Apple Business Manager and Apple School Manager, and the developer can't opt out of multiseat purchasing.
+Apple doesn't expose purchase-option management for subscriptions in custom apps. Those subscriptions are automatically available through Apple Business and Apple School Manager, and the developer can't opt out of multiseat purchasing.
 
 Record that constraint instead of assigning someone a task to find a missing control.
 
@@ -71,9 +71,9 @@ Use this decision table:
 | Managed companies | Optional | Yes | Optional | Organization discovery plus assigned-member entitlement changes |
 | Managed schools | Optional | Optional | Yes | Education procurement plus assigned-member entitlement changes |
 
-Apple Business Manager and Apple School Manager support multiseat subscriptions only, so disabling multiseat removes the subscription from those channels. Existing multiseat subscriptions continue renewing until the group purchaser cancels, but the purchaser can't add seats and can still remove them.
+Apple Business and Apple School Manager support multiseat subscriptions only, so disabling multiseat removes the subscription from those channels. Existing multiseat subscriptions continue renewing until the group purchaser cancels, but the purchaser can't add seats and can still remove them.
 
-Removing an organization channel has a different consequence. For an approved subscription, removing Apple Business or Apple School Manager requires the Account Holder; affected subscriptions stop renewing automatically and are canceled after their next renewal. Apple also says you can't remove App Store availability after a subscription has been approved.
+Removing an organization channel has a different consequence. For an approved subscription, removing Apple Business or Apple School Manager requires the Account Holder; affected subscriptions won't renew automatically and will be canceled at the end of the applicable renewal period. Apple also says you can't remove App Store availability after a subscription has been approved.
 
 These aren't harmless merchandising edits. Save the before state, the intended audience, the customer impact, the approver, and a rollback or support plan before changing them.
 
@@ -96,21 +96,21 @@ Write the entitlement contract before implementing purchase UI:
 
 Don't grant a permanent account flag when a seat first appears. Recalculate service access from current verified entitlements and transaction updates, including revocation. If your server controls access, the client and server must converge on the same result.
 
-For organization purchases, Apple Business Manager or Apple School Manager handles the purchase and a device-management provider handles assignment. Your app doesn't need an in-app organization checkout. It does need to honor the resulting assigned transactions.
+For organization purchases, Apple Business or Apple School Manager handles the purchase and a device-management provider handles assignment. Your app doesn't need an in-app organization checkout. It does need to honor the resulting assigned transactions.
 
 ## Keep Group Purchase work behind a launch gate
 
-For public Group Purchases, your app will provide the merchandising UI, collect the requested seat count, and pass that count into the StoreKit 2 purchase request. Apple can then provide the invitation link, member acceptance, assignment tracking, and seat lifecycle. Developers with their own invitation and member system can instead integrate the supported server APIs.
+When Group Purchases become public, your app will provide the merchandising UI, collect the requested seat count, and pass that count into the StoreKit 2 purchase request. Apple can then provide the invitation link, member acceptance, assignment tracking, and seat lifecycle.
 
-As of this article's publication date, build and test that workflow in Sandbox only. Apple's [App Store Server API changelog](https://developer.apple.com/documentation/appstoreserverapi/app-store-server-api-changelog) marks the custom-invitation seat endpoints added on November 3 as Sandbox-only. Production group and member lookups are available for organization groups, but that doesn't make consumer Group Purchases publicly available.
+Developers with their own invitation and member system can use Apple's custom-invitation seat endpoints in Sandbox. Apple's [App Store Server API changelog](https://developer.apple.com/documentation/appstoreserverapi/app-store-server-api-changelog) marks those November 3 endpoints as Sandbox-only. Production group and member lookups are currently available only for organization groups.
 
 Use an explicit release gate:
 
 ```text
 Group Purchase production gate
 
-[ ] Apple has announced public App Store availability
-[ ] The product reports multiseat support in the production storefront
+[ ] Apple has confirmed public Group Purchase availability
+[ ] App Store Connect shows multiseat and App Store availability enabled
 [ ] Supported OS and StoreKit 2 requirements are documented
 [ ] Purchase UI shows seat count and total price clearly
 [ ] Included or custom invitation ownership is decided
@@ -124,7 +124,7 @@ Until the first two checks pass, don't expose a production control that promises
 
 ## Test the lifecycle, not just the first purchase
 
-Apple says Group Purchase configuration and Sandbox testing started in November 2026. Use Sandbox for the group path, and keep your ordinary single-seat TestFlight coverage as a regression layer. The [TestFlight subscription testing guide](/blog/test-subscriptions-in-app-purchases-testflight/) explains why the build, product ID, account mode, and expected entitlement must be recorded for every run.
+Use Sandbox for the group path, and keep your ordinary single-seat TestFlight coverage as a regression layer. The [TestFlight subscription testing guide](/blog/test-subscriptions-in-app-purchases-testflight/) explains why the build, product ID, account mode, and expected entitlement must be recorded for every run. The [StoreKit Testing versus Sandbox guide](/blog/storekit-testing-vs-sandbox/) helps separate fast local state tests from Apple's configured-product environment.
 
 For each supported multiseat path, capture:
 
@@ -163,7 +163,7 @@ For Group Purchases, add invitation acceptance, expired or reused invitations, n
 
 ## Resolve the Family Sharing boundary
 
-Family Sharing and multiseat purchasing can coexist, but they don't multiply each other.
+Only the purchaser's seat can be family-shared; additional seats remain individual.
 
 Apple's [Family Sharing documentation](https://developer.apple.com/help/app-store-connect/configure-in-app-purchase-settings/turn-on-family-sharing-for-in-app-purchases/) says only the group purchaser can share with family members. An additional multiseat member gets individual access and can't share that seat with their own family.
 
@@ -178,7 +178,7 @@ The [Family Sharing setup checklist](/blog/family-sharing-for-in-app-purchases/)
 
 ## Review pricing and support impact
 
-By default, each seat uses the subscription's current price. Apple has also announced volume price bands for larger quantities. Don't assume a bulk discount exists until you've configured and verified it for the intended channel and storefront.
+By default, each seat uses the subscription's current price. Apple has announced volume pricing of up to five bands for larger quantities. Verify that configuration is available for the intended channel before promising a discount.
 
 Price changes need a group-level review. Apple's [subscription-pricing documentation](https://developer.apple.com/help/app-store-connect/manage-subscriptions/manage-pricing-for-auto-renewable-subscriptions/) evaluates the first seat and the purchaser's combined total separately. Depending on the increase and storefront rules, the purchaser may need to consent. If required consent isn't given, the entire subscription, including all seats, expires after the last renewal at the former price.
 
@@ -193,7 +193,7 @@ That classification is more useful than telling every locked-out member to purch
 
 ## Where LaunchBuddy fits
 
-App Store Connect owns purchase options, storefront availability, and pricing. StoreKit, the App Store Server API, and your app or server own purchase and entitlement behavior. Apple Business Manager, Apple School Manager, and device-management tools own organization seat assignment. LaunchBuddy doesn't configure multiseat subscriptions, run Sandbox purchases, assign seats, inspect customer transactions, or prove an entitlement is valid.
+App Store Connect owns purchase options, storefront availability, and pricing. StoreKit, the App Store Server API, and your app or server own purchase and entitlement behavior. Apple Business, Apple School Manager, and device-management tools own organization seat assignment. LaunchBuddy doesn't configure multiseat subscriptions, run Sandbox purchases, assign seats, inspect customer transactions, or prove an entitlement is valid.
 
 LaunchBuddy can keep the audit, implementation tasks, test matrix, support copy, and public-availability gate attached to the release that changes subscription behavior. Release planning, taskboards, default submission checklists, and iCloud sync are available on the Free plan within the two-app and two-release limits. Pro adds custom reusable checklists and unlimited apps, releases, and project notes.
 
