@@ -2897,7 +2897,8 @@ backlog:
     cluster: "ai-safety"
     intent: "product-guide"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/launchbuddy-ai-playbooks/"
     confidence: "medium"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/app-store-connect-ai-agent.md", "src/content/blog/ai-app-store-connect-workflow.md", "src/content/blog/human-in-the-loop-ai-approval-workflow.md"]
