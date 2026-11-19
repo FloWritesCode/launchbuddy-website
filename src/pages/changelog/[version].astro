@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Footer from '../../components/Footer.astro';
-import { changelog, changelogPath, formatChangelogDate } from '../../lib/changelog';
+import { changelog, changelogPath, formatChangelogDate, type ChangelogShot } from '../../lib/changelog';
 import { absoluteUrl, breadcrumbJsonLd } from '../../lib/seo';
 
 export function getStaticPaths() {
@@ -16,6 +16,10 @@ const { entry } = Astro.props;
 const path = changelogPath(entry);
 const description = entry.summary;
 const title = `${entry.version}: ${entry.title}`;
+
+const aspect = (shot: ChangelogShot) => shot.image.height / shot.image.width;
+const hasMatchingShapes = (shots: ChangelogShot[]) =>
+  shots.every((shot) => Math.abs(aspect(shot) - aspect(shots[0])) < 0.05);
 ---
 
 <BaseLayout
@@ -64,7 +68,13 @@ const title = `${entry.version}: ${entry.title}`;
           <h2 class="font-display font-bold text-2xl md:text-3xl text-text-primary mb-3">{section.heading}</h2>
           <p class="text-text-secondary text-lg max-w-3xl">{section.body}</p>
           {section.shots.length > 0 && (
-            <div class:list={['mt-6', section.shots.length > 1 && 'changelog-pair']}>
+            <div
+              class:list={[
+                'mt-6',
+                section.shots.length > 1 && 'changelog-pair',
+                section.shots.length > 1 && hasMatchingShapes(section.shots) && 'changelog-pair--even',
+              ]}
+            >
               {section.shots.map((shot) => (
                 <figure class="m-0">
                   <Image

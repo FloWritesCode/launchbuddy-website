@@ -1059,6 +1059,10 @@ p {
     row-gap: 0.65rem;
   }
 
+  .changelog-pair--even {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .changelog-pair figure {
     display: grid;
     grid-template-rows: subgrid;
