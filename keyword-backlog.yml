@@ -2977,7 +2977,8 @@ backlog:
     cluster: "comparisons"
     intent: "comparison"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/launchbuddy-vs-blitz/"
     confidence: "medium"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/launchbuddy-mcp-server.md", "src/content/blog/launchbuddy-vs-fastlane-asc-cli.md", "src/content/blog/app-store-connect-alternatives.md", "src/content/blog/human-in-the-loop-ai-approval-workflow.md"]
