@@ -4,7 +4,7 @@ description: "Migrate iOS On-Demand Resources to Background Assets with an inven
 pubDate: 2026-11-20
 ---
 
-**To migrate On-Demand Resources (ODR) to Background Assets, inventory every ODR tag and `NSBundleResourceRequest` call, redesign those groups as managed asset packs, map each user need to an `essential`, `prefetch`, or `onDemand` policy, replace the request path, and test installation, update, failure, TestFlight, and App Store delivery before removing the legacy path.**
+**To migrate On-Demand Resources (ODR) to Background Assets, first inventory every ODR tag and `NSBundleResourceRequest` call.** Redesign those groups as managed asset packs, map each user need to an `essential`, `prefetch`, or `onDemand` policy, replace both download and file-access code, then test installation, update, failure, TestFlight, and App Store delivery before removing the legacy path.
 
 Start now, but don't mistake Apple's announcement for an immediate shutdown. Apple deprecated ODR starting with iOS 27, iPadOS 27, tvOS 27, and visionOS 27. Its [November 12, 2026 App Store Connect update](https://developer.apple.com/help/app-store-connect/release-notes/) says that, starting in early 2027, new apps and apps that have never used ODR can no longer upload builds containing it. Existing apps that already use ODR can still upload it under the current policy, and Apple says those apps will continue to function in the near term. Apple hasn't published a final removal date.
 
@@ -32,7 +32,9 @@ Search the project for ODR asset tags, Xcode tag assignments, and every `NSBundl
 | --- | --- |
 | ODR tag | `tutorial-video` |
 | Requesting feature | First-run tutorial |
-| Current preservation priority | Initial install |
+| Current prefetch category | Initial Install |
+| Preservation priority | 0.8 on the 0.0–1.0 scale |
+| Request loading priority | Default |
 | Files and post-thinning size | Video and captions, 180 MB |
 | First request point | Before tutorial screen |
 | Can the feature wait? | No |
@@ -106,14 +108,27 @@ For Apple-hosted managed packs, Apple's [download guide](https://developer.apple
 
 Generate a manifest template with Apple's packaging tool, then define the pack ID, one download policy, file selectors, and supported platforms. Manifest paths are relative to the directory where the packaging command runs, so make that directory stable in local and CI builds.
 
-At an on-demand call site, the new control flow is:
+At an on-demand call site, obtaining the pack and making it locally available is only the first half of the replacement:
 
 ```swift
 let pack = try await AssetPackManager.shared.assetPack(withID: "DesertLevel")
 try await AssetPackManager.shared.ensureLocalAvailability(of: pack)
+let mapData = try AssetPackManager.shared.contents(at: "Levels/Desert/map.dat")
 ```
 
-Only enter the feature after `ensureLocalAvailability` returns successfully. If it throws, preserve the user's intent and present a retry or fallback; don't mark the content as installed. For essential and prefetch packs, the same check can confirm local availability before access. When a pack is no longer needed, use the documented removal API to reclaim device storage.
+Only enter the feature after `ensureLocalAvailability` returns successfully and the required file opens. If either operation throws, preserve the user's intent and present a retry or fallback; don't mark the content as installed. For essential and prefetch packs, the same availability check can run before access. Apple's API also provides `descriptor(for:)` when a file descriptor is more suitable than loading `Data`.
+
+Audit the whole ODR lifecycle rather than replacing one method:
+
+| ODR behavior | Managed asset-pack migration |
+| --- | --- |
+| `beginAccessingResources` downloads and retains tagged resources | Resolve the pack, call `ensureLocalAvailability`, then open files through `AssetPackManager` |
+| `conditionallyBeginAccessingResources` checks without downloading | Check `assetPackIsAvailableLocally(withID:)`, then decide whether the feature should request or wait |
+| Bundle resource lookup after access begins | Replace it with `contents(at:)` or `descriptor(for:)` using a path relative to the packaged asset root |
+| Request progress and cancellation | Rebuild the UI against current Background Assets status APIs; don't carry over `NSProgress` assumptions without testing |
+| `endAccessingResources` releases ODR retention | Managed packs remain installed until the app removes them; call `remove(assetPackWithID:)` when the content is no longer needed |
+
+This crosswalk is behavioral, not one-to-one API parity. In particular, removal means the next use may need a new download, so test the product flow after cleanup.
 
 Package and test one representative group first. A vertical slice exposes entitlement, App Group, extension, manifest, API, and content-access mistakes before the whole catalog moves.
 
@@ -124,7 +139,7 @@ Managed Background Assets starts with the OS 26 generation. If the app still sup
 Pick and document one compatibility strategy:
 
 - raise the app's minimum OS only after measuring the affected audience and communicating the change;
-- keep a tested ODR path for eligible existing-app uploads while Apple's current policy permits it, after verifying the mixed build and store delivery;
+- temporarily keep a tested ODR path for eligible existing-app uploads while Apple's current policy permits it, after verifying the mixed build and store delivery before every submission;
 - provide another supported delivery path that works on the app's older deployment targets.
 
 Don't present ODR coexistence as permanent. Apple says support will be removed in a future release but hasn't announced the final date. Likewise, don't assume self-hosting automatically solves older-OS support; verify the APIs and deployment target of the design you actually implement.
@@ -157,18 +172,21 @@ Local success proves packaging and app integration. It doesn't prove App Store d
 
 Upload Apple-hosted packs independently of the app build. During internal testing, TestFlight automatically uses the latest processed pack version. For external testing, select one pack version and submit it to TestFlight App Review; only one version per pack can be in external testing at a time.
 
-That difference creates a version trap. Record the build and pack together:
+That difference creates a version trap. Record each tested build-and-pack combination, including older builds that remain supported:
 
 | App version/build | Pack ID/version | Channel | Install | Update | Failure recovery | Result |
 | --- | --- | --- | --- | --- | --- | --- |
 | 4.0 (520) | `Tutorial` / 3 | Internal | Pass | Pass | Pass | Candidate |
 | 4.0 (520) | `DesertLevel` / 8 | External | Pass | Pending | Pass | Hold |
+| 3.9 (506), current live build | `Tutorial` / 3 | App Store rehearsal | Pass | Pass | Pass | Compatible |
 
 The [Apple-hosted asset pack guide](/blog/apple-hosted-asset-packs/) covers upload, processing, external TestFlight, App Review, replacement, and archive behavior. Use the broader [TestFlight release workflow](/blog/testflight-release-management/) to decide which failures block the release.
 
 ### App Store distribution
 
-Submit the exact pack versions required by the build, then verify their App Store status in App Store Connect. A passed local test, successful upload, or completed project task isn't evidence that a pack is available to customers.
+An approved App Store pack version becomes available to all App Store users and replaces the previous version of that pack. It isn't pinned only to the build submitted beside it. Before replacement, test the new pack against the candidate build and every older live build that can request the same pack ID.
+
+Submit the compatible pack version, then verify its App Store status in App Store Connect. A passed local test, successful upload, or completed project task isn't evidence that a pack is available to customers.
 
 ## 7. Cut over with an evidence-based rollback rule
 
@@ -190,7 +208,9 @@ Rollback action:
 Owner:
 ```
 
-A rollback shouldn't mean “put ODR back somehow.” It should name the last compatible build and pack versions, what can be resubmitted under Apple's current rules, and how the app behaves while content is unavailable. If restoring ODR wouldn't work for a new app or an app that never used it, don't list that as a recovery option.
+A rollback shouldn't mean “put ODR back somehow” or “select the old pack instantly.” Replacing an App Store pack follows another upload and App Review submission path; archiving a pack removes all its versions and is irreversible. The recovery plan should name the compatible replacement archive, upload and review steps, expected review delay, affected live builds, and the app's behavior while content is unavailable.
+
+If restoring ODR wouldn't work for a new app or an app that never used it, don't list that as a recovery option. Recheck Apple's ODR upload policy before every submission that still contains the legacy path.
 
 Add these gates to your [App Store Connect release checklist](/blog/app-store-connect-release-checklist/) and close them only against recorded evidence.
 
