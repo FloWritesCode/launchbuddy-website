@@ -3137,7 +3137,8 @@ backlog:
     cluster: "release-quality"
     intent: "checklist"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/on-demand-resources-to-background-assets-migration/"
     confidence: "high"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/apple-hosted-asset-packs.md", "src/content/blog/app-store-connect-release-checklist.md", "src/content/blog/testflight-release-management.md"]
