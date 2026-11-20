@@ -2,7 +2,7 @@
 title: "App Conversion Funnel Benchmarks: Impression to Paid, With Sources"
 description: "The tap-through, product page, download-to-trial and trial-to-paid benchmarks behind LaunchBuddy's funnel, with every number sourced."
 pubDate: 2026-11-10
-draft: true
+draft: false
 shortTitle: "Funnel benchmarks"
 summary: "Typical conversion rates for every step from App Store impression to paid subscription, and where each number comes from."
 related:
