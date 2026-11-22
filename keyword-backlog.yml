@@ -3152,7 +3152,8 @@ backlog:
     cluster: "widgets"
     intent: "how-to"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/launchbuddy-app-taskboard-widget/"
     confidence: "medium"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/ios-release-status-widget.md", "src/content/blog/ios-developer-task-manager.md", "src/content/blog/launchbuddy-free-vs-pro.md"]
