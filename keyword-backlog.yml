@@ -2764,7 +2764,8 @@ backlog:
     cluster: "comparisons"
     intent: "comparison"
     priority: "P2"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/launchbuddy-vs-release-pilot/"
     confidence: "medium"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/manage-app-store-connect-from-iphone.md", "src/content/blog/app-store-submission-tracker.md", "src/content/blog/app-store-review-management.md", "src/content/blog/launchbuddy-vs-app-store-connect.md"]
