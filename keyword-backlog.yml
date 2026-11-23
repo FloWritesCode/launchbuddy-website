@@ -1,10 +1,10 @@
 version: 1
-researched_at: "2026-11-16"
+researched_at: "2026-11-23"
 market: "English-language web search"
 status: "healthy"
 
 methodology:
-  - "Compared candidate topics against all 141 indexable posts in src/content/blog (142 files; one draft)."
+  - "Compared candidate topics against all 148 indexable posts in src/content/blog (149 files; one draft)."
   - "Used current Google result language, Apple documentation terminology, competitor positioning, and LaunchBuddy product fit."
   - "Priorities are qualitative. They do not claim exact search volume or keyword difficulty."
   - "Before drafting, recheck the live search results and reject topics whose intent is already satisfied by an existing LaunchBuddy article."
@@ -338,8 +338,6 @@ research_sources:
     url: "https://github.com/blitzdotdev/blitz-mac"
   - name: "Blitz: MCP tool approval flow"
     url: "https://github.com/blitzdotdev/blitz-mac/blob/master/docs/mcp-tools-approval-flow.md"
-  - name: "Apple: App Store Connect release notes"
-    url: "https://developer.apple.com/help/app-store-connect/release-notes/"
   - name: "Apple: Upcoming new age rating content descriptors"
     url: "https://developer.apple.com/news/?id=yxkh08us"
   - name: "Apple: View agreements status"
@@ -378,6 +376,18 @@ research_sources:
     url: "https://developer.apple.com/app-store/whats-new/"
   - name: "Apple: Use widgets on iPhone"
     url: "https://support.apple.com/en-us/118610"
+  - name: "Apple: App and submission statuses"
+    url: "https://developer.apple.com/help/app-store-connect/reference/app-information/app-and-submission-statuses/"
+  - name: "Apple: Set a price"
+    url: "https://developer.apple.com/help/app-store-connect/manage-app-pricing/set-a-price/"
+  - name: "Apple: View app status history"
+    url: "https://developer.apple.com/help/app-store-connect/manage-your-apps-availability/view-app-status-history/"
+  - name: "Apple: Upload a geographic coverage file"
+    url: "https://developer.apple.com/help/app-store-connect/manage-submissions-to-app-review/upload-a-geographic-coverage-file/"
+  - name: "Apple: App and compliance information"
+    url: "https://developer.apple.com/help/app-store-connect/reference/app-information/app-and-compliance-information/"
+  - name: "Apple: Provide a custom license agreement"
+    url: "https://developer.apple.com/help/app-store-connect/manage-app-information/provide-a-custom-license-agreement/"
 
 existing_primary_targets:
   - keyword: "AI release notes for iOS apps"
@@ -803,12 +813,35 @@ existing_primary_targets:
   - keyword: "iPhone app on Apple silicon Mac"
     file: "src/content/blog/iphone-app-apple-silicon-mac.md"
     intent: "checklist"
+  - keyword: "App Store subscription Bundles vs Suites"
+    file: "src/content/blog/app-store-subscription-bundles-vs-suites.md"
+    intent: "comparison"
+  - keyword: "App Store Connect roles and permissions"
+    file: "src/content/blog/app-store-connect-roles-permissions.md"
+    intent: "guide"
+  - keyword: "LaunchBuddy AI playbooks"
+    file: "src/content/blog/launchbuddy-ai-playbooks.md"
+    intent: "product-guide"
+  - keyword: "LaunchBuddy vs Blitz"
+    file: "src/content/blog/launchbuddy-vs-blitz.md"
+    intent: "comparison"
+  - keyword: "On-Demand Resources to Background Assets migration"
+    file: "src/content/blog/on-demand-resources-to-background-assets-migration.md"
+    intent: "checklist"
+  - keyword: "App Store Retention Messaging"
+    file: "src/content/blog/app-store-retention-messaging.md"
+    intent: "guide"
+  - keyword: "LaunchBuddy App Taskboard widget"
+    file: "src/content/blog/launchbuddy-app-taskboard-widget.md"
+    intent: "how-to"
   - keyword: "App conversion funnel benchmarks"
     file: "src/content/blog/app-conversion-funnel-benchmarks.md"
     intent: "guide"
     draft: true
 
 excluded_due_to_overlap:
+  - keyword: "App Store Sales and Trends"
+    reason: "The published App Store Connect analytics guide already explains sales, proceeds, reporting boundaries, and why App Analytics, Sales and Trends, and financial totals differ. A separate guide would repeat that reporting intent without a distinct LaunchBuddy capability."
   - keyword: "iOS app project management"
     reason: "High overlap with iOS developer task manager, App Store Connect project management, and iOS app release management. Consolidate or retarget an existing article instead."
   - keyword: "Xcode project manager"
@@ -3159,3 +3192,81 @@ backlog:
     related_existing_posts: ["src/content/blog/ios-release-status-widget.md", "src/content/blog/ios-developer-task-manager.md", "src/content/blog/launchbuddy-free-vs-pro.md"]
     product_features: ["App Taskboard widget", "Release planning and taskboards", "Deep links", "iCloud sync"]
     angle: "Show how to add the task-focused widget, use it to inspect current release work, open the full taskboard for context, and distinguish free viewing from Pro task completion; compare its task-level job with the Release Status widget's progress summary, include iCloud and widget-freshness checks, and avoid treating a widget action as proof that build, test, or App Store work is complete."
+
+  - id: "kw-164"
+    keyword: "App Store availability status meanings"
+    proposed_slug: "app-store-availability-status-meanings"
+    cluster: "distribution"
+    intent: "troubleshooting"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-connect-help.md", "src/content/blog/app-store-pre-order.md", "src/content/blog/app-store-connect-compliance-review.md"]
+    product_features: ["App portfolio", "Release planning and taskboards", "App Store submission checklists"]
+    angle: "Map Apple's country-level Available, processing, pre-order, missing-rating, tax, licensing, and compliance statuses to the owner, evidence, wait window, or escalation task for each affected storefront; keep availability diagnosis separate from app-version review status and state that LaunchBuddy neither changes storefront availability nor resolves legal or account requirements."
+
+  - id: "kw-165"
+    keyword: "how to set app price in App Store Connect"
+    proposed_slug: "set-app-price-app-store-connect"
+    cluster: "monetization"
+    intent: "how-to"
+    priority: "P1"
+    status: "approved"
+    confidence: "high"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-price-change-schedule.md", "src/content/blog/app-store-pre-order.md", "src/content/blog/app-store-connect-analytics.md"]
+    product_features: ["App portfolio", "Release planning and taskboards", "App Store submission checklists", "App Store Connect analytics dashboard"]
+    angle: "Own the initial paid-app pricing decision rather than the published article's later price-change schedule: choose a base country, distinguish Apple-managed comparable prices from manual storefront prices, verify agreements and tax-category prerequisites, record expected proceeds, and create post-launch checks without claiming LaunchBuddy sets or verifies prices."
+
+  - id: "kw-166"
+    keyword: "App Store Connect app status history"
+    proposed_slug: "app-store-connect-app-status-history"
+    cluster: "release-strategy"
+    intent: "how-to"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-submission-tracker.md", "src/content/blog/app-store-connect-webhooks.md", "src/content/blog/ios-app-release-management.md"]
+    product_features: ["App portfolio", "Release planning and taskboards", "App Store submission checklists"]
+    angle: "Use Apple's per-version History rows to reconstruct who initiated each status change and when, compare that factual timeline with the planned release and incident notes, and turn unexplained delays into a bounded follow-up without claiming LaunchBuddy imports Apple's status history or replaces webhooks."
+
+  - id: "kw-167"
+    keyword: "App Store routing app coverage file"
+    proposed_slug: "app-store-routing-app-coverage-file"
+    cluster: "app-metadata"
+    intent: "checklist"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "low"
+    related_existing_posts: ["src/content/blog/app-store-connect-release-checklist.md", "src/content/blog/app-review-notes.md"]
+    product_features: ["Release planning and taskboards", "App Store submission checklists"]
+    angle: "Turn Apple's routing-app prerequisite into a version-scoped handoff covering the GeoJSON MultiPolygon rules, supported-region evidence, Xcode routing configuration, upload timing, App Review blocking behavior, and a live route spot-check while stating that LaunchBuddy does not create, parse, upload, or validate coverage files."
+
+  - id: "kw-168"
+    keyword: "App Store content rights declaration"
+    proposed_slug: "app-store-content-rights-declaration"
+    cluster: "app-compliance"
+    intent: "checklist"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "medium"
+    related_existing_posts: ["src/content/blog/app-store-connect-release-checklist.md", "src/content/blog/app-store-metadata-management.md", "src/content/blog/app-store-connect-compliance-review.md"]
+    product_features: ["App portfolio", "Release planning and taskboards", "App Store submission checklists"]
+    angle: "Build a third-party-content inventory that links each media, feed, catalog, or user-facing source to ownership or permission evidence, storefront scope, expiry, and release impact before answering Apple's app-level Content Rights field; keep legal interpretation with qualified counsel and state that LaunchBuddy neither verifies rights nor submits the declaration."
+
+  - id: "kw-169"
+    keyword: "App Store custom license agreement"
+    proposed_slug: "app-store-custom-license-agreement"
+    cluster: "app-compliance"
+    intent: "guide"
+    priority: "P2"
+    status: "approved"
+    confidence: "medium"
+    overlap: "low"
+    related_existing_posts: ["src/content/blog/app-store-metadata-management.md", "src/content/blog/app-store-age-rating-questionnaire.md"]
+    product_features: ["App portfolio", "Release planning and taskboards", "App Store submission checklists"]
+    angle: "Provide a decision and rollout record for keeping Apple's standard EULA or applying a counsel-approved custom agreement by country, including plain-text and localization constraints, age-rating consistency, app-bundle implications, review ownership, and storefront verification without offering legal advice or claiming LaunchBuddy authors or publishes license terms."
