@@ -22,7 +22,7 @@ This comparison was checked against both products' first-party pages on November
 | At-a-glance view | Release Status widgets show progress, due date, task counts, and checklist completion | Home and Lock Screen widgets prioritize app status; Pro adds review-wait Live Activities |
 | Notifications | No verified live App Store Connect status-notification feature | Pro push notifications for documented app-state changes, with quiet hours and per-app controls |
 | Devices | Native iPhone, iPad, and Mac workflow | Designed for iPhone; the listing requires iOS 17 or later |
-| Project storage | Tasks, releases, and notes live in the user's private iCloud account | App Store Connect responses are cached in local SQLite; credentials stay in the device Keychain |
+| Project storage | Tasks, releases, and notes live in the user's private iCloud account | Responses are cached in local SQLite; published credential claims conflict with the official source, so verify the push setup before connecting a key |
 | Free boundary | Two apps, two releases, limited notes, default checklists, iCloud sync, and read actions | One App Store Connect account, one tracked app, three checklist runs weekly, two review replies monthly, and no revenue data |
 | Paid plan | $2.99/month or $19.99/year | $4.99/month or $39.99/year; the current listing and terms document a 7-day trial |
 
@@ -76,7 +76,7 @@ Release Pilot's distinctive workflow starts after Apple has a version or submiss
 
 Those features answer “Did Apple move?” without reopening a planning board. There are two caveats.
 
-First, a notification is not the source of truth. Release Pilot's terms say APNs delivery is best-effort and its displayed data may not always be current. Open the record and verify Apple's status before changing a launch plan.
+First, a notification is not the source of truth. Release Pilot's terms say APNs delivery is best-effort and its displayed data may not always be current. Its [support page](https://senthilmkm.github.io/release-pilot/support.html) warns that notifications can take 5–30 minutes, while the official repository documents a 15-minute App Store Connect polling job. Open the record and verify Apple's status before changing a launch plan.
 
 Second, elapsed review time isn't a release forecast. A Live Activity can make waiting visible, but it cannot predict when App Review will finish or whether Apple will approve the submission.
 
@@ -131,9 +131,13 @@ These aren't interchangeable dashboards. Before comparing a number, write down i
 
 LaunchBuddy stores project tasks, releases, notes, and related project data in the user's private iCloud account. LaunchBuddy doesn't host that project data on its own servers. Its App Store Connect features require Pro and API credentials, and its AI disclosure controls let users choose whether relevant private notes and local project context may be included.
 
-Release Pilot's [privacy policy](https://senthilmkm.github.io/release-pilot/privacy.html) says the App Store Connect issuer ID, key ID, and private key stay in the iOS Keychain with a device-only accessibility setting. Short-lived tokens are signed on the phone, Apple responses are cached in local SQLite, and App Store Connect data is not sent to the developer's server.
+Release Pilot's [privacy policy](https://senthilmkm.github.io/release-pilot/privacy.html) says the App Store Connect issuer ID, key ID, and private key stay in the iOS Keychain with a device-only accessibility setting. It says short-lived tokens are signed on the phone, Apple responses are cached in local SQLite, and the private key is not sent to the developer's server.
 
-“On device” doesn't mean “no network services.” Release Pilot says RevenueCat receives an anonymous installation ID and Apple purchase receipt for subscription validation. Its Cloudflare Worker stores an APNs token and receives a small app-state payload for push delivery. The policy says neither service receives the App Store Connect key.
+The product's official source creates a material contradiction. In the repository's v1 source, [push registration reads the private key and sends it to the worker](https://github.com/senthilmkm/release-pilot/blob/983465ed5ef162452ebaca407a0914d384f13b7b/app/src/lib/push/register-device.ts). The corresponding [worker handler encrypts and stores that key](https://github.com/senthilmkm/release-pilot/blob/983465ed5ef162452ebaca407a0914d384f13b7b/worker/src/handlers/register.ts), and the [database schema](https://github.com/senthilmkm/release-pilot/blob/983465ed5ef162452ebaca407a0914d384f13b7b/worker/src/storage/d1-schema.sql) stores observed app state and a push log. The current repository architecture also describes a worker polling App Store Connect with stored encrypted credentials, even though the same README says the key never leaves the device.
+
+That source predates the first App Store release, and this article did not inspect the shipped binary. It therefore cannot establish which behavior is in the installed app. Until the developer reconciles the policy and implementation, don't rely on a device-only credential guarantee when enabling push. Ask for clarification, use a dedicated key, and plan to revoke it after testing.
+
+Release Pilot also says RevenueCat receives an anonymous installation ID and Apple purchase receipt to validate its own subscription. The published policy says its Cloudflare Worker stores an APNs token and receives app-state data for push delivery. Those services are separate from the optional RevenueCat metrics connection.
 
 For either product:
 
