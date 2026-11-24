@@ -2852,7 +2852,8 @@ backlog:
     cluster: "app-setup"
     intent: "how-to"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/app-clip-default-experience/"
     confidence: "medium"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/app-store-connect-release-checklist.md", "src/content/blog/app-review-notes.md", "src/content/blog/testflight-release-management.md"]
