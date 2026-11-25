@@ -2963,7 +2963,8 @@ backlog:
     cluster: "game-center"
     intent: "checklist"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/game-center-release-checklist/"
     confidence: "medium"
     overlap: "low"
     related_existing_posts: ["src/content/blog/app-store-connect-catalog-reports.md", "src/content/blog/app-store-connect-draft-submissions.md", "src/content/blog/testflight-release-management.md"]
