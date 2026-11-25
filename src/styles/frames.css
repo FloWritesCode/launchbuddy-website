@@ -63,45 +63,8 @@
   width: 0.45rem;
   height: 0.45rem;
   border-radius: 9999px;
-  background: var(--color-accent-amber);
-  box-shadow: 0 0 8px rgb(251 191 36 / 0.6);
-}
-
-.frames-availability__dot:not(:first-child) {
-  margin-left: 0.5rem;
-}
-
-.frames-availability__dot.is-live {
   background: var(--color-accent-green);
   box-shadow: 0 0 8px rgb(52 211 153 / 0.6);
-}
-
-.frames-capture {
-  max-width: 32rem;
-  margin-top: 2.25rem;
-  padding-top: 1.75rem;
-  border-top: 1px solid var(--color-border-subtle);
-}
-
-.frames-capture__label {
-  font-family: var(--font-display);
-  font-weight: 550;
-  font-size: 0.9375rem;
-  color: var(--color-text-secondary);
-  margin-bottom: 0.75rem;
-}
-
-.frames-capture__fineprint {
-  margin-top: 0.75rem;
-  font-size: 0.75rem;
-  line-height: 1.5;
-  color: var(--color-text-muted);
-}
-
-.frames-capture--on-dark {
-  max-width: 28rem;
-  margin-inline: auto;
-  text-align: left;
 }
 
 /* Hero: an iPad with an iPhone and an iPhone Duo in front of it */

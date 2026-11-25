@@ -2,7 +2,6 @@
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Footer from '../components/Footer.astro';
-import KitForm from '../components/KitForm.astro';
 import '../styles/frames.css';
 import framebuddyIcon from '../assets/frames/framebuddy-icon.png';
 import ipadShot from '../assets/frames/ipad.png';
@@ -17,16 +16,15 @@ import {
   FRAMEBUDDY_APP_STORE_ID,
   FRAMEBUDDY_APP_STORE_URL,
   FRAMES_FAQ,
-  FRAMES_KIT_FORM_UID,
   FRAMES_PATH,
   SITE_URL,
 } from '../lib/site';
 
 const title = 'FrameBuddy: Free Device Frames for Screenshots';
 const description =
-  'Put screenshots and screen recordings into iPhone, iPad, and iPhone Duo frames in every color. Free on the App Store, with Finder, Shortcuts, and a CLI.';
+  'Put screenshots and screen recordings into iPhone, iPad, and iPhone Duo frames in every color. Free on Mac, iPhone, and iPad, with Finder, Shortcuts, and a CLI.';
 const keywords =
-  'device frames, screenshot frames, iPhone mockup, iPad mockup, iPhone Duo frame, frame screenshots Mac, screen recording device frame, App Store screenshot frames, FrameBuddy';
+  'device frames, screenshot frames, iPhone mockup, iPad mockup, iPhone Duo frame, frame screenshots Mac, frame screenshots iPhone, screen recording device frame, App Store screenshot frames, FrameBuddy';
 
 const ogImage = {
   src: '/images/framebuddy-preview.jpg',
@@ -158,7 +156,7 @@ const jsonLd = [
     description:
       'Put screenshots and screen recordings into iPhone, iPad, and iPhone Duo device frames, with a Finder Quick Action, a Shortcuts action, and the framebuddy command line tool.',
     applicationCategory: 'DeveloperApplication',
-    operatingSystem: 'macOS 14 or later',
+    operatingSystem: 'macOS 14 or later, iOS 18 or later, iPadOS 18 or later',
     url: new URL(FRAMES_PATH, SITE_URL).href,
     downloadUrl: FRAMEBUDDY_APP_STORE_URL,
     image: new URL(framebuddyIcon.src, SITE_URL).href,
@@ -222,17 +220,9 @@ const jsonLd = [
             Download free on the App Store
           </a>
           <p class="frames-availability">
-            <span class="frames-availability__dot is-live" aria-hidden="true"></span>
-            Mac: available now
             <span class="frames-availability__dot" aria-hidden="true"></span>
-            iPhone &amp; iPad: coming soon
+            Available now on Mac, iPhone, and iPad
           </p>
-        </div>
-
-        <div id="notify" class="frames-capture fade-in fade-in-delay-4">
-          <p class="frames-capture__label">Not on a Mac? Get an email when the iPhone and iPad version is live.</p>
-          <KitForm uid={FRAMES_KIT_FORM_UID} />
-          <p class="frames-capture__fineprint">Confirm your email to subscribe. Unsubscribe anytime.</p>
         </div>
       </div>
 
@@ -438,7 +428,7 @@ const jsonLd = [
       <div class="flex flex-col items-center text-center max-w-xl mx-auto">
         <h2 class="cta-banner__headline mb-4">Frame your next screenshot in seconds</h2>
         <p class="text-text-secondary text-lg mb-8">
-          Free on the App Store. No account, no subscription, no watermark.
+          Free on the App Store for Mac, iPhone, and iPad. No account, no subscription, no watermark.
         </p>
         <div id="download-again">
           <a href={FRAMEBUDDY_APP_STORE_URL} class="btn-ship btn-ship--lg">
@@ -449,11 +439,6 @@ const jsonLd = [
             </svg>
             Download free on the App Store
           </a>
-        </div>
-        <div class="frames-capture frames-capture--on-dark w-full mt-10">
-          <p class="frames-capture__label">Waiting for iPhone and iPad? Get an email when it's approved.</p>
-          <KitForm uid={FRAMES_KIT_FORM_UID} />
-          <p class="frames-capture__fineprint">Confirm your email to subscribe. Unsubscribe anytime.</p>
         </div>
       </div>
     </div>
@@ -531,7 +516,7 @@ const jsonLd = [
 
 <script>
   const sticky = document.querySelector('[data-frames-sticky]');
-  const ctas = ['download', 'notify', 'download-again']
+  const ctas = ['download', 'download-again']
     .map((id) => document.getElementById(id))
     .filter((el): el is HTMLElement => Boolean(el));
 

@@ -80,7 +80,6 @@ export const CHECKLIST_FAQ = [
 ] as const;
 
 export const FRAMES_PATH = '/frames/';
-export const FRAMES_KIT_FORM_UID = '53c455dabb';
 export const FRAMEBUDDY_APP_STORE_ID = '1625346520';
 export const FRAMEBUDDY_APP_STORE_URL =
   'https://apps.apple.com/app/framebuddy-screenshot-frames/id1625346520';
@@ -92,9 +91,9 @@ export const FRAMES_FAQ = [
       'Yes. FrameBuddy is free on the App Store, with no subscription, no in-app purchases, and no watermark on your exports.',
   },
   {
-    question: 'When is FrameBuddy coming to iPhone and iPad?',
+    question: 'Does FrameBuddy work on iPhone and iPad?',
     answer:
-      'The iPhone and iPad version is coming soon. It shares the App Store listing with the Mac app, so the same download link will work on iPhone and iPad once it is out. Leave your email on this page to hear when it is live.',
+      'Yes. FrameBuddy is one free App Store download for Mac, iPhone, and iPad. On iPhone and iPad, share screenshots to it from Photos or any other app, or use the Frame Screenshots action in Shortcuts, then save the framed result to Photos or Files. The Finder Quick Action and the command line tool are Mac-only.',
   },
   {
     question: 'Which devices does FrameBuddy have frames for?',
