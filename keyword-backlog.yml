@@ -3073,7 +3073,8 @@ backlog:
     cluster: "distribution"
     intent: "checklist"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/ios-alternative-distribution-release-checklist/"
     confidence: "medium"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/app-store-connect-draft-submissions.md", "src/content/blog/app-store-connect-release-checklist.md", "src/content/blog/app-store-unlisted-vs-private-distribution.md"]
