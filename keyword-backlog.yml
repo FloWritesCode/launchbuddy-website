@@ -3085,9 +3085,10 @@ backlog:
     keyword: "App Store app file size"
     proposed_slug: "app-store-app-file-size"
     cluster: "release-quality"
-    intent: "guide"
+    intent: "how-to"
     priority: "P1"
-    status: "approved"
+    status: "published"
+    published_url: "https://launchbuddy.app/blog/app-store-app-file-size/"
     confidence: "medium"
     overlap: "medium"
     related_existing_posts: ["src/content/blog/app-store-connect-help.md", "src/content/blog/testflight-release-management.md", "src/content/blog/ios-app-release-management.md"]
